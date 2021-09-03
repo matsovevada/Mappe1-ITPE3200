@@ -6,14 +6,26 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mappe1_ITPE3200.Models
 {
-    public class DbContext
+    public class Database : DbContext
     {
-
+        public Database(DbContextOptions<DbContext> options) : base(options)
+        {
+            Database.EnsureCreated();
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();
         }
+
+        //Tabeller
+        public DbSet<Billett> Billetter { get; set; }
+        public DbSet<Kunde> Kunder { get; set; }
+        public DbSet<Avgang> Avganger { get; set; }
+        public DbSet<Baat> Baater { get; set; }
+        public DbSet<Strekning> Strekninger { get; set; }
+        public DbSet<Poststed> Poststeder { get; set; }
+
 
         public class Lugar
         {
@@ -43,12 +55,12 @@ namespace Mappe1_ITPE3200.Models
             public List<Lugar> LedigeLugarer { get; set; }
         }
 
-        public class PostSted
+        public class Poststed
         {
             [Key]
             public string Postnr { get; set; }
-            public string Poststed { get; set; }
-          
+            public string PostSted { get; set; }
+
         }
 
         public class Strekning
