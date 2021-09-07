@@ -15,6 +15,6 @@ namespace Mappe1_ITPE3200.Models
 		public int KundeId { get; set; }
 		public double TotalPris { get; set; }
 		public bool Bilplass { get; set; }
-		public List<Lugar> lugarer { get; set; }
+		public virtual List<Lugar> lugarer { get; set; }
 	}
 }

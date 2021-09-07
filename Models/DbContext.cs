@@ -40,7 +40,7 @@ namespace Mappe1_ITPE3200.Models
             [Key]
             public int BaatID { get; set; }
             public string Navn { get; set; }
-            public List<Lugar> Lugarer { get; set; }
+            public virtual List<Lugar> Lugarer { get; set; }
             public int AntallBilplasser { get; set; }
         }
 
@@ -52,7 +52,7 @@ namespace Mappe1_ITPE3200.Models
             public int BaatID { get; set; }
             public DateTime DatoTid { get; set; }
             public int AntallLedigeBilplasser { get; set; }
-            public List<Lugar> LedigeLugarer { get; set; }
+            public virtual List<Lugar> LedigeLugarer { get; set; }
         }
 
         public class Poststed
