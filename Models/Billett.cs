@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using static Mappe1_ITPE3200.Models.Database;
+using static Mappe1_ITPE3200.Models.DatabaseContext;
 
 namespace Mappe1_ITPE3200.Models
 {
