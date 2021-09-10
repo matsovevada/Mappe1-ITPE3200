@@ -5,7 +5,7 @@ import { Strekning } from '../Strekning'
 
 @Component({
   selector: 'strekning-dropdown',
-  templateUrl: 'strekning.html'
+  templateUrl: 'dropdownStrekning.html'
 })
 export class Liste {
   alleStrekninger: Array<Strekning>;
