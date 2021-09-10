@@ -7,7 +7,7 @@ import { Strekning } from '../Strekning'
   selector: 'strekning-dropdown',
   templateUrl: 'strekning.html'
 })
-export class Liste {
+export class Strekning {
   alleStrekninger: Array<Strekning>;
   laster: boolean;
 
