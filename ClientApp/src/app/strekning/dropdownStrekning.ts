@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Strekning } from '../../../../Models/Strekning'
+import { Strekning } from '../Strekning'
 
 @Component({
+  selector: 'strekning-dropdown',
   templateUrl: 'strekning.html'
 })
 export class Liste {
