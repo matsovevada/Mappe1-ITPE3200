@@ -1,10 +1,12 @@
+using Mappe1_ITPE3200.Models;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace Mappe1_ITPE3200.ClientApp.DAL
 {
-  public class IBestillingRepository
+  public interface IBestillingRepository
   {
-    public IBestillingRepository()
-    {
-    }
+    Task<List<Strekning>> HentAlleStrekninger();
   }
 }
