@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { Strekning } from './strekning/dropdownStrekning'
+import { dropdownStrekning } from './strekning/dropdownStrekning'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    Strekning
+    dropdownStrekning
   ],
 
   imports: [
