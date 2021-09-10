@@ -25,13 +25,13 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       {
         StrekningsID = 0,
         Fra = "Oslo",
-        Til = "K?benhavn"
+        Til = "Kobenhavn"
       };
 
       var strekning_KobenhavnOslo = new Strekning
       {
         StrekningsID = 1,
-        Fra = "K?benhavn",
+        Fra = "Kobenhavn",
         Til = "Oslo"
       };
 
@@ -42,7 +42,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       //Lugarer
       var lugar1 = new Lugar
       {
-        Romkode = "B?t1_dobbeltrom",
+        Romkode = "Baat1_dobbeltrom",
         Beskrivelse = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dui ligula, dignissim quis urna et, " +
         "faucibus fermentum est. Pellentesque felis orci, egestas at dictum vel, vestibulum non ante. Pellentesque neque.",
         AntallSengeplasser = 2,
@@ -53,7 +53,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       var lugar2 = new Lugar
       {
-        Romkode = "B?t2_suite",
+        Romkode = "Baat2_suite",
         Beskrivelse = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dui ligula, dignissim quis urna et, " +
        "faucibus fermentum est. Pellentesque felis orci, egestas at dictum vel, vestibulum non ante. Pellentesque neque.",
         AntallSengeplasser = 4,
@@ -62,33 +62,33 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         Pris = 0
       };
 
-      //B?ter
+      //Baater
       //Legger lugarer til i lugarliste for b?t
-      var Lugarer_b?t1 = new List<Lugar>();
-      Lugarer_b?t1.Add(lugar1);
+      var Lugarer_bat1 = new List<Lugar>();
+      Lugarer_bat1.Add(lugar1);
 
-      var b?t1 = new Baat
+      var bat1 = new Baat
       {
         BaatID = 0,
-        Navn = "B?t1",
+        Navn = "Bat1",
         AntallBilplasser = 20,
-        Lugarer = Lugarer_b?t1,
+        Lugarer = Lugarer_bat1,
       };
 
-      var Lugarer_b?t2 = new List<Lugar>();
-      Lugarer_b?t1.Add(lugar2);
+      var Lugarer_bat2 = new List<Lugar>();
+      Lugarer_bat1.Add(lugar2);
 
-      var b?t2 = new Baat
+      var bat2 = new Baat
       {
         BaatID = 1,
         Navn = "B?t2",
         AntallBilplasser = 10,
-        Lugarer = Lugarer_b?t2,
+        Lugarer = Lugarer_bat2,
       };
 
 
-      db.Baater.Add(b?t1);
-      db.Baater.Add(b?t2);
+      db.Baater.Add(bat1);
+      db.Baater.Add(bat2);
 
 
       //Avganger
@@ -97,8 +97,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         StrekningsID = 0,
         BaatID = 0,
         DatoTid = new DateTime(2020, 10, 10, 12, 30, 00),
-        AntallLedigeBilplasser = b?t1.AntallBilplasser,
-        LedigeLugarer = b?t1.Lugarer
+        AntallLedigeBilplasser = bat1.AntallBilplasser,
+        LedigeLugarer = bat1.Lugarer
       };
 
       //Avganger
@@ -107,8 +107,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         StrekningsID = 1,
         BaatID = 1,
         DatoTid = new DateTime(2020, 10, 10, 12, 30, 00),
-        AntallLedigeBilplasser = b?t2.AntallBilplasser,
-        LedigeLugarer = b?t2.Lugarer
+        AntallLedigeBilplasser = bat2.AntallBilplasser,
+        LedigeLugarer = bat2.Lugarer
       };
 
       db.Avganger.Add(avgang1);
@@ -125,7 +125,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       var poststed2 = new Poststed
       {
         Postnr = "1430",
-        PostSted = "?s"
+        PostSted = "As"
       };
 
       var poststed3 = new Poststed
@@ -143,7 +143,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       var poststed5 = new Poststed
       {
         Postnr = "3110",
-        PostSted = "T?nsberg"
+        PostSted = "Tonsberg"
       };
 
       db.Poststeder.Add(poststed1);
@@ -151,9 +151,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       db.Poststeder.Add(poststed3);
       db.Poststeder.Add(poststed4);
       db.Poststeder.Add(poststed5);
-
-
-
 
 
       db.SaveChanges();
