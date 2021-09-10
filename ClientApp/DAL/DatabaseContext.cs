@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mappe1_ITPE3200.Models
 {
-    public class Database : DbContext
+    public class DatabaseContext : DbContext
     {
-        public Database(DbContextOptions<DbContext> options) : base(options)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
@@ -60,7 +60,6 @@ namespace Mappe1_ITPE3200.Models
             [Key]
             public string Postnr { get; set; }
             public string PostSted { get; set; }
-
         }
 
         public class Strekning
@@ -71,7 +70,5 @@ namespace Mappe1_ITPE3200.Models
             public string Til { get; set; }
 
         }
-
-
     }
 }
