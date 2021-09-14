@@ -23,10 +23,10 @@ namespace Mappe1_ITPE3200
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // m? ha med dette for ? sette opp databasen
+
             services.AddControllers();
-            services.AddDbContext<DbContext>(options =>
-                options.UseSqlite("Data source=Bestillinger.db"));
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlite("Data source=Bestillinger.db"));
+
             services.AddScoped<IBestillingRepository, BestillingRepository>();
 
             // In production, the Angular files will be served from this directory
@@ -36,12 +36,7 @@ namespace Mappe1_ITPE3200
             });
 
             // m? ha med dette for ? sette opp databasen
-            services.AddControllers();
             services.AddConnections();
-            services.AddDbContext<DbContext>(options => options.UseSqlite("Data source=Bestillinger.db"));
-
-            
-            services.AddTransient<IBestillingRepository, BestillingRepository>();
 
         }
 

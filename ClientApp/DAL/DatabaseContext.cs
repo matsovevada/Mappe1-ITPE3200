@@ -37,7 +37,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     public int KundeId { get; set; }
     public double TotalPris { get; set; }
     public bool Bilplass { get; set; }
-    public List<Lugar> lugarer { get; set; }
+    public virtual List<Lugar> lugarer { get; set; }
   }
 
 
@@ -59,6 +59,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
   public class Lugar
         {
+            [Key]
+            public int Id { get; set; }
             public string Romkode { get; set; }
             public string Beskrivelse { get; set; }
             public int AntallSengeplasser { get; set; }
@@ -70,7 +72,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         public class Baat
         {
             [Key]
-            public int BaatID { get; set; }
+            public int Id { get; set; }
             public string Navn { get; set; }
             public virtual List<Lugar> Lugarer { get; set; }
             public int AntallBilplasser { get; set; }
@@ -81,7 +83,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             [Key]
             public int Id { get; set; }
             public int StrekningsID { get; set; }
-            public int BaatID { get; set; }
+            public virtual Baat baat { get; set; }
             public DateTime DatoTid { get; set; }
             public int AntallLedigeBilplasser { get; set; }
             public virtual List<Lugar> LedigeLugarer { get; set; }
@@ -97,7 +99,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         public class Strekning
         {
             [Key]
-            public int StrekningsID { get; set; }
+            public int Id { get; set; }
             public string Fra { get; set; }
             public string Til { get; set; }
 

@@ -25,7 +25,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     {
       List<Models.Strekning> alleStrekninger = await _db.Strekninger.Select(s => new Models.Strekning
       {
-        StrekningsID = s.StrekningsID,
+        Id = s.Id,
         Fra = s.Fra,
         Til = s.Til
       }).ToListAsync();
