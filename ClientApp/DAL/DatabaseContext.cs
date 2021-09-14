@@ -100,5 +100,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       public string Fra { get; set; }
       public string Til { get; set; }
 
+    public static explicit operator Strekninger(Strekninger v)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
