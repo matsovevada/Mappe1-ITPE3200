@@ -32,6 +32,7 @@
     <None Remove="ClientApp\src\app\Avgang.ts" />
     <None Remove="ClientApp\src\app\avgang\avganger.ts" />
     <None Remove="ClientApp\src\app\Baater.ts" />
+    <None Remove="ClientApp\src\app\bestilling\bestilling.ts" />
     <None Remove="ClientApp\src\app\Lugar.ts" />
     <None Remove="ClientApp\src\app\Strekning.ts" />
     <None Remove="ClientApp\src\app\strekning\dropdownStrekning.ts" />
