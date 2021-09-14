@@ -4,7 +4,6 @@ using Mappe1_ITPE3200.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using static Mappe1_ITPE3200.Models.DatabaseContext;
 
 namespace Mappe1_ITPE3200.ClientApp.DAL
 {

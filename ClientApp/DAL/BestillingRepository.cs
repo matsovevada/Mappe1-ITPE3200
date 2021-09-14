@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using static Mappe1_ITPE3200.Models.DatabaseContext;
+
 
 namespace Mappe1_ITPE3200.ClientApp.DAL
 {
@@ -17,10 +18,21 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       _db = db;
     }
 
+<<<<<<< Updated upstream
     
     public async Task<List<Strekning>> HentAlleStrekninger()
+=======
+    [HttpGet]
+    public async Task<List<Models.Strekning>> HentAlleStrekninger()
+>>>>>>> Stashed changes
     {
-      List<Strekning> alleStrekninger = await _db.Strekninger.ToListAsync();
+      List<Models.Strekning> alleStrekninger = await _db.Strekninger.Select(s => new Models.Strekning
+      {
+        StrekningsID = s.StrekningsID,
+        Fra = s.Fra,
+        Til = s.Til
+      }).ToListAsync();
+
       return alleStrekninger;
     }
   }

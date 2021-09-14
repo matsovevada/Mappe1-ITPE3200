@@ -1,10 +1,11 @@
 ﻿using Mappe1_ITPE3200.ClientApp.DAL;
+using Mappe1_ITPE3200.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static Mappe1_ITPE3200.Models.DatabaseContext;
+
 
 namespace Mappe1_ITPE3200.Controllers
 {
@@ -21,9 +22,9 @@ namespace Mappe1_ITPE3200.Controllers
 
 
         [HttpGet]
-        public async Task<List<Strekning>> HentAlleStrekninger()
+        public async Task<List<Models.Strekning>> HentAlleStrekninger()
         {
-            List<Strekning> alleStrekninger = await _db.HentAlleStrekninger();
+            List<Models.Strekning> alleStrekninger = await _db.HentAlleStrekninger();
             return alleStrekninger;
         }
     }

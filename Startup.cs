@@ -34,6 +34,17 @@ namespace Mappe1_ITPE3200
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+<<<<<<< Updated upstream
+=======
+
+            // m? ha med dette for ? sette opp databasen
+            services.AddControllers();
+            services.AddConnections();
+            services.AddDbContext<DbContext>(options => options.UseSqlite("Data source=Bestillinger.db"));
+
+            
+            services.AddTransient<IBestillingRepository, BestillingRepository>();
+>>>>>>> Stashed changes
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
