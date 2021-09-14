@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Strekning } from './strekning/streking';
+import { dropdownStrekning } from './strekning/dropdownStrekning';
 
 
 const appRoots: Routes = [
-  { path: 'strekning', component: Strekning },
-  { path: '', redirectTo: 'strekning', pathMatch: 'full' }
+  { path: 'dropdownStrekning', component: dropdownStrekning },
+  { path: '', redirectTo: 'dropdownStrekning', pathMatch: 'full' }
 ]
 
 @NgModule({
