@@ -14,6 +14,7 @@ export class Bestilling {
   strekning: String;
   laster: boolean;
   strekningValgt: boolean = false;
+  valgtAvgang: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -47,5 +48,10 @@ export class Bestilling {
   toggleValgtStrekning() {
     this.hentAlleAvganger();
     this.strekningValgt = true;
+  }
+
+  toggleValgtAvgang() {
+    console.log("TRYKKET!")
+    this.valgtAvgang = true;
   }
 }

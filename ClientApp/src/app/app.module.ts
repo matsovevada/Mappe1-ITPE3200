@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { dropdownStrekning } from './strekning/dropdownStrekning'
 import { BrowserModule } from '@angular/platform-browser'
-import { Bestilling } from './bestilling/Bestilling';
+import { Bestilling } from './bestilling/bestilling';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({

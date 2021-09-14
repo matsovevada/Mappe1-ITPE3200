@@ -3,16 +3,22 @@
     <div>
       <div *ngFor="let strekning of alleStrekninger"></div>
       <select (change)="toggleValgtStrekning()" [(ngModel)]="strekning">
-    <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
-  </select>
+          <option disabled hidden [value]="selectUndefinedOptionValue">Velg destinasjon</option>
+          <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
+      </select>
 
     </div>
     <div>
 
-        <select *ngIf="strekningValgt">
-          <option *ngFor="let avgang of alleAvganger">{{avgang.datoTid}}</option>
+        <select *ngIf="strekningValgt" (change)="toggleValgtAvgang()">
+            <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
+            <option *ngFor="let avgang of alleAvganger">{{avgang.datoTid}}</option>
         </select>
 
     </div>
+
+      <div *ngIf="valgtAvgang">
+          <button>Gå til bestilling</button>
+      </div>
   </div>
 </div>

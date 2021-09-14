@@ -73,7 +73,18 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         LedigeLugarer = baat1.Lugarer,
       };
 
+      String date2 = "12/25/2015 12:00:00 AM";
+      var avgang2 = new Avganger
+      {
+        Strekning = strekning_KobenhavnOslo,
+        Baat = baat1,
+        DatoTid = date2,
+        AntallLedigeBilplasser = baat1.AntallBilplasser,
+        LedigeLugarer = baat1.Lugarer,
+      };
+
       db.Avganger.Add(avgang1);
+      db.Avganger.Add(avgang2);
 
       db.SaveChanges();
     }
