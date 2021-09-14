@@ -30,10 +30,12 @@ namespace Mappe1_ITPE3200
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            // må ha med dette for å sette opp databasen
+            // m? ha med dette for ? sette opp databasen
             services.AddControllers();
             services.AddConnections();
             services.AddDbContext<DbContext>(options => options.UseSqlite("Data source=Bestillinger.db"));
+
+            services.AddScoped<IBestillingRepository, BestillingRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
