@@ -19,7 +19,7 @@ export class dropdownStrekning {
   }
 
   hentAlleStrekninger() {
-    this.http.get<Strekning[]>("api/strekninger/")
+    this.http.get<Strekning[]>("api/Bestilling/")
       .subscribe(strekningene => {
         this.alleStrekninger = strekningene;
         this.laster = false;

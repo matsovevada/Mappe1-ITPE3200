@@ -1,3 +1,5 @@
+using System;
+using Mappe1_ITPE3200.ClientApp.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -40,6 +42,7 @@ namespace Mappe1_ITPE3200
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                DBinit.Seed(app);
             }
             else
             {

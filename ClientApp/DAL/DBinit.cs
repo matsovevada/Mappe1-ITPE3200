@@ -16,6 +16,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       var db = serviceScope.ServiceProvider.GetService<DatabaseContext>();
 
+
       db.Database.EnsureDeleted();
       db.Database.EnsureCreated();
 
