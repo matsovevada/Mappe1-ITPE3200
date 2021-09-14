@@ -29,6 +29,10 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Remove="ClientApp\src\app\Avgang.ts" />
+    <None Remove="ClientApp\src\app\avgang\avganger.ts" />
+    <None Remove="ClientApp\src\app\Baater.ts" />
+    <None Remove="ClientApp\src\app\Lugar.ts" />
     <None Remove="ClientApp\src\app\Strekning.ts" />
     <None Remove="ClientApp\src\app\strekning\dropdownStrekning.ts" />
     <None Remove="Microsoft.EntityFrameworkCore" />
@@ -65,7 +69,7 @@
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
       <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
-      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
