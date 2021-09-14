@@ -13,6 +13,7 @@ export class Bestilling {
   alleStrekninger: Array<Strekning>;
   strekning: String;
   laster: boolean;
+  strekningValgt: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -22,7 +23,7 @@ export class Bestilling {
   }
 
   hentAlleAvganger() {
-    this.http.get<Avgang[]>("api/Bestilling/hentAvgang/")
+    this.http.get<Avgang[]>("api/Bestilling/hentAvgang/" + this.strekning)
       .subscribe(avgangene => {
         console.log(avgangene)
         this.alleAvganger = avgangene;
@@ -41,5 +42,10 @@ export class Bestilling {
       },
         error => console.log(error)
       );
+  }
+
+  toggleValgtStrekning() {
+    this.hentAlleAvganger();
+    this.strekningValgt = true;
   }
 }

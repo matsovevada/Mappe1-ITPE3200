@@ -2,15 +2,17 @@
   <div class="col-md-4" id="strekning">
     <div>
       <div *ngFor="let strekning of alleStrekninger"></div>
-      <select>
-        <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
-      </select>
+      <select (change)="toggleValgtStrekning()" [(ngModel)]="strekning">
+    <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
+  </select>
+
     </div>
     <div>
-      <div *ngIf="!strekningValgt"></div>
-      <select>
-        <option *ngFor="let avgang of alleAvganger">{{avgang.dato}}</option>
-      </select>
+
+        <select *ngIf="strekningValgt">
+          <option *ngFor="let avgang of alleAvganger">{{avgang.datoTid}}</option>
+        </select>
+
     </div>
   </div>
 </div>

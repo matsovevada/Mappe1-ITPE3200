@@ -48,10 +48,10 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         Pris = 1200
       };
 
-      // Baater
-
       List<Lugarer> lugarer = new List<Lugarer>();
       lugarer.Add(lugar1);
+
+      // Baater
 
       var baat1 = new Baater
       {
@@ -60,17 +60,20 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         AntallBilplasser = 300
     };
 
+      db.Baater.Add(baat1);
 
       // Avganger
+      String date = DateTime.Now.ToString("dddd, dd MMMM yyy");
       var avgang1 = new Avganger
       {
         Strekning = strekning_OsloKobenhavn,
         Baat = baat1,
-        DatoTid = new DateTime(),
+        DatoTid = date,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
         LedigeLugarer = baat1.Lugarer,
       };
 
+      db.Avganger.Add(avgang1);
 
       db.SaveChanges();
     }

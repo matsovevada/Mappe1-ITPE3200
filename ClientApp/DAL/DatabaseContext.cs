@@ -81,7 +81,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       public int Id { get; set; }
       public virtual Strekninger Strekning { get; set; }
       public virtual Baater Baat { get; set; }
-      public DateTime DatoTid { get; set; }
+      public string DatoTid { get; set; }
       public int AntallLedigeBilplasser { get; set; }
       public virtual List<Lugarer> LedigeLugarer { get; set; }
   }
