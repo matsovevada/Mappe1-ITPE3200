@@ -20,10 +20,10 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
     
     [HttpGet]
-    public async Task<List<Models.Strekning>> HentAlleStrekninger()
+    public async Task<List<Strekning>> HentAlleStrekninger()
 
     {
-      List<Models.Strekning> alleStrekninger = await _db.Strekninger.Select(s => new Models.Strekning
+      List<Strekning> alleStrekninger = await _db.Strekninger.Select(s => new Strekning
       {
         Id = s.Id,
         Fra = s.Fra,

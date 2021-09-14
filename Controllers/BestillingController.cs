@@ -22,9 +22,9 @@ namespace Mappe1_ITPE3200.Controllers
 
 
         [HttpGet]
-        public async Task<List<Models.Strekning>> HentAlleStrekninger()
+        public async Task<List<Strekning>> HentAlleStrekninger()
         {
-            List<Models.Strekning> alleStrekninger = await _db.HentAlleStrekninger();
+            List<Strekning> alleStrekninger = await _db.HentAlleStrekninger();
             return alleStrekninger;
         }
     }

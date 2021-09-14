@@ -21,87 +21,84 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
 
     //Tabeller
-    public DbSet<Billett> Billetter { get; set; }
-    public DbSet<Kunde> Kunder { get; set; }
-    public DbSet<Avgang> Avganger { get; set; }
-    public DbSet<Baat> Baater { get; set; }
-    public DbSet<Strekning> Strekninger { get; set; }
-    public DbSet<Poststed> Poststeder { get; set; }
+    public DbSet<Billetter> Billetter { get; set; }
+    public DbSet<Kunder> Kunder { get; set; }
+    public DbSet<Avganger> Avganger { get; set; }
+    public DbSet<Baater> Baater { get; set; }
+    public DbSet<Strekninger> Strekninger { get; set; }
+    public DbSet<Poststeder> Poststeder { get; set; }
   }
 
 
-  public class Billett
+  public class Billetter
   {
-    public int Id { get; set; }
-    public int AvgangId { get; set; }
-    public int KundeId { get; set; }
-    public double TotalPris { get; set; }
-    public bool Bilplass { get; set; }
-    public virtual List<Lugar> lugarer { get; set; }
+      public int Id { get; set; }
+      public int AvgangId { get; set; }
+      public int KundeId { get; set; }
+      public double TotalPris { get; set; }
+      public bool Bilplass { get; set; }
+      public virtual List<Lugarer> lugarer { get; set; }
   }
 
-
-
-  public class Kunde
+  public class Kunder
   {
-    [Key]
-    public int Id { get; set; }
-    public String Fornavn { get; set; }
-    public String Etternavn { get; set; }
-    public String Adresse { get; set; }
-    public String Postnr { get; set; }
-    public String Possted { get; set; }
-    public String Telefonnummer { get; set; }
-    public String Epost { get; set; }
+      [Key]
+      public int Id { get; set; }
+      public String Fornavn { get; set; }
+      public String Etternavn { get; set; }
+      public String Adresse { get; set; }
+      public String Postnr { get; set; }
+      public String Possted { get; set; }
+      public String Telefonnummer { get; set; }
+      public String Epost { get; set; }
   }
 
 
+  public class Lugarer
+  {
+      [Key]
+      public int Id { get; set; }
+      public string Romkode { get; set; }
+      public string Beskrivelse { get; set; }
+      public int AntallSengeplasser { get; set; }
+      public int Antall { get; set; }
+      public int AntallLedige { get; set; }
+      public int Pris { get; set; }
+  }
 
-  public class Lugar
-        {
-            [Key]
-            public int Id { get; set; }
-            public string Romkode { get; set; }
-            public string Beskrivelse { get; set; }
-            public int AntallSengeplasser { get; set; }
-            public int Antall { get; set; }
-            public int AntallLedige { get; set; }
-            public int Pris { get; set; }
-        }
+  public class Baater
+  {
+      [Key]
+      public int Id { get; set; }
+      public string Navn { get; set; }
+      public virtual List<Lugarer> Lugarer { get; set; }
+      public int AntallBilplasser { get; set; }
+  }
 
-        public class Baat
-        {
-            [Key]
-            public int Id { get; set; }
-            public string Navn { get; set; }
-            public virtual List<Lugar> Lugarer { get; set; }
-            public int AntallBilplasser { get; set; }
-        }
+  public class Avganger
+  {
+      [Key]
+      public int Id { get; set; }
+      public int StrekningsID { get; set; }
+      public virtual Baater baat { get; set; }
+      public DateTime DatoTid { get; set; }
+      public int AntallLedigeBilplasser { get; set; }
+      public virtual List<Lugarer> LedigeLugarer { get; set; }
+  }
 
-        public class Avgang
-        {
-            [Key]
-            public int Id { get; set; }
-            public int StrekningsID { get; set; }
-            public virtual Baat baat { get; set; }
-            public DateTime DatoTid { get; set; }
-            public int AntallLedigeBilplasser { get; set; }
-            public virtual List<Lugar> LedigeLugarer { get; set; }
-        }
+  public class Poststeder
+  {
+      [Key]
+      public string Postnr { get; set; }
+      public string PostSted { get; set; }
+  }
 
-        public class Poststed
-        {
-            [Key]
-            public string Postnr { get; set; }
-            public string PostSted { get; set; }
-        }
+  public class Strekninger
+  {
+      [Key]
+      public int Id { get; set; }
+      public string Fra { get; set; }
+      public string Til { get; set; }
 
-        public class Strekning
-        {
-            [Key]
-            public int Id { get; set; }
-            public string Fra { get; set; }
-            public string Til { get; set; }
-
-        }
+  }
 }

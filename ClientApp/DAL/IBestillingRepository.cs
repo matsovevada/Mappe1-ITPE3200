@@ -8,6 +8,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 {
   public interface IBestillingRepository
   {
-    Task<List<Models.Strekning>> HentAlleStrekninger();
+    Task<List<Strekning>> HentAlleStrekninger();
   }
 }

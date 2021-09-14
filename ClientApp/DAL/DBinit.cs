@@ -21,13 +21,13 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
 
       //Strekninger
-      var strekning_OsloKobenhavn = new Strekning
+      var strekning_OsloKobenhavn = new Strekninger
       {
         Fra = "Oslo",
         Til = "Kobenhavn"
       };
 
-      var strekning_KobenhavnOslo = new Strekning
+      var strekning_KobenhavnOslo = new Strekninger
       {
         Fra = "Kobenhavn",
         Til = "Oslo"
