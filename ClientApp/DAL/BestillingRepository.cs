@@ -35,10 +35,11 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
 
     [HttpGet]
-    public async Task<List<Avganger>> HentAlleAvganger(Strekninger valgtStrekning)
+    public async Task<List<Avganger>> HentAlleAvganger(Strekning valgtStrekning)
 
     {
-      List<Avganger> alleAvganger = await _db.Avganger.Where(a => a.Strekning == valgtStrekning).ToListAsync();
+      List<Avganger> alleAvganger = await _db.Avganger.Where(a => (a.Strekning.Til.Equals(valgtStrekning.Til) && a.Strekning.Fra.Equals(
+        valgtStrekning.Fra))).ToListAsync();
       return alleAvganger;
     }
   }

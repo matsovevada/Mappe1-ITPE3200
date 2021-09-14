@@ -9,5 +9,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   public interface IBestillingRepository
   {
     Task<List<Strekning>> HentAlleStrekninger();
+    Task<List<Avganger>> HentAlleAvganger(Strekning valgtStrekning);
   }
 }
