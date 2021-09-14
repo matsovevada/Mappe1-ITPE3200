@@ -9,10 +9,5 @@ namespace Mappe1_ITPE3200.Models
         public string Navn { get; set; }
         public virtual List<Lugar> Lugarer { get; set; }
         public int AntallBilplasser { get; set; }
-
-        public static implicit operator Baat(Baat v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
