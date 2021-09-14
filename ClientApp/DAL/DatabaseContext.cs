@@ -79,8 +79,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   {
       [Key]
       public int Id { get; set; }
-      public int StrekningsID { get; set; }
-      public virtual Baater baat { get; set; }
+      public virtual Strekninger Strekning { get; set; }
+      public virtual Baater Baat { get; set; }
       public DateTime DatoTid { get; set; }
       public int AntallLedigeBilplasser { get; set; }
       public virtual List<Lugarer> LedigeLugarer { get; set; }
@@ -100,5 +100,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       public string Fra { get; set; }
       public string Til { get; set; }
 
+    public static explicit operator Strekninger(Strekninger v)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

@@ -22,6 +22,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,10 +41,12 @@
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="Controllers\" />
     <None Remove="ClientApp\DAL\" />
+    <None Remove="ClientApp\src\app\velgDato\" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ClientApp\DAL\" />
+    <Folder Include="ClientApp\src\app\velgDato\" />
   </ItemGroup>
 
   <ItemGroup>
