@@ -17,7 +17,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       _db = db;
     }
 
-    [HttpGet]
+    
     public async Task<List<Strekning>> HentAlleStrekninger()
     {
       List<Strekning> alleStrekninger = await _db.Strekninger.ToListAsync();
