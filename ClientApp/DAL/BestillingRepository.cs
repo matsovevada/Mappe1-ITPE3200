@@ -18,13 +18,10 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       _db = db;
     }
 
-<<<<<<< Updated upstream
     
-    public async Task<List<Strekning>> HentAlleStrekninger()
-=======
     [HttpGet]
     public async Task<List<Models.Strekning>> HentAlleStrekninger()
->>>>>>> Stashed changes
+
     {
       List<Models.Strekning> alleStrekninger = await _db.Strekninger.Select(s => new Models.Strekning
       {

@@ -23,7 +23,7 @@ namespace Mappe1_ITPE3200
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // må ha med dette for å sette opp databasen
+            // m? ha med dette for ? sette opp databasen
             services.AddControllers();
             services.AddDbContext<DbContext>(options =>
                 options.UseSqlite("Data source=Bestillinger.db"));
@@ -34,8 +34,6 @@ namespace Mappe1_ITPE3200
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-<<<<<<< Updated upstream
-=======
 
             // m? ha med dette for ? sette opp databasen
             services.AddControllers();
@@ -44,7 +42,7 @@ namespace Mappe1_ITPE3200
 
             
             services.AddTransient<IBestillingRepository, BestillingRepository>();
->>>>>>> Stashed changes
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
