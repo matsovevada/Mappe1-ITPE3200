@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Mappe1_ITPE3200.Models;
 using Microsoft.AspNetCore.Builder;
@@ -36,7 +37,44 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       db.Strekninger.Add(strekning_OsloKobenhavn);
       db.Strekninger.Add(strekning_KobenhavnOslo);
 
+      // Lugarer
+      var lugar1 = new Lugarer
+      {
+        Romkode = "KS40",
+        Beskrivelse = "Suite",
+        AntallSengeplasser = 8,
+        Antall = 20,
+        AntallLedige = 20,
+        Pris = 1200
+      };
+
+      // Baater
+
+      List<Lugarer> lugarer = new List<Lugarer>();
+      lugarer.Add(lugar1);
+
+      var baat1 = new Baater
+      {
+        Navn = "Color Fantasy",
+        Lugarer = lugarer,
+        AntallBilplasser = 300
+    };
+
+
+      // Avganger
+      var avgang1 = new Avganger
+      {
+        Strekning = strekning_OsloKobenhavn,
+        Baat = baat1,
+        DatoTid = new DateTime(),
+        AntallLedigeBilplasser = baat1.AntallBilplasser,
+        LedigeLugarer = baat1.Lugarer,
+      };
+
+
       db.SaveChanges();
     }
   }
 }
+
+
