@@ -10,7 +10,7 @@
     </div>
     <div>
 
-        <select *ngIf="strekningValgt" (change)="toggleValgtAvgang()" id="valgtAvgang">
+        <select id="avgang" *ngIf="strekningValgt" (change)="toggleValgtAvgang()">
             <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
             <option *ngFor="let avgang of alleAvganger" value={{avgang.id}}>{{avgang.datoTid}}</option>
         </select>
@@ -18,7 +18,7 @@
     </div>
 
     <div *ngIf="valgtAvgang">
-      <button><a class="nav-link text-dark" routerLink="/test">Gå til bestilling</a></button>
+      <button><a class="nav-link text-dark" [routerLink]="['/test', avgangId]">Gå til bestilling</a></button>
     </div>
   </div>
 </div>

@@ -6,7 +6,7 @@ import { Test } from './test/Test';
 
 const appRoots: Routes = [
   { path: '', component: Bestilling },
-  { path: 'test', component: Test },
+  { path: 'test/:id', component: Test },
   { path: '', redirectTo: 'bestilling', pathMatch: 'full' }
 ]
 
