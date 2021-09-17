@@ -42,8 +42,89 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         valgtStrekning.Fra))).ToListAsync();
       return alleAvganger;
     }
+
+    [HttpGet]
+    public async Task<Avganger> HentValgtAvgang(int id)
+    {
+      Avganger avgang = await _db.Avganger.FindAsync(id);
+      return avgang;
+    }
+
+    [HttpGet]
+    public async Task<Baater> hentBaat(int id)
+    {
+      Baater baat = await _db.Baater.FindAsync(id);
+      return baat;
+    }
+
+    [HttpPost]
+    public async Task<bool> lagreKunde(Kunde innKunde)
+    {
+      try
+      {
+        Kunder kunde = new Kunder();
+        kunde.Fornavn = innKunde.Fornavn;
+        kunde.Etternavn = innKunde.Etternavn;
+        kunde.Adresse = innKunde.Adresse;
+        kunde.Epost = innKunde.Epost;
+        kunde.Telefonnummer = innKunde.Telefonnummer;
+
+        var sjekkPostnr = await _db.Poststeder.FindAsync(innKunde.Postnr);
+        if (sjekkPostnr == null)
+        {
+          var nyttPoststed = new Poststeder();
+          nyttPoststed.Postnr = innKunde.Postnr;
+          nyttPoststed.PostSted = innKunde.Possted;
+          _db.Poststeder.Add(nyttPoststed);
+
+          kunde.Postnr = nyttPoststed.Postnr;
+          kunde.Postnr = nyttPoststed.PostSted;
+
+        }
+        else
+        {
+          kunde.Postnr = sjekkPostnr.PostSted;
+          kunde.Possted = sjekkPostnr.PostSted;
+        }
+
+        _db.Kunder.Add(kunde);
+        await _db.SaveChangesAsync();
+        return true;
+
+      } catch
+      {
+        return false;
+      }
+
+    }
+
+    [HttpPost]
+    public async Task<bool> lagreBillett(Billett innBillett)
+    {
+      try
+      {
+        //Kopierer innListe til ny liste av type Lugarer.
+        List<Lugarer> lug = new List<Lugarer>();
+        innBillett.lugarer.ForEach(lugar => lug.Add((Lugarer)lugar));
+
+        Billetter billett = new Billetter();
+        billett.AvgangId = innBillett.AvgangId;
+        billett.KundeId = innBillett.KundeId;
+        billett.Bilplass = innBillett.Bilplass;
+        billett.lugarer = lug;
+        billett.TotalPris = innBillett.TotalPris;
+        _db.Billetter.Add(billett);
+        await _db.SaveChangesAsync();
+        return true;
+
+      } catch
+      {
+        return false;
+      }
+    }
   }
 }
+
 
 
 

@@ -46,6 +46,55 @@ namespace Mappe1_ITPE3200.Controllers
             return alleStrekninger;
         }
 
+        [HttpGet("{bestilling}")]
+        [ActionName("hentValgtAvgang")]
+        public async Task<Avganger> HentValgtAvgang(int id)
+        {
+          
+            Avganger avgang = await _db.HentValgtAvgang(id);
+            return avgang;
+        }
+
+        [HttpGet("{bestilling}")]
+        [ActionName("hentBaat")]
+        public async Task<Baater> hentBaat(int id)
+        {
+            Baater baat = await _db.hentBaat(id);
+            return baat;
+        }
+
+        [HttpGet("{bestilling}")]
+        [ActionName("lagreBillett")]
+        public async Task<bool> lagreKunde(Kunde innKunde)
+        {
+            bool kundeLagret = await _db.lagreKunde(innKunde);
+            if (!kundeLagret)
+            {
+                return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        [HttpGet("{bestilling}")]
+        [ActionName("lagreBillett")]
+        public async Task<bool> lagreBillett(Billett innBillett)
+        {
+            bool billettLagret = await _db.lagreBillett(innBillett);
+            if (!billettLagret)
+            {
+                return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
 
     }
 }
