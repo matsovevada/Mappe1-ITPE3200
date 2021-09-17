@@ -10,5 +10,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   {
     Task<List<Strekning>> HentAlleStrekninger();
     Task<List<Avganger>> HentAlleAvganger(Strekning valgtStrekning);
+    Task<Avganger> HentValgtAvgang(int id);
+    Task<Baater> hentBaat(int id);
   }
 }

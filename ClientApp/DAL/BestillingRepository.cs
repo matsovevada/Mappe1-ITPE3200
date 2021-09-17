@@ -42,8 +42,23 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         valgtStrekning.Fra))).ToListAsync();
       return alleAvganger;
     }
+
+    [HttpGet]
+    public async Task<Avganger> HentValgtAvgang(int id)
+    {
+      Avganger avgang = await _db.Avganger.FindAsync(id);
+      return avgang;
+    }
+
+    [HttpGet]
+    public async Task<Baater> hentBaat(int id)
+    {
+      Baater baat = await _db.Baater.FindAsync(id);
+      return baat;
+    }
   }
 }
+
 
 
 

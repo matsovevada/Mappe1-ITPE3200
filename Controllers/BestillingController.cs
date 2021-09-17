@@ -46,6 +46,23 @@ namespace Mappe1_ITPE3200.Controllers
             return alleStrekninger;
         }
 
+        [HttpGet("{bestilling}")]
+        [ActionName("hentValgtAvgang")]
+        public async Task<Avganger> HentValgtAvgang(int id)
+        {
+          
+            Avganger avgang = await _db.HentValgtAvgang(id);
+            return avgang;
+        }
+
+        [HttpGet("{bestilling}")]
+        [ActionName("hentBaat")]
+        public async Task<Baater> hentBaat(int id)
+        {
+            Baater baat = await _db.hentBaat(id);
+            return baat;
+        }
+
 
     }
 }
