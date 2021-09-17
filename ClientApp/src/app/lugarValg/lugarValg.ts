@@ -28,7 +28,7 @@ export class LugarValg {
   }
   
   hentValgtAvgang() {
-    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/1")
+    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.avgangsID)
       .subscribe(avgang => {
         console.log(avgang)
         this.valgtAvgang = avgang;
