@@ -8,13 +8,15 @@ import { Bestilling } from './bestilling/bestilling';
 import { Test } from './test/Test'
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { LugarValg } from './lugarValg/lugarValg'
 
 @NgModule({
   declarations: [
     AppComponent,
     dropdownStrekning,
     Bestilling,
-    Test
+    Test,
+    LugarValg
   ],
 
   imports: [
