@@ -54,5 +54,6 @@ export class Bestilling {
   toggleValgtAvgang() {
     console.log("TRYKKET!");
     this.valgtAvgang = true;
+    this.avgangId = (<HTMLSelectElement>document.getElementById('avgang')).value;
   }
 }
