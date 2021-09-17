@@ -12,6 +12,7 @@ export class Bestilling {
   alleAvganger: Array<Avgang>;
   alleStrekninger: Array<Strekning>;
   strekning: String;
+  avgangID: String;
   laster: boolean;
   strekningValgt: boolean = false;
   valgtAvgang: boolean = false;
