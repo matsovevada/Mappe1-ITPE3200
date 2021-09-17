@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Bestilling } from './bestilling/bestilling';
-import { Test } from './test/Test';
+import { KundeForm } from './kundeForm/kundeForm';
 
 
 const appRoots: Routes = [
   { path: '', component: Bestilling },
-  { path: 'test', component: Test },
+  { path: 'test', component: KundeForm },
   { path: '', redirectTo: 'bestilling', pathMatch: 'full' }
 ]
 
