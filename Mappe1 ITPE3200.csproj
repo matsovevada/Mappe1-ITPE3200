@@ -35,7 +35,6 @@
     <None Remove="ClientApp\src\app\Baater.ts" />
     <None Remove="ClientApp\src\app\bestilling\bestilling.ts" />
     <None Remove="ClientApp\src\app\Lugar.ts" />
-    <None Remove="ClientApp\src\app\meny\meny.ts" />
     <None Remove="ClientApp\src\app\Strekning.ts" />
     <None Remove="ClientApp\src\app\strekning\dropdownStrekning.ts" />
     <None Remove="Microsoft.EntityFrameworkCore" />

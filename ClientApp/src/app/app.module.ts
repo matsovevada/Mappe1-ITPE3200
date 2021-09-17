@@ -6,15 +6,13 @@ import { dropdownStrekning } from './strekning/dropdownStrekning'
 import { BrowserModule } from '@angular/platform-browser'
 import { Bestilling } from './bestilling/bestilling';
 import { FormsModule } from '@angular/forms';
-import { Meny } from './meny/meny'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     dropdownStrekning,
-    Bestilling,
-    Meny
+    Bestilling
   ],
 
   imports: [
