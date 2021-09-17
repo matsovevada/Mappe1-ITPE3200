@@ -64,7 +64,7 @@ namespace Mappe1_ITPE3200.Controllers
         }
 
         [HttpGet("{bestilling}")]
-        [ActionName("lagreBillett")]
+        [ActionName("lagreKunde")]
         public async Task<bool> lagreKunde(Kunde innKunde)
         {
             bool kundeLagret = await _db.lagreKunde(innKunde);
