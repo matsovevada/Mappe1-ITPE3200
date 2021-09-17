@@ -23,7 +23,7 @@ export class LugarValg {
     this.avgangsID = this._ActivatedRoute.snapshot.paramMap.get('id');
     this.laster = true;
     this.hentValgtAvgang();
-    this.alleLugarer = this.valgtAvgang.lugarer
+    this.alleLugarer = this.valgtAvgang.ledigeLugarer
     this.hentAlleLugarer();
   }
   
@@ -39,6 +39,7 @@ export class LugarValg {
   }
 
   hentAlleLugarer() {
-    console.log(this.alleLugarer)
+    console.log(this.valgtAvgang);
+    console.log(this.alleLugarer);
   }
 }

@@ -8,5 +8,5 @@ export class Avgang {
   baat: Baater;
   datoTid: string;
   antallLedigeBilplasser: number;
-  lugarer: Array<Lugar>;
+  ledigeLugarer: Array<Lugar>;
 }
