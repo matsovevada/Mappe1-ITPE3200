@@ -5,18 +5,22 @@ import { AppComponent } from './app.component';
 import { dropdownStrekning } from './strekning/dropdownStrekning'
 import { BrowserModule } from '@angular/platform-browser'
 import { Bestilling } from './bestilling/bestilling';
+import { Test } from './test/Test'
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     dropdownStrekning,
-    Bestilling
+    Bestilling,
+    Test
   ],
 
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    AppRoutingModule,
     RouterModule.forRoot([]),
     FormsModule
   ],
