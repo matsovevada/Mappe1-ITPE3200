@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Mappe1_ITPE3200.Models;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -64,6 +65,18 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       public int Antall { get; set; }
       public int AntallLedige { get; set; }
       public int Pris { get; set; }
+
+    public static explicit operator Lugarer(Lugar v)
+    {
+      Lugarer lug = new Lugarer();
+      lug.Romkode = v.Romkode;
+      lug.Beskrivelse = v.Beskrivelse;
+      lug.AntallSengeplasser = v.AntallSengeplasser;
+      lug.Antall = v.Antall;
+      lug.AntallLedige = v.Antall;
+      lug.Pris = v.Pris;
+      return lug;
+    }
   }
 
   public class Baater

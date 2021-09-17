@@ -63,6 +63,38 @@ namespace Mappe1_ITPE3200.Controllers
             return baat;
         }
 
+        [HttpGet("{bestilling}")]
+        [ActionName("lagreBillett")]
+        public async Task<bool> lagreKunde(Kunde innKunde)
+        {
+            bool kundeLagret = await _db.lagreKunde(innKunde);
+            if (!kundeLagret)
+            {
+                return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        [HttpGet("{bestilling}")]
+        [ActionName("lagreBillett")]
+        public async Task<bool> lagreBillett(Billett innBillett)
+        {
+            bool billettLagret = await _db.lagreBillett(innBillett);
+            if (!billettLagret)
+            {
+                return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
 
     }
 }
