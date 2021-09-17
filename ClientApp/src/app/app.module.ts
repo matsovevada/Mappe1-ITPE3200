@@ -7,7 +7,6 @@ import { BrowserModule } from '@angular/platform-browser'
 import { Bestilling } from './bestilling/bestilling';
 import { Test } from './test/Test'
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -23,8 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([]),
-    FormsModule,
-    NgbModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
