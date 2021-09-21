@@ -51,16 +51,17 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     }
 
     [HttpGet]
-    public async Task<Baater> hentBaat(int id)
+    public async Task<Baater> HentBaat(int id)
     {
       Baater baat = await _db.Baater.FindAsync(id);
       return baat;
     }
 
     [HttpPost]
-    public async Task<bool> lagreKunde(Kunde innKunde)
+    public async Task<bool> LagreKunde(Kunde innKunde)
     {
       try
+        
       {
         Kunder kunde = new Kunder();
         kunde.Fornavn = innKunde.Fornavn;
@@ -68,23 +69,27 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         kunde.Adresse = innKunde.Adresse;
         kunde.Epost = innKunde.Epost;
         kunde.Telefonnummer = innKunde.Telefonnummer;
+        Console.WriteLine("TEST1");
+        Console.WriteLine(innKunde.Poststed);
 
         var sjekkPostnr = await _db.Poststeder.FindAsync(innKunde.Postnr);
         if (sjekkPostnr == null)
         {
+          Console.WriteLine("HERRR!");
           var nyttPoststed = new Poststeder();
+          nyttPoststed.Poststed = innKunde.Poststed;
           nyttPoststed.Postnr = innKunde.Postnr;
-          nyttPoststed.PostSted = innKunde.Possted;
+          Console.WriteLine(nyttPoststed.Poststed);
           _db.Poststeder.Add(nyttPoststed);
+          await _db.SaveChangesAsync();
 
-          kunde.Postnr = nyttPoststed.Postnr;
-          kunde.Postnr = nyttPoststed.PostSted;
+          kunde.Poststed = nyttPoststed;
 
         }
         else
         {
-          kunde.Postnr = sjekkPostnr.PostSted;
-          kunde.Possted = sjekkPostnr.PostSted;
+          kunde.Poststed.Postnr = sjekkPostnr.Postnr;
+          kunde.Poststed.Poststed = sjekkPostnr.Poststed;
         }
 
         _db.Kunder.Add(kunde);
@@ -99,7 +104,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     }
 
     [HttpPost]
-    public async Task<bool> lagreBillett(Billett innBillett)
+    public async Task<bool> LagreBillett(Billett innBillett)
     {
       try
       {
@@ -122,6 +127,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         return false;
       }
     }
+
+    [HttpGet]
+    public async Task<Billetter> HentBillett(int id)
+    {
+      Billetter billett = await _db.Billetter.FindAsync(id);
+      return billett;
+    }
+
   }
 }
 

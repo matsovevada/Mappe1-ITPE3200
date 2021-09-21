@@ -13,7 +13,7 @@ namespace Mappe1_ITPE3200.Models
         public String Etternavn { get; set; }
         public String Adresse { get; set; }
         public String Postnr { get; set; }
-        public String Possted { get; set; }
+        public String Poststed { get; set; }
         public String Telefonnummer { get; set; }
         public String Epost { get; set; }
     }
