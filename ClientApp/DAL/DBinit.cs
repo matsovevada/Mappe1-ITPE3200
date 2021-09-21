@@ -40,16 +40,27 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       // Lugarer
       var lugar1 = new Lugarer
       {
-        Romkode = "KS40",
-        Beskrivelse = "Suite",
+        Navn = "Suite",
+        Beskrivelse = "Lorem ipsum sit...",
         AntallSengeplasser = 8,
         Antall = 20,
         AntallLedige = 20,
         Pris = 1200
       };
 
+      var lugar2 = new Lugarer
+      {
+        Navn = "Balkong",
+        Beskrivelse = "Lorem ipsum...",
+        AntallSengeplasser = 4,
+        Antall = 10,
+        AntallLedige = 10,
+        Pris = 2400
+      };
+
       List<Lugarer> lugarer = new List<Lugarer>();
       lugarer.Add(lugar1);
+      lugarer.Add(lugar2);
 
       // Baater
 

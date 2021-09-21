@@ -56,8 +56,9 @@ export class KundeForm {
     lagretKunde.poststed = this.kundeSkjema.value.poststed;
     lagretKunde.telefonnummer = this.kundeSkjema.value.tlf;
     lagretKunde.epost = this.kundeSkjema.value.epost;
+    console.log(lagretKunde);
 
-    this.http.post("api/Bestilling/lagreKunde", lagretKunde)
+    this.http.post <boolean>("api/Bestilling/lagreKunde", lagretKunde)
       .subscribe(retur => {
         console.log("Funker");
       },
@@ -65,3 +66,4 @@ export class KundeForm {
       );
   };
 }
+

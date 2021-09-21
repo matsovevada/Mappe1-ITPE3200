@@ -1,12 +1,12 @@
 <form>
   <label for="ekstraPersoner">Ekstra personer</label>
-  <input type="number" placeholder="0" [(ngModel)]="personer"/>
+  <input type="number" placeholder="0" [(ngModel)]="personer" [ngModelOptions]="{standalone: true}"/>
 
   <label for="bilplass">Bilplass</label>
   <input type="checkbox" />
 </form>
 
-<!--<Lugar
+<lugar
   *ngFor="let lugar of alleLugarer"
    [lugar]="lugar">
-</Lugar>-->
+</lugar>

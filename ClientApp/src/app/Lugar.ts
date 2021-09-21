@@ -1,6 +1,6 @@
 export class Lugar {
   id: number;
-  romkode: String;
+  navn: String;
   beskrivelse: String;
   antallSengeplasser: number;
   antall: number;
