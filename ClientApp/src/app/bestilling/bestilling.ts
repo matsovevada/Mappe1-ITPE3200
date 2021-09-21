@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Avgang } from '../Avgang'
-import { Strekning } from '../Strekning'
+import { Avgang } from '../Avgang';
+import { Strekning } from '../Strekning';
 
 @Component({
   selector: 'bestilling',

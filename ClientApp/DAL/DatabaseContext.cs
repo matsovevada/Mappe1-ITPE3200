@@ -48,8 +48,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       public String Fornavn { get; set; }
       public String Etternavn { get; set; }
       public String Adresse { get; set; }
-      public String Postnr { get; set; }
-      public String Possted { get; set; }
+      virtual public Poststeder Poststed { get; set; }
       public String Telefonnummer { get; set; }
       public String Epost { get; set; }
   }
@@ -103,7 +102,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   {
       [Key]
       public string Postnr { get; set; }
-      public string PostSted { get; set; }
+      public string Poststed { get; set; }
   }
 
   public class Strekninger

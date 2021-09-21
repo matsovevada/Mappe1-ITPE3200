@@ -57,17 +57,19 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpGet("{bestilling}")]
         [ActionName("hentBaat")]
-        public async Task<Baater> hentBaat(int id)
+        public async Task<Baater> HentBaat(int id)
         {
-            Baater baat = await _db.hentBaat(id);
+            Baater baat = await _db.HentBaat(id);
             return baat;
         }
 
-        [HttpGet("{bestilling}")]
+        //Må se på routing 
+        [HttpPost]
         [ActionName("lagreKunde")]
-        public async Task<bool> lagreKunde(Kunde innKunde)
+        public async Task<bool> LagreKunde(Kunde innKunde)
         {
-            bool kundeLagret = await _db.lagreKunde(innKunde);
+            Console.WriteLine("testController");
+            bool kundeLagret = await _db.LagreKunde(innKunde);
             if (!kundeLagret)
             {
                 return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
@@ -79,11 +81,11 @@ namespace Mappe1_ITPE3200.Controllers
 
         }
 
-        [HttpGet("{bestilling}")]
+        [HttpPost("{bestilling}")]
         [ActionName("lagreBillett")]
-        public async Task<bool> lagreBillett(Billett innBillett)
-        {
-            bool billettLagret = await _db.lagreBillett(innBillett);
+        public async Task<bool> LagreBillett(Billett innBillett)
+        {   
+            bool billettLagret = await _db.LagreBillett(innBillett);
             if (!billettLagret)
             {
                 return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
@@ -93,6 +95,14 @@ namespace Mappe1_ITPE3200.Controllers
                 return true;
             }
 
+        }
+
+        [HttpGet("{bestilling}")]
+        [ActionName("hentBillett")]
+        public async Task<Baater> HentBillett(int id)
+        {
+            Baater baat = await _db.HentBaat(id);
+            return baat;
         }
 
 
