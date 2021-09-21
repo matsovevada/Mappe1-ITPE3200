@@ -15,12 +15,13 @@ export class LugarValg {
   alleLugarer: Array<Lugar>
   laster: boolean;
   valgtAvgang: Avgang;
-  
+
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.avgangsID = this._ActivatedRoute.snapshot.paramMap.get('id');
+    console.log(this.avgangsID)
     this.laster = true;
     this.hentValgtAvgang();
     this.alleLugarer = this.valgtAvgang.ledigeLugarer

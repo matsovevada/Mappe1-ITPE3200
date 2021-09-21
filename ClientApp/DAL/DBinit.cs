@@ -70,7 +70,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         Baat = baat1,
         DatoTid = date,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = baat1.Lugarer,
+        LedigeLugarer = lugarer
       };
 
       String date2 = "12/25/2015 12:00:00 AM";

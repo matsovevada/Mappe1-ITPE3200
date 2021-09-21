@@ -9,6 +9,7 @@ import { Bestilling } from './bestilling/bestilling';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { KundeForm } from './kundeForm/kundeForm';
+import { LugarValg } from './lugarValg/lugarValg';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { KundeForm } from './kundeForm/kundeForm';
     dropdownStrekning,
     Bestilling,
     KundeForm,
+    LugarValg
   ],
 
   imports: [
