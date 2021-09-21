@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { KundeForm } from './kundeForm/kundeForm';
 import { LugarValg } from './lugarValg/lugarValg';
-import { LugarComponent } from './lugarComponent/lugarComponent'
+import { visBillett } from './visBillett/visBillett';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { LugarComponent } from './lugarComponent/lugarComponent'
     Bestilling,
     KundeForm,
     LugarValg,
-    LugarComponent
+    visBillett,
   ],
 
   imports: [
