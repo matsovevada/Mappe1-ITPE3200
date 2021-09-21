@@ -43,12 +43,14 @@
     <None Remove="ClientApp\DAL\" />
     <None Remove="ClientApp\src\app\velgDato\" />
     <None Remove="ClientApp\src\app\kundeForm\" />
+    <None Remove="ClientApp\src\app\visBillett\" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ClientApp\DAL\" />
     <Folder Include="ClientApp\src\app\velgDato\" />
     <Folder Include="ClientApp\src\app\kundeForm\" />
+    <Folder Include="ClientApp\src\app\visBillett\" />
   </ItemGroup>
 
   <ItemGroup>
