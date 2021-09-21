@@ -15,7 +15,8 @@ export class LugarValg {
   alleLugarer: Array<Lugar>
   laster: boolean;
   valgtAvgang: Avgang;
-
+  valgteLugarer: Array<Lugar>
+  personer: number;
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
@@ -25,7 +26,7 @@ export class LugarValg {
     this.laster = true;
     this.hentValgtAvgang();
   }
-  
+
   hentValgtAvgang() {
     console.log(this.avgangsID);
     this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.avgangsID)
@@ -39,6 +40,33 @@ export class LugarValg {
       },
         error => console.log(error)
       );
+  }
+
+  leggTilLugar(lugar: Lugar) {
+    console.log(lugar);
+    this.valgteLugarer.push(lugar);
+  }
+
+  /*fjernTilLugar(lugar: Lugar) {
+    this.valgteLugarer.splice(lugar)
+  }*/
+
+  // sjekk at kunden har valgt mange nok sengeplasser i forhold til hvor mange personer som skal v?re med p? turen
+  // returner true hvis hvis kunden har valgt nok sengeplasser
+  // returnerer false hvis kunden ikke har valgt nok sengeplasser
+  sjekkPersonerSengeplasser() {
+
+    var sengeplasserTotal = 0;
+
+    this.valgteLugarer.forEach(lugar => {
+      sengeplasserTotal += lugar.antallSengeplasser;
+    });
+
+    if (this.personer > sengeplasserTotal) {
+      return false;
+    }
+
+    return true;
   }
 
   hentAlleLugarer() {
