@@ -40,8 +40,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       // Lugarer
       var lugar1 = new Lugarer
       {
-        Romkode = "KS40",
-        Beskrivelse = "Suite",
+        Navn = "Suite",
+        Beskrivelse = "Lorem ipsum sit...",
         AntallSengeplasser = 8,
         Antall = 20,
         AntallLedige = 20,
