@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router'
   templateUrl: 'lugarValg.html'
 })
 export class LugarValg {
-  avgangsID: string;
+  avgangsID: String;
   alleLugarer: Array<Lugar>
   laster: boolean;
   valgtAvgang: Avgang;
@@ -23,17 +23,19 @@ export class LugarValg {
     this.avgangsID = this._ActivatedRoute.snapshot.paramMap.get('id');
     console.log(this.avgangsID)
     this.laster = true;
-    this.hentValgtAvgang(this.avgangsID);
-    this.alleLugarer = this.valgtAvgang.ledigeLugarer
-    this.hentAlleLugarer();
+    this.hentValgtAvgang();
   }
   
-  hentValgtAvgang(ID) {
-    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + ID)
+  hentValgtAvgang() {
+    console.log(this.avgangsID);
+    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.avgangsID)
       .subscribe(avgang => {
         console.log(avgang)
         this.valgtAvgang = avgang;
+        this.alleLugarer = this.valgtAvgang.ledigeLugarer;
         this.laster = false;
+
+        this.hentAlleLugarer();
       },
         error => console.log(error)
       );
