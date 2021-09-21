@@ -48,8 +48,19 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         Pris = 1200
       };
 
+      var lugar2 = new Lugarer
+      {
+        Navn = "Balkong",
+        Beskrivelse = "Lorem ipsum...",
+        AntallSengeplasser = 4,
+        Antall = 10,
+        AntallLedige = 10,
+        Pris = 2400
+      };
+
       List<Lugarer> lugarer = new List<Lugarer>();
       lugarer.Add(lugar1);
+      lugarer.Add(lugar2);
 
       // Baater
 

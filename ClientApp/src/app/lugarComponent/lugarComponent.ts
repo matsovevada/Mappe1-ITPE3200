@@ -6,10 +6,10 @@ import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'lugar',
-  templateUrl: 'lugar.html'
+  templateUrl: 'lugarComponent.html'
 })
 
-export class Lugar {
+export class LugarComponent {
 
   @Input() lugar!: Lugar;
 
