@@ -43,6 +43,7 @@ export class LugarValg {
   }
 
   leggTilLugar(lugar: Lugar) {
+    console.log("onAddLugar");
     console.log(lugar);
     this.valgteLugarer.push(lugar);
   }

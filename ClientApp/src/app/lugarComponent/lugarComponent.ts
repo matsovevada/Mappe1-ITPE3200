@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router'
 export class LugarComponent {
 
   @Input() lugar!: Lugar;
-  @Output() onAddLugar: EventEmitter<Task> = new EventEmitter();
+  @Output() onAddLugar: EventEmitter<Lugar> = new EventEmitter();
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
