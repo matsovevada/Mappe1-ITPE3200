@@ -16,6 +16,7 @@ export class Bestilling {
   laster: boolean;
   strekningValgt: boolean = false;
   valgtAvgang: boolean = false;
+  avgangId: String;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -52,7 +53,8 @@ export class Bestilling {
   }
 
   toggleValgtAvgang() {
-    console.log("TRYKKET!")
+    console.log("TRYKKET!");
     this.valgtAvgang = true;
+    this.avgangId = (<HTMLSelectElement>document.getElementById('avgang')).value;
   }
 }

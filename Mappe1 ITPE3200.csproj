@@ -34,9 +34,11 @@
     <None Remove="ClientApp\src\app\Baater.ts" />
     <None Remove="ClientApp\src\app\bestilling\bestilling.ts" />
     <None Remove="ClientApp\src\app\Lugar.ts" />
+    <None Remove="ClientApp\src\app\lugarValg\lugarValg.ts" />
     <None Remove="ClientApp\src\app\Strekning.ts" />
     <None Remove="ClientApp\src\app\strekning\dropdownStrekning.ts" />
     <None Remove="ClientApp\src\app\test\test.ts" />
+    <None Remove="ClientApp\src\app\tilpassBestilling\tilpassBestilling.ts" />
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="Controllers\" />
