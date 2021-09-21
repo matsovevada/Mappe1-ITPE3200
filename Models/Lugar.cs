@@ -4,7 +4,7 @@ namespace Mappe1_ITPE3200.Models
     public class Lugar
     {
        
-        public string Romkode { get; set; }
+        public string Navn { get; set; }
         public string Beskrivelse { get; set; }
         public int AntallSengeplasser { get; set; }
         public int Antall { get; set; }

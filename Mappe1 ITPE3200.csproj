@@ -36,6 +36,7 @@
     <None Remove="ClientApp\src\app\bestilling\bestilling.ts" />
     <None Remove="ClientApp\src\app\Lugar.ts" />
     <None Remove="ClientApp\src\app\lugarValg\lugarValg.ts" />
+    <None Remove="ClientApp\src\app\lugar\lugar.ts" />
     <None Remove="ClientApp\src\app\Strekning.ts" />
     <None Remove="ClientApp\src\app\strekning\dropdownStrekning.ts" />
     <None Remove="ClientApp\src\app\test\test.ts" />
@@ -78,7 +79,7 @@
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
       <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
-      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>

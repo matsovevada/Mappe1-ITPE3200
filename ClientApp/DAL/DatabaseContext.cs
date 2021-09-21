@@ -59,7 +59,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   {
       [Key]
       public int Id { get; set; }
-      public string Romkode { get; set; }
+      public string Navn { get; set; }
       public string Beskrivelse { get; set; }
       public int AntallSengeplasser { get; set; }
       public int Antall { get; set; }
@@ -69,7 +69,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     public static explicit operator Lugarer(Lugar v)
     {
       Lugarer lug = new Lugarer();
-      lug.Romkode = v.Romkode;
+      lug.Navn = v.Navn;
       lug.Beskrivelse = v.Beskrivelse;
       lug.AntallSengeplasser = v.AntallSengeplasser;
       lug.Antall = v.Antall;
