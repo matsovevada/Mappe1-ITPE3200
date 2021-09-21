@@ -23,13 +23,13 @@ export class LugarValg {
     this.avgangsID = this._ActivatedRoute.snapshot.paramMap.get('id');
     console.log(this.avgangsID)
     this.laster = true;
-    this.hentValgtAvgang();
+    this.hentValgtAvgang(this.avgangsID);
     this.alleLugarer = this.valgtAvgang.ledigeLugarer
     this.hentAlleLugarer();
   }
   
-  hentValgtAvgang() {
-    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.avgangsID)
+  hentValgtAvgang(ID) {
+    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + ID)
       .subscribe(avgang => {
         console.log(avgang)
         this.valgtAvgang = avgang;
