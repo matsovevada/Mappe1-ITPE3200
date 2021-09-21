@@ -22,7 +22,7 @@ export class Bestilling {
 
   ngOnInit() {
     this.laster = true;
-    this.hentAlleStrekninger();
+    this.hentAlleAvganger();
   }
 
   hentAlleAvganger() {

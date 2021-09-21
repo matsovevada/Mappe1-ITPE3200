@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { KundeForm } from './kundeForm/kundeForm';
 import { LugarValg } from './lugarValg/lugarValg';
+import { visBillett } from './visBillett/visBillett';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LugarValg } from './lugarValg/lugarValg';
     dropdownStrekning,
     Bestilling,
     KundeForm,
-    LugarValg
+    LugarValg,
+    visBillett,
   ],
 
   imports: [

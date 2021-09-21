@@ -6,7 +6,7 @@ export class Billett {
 	kundeId: number;
 	totalPris: number;
 	bilplass: boolean;
-	lugarer: List<Lugar>;
+	lugarer: Array<Lugar>;
 }
 
 
