@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { KundeForm } from './kundeForm/kundeForm';
 import { LugarValg } from './lugarValg/lugarValg';
 import { visBillett } from './visBillett/visBillett';
+import { LugarComponent } from './lugarComponent/lugarComponent';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { visBillett } from './visBillett/visBillett';
     KundeForm,
     LugarValg,
     visBillett,
+    LugarComponent
   ],
 
   imports: [
