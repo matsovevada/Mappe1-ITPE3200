@@ -55,6 +55,7 @@
     <Folder Include="ClientApp\src\app\velgDato\" />
     <Folder Include="ClientApp\src\app\kundeForm\" />
     <Folder Include="ClientApp\src\app\visBillett\" />
+    <Folder Include="Logs\" />
   </ItemGroup>
 
   <ItemGroup>
