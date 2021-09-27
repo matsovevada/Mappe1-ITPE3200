@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Kunde } from "../Kunde";
+import { Billett } from "../Billett";
 
 @Component({
   selector: 'kundeForm',
@@ -10,7 +12,8 @@ import { Kunde } from "../Kunde";
 })
 
 
-export class KundeForm {
+export class KundeForm implements OnInit {
+  billett: Billett;
   kundeSkjema: FormGroup;
 
   validering = {
@@ -38,9 +41,17 @@ export class KundeForm {
     ],
   }
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private location:Location) {
     this.kundeSkjema = fb.group(this.validering);
   }
+
+  ngOnInit() {
+    // this.billett = this._ActivatedRoute.snapshot.paramMap.get(bill); 
+      console.log("BILLLETTT!!");
+      console.log(this.location.getState());  
+
+  }
+
 
   onSubmit() {
     this.lagreKunde();
@@ -56,11 +67,12 @@ export class KundeForm {
     lagretKunde.poststed = this.kundeSkjema.value.poststed;
     lagretKunde.telefonnummer = this.kundeSkjema.value.tlf;
     lagretKunde.epost = this.kundeSkjema.value.epost;
-    console.log(lagretKunde);
 
-    this.http.post <boolean>("api/Bestilling/lagreKunde", lagretKunde)
+    
+
+    this.http.post<Number>("api/Bestilling/lagreKunde", lagretKunde)
       .subscribe(retur => {
-        console.log("Funker");
+        console.log(retur);
       },
         error => console.log(error)
       );

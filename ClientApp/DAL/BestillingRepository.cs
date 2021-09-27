@@ -58,7 +58,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     }
 
     [HttpPost]
-    public async Task<bool> LagreKunde(Kunde innKunde)
+    public async Task<int> LagreKunde(Kunde innKunde)
     {
       try
         
@@ -94,11 +94,11 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
         _db.Kunder.Add(kunde);
         await _db.SaveChangesAsync();
-        return true;
+        return kunde.Id;
 
       } catch
       {
-        return false;
+        return -1;
       }
 
     }
