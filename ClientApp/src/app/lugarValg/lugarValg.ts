@@ -10,13 +10,13 @@ import { ActivatedRoute } from '@angular/router'
   selector: 'lugar-valg',
   templateUrl: 'lugarValg.html'
 })
-export class LugarValg {
+export class LugarValg implements OnInit {
   avgangsID: String;
   alleLugarer: Array<Lugar>
   laster: boolean;
   valgtAvgang: Avgang;
   valgteLugarer: Array<Lugar>
-  personer: number;
+  personer: number = 1;
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
@@ -25,6 +25,7 @@ export class LugarValg {
     console.log(this.avgangsID)
     this.laster = true;
     this.hentValgtAvgang();
+    this.valgteLugarer = [];
   }
 
   hentValgtAvgang() {
@@ -43,23 +44,23 @@ export class LugarValg {
   }
 
   leggTilLugar(lugar: Lugar) {
-    console.log("onAddLugar");
-    console.log(lugar);
     this.valgteLugarer.push(lugar);
   }
 
   fjernLugar(lugarNavn: string) {
+    
     let lugarIndex = -1;
 
     for (let i = 0; i < this.valgteLugarer.length; i++) {
+
       if (this.valgteLugarer[i].navn == lugarNavn) {
         lugarIndex = i;
         break;
       }
+    }
 
-      if (lugarIndex >= 0) {
-        this.valgteLugarer.splice(lugarIndex, 1)
-      }
+    if (lugarIndex >= 0) {
+      this.valgteLugarer.splice(lugarIndex, 1);
     }
   }
 
@@ -77,8 +78,11 @@ export class LugarValg {
     if (this.personer > sengeplasserTotal) {
       return false;
     }
+    else return true;
+  }
 
-    return true;
+  gaaTilKvittering() {
+    alert(this.sjekkPersonerSengeplasser());
   }
 
   hentAlleLugarer() {

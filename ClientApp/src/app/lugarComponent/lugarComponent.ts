@@ -9,15 +9,15 @@ import { ActivatedRoute } from '@angular/router'
   templateUrl: 'lugarComponent.html'
 })
 
-export class LugarComponent {
+export class LugarComponent implements OnInit {
 
   @Input() lugar!: Lugar;
   @Output() onAddLugar: EventEmitter<Lugar> = new EventEmitter();
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
   }
 
   addLugar(lugar) {
