@@ -22,6 +22,7 @@ export class LugarValg implements OnInit {
   nokSengeplasser: boolean = false;
   valgtBilplass: boolean = false;
   lugarerTotalPris: number = 0;
+  BILPLASS_PRIS: number = 500;
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
@@ -103,6 +104,9 @@ export class LugarValg implements OnInit {
 
   changeBilplass() {
     this.billett.bilplass = this.valgtBilplass;
+
+    if (this.valgtBilplass) this.lugarerTotalPris += this.BILPLASS_PRIS;
+    else this.lugarerTotalPris -= this.BILPLASS_PRIS;
 }
 
   hentAlleLugarer() {
