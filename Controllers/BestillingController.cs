@@ -1,6 +1,7 @@
 ﻿using Mappe1_ITPE3200.ClientApp.DAL;
 using Mappe1_ITPE3200.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,9 +17,12 @@ namespace Mappe1_ITPE3200.Controllers
     {
         private IBestillingRepository _db;
 
-        public BestillingController(IBestillingRepository db)
+        private ILogger<BestillingController> _log;
+
+        public BestillingController(IBestillingRepository db, ILogger<BestillingController> log)
         {
             _db = db;
+            _log = log;
         }
 
 
@@ -27,6 +31,7 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<List<Strekning>> HentAlleStrekninger()
         {
             List<Strekning> alleStrekninger = await _db.HentAlleStrekninger();
+            _log.LogInformation("Fetched alleStrekninger");
             return alleStrekninger;
         }
 
@@ -43,6 +48,7 @@ namespace Mappe1_ITPE3200.Controllers
             };
 
             List<Avganger> alleStrekninger = await _db.HentAlleAvganger(valgtStrekning);
+            _log.LogInformation("GET: Hentet avganger med strekning: "+strekning);
             return alleStrekninger;
         }
 
@@ -51,6 +57,7 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<Avganger> HentValgtAvgang(int id)
         {
             Avganger avgang = await _db.HentValgtAvgang(id);
+            _log.LogInformation("GET: Hentet avgang med ID: "+id);
             return avgang;
         }
 
@@ -59,6 +66,7 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<Baater> HentBaat(int id)
         {
             Baater baat = await _db.HentBaat(id);
+            _log.LogInformation("GET: Hentet båt med ID: "+id);
             return baat;
         }
 
@@ -71,10 +79,12 @@ namespace Mappe1_ITPE3200.Controllers
             bool kundeLagret = await _db.LagreKunde(innKunde);
             if (!kundeLagret)
             {
+                _log.LogInformation("POST: Problemer med å lagre kunde");
                 return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
             }
             else
             {
+                _log.LogInformation("POST: lagret kunde med ID: "+ innKunde.Id);
                 return true;
             }
 
@@ -87,10 +97,12 @@ namespace Mappe1_ITPE3200.Controllers
             bool billettLagret = await _db.LagreBillett(innBillett);
             if (!billettLagret)
             {
+                _log.LogInformation("POST: Problemer med å poste billett med ID: " + innBillett.Id);
                 return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
             }
             else
             {
+                _log.LogInformation("POST: Lagret billett med ID: " + innBillett.Id);
                 return true;
             }
 
@@ -101,6 +113,7 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<Baater> HentBillett(int id)
         {
             Baater baat = await _db.HentBaat(id);
+            _log.LogInformation("Kommer vi hit noengang?????????");
             return baat;
         }
 
