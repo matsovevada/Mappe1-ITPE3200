@@ -6,7 +6,7 @@
 
   <div class="form-group">
     <label for="bilplass">Bilplass</label>
-    <input type="checkbox" />
+    <input type="checkbox"  (change)="changeBilplass()" [(ngModel)]="valgtBilplass" [ngModelOptions]="{standalone: true}"/>
   </div>
 </form>
 

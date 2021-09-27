@@ -20,6 +20,7 @@ export class LugarValg implements OnInit {
   personer: number = 1;
   billett: Billett;
   nokSengeplasser: boolean = false;
+  valgtBilplass: boolean = false;
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
@@ -92,6 +93,10 @@ export class LugarValg implements OnInit {
   gaaTilKvittering() {
     alert(this.sjekkPersonerSengeplasser());
   }
+
+  changeBilplass() {
+    this.billett.bilplass = this.valgtBilplass;
+}
 
   hentAlleLugarer() {
     console.log(this.valgtAvgang);
