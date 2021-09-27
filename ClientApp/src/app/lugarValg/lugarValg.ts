@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Lugar } from '../Lugar'
 import { Strekning } from '../Strekning'
 import { Avgang } from '../Avgang'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, NavigationExtras } from '@angular/router'
 import { Billett } from '../Billett';
 
 @Component({
@@ -107,7 +107,12 @@ export class LugarValg implements OnInit {
 
     if (this.valgtBilplass) this.lugarerTotalPris += this.BILPLASS_PRIS;
     else this.lugarerTotalPris -= this.BILPLASS_PRIS;
-}
+  }
+
+/*  bekreft() {
+    const navigationExtras: NavigationExtras = { state: { billett: this.billett } };
+    this.router.navigate(['kundeForm'], navigationExtras);
+  }*/
 
   hentAlleLugarer() {
     console.log(this.valgtAvgang);
