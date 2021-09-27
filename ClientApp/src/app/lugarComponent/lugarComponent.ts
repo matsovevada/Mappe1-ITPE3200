@@ -16,8 +16,8 @@ export class LugarComponent {
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
   }
 
   addLugar(lugar) {
