@@ -16,6 +16,7 @@
     <p>{{lugar.navn}}</p>
     <button (click)="fjernLugar(lugar.navn)">X</button>
   </div>
+  <p>Totalpris: {{lugarerTotalPris}}</p>
 </div>
 
 <lugar *ngFor="let lugar of alleLugarer"

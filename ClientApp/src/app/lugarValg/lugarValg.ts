@@ -21,6 +21,7 @@ export class LugarValg implements OnInit {
   billett: Billett;
   nokSengeplasser: boolean = false;
   valgtBilplass: boolean = false;
+  lugarerTotalPris: number = 0;
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
@@ -53,6 +54,8 @@ export class LugarValg implements OnInit {
     this.valgteLugarer.push(lugar);
     this.billett.lugarer = this.valgteLugarer;
     this.nokSengeplasser = this.sjekkPersonerSengeplasser();
+    this.lugarerTotalPris += lugar.pris;
+    this.billett.totalPris = this.lugarerTotalPris;
   }
 
   fjernLugar(lugarNavn: string) {
@@ -63,6 +66,8 @@ export class LugarValg implements OnInit {
 
       if (this.valgteLugarer[i].navn == lugarNavn) {
         lugarIndex = i;
+        this.lugarerTotalPris -= this.valgteLugarer[i].pris;
+        this.billett.totalPris = this.lugarerTotalPris;
         break;
       }
     }
