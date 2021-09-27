@@ -12,7 +12,6 @@ import { KundeForm } from './kundeForm/kundeForm';
 import { LugarValg } from './lugarValg/lugarValg';
 import { visBillett } from './visBillett/visBillett';
 import { LugarComponent } from './lugarComponent/lugarComponent';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -31,8 +30,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
     AppRoutingModule,
     RouterModule.forRoot([]),
     FormsModule,
-    ReactiveFormsModule,
-    NgbModal
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
