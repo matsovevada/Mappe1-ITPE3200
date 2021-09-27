@@ -14,14 +14,14 @@
   <h3>Valgte lugarer</h3>
   <div *ngFor="let lugar of valgteLugarer">
     <p>{{lugar.navn}}</p>
-    <button>X</button>
+    <button (click)="fjernLugar(lugar.navn)">X</button>
   </div>
 </div>
 
 <lugar
   *ngFor="let lugar of alleLugarer"
-   [lugar]="lugar">
-  (onAddLugar)="leggTilLugar(lugar)"
+   [lugar]="lugar"
+  (onAddLugar)="leggTilLugar($event)">
 </lugar>
 
-<button>Bekreft</button>
+<button (click)="gaaTilKvittering()">Bekreft</button>
