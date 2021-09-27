@@ -5,6 +5,7 @@ import { Lugar } from '../Lugar'
 import { Strekning } from '../Strekning'
 import { Avgang } from '../Avgang'
 import { ActivatedRoute } from '@angular/router'
+import { Billett } from '../Billett';
 
 @Component({
   selector: 'lugar-valg',
@@ -17,6 +18,8 @@ export class LugarValg implements OnInit {
   valgtAvgang: Avgang;
   valgteLugarer: Array<Lugar>
   personer: number = 1;
+  billett: Billett;
+  nokSengeplasser: boolean = false;
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
@@ -26,6 +29,8 @@ export class LugarValg implements OnInit {
     this.laster = true;
     this.hentValgtAvgang();
     this.valgteLugarer = [];
+    this.billett = new Billett();
+    this.billett.avgangId = Number(this.avgangsID);
   }
 
   hentValgtAvgang() {
@@ -45,6 +50,7 @@ export class LugarValg implements OnInit {
 
   leggTilLugar(lugar: Lugar) {
     this.valgteLugarer.push(lugar);
+    this.nokSengeplasser = this.sjekkPersonerSengeplasser();
   }
 
   fjernLugar(lugarNavn: string) {
@@ -62,6 +68,8 @@ export class LugarValg implements OnInit {
     if (lugarIndex >= 0) {
       this.valgteLugarer.splice(lugarIndex, 1);
     }
+
+    this.nokSengeplasser = this.sjekkPersonerSengeplasser();
   }
 
   // sjekk at kunden har valgt mange nok sengeplasser i forhold til hvor mange personer som skal v?re med p? turen

@@ -24,4 +24,4 @@
   (onAddLugar)="leggTilLugar($event)">
 </lugar>
 
-<button (click)="gaaTilKvittering()">Bekreft</button>
+<button *ngIf="nokSengeplasser"><a class="nav-link text-dark" [routerLink]="['/kundeForm', billett]">Bekreft</a></button>
