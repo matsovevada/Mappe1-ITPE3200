@@ -3,7 +3,7 @@
     <label for="antallPersoner">Antall personer</label>
     <input type="number" placeholder="1" min="1" max="50" [(ngModel)]="personer" [ngModelOptions]="{standalone: true}" />
   </div>
-  
+
   <div class="form-group">
     <label for="bilplass">Bilplass</label>
     <input type="checkbox" />
@@ -18,10 +18,10 @@
   </div>
 </div>
 
-<lugar
-  *ngFor="let lugar of alleLugarer"
-   [lugar]="lugar"
-  (onAddLugar)="leggTilLugar($event)">
+<lugar *ngFor="let lugar of alleLugarer"
+       [lugar]="lugar"
+       (onAddLugar)="leggTilLugar($event)">
 </lugar>
 
-<button *ngIf="nokSengeplasser"><a class="nav-link text-dark" [routerLink]="['/kundeForm', billett]">Bekreft</a></button>
+<button *ngIf="nokSengeplasser"><a class="nav-link text-dark" [routerLink]="['/kundeForm']">Bekreft</a></button>
+<p *ngIf="!nokSengeplasser">Du må legge til flere lugarer for å ha plass til alle personene</p>

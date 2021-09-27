@@ -10,7 +10,8 @@ const appRoots: Routes = [
   { path: '', component: Bestilling },
   { path: 'lugarValg/:id', component: LugarValg },
   { path: '', redirectTo: 'bestilling', pathMatch: 'full' },
-  { path: 'visBillett/:billett', component: visBillett }
+  { path: 'visBillett/:billett', component: visBillett },
+  { path: 'kundeForm/:billett', component: KundeForm }
 ]
 
 @NgModule({
