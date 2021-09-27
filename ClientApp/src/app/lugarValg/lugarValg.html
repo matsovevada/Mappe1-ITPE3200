@@ -1,7 +1,7 @@
 <form>
   <div class="form-group">
-    <label for="ekstraPersoner">Ekstra personer</label>
-    <input type="number" placeholder="0" [(ngModel)]="personer" [ngModelOptions]="{standalone: true}" />
+    <label for="antallPersoner">Antall personer</label>
+    <input type="number" placeholder="1" [(ngModel)]="personer" [ngModelOptions]="{standalone: true}" />
   </div>
   
   <div class="form-group">
@@ -9,6 +9,14 @@
     <input type="checkbox" />
   </div>
 </form>
+
+<div>
+  <h3>Valgte lugarer</h3>
+  <div *ngFor="let lugar of valgteLugarer">
+    <p>{{lugar.navn}}</p>
+    <button>X</button>
+  </div>
+</div>
 
 <lugar
   *ngFor="let lugar of alleLugarer"

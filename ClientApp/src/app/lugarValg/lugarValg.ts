@@ -48,9 +48,20 @@ export class LugarValg {
     this.valgteLugarer.push(lugar);
   }
 
-  /*fjernTilLugar(lugar: Lugar) {
-    this.valgteLugarer.splice(lugar)
-  }*/
+  fjernLugar(lugarNavn: string) {
+    let lugarIndex = -1;
+
+    for (let i = 0; i < this.valgteLugarer.length; i++) {
+      if (this.valgteLugarer[i].navn == lugarNavn) {
+        lugarIndex = i;
+        break;
+      }
+
+      if (lugarIndex >= 0) {
+        this.valgteLugarer.splice(lugarIndex, 1)
+      }
+    }
+  }
 
   // sjekk at kunden har valgt mange nok sengeplasser i forhold til hvor mange personer som skal v?re med p? turen
   // returner true hvis hvis kunden har valgt nok sengeplasser
