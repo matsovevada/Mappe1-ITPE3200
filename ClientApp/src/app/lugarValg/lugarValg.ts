@@ -51,6 +51,7 @@ export class LugarValg implements OnInit {
 
   leggTilLugar(lugar: Lugar) {
     this.valgteLugarer.push(lugar);
+    this.billett.lugarer = this.valgteLugarer;
     this.nokSengeplasser = this.sjekkPersonerSengeplasser();
   }
 
@@ -68,6 +69,7 @@ export class LugarValg implements OnInit {
 
     if (lugarIndex >= 0) {
       this.valgteLugarer.splice(lugarIndex, 1);
+      this.billett.lugarer = this.valgteLugarer;
     }
 
     this.nokSengeplasser = this.sjekkPersonerSengeplasser();

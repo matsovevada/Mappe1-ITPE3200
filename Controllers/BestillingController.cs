@@ -65,18 +65,12 @@ namespace Mappe1_ITPE3200.Controllers
         //Må se på routing 
         [HttpPost]
         [ActionName("lagreKunde")]
-        public async Task<bool> LagreKunde(Kunde innKunde)
+        public async Task<int> LagreKunde(Kunde innKunde)
         {
             Console.WriteLine("testController");
-            bool kundeLagret = await _db.LagreKunde(innKunde);
-            if (!kundeLagret)
-            {
-                return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
-            }
-            else
-            {
-                return true;
-            }
+            int kundeLagret = await _db.LagreKunde(innKunde);
+            return kundeLagret; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+          
 
         }
 
