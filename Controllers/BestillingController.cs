@@ -50,8 +50,6 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("hentValgtAvgang")]
         public async Task<Avganger> HentValgtAvgang(int id)
         {
-            Debug.WriteLine("SKRIV UT ID:");
-            Debug.WriteLine(id);
             Avganger avgang = await _db.HentValgtAvgang(id);
             return avgang;
         }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Lugar } from '../Lugar'
@@ -12,10 +12,15 @@ import { ActivatedRoute } from '@angular/router'
 export class LugarComponent {
 
   @Input() lugar!: Lugar;
+  @Output() onAddLugar: EventEmitter<Lugar> = new EventEmitter();
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
-  ngOnInit(){
+  ngOnInit(): void {
 
+  }
+
+  addLugar(lugar) {
+    this.onAddLugar.emit(lugar);
   }
 }

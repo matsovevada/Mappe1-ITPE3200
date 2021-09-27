@@ -1,12 +1,27 @@
 <form>
-  <label for="ekstraPersoner">Ekstra personer</label>
-  <input type="number" placeholder="0" [(ngModel)]="personer" [ngModelOptions]="{standalone: true}"/>
-
-  <label for="bilplass">Bilplass</label>
-  <input type="checkbox" />
+  <div class="form-group">
+    <label for="antallPersoner">Antall personer</label>
+    <input type="number" placeholder="1" [(ngModel)]="personer" [ngModelOptions]="{standalone: true}" />
+  </div>
+  
+  <div class="form-group">
+    <label for="bilplass">Bilplass</label>
+    <input type="checkbox" />
+  </div>
 </form>
+
+<div>
+  <h3>Valgte lugarer</h3>
+  <div *ngFor="let lugar of valgteLugarer">
+    <p>{{lugar.navn}}</p>
+    <button>X</button>
+  </div>
+</div>
 
 <lugar
   *ngFor="let lugar of alleLugarer"
    [lugar]="lugar">
+  (onAddLugar)="leggTilLugar(lugar)"
 </lugar>
+
+<button>Bekreft</button>
