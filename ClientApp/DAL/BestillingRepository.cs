@@ -149,6 +149,32 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         return false;
       }
     }
+
+    public async Task<bool> OppdaterAntallLedigeLugarer(int id, List<Lugar> lugarer)
+    {
+      try
+      {
+        Avganger avgang = await _db.Avganger.FindAsync(id);
+
+        lugarer.ForEach(lugar =>
+        {
+          avgang.LedigeLugarer.ForEach(lugarIAvgang =>
+          {
+            if (lugar.Navn.Equals(lugarIAvgang.Navn))
+            {
+              lugarIAvgang.AntallLedige--;
+            }
+          });
+        });
+
+        await _db.SaveChangesAsync();
+        return true;
+      }
+      catch
+      {
+        return false;
+      }   
+    }
   }
 }
 

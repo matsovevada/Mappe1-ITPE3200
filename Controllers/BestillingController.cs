@@ -93,10 +93,7 @@ namespace Mappe1_ITPE3200.Controllers
                 }
 
                 // oppdater antall ledige lugarer for avgangen
-               /* innBillett.lugarer.ForEach(lugar =>
-                {
-                    Debug.
-                });*/
+                await _db.OppdaterAntallLedigeLugarer(innBillett.AvgangId, innBillett.lugarer);
 
                 return true;
             }
