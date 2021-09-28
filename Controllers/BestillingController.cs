@@ -70,33 +70,14 @@ namespace Mappe1_ITPE3200.Controllers
             Console.WriteLine("testController");
             int kundeLagret = await _db.LagreKunde(lagretKunde);
             return kundeLagret; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
-          
-
         }
 
         [HttpPost]
         [ActionName("lagreBillett")]
-        public async Task<bool> LagreBillett(Billett innBillett)
+        public async Task<int> LagreBillett(Billett innBillett)
         {   
-            bool billettLagret = await _db.LagreBillett(innBillett);
-        
-            if (!billettLagret)
-            {
-                return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
-            }
-            else
-            {
-                // oppdater antall ledige bilplasser for avgangen
-                if (innBillett.Bilplass)
-                {
-                    await _db.DecrementBilplass(innBillett.AvgangId);
-                }
-
-                // oppdater antall ledige lugarer for avgangen
-                await _db.OppdaterAntallLedigeLugarer(innBillett.AvgangId, innBillett.lugarer);
-
-                return true;
-            }
+            int billettLagret = await _db.LagreBillett(innBillett);
+            return billettLagret;
 
         }
 

@@ -104,7 +104,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     }
 
     [HttpPost]
-    public async Task<bool> LagreBillett(Billett innBillett)
+    public async Task<int> LagreBillett(Billett innBillett)
     {
       try
       {
@@ -120,11 +120,11 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         billett.TotalPris = innBillett.TotalPris;
         _db.Billetter.Add(billett);
         await _db.SaveChangesAsync();
-        return true;
+        return billett.Id;
 
       } catch
       {
-        return false;
+  
       }
     }
 
