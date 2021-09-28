@@ -13,7 +13,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<Avganger> HentValgtAvgang(int id);
     Task<Baater> HentBaat(int id);
     Task<int> LagreKunde(Kunde kunde);
-    Task<bool> LagreBillett(Billett billett);
+    Task<int> LagreBillett(Billett billett);
     Task<Billetter> HentBillett(int id);
     Task<bool> DecrementBilplass(int id);
     Task<bool> OppdaterAntallLedigeLugarer(int id, List<Lugar> lugarer);

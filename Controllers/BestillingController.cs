@@ -79,36 +79,27 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpPost]
         [ActionName("lagreBillett")]
-        public async Task<bool> LagreBillett(Billett innBillett)
+        public async Task<int> LagreBillett(Billett innBillett)
         {   
-            bool billettLagret = await _db.LagreBillett(innBillett); 
-        
-            if (!billettLagret)
+            int billettLagret = await _db.LagreBillett(innBillett);
+            
+            // oppdater antall ledige bilplasser for avgangen
+            if (innBillett.Bilplass)
             {
-                return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+                await _db.DecrementBilplass(innBillett.AvgangId);
             }
-            else
-            {
-                // oppdater antall ledige bilplasser for avgangen
-                if (innBillett.Bilplass)
-                {
-                    await _db.DecrementBilplass(innBillett.AvgangId);
-                }
+            await _db.OppdaterAntallLedigeLugarer(innBillett.AvgangId, innBillett.lugarer);
 
-                // oppdater antall ledige lugarer for avgangen
-                await _db.OppdaterAntallLedigeLugarer(innBillett.AvgangId, innBillett.lugarer);
-
-                return true;
-            }
-
+            return billettLagret;
         }
 
-        [HttpGet("{bestilling}")]
+        [HttpGet("{id}")]
         [ActionName("hentBillett")]
-        public async Task<Baater> HentBillett(int id)
+        public async Task<Billetter> HentBillett(int id)
         {
-            Baater baat = await _db.HentBaat(id);
-            return baat;
+            Console.WriteLine("HALLO I CONTROLLER");
+            Billetter billett = await _db.HentBillett(id);
+            return billett;
         }
 
 

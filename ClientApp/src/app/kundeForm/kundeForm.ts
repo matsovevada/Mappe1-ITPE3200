@@ -85,15 +85,9 @@ export class KundeForm implements OnInit {
     this.http.post<number>("api/Bestilling/lagreKunde", lagretKunde)
       .subscribe(lagretKundeId => {
         this.billett.kundeId = lagretKundeId;
-        this.http.post<boolean>("api/Bestilling/lagreBillett", this.billett)
-          .subscribe(billettLagret => {
-            if (billettLagret) {
-              this.router.navigate(['/visBillett', this.billett])
-            }
-            else {
-              this.feilMelding = "Billett kunne ikke lagres, prøv igjen senere";
-
-            }
+        this.http.post<number>("api/Bestilling/lagreBillett", this.billett)
+          .subscribe(billettLagretId => {
+            this.router.navigate(['/visBillett/' + billettLagretId]);
           },
             error => console.log(error)
           );
