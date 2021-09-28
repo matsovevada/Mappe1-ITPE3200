@@ -31,9 +31,8 @@ export class visBillett {
   hentBillett() {
     this.http.get<Billett>("api/Bestilling/hentBillett/" + this.billettId).
       subscribe(hentetBillett => {
-        this.billett = hentetBillett;
         console.log("GET ELLER?!")
-        console.log(this.billett);
+        console.log(hentetBillett);
       },
         error => console.log(error)
       );

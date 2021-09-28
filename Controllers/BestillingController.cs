@@ -81,12 +81,13 @@ namespace Mappe1_ITPE3200.Controllers
 
         }
 
-        [HttpGet("{bestilling}")]
+        [HttpGet("{id}")]
         [ActionName("hentBillett")]
-        public async Task<Baater> HentBillett(int id)
+        public async Task<Billetter> HentBillett(int id)
         {
-            Baater baat = await _db.HentBaat(id);
-            return baat;
+            Console.WriteLine("HALLO I CONTROLLER");
+            Billetter billett = await _db.HentBillett(id);
+            return billett;
         }
 
 

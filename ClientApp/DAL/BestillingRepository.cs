@@ -124,7 +124,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       } catch
       {
-  
+        return -1;
       }
     }
 
