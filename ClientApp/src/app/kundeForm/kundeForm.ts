@@ -15,6 +15,8 @@ import { Billett } from "../Billett";
 export class KundeForm implements OnInit {
   billett: Billett;
   kundeSkjema: FormGroup;
+  feilMelding: String = "";
+  
 
   validering = {
     id: [""],
@@ -41,7 +43,7 @@ export class KundeForm implements OnInit {
     ],
   }
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private location:Location) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private location: Location) {
     this.kundeSkjema = fb.group(this.validering);
     this.billett = this.router.getCurrentNavigation().extras.state.billett;
     console.log(this.billett);
@@ -49,25 +51,25 @@ export class KundeForm implements OnInit {
 
   ngOnInit() {
     // this.billett = this._ActivatedRoute.snapshot.paramMap.get(bill); 
-   /*   console.log("BILLLETTT!!");
-    console.log(this.location.getState());*/
+    /*   console.log("BILLLETTT!!");
+     console.log(this.location.getState());*/
 
-    
-      /*const navigation = this.router.getCurrentNavigation();
-    const state = navigation.extras.state as { billett: Billett };
-    this.billett = state.billett;
 
-    console.log(this.billett);*/
-   
+    /*const navigation = this.router.getCurrentNavigation();
+  const state = navigation.extras.state as { billett: Billett };
+  this.billett = state.billett;
+
+  console.log(this.billett);*/
+
 
   }
 
 
   onSubmit() {
-    this.lagreKunde();
+    this.lagreKundeOgBillett();
   }
 
-  lagreKunde() {
+  lagreKundeOgBillett() {
     const lagretKunde = new Kunde();
 
     lagretKunde.fornavn = this.kundeSkjema.value.fornavn;
@@ -78,11 +80,23 @@ export class KundeForm implements OnInit {
     lagretKunde.telefonnummer = this.kundeSkjema.value.tlf;
     lagretKunde.epost = this.kundeSkjema.value.epost;
 
-    
 
-    this.http.post<Number>("api/Bestilling/lagreKunde", lagretKunde)
-      .subscribe(retur => {
-        console.log(retur);
+
+    this.http.post<number>("api/Bestilling/lagreKunde", lagretKunde)
+      .subscribe(lagretKundeId => {
+        this.billett.kundeId = lagretKundeId;
+        this.http.post<boolean>("api/Bestilling/lagreBillett", this.billett)
+          .subscribe(billettLagret => {
+            if (billettLagret) {
+              this.router.navigate(['/visBillett', this.billett])
+            }
+            else {
+              this.feilMelding = "Billett kunne ikke lagres, prøv igjen senere";
+
+            }
+          },
+            error => console.log(error)
+          );
       },
         error => console.log(error)
       );
