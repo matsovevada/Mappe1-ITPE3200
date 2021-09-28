@@ -11,6 +11,11 @@
 </form>
 
 <div>
+  <p>Antall ledige bilplasser:</p>
+  <p>{{valgtAvgang.antallLedigeBilplasser}}</p>
+</div>
+
+<div>
   <h3>Valgte lugarer</h3>
   <div *ngFor="let lugar of valgteLugarer">
     <p>{{lugar.navn}}</p>

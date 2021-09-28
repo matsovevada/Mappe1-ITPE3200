@@ -109,10 +109,12 @@ export class LugarValg implements OnInit {
     if (this.valgtBilplass) {
       this.lugarerTotalPris += this.BILPLASS_PRIS;
       this.billett.totalPris = this.lugarerTotalPris;
+      this.valgtAvgang.antallLedigeBilplasser--;
     }
     else {
       this.lugarerTotalPris -= this.BILPLASS_PRIS;
       this.billett.totalPris = this.lugarerTotalPris;
+      this.valgtAvgang.antallLedigeBilplasser++;
     }
   }
 
