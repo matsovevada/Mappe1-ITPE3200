@@ -21,8 +21,6 @@ export class visBillett {
 
   ngOnInit() {
     this.billettId = this._ActivatedRoute.snapshot.paramMap.get('id');
-    console.log("IDDDD")
-    console.log(this.billettId)
     this.hentBillett();
    
    
@@ -31,8 +29,7 @@ export class visBillett {
   hentBillett() {
     this.http.get<Billett>("api/Bestilling/hentBillett/" + this.billettId).
       subscribe(hentetBillett => {
-        console.log("GET ELLER?!")
-        console.log(hentetBillett);
+        this.billett = hentetBillett;
       },
         error => console.log(error)
       );
