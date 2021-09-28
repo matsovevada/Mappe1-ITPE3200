@@ -49,7 +49,7 @@ export class LugarValg implements OnInit {
         error => console.log(error)
       );
   }
-
+  
   leggTilLugar(lugar: Lugar) {
     this.valgteLugarer.push(lugar);
     this.billett.lugarer = this.valgteLugarer;

@@ -6,7 +6,8 @@
 
   <div class="form-group">
     <label for="bilplass">Bilplass</label>
-    <input type="checkbox"  (change)="changeBilplass()" [(ngModel)]="valgtBilplass" [ngModelOptions]="{standalone: true}"/>
+    <input *ngIf="valgtAvgang.antallLedigeBilplasser > 0 else antallLedigeBilplasserError" type="checkbox" (change)="changeBilplass()" [(ngModel)]="valgtBilplass" [ngModelOptions]="{standalone: true}" />
+    <ng-template #antallLedigeBilplasserError>Ingen flere ledige bilplasser!</ng-template>
   </div>
 </form>
 
