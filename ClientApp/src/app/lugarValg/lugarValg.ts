@@ -45,7 +45,6 @@ export class LugarValg implements OnInit {
         this.alleLugarer = this.valgtAvgang.ledigeLugarer;
         this.laster = false;
 
-        this.hentAlleLugarer();
       },
         error => console.log(error)
       );
@@ -105,17 +104,14 @@ export class LugarValg implements OnInit {
   changeBilplass() {
     this.billett.bilplass = this.valgtBilplass;
 
-    if (this.valgtBilplass) this.lugarerTotalPris += this.BILPLASS_PRIS;
-    else this.lugarerTotalPris -= this.BILPLASS_PRIS;
+    if (this.valgtBilplass) {
+      this.lugarerTotalPris += this.BILPLASS_PRIS;
+      this.billett.totalPris = this.lugarerTotalPris;
+    }
+    else {
+      this.lugarerTotalPris -= this.BILPLASS_PRIS;
+      this.billett.totalPris = this.lugarerTotalPris;
+    }
   }
 
-/*  bekreft() {
-    const navigationExtras: NavigationExtras = { state: { billett: this.billett } };
-    this.router.navigate(['kundeForm'], navigationExtras);
-  }*/
-
-  hentAlleLugarer() {
-    console.log(this.valgtAvgang);
-    console.log(this.alleLugarer);
-  }
 }
