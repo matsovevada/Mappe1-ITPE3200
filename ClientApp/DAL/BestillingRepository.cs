@@ -135,6 +135,20 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       return billett;
     }
 
+    public async Task<bool> DecrementBilplass(int id)
+    {
+      try
+      {
+        Avganger avgang = await _db.Avganger.FindAsync(id);
+        avgang.AntallLedigeBilplasser--;
+        await _db.SaveChangesAsync();
+        return true;
+      }
+      catch
+      {
+        return false;
+      }
+    }
   }
 }
 

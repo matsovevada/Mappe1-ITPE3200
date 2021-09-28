@@ -86,6 +86,18 @@ namespace Mappe1_ITPE3200.Controllers
             }
             else
             {
+                // oppdater antall ledige bilplasser for avgangen
+                if (innBillett.Bilplass)
+                {
+                    await _db.DecrementBilplass(innBillett.AvgangId);
+                }
+
+                // oppdater antall ledige lugarer for avgangen
+               /* innBillett.lugarer.ForEach(lugar =>
+                {
+                    Debug.
+                });*/
+
                 return true;
             }
 

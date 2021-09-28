@@ -15,5 +15,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<int> LagreKunde(Kunde kunde);
     Task<bool> LagreBillett(Billett billett);
     Task<Billetter> HentBillett(int id);
+    Task<bool> DecrementBilplass(int id);
   }
 }
