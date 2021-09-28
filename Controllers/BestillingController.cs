@@ -7,12 +7,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace Mappe1_ITPE3200.Controllers
 {
     [ApiController]
     [Route("api/[controller]/{action}")]
-    public class BestillingController
+    public class BestillingController : ControllerBase
     {
         private IBestillingRepository _db;
 
@@ -65,20 +64,24 @@ namespace Mappe1_ITPE3200.Controllers
         //Må se på routing 
         [HttpPost]
         [ActionName("lagreKunde")]
-        public async Task<int> LagreKunde(Kunde lagretKunde)
+        public async Task<ActionResult> LagreKunde(Kunde lagretKunde)
         {
-            Console.WriteLine("testController");
-            int kundeLagret = await _db.LagreKunde(lagretKunde);
-            return kundeLagret; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
-          
-
+            if (ModelState.IsValid)
+            {
+                Console.WriteLine("testController");
+                int kundeLagretId = await _db.LagreKunde(lagretKunde);
+                return Ok(kundeLagretId); //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+            }
+            return BadRequest("Feil i inputvalidering på server");
         }
+
+
 
         [HttpPost]
         [ActionName("lagreBillett")]
         public async Task<bool> LagreBillett(Billett innBillett)
         {   
-            bool billettLagret = await _db.LagreBillett(innBillett);
+            bool billettLagret = await _db.LagreBillett(innBillett); 
         
             if (!billettLagret)
             {
