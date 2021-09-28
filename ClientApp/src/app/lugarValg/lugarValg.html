@@ -14,7 +14,7 @@
   <h3>Valgte lugarer</h3>
   <div *ngFor="let lugar of valgteLugarer">
     <p>{{lugar.navn}}</p>
-    <button (click)="fjernLugar(lugar.navn)">X</button>
+    <button (click)="fjernLugar(lugar)">X</button>
   </div>
   <p>Totalpris: {{lugarerTotalPris}}</p>
 </div>

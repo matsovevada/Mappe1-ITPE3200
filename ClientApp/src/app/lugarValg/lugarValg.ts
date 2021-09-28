@@ -57,18 +57,20 @@ export class LugarValg implements OnInit {
     this.nokSengeplasser = this.sjekkPersonerSengeplasser();
     this.lugarerTotalPris += lugar.pris;
     this.billett.totalPris = this.lugarerTotalPris;
+    lugar.antallLedige--;
   }
 
-  fjernLugar(lugarNavn: string) {
+  fjernLugar(lugar: Lugar) {
     
     let lugarIndex = -1;
 
     for (let i = 0; i < this.valgteLugarer.length; i++) {
 
-      if (this.valgteLugarer[i].navn == lugarNavn) {
+      if (this.valgteLugarer[i].navn == lugar.navn) {
         lugarIndex = i;
         this.lugarerTotalPris -= this.valgteLugarer[i].pris;
         this.billett.totalPris = this.lugarerTotalPris;
+        lugar.antallLedige++;
         break;
       }
     }
