@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Lugar } from '../Lugar'
 import { Strekning } from '../Strekning'
 import { Avgang } from '../Avgang'
@@ -8,10 +9,10 @@ import { ActivatedRoute, NavigationExtras } from '@angular/router'
 import { Billett } from '../Billett';
 
 @Component({
-  selector: 'lugar-valg',
-  templateUrl: 'lugarValg.html'
+  selector: 'lugar-valg-retur',
+  templateUrl: 'lugarValgRetur.html'
 })
-export class LugarValg implements OnInit {
+export class LugarValgRetur implements OnInit {
   avgangsID: String;
   avgangsIDRetur: String;
   alleLugarer: Array<Lugar>
@@ -22,26 +23,26 @@ export class LugarValg implements OnInit {
   billett: Billett;
   nokSengeplasser: boolean = false;
   valgtBilplass: boolean = false;
-  lugarerTotalPris: number = 0;
+  lugarerTotalPris: number;
   BILPLASS_PRIS: number = 500;
-  returValgt: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
+  constructor(private http: HttpClient, private router: Router, private location: Location) {
+    this.billett = this.router.getCurrentNavigation().extras.state.billett;
+    this.lugarerTotalPris = this.billett.totalPris;
+  }
 
   ngOnInit() {
-    this.avgangsID = this._ActivatedRoute.snapshot.paramMap.get('avgang1');
-    this.avgangsIDRetur = this._ActivatedRoute.snapshot.paramMap.get('avgang2');
     this.laster = true;
+    console.log("BILLLETTT!");
+    console.log(this.billett);
     this.hentValgtAvgang();
     this.valgteLugarer = [];
-    this.billett = new Billett();
-    this.billett.avgangId = Number(this.avgangsID);
-    this.sjekkOmReturSkalBestilles();
+
   }
 
   hentValgtAvgang() {
-    console.log(this.avgangsID);
-    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.avgangsID)
+    console.log(this.billett.avgangIdRetur);
+    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.billett.avgangIdRetur)
       .subscribe(avgang => {
         console.log(avgang)
         this.valgtAvgang = avgang;
@@ -55,7 +56,7 @@ export class LugarValg implements OnInit {
   
   leggTilLugar(lugar: Lugar) {
     this.valgteLugarer.push(lugar);
-    this.billett.lugarer = this.valgteLugarer;
+    this.billett.lugarerRetur = this.valgteLugarer;
     this.nokSengeplasser = this.sjekkPersonerSengeplasser();
     this.lugarerTotalPris += lugar.pris;
     this.billett.totalPris = this.lugarerTotalPris;
@@ -79,7 +80,7 @@ export class LugarValg implements OnInit {
 
     if (lugarIndex >= 0) {
       this.valgteLugarer.splice(lugarIndex, 1);
-      this.billett.lugarer = this.valgteLugarer;
+      this.billett.lugarerRetur = this.valgteLugarer;
     }
 
     this.nokSengeplasser = this.sjekkPersonerSengeplasser();
@@ -107,7 +108,7 @@ export class LugarValg implements OnInit {
   }
 
   changeBilplass() {
-    this.billett.bilplass = this.valgtBilplass;
+    this.billett.bilplassRetur = this.valgtBilplass;
 
     if (this.valgtBilplass) {
       this.lugarerTotalPris += this.BILPLASS_PRIS;
@@ -121,12 +122,5 @@ export class LugarValg implements OnInit {
     }
   }
 
-  sjekkOmReturSkalBestilles() {
-    if (this.avgangsIDRetur != "undefined") {
-      this.billett.avgangIdRetur = Number(this.avgangsIDRetur);
-      this.returValgt = true
-    };
-  
-  }
 
 }
