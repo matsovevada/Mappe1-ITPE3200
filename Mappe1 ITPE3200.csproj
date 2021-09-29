@@ -34,6 +34,7 @@
     <None Remove="ClientApp\src\app\avgang\avganger.ts" />
     <None Remove="ClientApp\src\app\Baater.ts" />
     <None Remove="ClientApp\src\app\bestilling\bestilling.ts" />
+    <None Remove="ClientApp\src\app\billettComponent\billettComponent.ts" />
     <None Remove="ClientApp\src\app\Lugar.ts" />
     <None Remove="ClientApp\src\app\lugarComponent\lugarComponent.ts" />
     <None Remove="ClientApp\src\app\lugarValg\lugarValg.ts" />
