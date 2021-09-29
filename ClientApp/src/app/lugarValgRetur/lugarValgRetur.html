@@ -1,0 +1,34 @@
+<form>
+  <div class="form-group">
+    <label for="antallPersoner">Antall personer</label>
+    <input type="number" placeholder="1" min="1" max="50" [(ngModel)]="personer" [ngModelOptions]="{standalone: true}" />
+  </div>
+
+  <div class="form-group">
+    <label for="bilplass">Bilplass</label>
+    <input *ngIf="valgtAvgang.antallLedigeBilplasser > 0 else antallLedigeBilplasserError" type="checkbox" (change)="changeBilplass()" [(ngModel)]="valgtBilplass" [ngModelOptions]="{standalone: true}" />
+    <ng-template #antallLedigeBilplasserError>Ingen flere ledige bilplasser!</ng-template>
+  </div>
+</form>
+
+<div>
+  <p>Antall ledige bilplasser:</p>
+  <p>{{valgtAvgang.antallLedigeBilplasser}}</p>
+</div>
+
+<div>
+  <h3>Valgte lugarer</h3>
+  <div *ngFor="let lugar of valgteLugarer">
+    <p>{{lugar.navn}}</p>
+    <button (click)="fjernLugar(lugar)">X</button>
+  </div>
+  <p>Totalpris: {{lugarerTotalPris}}</p>
+</div>
+
+<lugar *ngFor="let lugar of alleLugarer"
+       [lugar]="lugar"
+       (onAddLugar)="leggTilLugar($event)">
+</lugar>
+
+<button *ngIf="nokSengeplasser && !returValgt"><a class="nav-link text-dark" [routerLink]="['/kundeForm']" [state]="{ billett:billett }">Bekreft</a></button>
+<p *ngIf="!nokSengeplasser">Du m? legge til flere lugarer for ? ha plass til alle personene</p>

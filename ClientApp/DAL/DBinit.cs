@@ -68,6 +68,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       lugarer.Add(lugar1);
       lugarer.Add(lugar2);
 
+      List<Lugarer> lugarer2 = new List<Lugarer>();
+      lugarer2.Add(lugar1);
+
       // Baater
 
       var baat1 = new Baater
@@ -77,7 +80,15 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         AntallBilplasser = 300
     };
 
+      var baat2 = new Baater
+      {
+        Navn = "Color Magic",
+        Lugarer = lugarer2,
+        AntallBilplasser = 50,
+      };
+
       db.Baater.Add(baat1);
+      db.Baater.Add(baat2);
 
       // Avganger
       String date = DateTime.Now.ToString("dddd, dd MMMM yyy");
@@ -87,17 +98,17 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         Baat = baat1,
         DatoTid = date,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = lugarer
+        LedigeLugarer = baat1.Lugarer,
       };
 
       String date2 = "12/25/2015 12:00:00 AM";
       var avgang2 = new Avganger
       {
         Strekning = strekning_KobenhavnOslo,
-        Baat = baat1,
+        Baat = baat2,
         DatoTid = date2,
-        AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = baat1.Lugarer,
+        AntallLedigeBilplasser = baat2.AntallBilplasser,
+        LedigeLugarer = baat2.Lugarer,
       };
 
       db.Avganger.Add(avgang1);

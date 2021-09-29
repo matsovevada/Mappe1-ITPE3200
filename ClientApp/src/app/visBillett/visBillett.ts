@@ -24,12 +24,15 @@ export class visBillett {
     this.hentBillett();
    
    
+   
   }
 
   hentBillett() {
     this.http.get<Billett>("api/Bestilling/hentBillett/" + this.billettId).
       subscribe(hentetBillett => {
         this.billett = hentetBillett;
+        console.log("BIIIILLLLLL!!!!1");
+        console.log(this.billett);
       },
         error => console.log(error)
       );

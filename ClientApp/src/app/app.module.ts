@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { KundeForm } from './kundeForm/kundeForm';
 import { LugarValg } from './lugarValg/lugarValg';
+import { LugarValgRetur } from './lugarValgRetur/lugarValgRetur';
 import { visBillett } from './visBillett/visBillett';
 import { LugarComponent } from './lugarComponent/lugarComponent';
 
@@ -20,6 +21,7 @@ import { LugarComponent } from './lugarComponent/lugarComponent';
     Bestilling,
     KundeForm,
     LugarValg,
+    LugarValgRetur,
     visBillett,
     LugarComponent
   ],
