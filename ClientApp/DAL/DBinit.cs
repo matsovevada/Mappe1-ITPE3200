@@ -79,23 +79,30 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       db.Baater.Add(baat1);
 
-      // Avganger
-      String date = DateTime.Now.ToString("dddd, dd MMMM yyy");
+      // Avganger 
+      DateTime date1 = new DateTime(2021, 11, 1, 11, 30, 0);
+      String date1String = date1.ToString();
+      long date1Ticks = date1.Ticks;
+
       var avgang1 = new Avganger
       {
         Strekning = strekning_OsloKobenhavn,
         Baat = baat1,
-        DatoTid = date,
+        DatoTid = date1String,
+        DatoTidTicks = date1Ticks,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
         LedigeLugarer = lugarer
       };
 
-      String date2 = "12/25/2015 12:00:00 AM";
+      DateTime date2 = new DateTime(2022, 11, 5, 11, 30, 0);
+      String date2String = date2.ToString();
+      long date2Ticks = date2.Ticks;
       var avgang2 = new Avganger
       {
         Strekning = strekning_KobenhavnOslo,
         Baat = baat1,
-        DatoTid = date2,
+        DatoTid = date2String,
+        DatoTidTicks = date2Ticks,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
         LedigeLugarer = baat1.Lugarer,
       };

@@ -7,6 +7,7 @@ export class Avgang {
   strekning: Strekning;
   baat: Baater;
   datoTid: string;
+  datoTidTicks: number;
   antallLedigeBilplasser: number;
   ledigeLugarer: Array<Lugar>;
 }
