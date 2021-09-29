@@ -1,28 +1,23 @@
 ﻿using Mappe1_ITPE3200.ClientApp.DAL;
 using Mappe1_ITPE3200.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace Mappe1_ITPE3200.Controllers
 {
     [ApiController]
     [Route("api/[controller]/{action}")]
-    public class BestillingController
+    public class BestillingController : ControllerBase
     {
         private IBestillingRepository _db;
 
-        private ILogger<BestillingController> _log;
-
-        public BestillingController(IBestillingRepository db, ILogger<BestillingController> log)
+        public BestillingController(IBestillingRepository db)
         {
             _db = db;
-            _log = log;
         }
 
 
@@ -31,7 +26,6 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<List<Strekning>> HentAlleStrekninger()
         {
             List<Strekning> alleStrekninger = await _db.HentAlleStrekninger();
-            _log.LogInformation("Fetched alleStrekninger");
             return alleStrekninger;
         }
 
@@ -48,7 +42,6 @@ namespace Mappe1_ITPE3200.Controllers
             };
 
             List<Avganger> alleStrekninger = await _db.HentAlleAvganger(valgtStrekning);
-            _log.LogInformation("GET: Hentet avganger med strekning: "+strekning);
             return alleStrekninger;
         }
 
@@ -57,7 +50,6 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<Avganger> HentValgtAvgang(int id)
         {
             Avganger avgang = await _db.HentValgtAvgang(id);
-            _log.LogInformation("GET: Hentet avgang med ID: "+id);
             return avgang;
         }
 
@@ -66,55 +58,48 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<Baater> HentBaat(int id)
         {
             Baater baat = await _db.HentBaat(id);
-            _log.LogInformation("GET: Hentet båt med ID: "+id);
             return baat;
         }
 
         //Må se på routing 
         [HttpPost]
         [ActionName("lagreKunde")]
-        public async Task<bool> LagreKunde(Kunde innKunde)
+        public async Task<ActionResult> LagreKunde(Kunde lagretKunde)
         {
-            Console.WriteLine("testController");
-            bool kundeLagret = await _db.LagreKunde(innKunde);
-            if (!kundeLagret)
+            if (ModelState.IsValid)
             {
-                _log.LogInformation("POST: Problemer med å lagre kunde");
-                return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+                Console.WriteLine("testController");
+                int kundeLagretId = await _db.LagreKunde(lagretKunde);
+                return Ok(kundeLagretId); //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
             }
-            else
-            {
-                _log.LogInformation("POST: lagret kunde med ID: "+ innKunde.Id);
-                return true;
-            }
-
+            return BadRequest("Feil i inputvalidering på server");
         }
 
-        [HttpPost("{bestilling}")]
+
+
+        [HttpPost]
         [ActionName("lagreBillett")]
-        public async Task<bool> LagreBillett(Billett innBillett)
+        public async Task<int> LagreBillett(Billett innBillett)
         {   
-            bool billettLagret = await _db.LagreBillett(innBillett);
-            if (!billettLagret)
+            int billettLagret = await _db.LagreBillett(innBillett);
+            
+            // oppdater antall ledige bilplasser for avgangen
+            if (innBillett.Bilplass)
             {
-                _log.LogInformation("POST: Problemer med å poste billett med ID: " + innBillett.Id);
-                return false; //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+                await _db.DecrementBilplass(innBillett.AvgangId);
             }
-            else
-            {
-                _log.LogInformation("POST: Lagret billett med ID: " + innBillett.Id);
-                return true;
-            }
+            await _db.OppdaterAntallLedigeLugarer(innBillett.AvgangId, innBillett.lugarer);
 
+            return billettLagret;
         }
 
-        [HttpGet("{bestilling}")]
+        [HttpGet("{id}")]
         [ActionName("hentBillett")]
-        public async Task<Baater> HentBillett(int id)
+        public async Task<Billetter> HentBillett(int id)
         {
-            Baater baat = await _db.HentBaat(id);
-            _log.LogInformation("Kommer vi hit noengang?????????");
-            return baat;
+            Console.WriteLine("HALLO I CONTROLLER");
+            Billetter billett = await _db.HentBillett(id);
+            return billett;
         }
 
 

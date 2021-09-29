@@ -58,7 +58,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     }
 
     [HttpPost]
-    public async Task<bool> LagreKunde(Kunde innKunde)
+    public async Task<int> LagreKunde(Kunde innKunde)
     {
       try
         
@@ -94,17 +94,17 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
         _db.Kunder.Add(kunde);
         await _db.SaveChangesAsync();
-        return true;
+        return kunde.Id;
 
       } catch
       {
-        return false;
+        return -1;
       }
 
     }
 
     [HttpPost]
-    public async Task<bool> LagreBillett(Billett innBillett)
+    public async Task<int> LagreBillett(Billett innBillett)
     {
       try
       {
@@ -120,11 +120,11 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         billett.TotalPris = innBillett.TotalPris;
         _db.Billetter.Add(billett);
         await _db.SaveChangesAsync();
-        return true;
+        return billett.Id;
 
       } catch
       {
-        return false;
+        return -1;
       }
     }
 
@@ -135,6 +135,46 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       return billett;
     }
 
+    public async Task<bool> DecrementBilplass(int id)
+    {
+      try
+      {
+        Avganger avgang = await _db.Avganger.FindAsync(id);
+        avgang.AntallLedigeBilplasser--;
+        await _db.SaveChangesAsync();
+        return true;
+      }
+      catch
+      {
+        return false;
+      }
+    }
+
+    public async Task<bool> OppdaterAntallLedigeLugarer(int id, List<Lugar> lugarer)
+    {
+      try
+      {
+        Avganger avgang = await _db.Avganger.FindAsync(id);
+
+        lugarer.ForEach(lugar =>
+        {
+          avgang.LedigeLugarer.ForEach(lugarIAvgang =>
+          {
+            if (lugar.Navn.Equals(lugarIAvgang.Navn))
+            {
+              lugarIAvgang.AntallLedige--;
+            }
+          });
+        });
+
+        await _db.SaveChangesAsync();
+        return true;
+      }
+      catch
+      {
+        return false;
+      }   
+    }
   }
 }
 

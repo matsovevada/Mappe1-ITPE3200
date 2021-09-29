@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Kunde } from "../Kunde";
+import { Billett } from "../Billett";
 
 @Component({
   selector: 'kundeForm',
@@ -10,8 +12,11 @@ import { Kunde } from "../Kunde";
 })
 
 
-export class KundeForm {
+export class KundeForm implements OnInit {
+  billett: Billett;
   kundeSkjema: FormGroup;
+  feilMelding: String = "";
+  
 
   validering = {
     id: [""],
@@ -38,15 +43,33 @@ export class KundeForm {
     ],
   }
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private location: Location) {
     this.kundeSkjema = fb.group(this.validering);
+    this.billett = this.router.getCurrentNavigation().extras.state.billett;
+    console.log(this.billett);
   }
+
+  ngOnInit() {
+    // this.billett = this._ActivatedRoute.snapshot.paramMap.get(bill); 
+    /*   console.log("BILLLETTT!!");
+     console.log(this.location.getState());*/
+
+
+    /*const navigation = this.router.getCurrentNavigation();
+  const state = navigation.extras.state as { billett: Billett };
+  this.billett = state.billett;
+
+  console.log(this.billett);*/
+
+
+  }
+
 
   onSubmit() {
-    this.lagreKunde();
+    this.lagreKundeOgBillett();
   }
 
-  lagreKunde() {
+  lagreKundeOgBillett() {
     const lagretKunde = new Kunde();
 
     lagretKunde.fornavn = this.kundeSkjema.value.fornavn;
@@ -56,11 +79,18 @@ export class KundeForm {
     lagretKunde.poststed = this.kundeSkjema.value.poststed;
     lagretKunde.telefonnummer = this.kundeSkjema.value.tlf;
     lagretKunde.epost = this.kundeSkjema.value.epost;
-    console.log(lagretKunde);
 
-    this.http.post <boolean>("api/Bestilling/lagreKunde", lagretKunde)
-      .subscribe(retur => {
-        console.log("Funker");
+
+
+    this.http.post<number>("api/Bestilling/lagreKunde", lagretKunde)
+      .subscribe(lagretKundeId => {
+        this.billett.kundeId = lagretKundeId;
+        this.http.post<number>("api/Bestilling/lagreBillett", this.billett)
+          .subscribe(billettLagretId => {
+            this.router.navigate(['/visBillett/' + billettLagretId]);
+          },
+            error => console.log(error)
+          );
       },
         error => console.log(error)
       );

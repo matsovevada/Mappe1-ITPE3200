@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="lugar.antallLedige > 0" class="container">
   <div>
     <h3>{{lugar.navn}} med {{lugar.antallSengeplasser}} sengeplasser</h3>
     <p>Antall ledige: {{lugar.antallLedige}}</p>
@@ -7,7 +7,6 @@
   <div>
     <p>Beskrivelse:</p>
     <p>{{lugar.beskrivelse}}</p>
-    <input type="number" />
     <button class="btn-primary danger" (click)="addLugar(lugar)">Legg til</button>
   </div>
 </div>

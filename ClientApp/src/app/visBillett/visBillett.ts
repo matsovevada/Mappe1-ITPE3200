@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Kunde } from "../Kunde";
 import { Billett } from "../Billett";
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router'
 
 @Component({
@@ -11,22 +12,26 @@ import { ActivatedRoute } from '@angular/router'
 })
 
 export class visBillett {
- billett: Billett;
- laster: boolean;
+  billett: Billett;
+  billettId: String = "";
 
-constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
-
+  constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute, private location: Location) {
+    
+  }
 
   ngOnInit() {
-    //this.billett = this._ActivatedRoute.snapshot.paramMap.get(bill);
-    const bill = new Billett();
-    bill.avgangId = 1;
-    bill.bilplass = true;
-    bill.id = 1;
-    bill.totalPris = 1000;
-    bill.lugarer = null;
+    this.billettId = this._ActivatedRoute.snapshot.paramMap.get('id');
+    this.hentBillett();
+   
+   
+  }
 
-    this.billett = bill;
-    
+  hentBillett() {
+    this.http.get<Billett>("api/Bestilling/hentBillett/" + this.billettId).
+      subscribe(hentetBillett => {
+        this.billett = hentetBillett;
+      },
+        error => console.log(error)
+      );
   }
 }
