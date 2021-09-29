@@ -8,7 +8,7 @@ import { visBillett } from './visBillett/visBillett';
 
 const appRoots: Routes = [
   { path: '', component: Bestilling },
-  { path: 'lugarValg/:id', component: LugarValg },
+  { path: 'lugarValg', component: LugarValg },
   { path: '', redirectTo: 'bestilling', pathMatch: 'full' },
   { path: 'visBillett/:id', component: visBillett },
   { path: 'kundeForm', component: KundeForm }

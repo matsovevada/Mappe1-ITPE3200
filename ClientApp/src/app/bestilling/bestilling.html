@@ -35,6 +35,6 @@
     </div>
 
     <div *ngIf="(!valgtRetur && valgtAvgang) || (valgtRetur && valgtAvgangRetur)">
-        <button><a class="nav-link text-dark" [routerLink]="['/lugarValg', avgangId]">Gå til bestilling</a></button>
+        <button><a class="nav-link text-dark" [routerLink]="['/lugarValg', {avgang1:avgangId,avgang2:avgangIdRetur}]">Gå til bestilling</a></button>
     </div>
 </div>

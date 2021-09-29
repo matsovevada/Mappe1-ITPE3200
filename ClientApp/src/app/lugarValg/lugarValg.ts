@@ -13,6 +13,7 @@ import { Billett } from '../Billett';
 })
 export class LugarValg implements OnInit {
   avgangsID: String;
+  avgangsIDRetur: String;
   alleLugarer: Array<Lugar>
   laster: boolean;
   valgtAvgang: Avgang;
@@ -23,12 +24,18 @@ export class LugarValg implements OnInit {
   valgtBilplass: boolean = false;
   lugarerTotalPris: number = 0;
   BILPLASS_PRIS: number = 500;
+  returValgt: boolean = false;
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.avgangsID = this._ActivatedRoute.snapshot.paramMap.get('id');
+    this.avgangsID = this._ActivatedRoute.snapshot.paramMap.get('avgang1');
+    console.log("AVGANG!")
     console.log(this.avgangsID)
+    this.avgangsIDRetur = this._ActivatedRoute.snapshot.paramMap.get('avgang2');
+    console.log("AVGANG222222!")
+    console.log(this.avgangsIDRetur)
+    this.sjekkOmReturSkalBestilles();
     this.laster = true;
     this.hentValgtAvgang();
     this.valgteLugarer = [];
@@ -116,6 +123,11 @@ export class LugarValg implements OnInit {
       this.billett.totalPris = this.lugarerTotalPris;
       this.valgtAvgang.antallLedigeBilplasser++;
     }
+  }
+
+  sjekkOmReturSkalBestilles() {
+    if (this.avgangsIDRetur != "undefined") { this.returValgt = true };
+  
   }
 
 }
