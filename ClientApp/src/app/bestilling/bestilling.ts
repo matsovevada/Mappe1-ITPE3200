@@ -18,6 +18,10 @@ export class Bestilling {
   valgtAvgang: boolean = false;
   avgangId: String;
 
+  valgtRetur: boolean = false;
+  strekningValgtRetur: boolean = false;
+  valgtAvgangRetur: boolean = false;
+
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
@@ -56,5 +60,21 @@ export class Bestilling {
     console.log("TRYKKET!");
     this.valgtAvgang = true;
     this.avgangId = (<HTMLSelectElement>document.getElementById('avgang')).value;
+  }
+
+  toggleValgtRetur() {
+    console.log("TRYKKET CHECKBOX!!!");
+    this.valgtRetur = !this.valgtRetur;
+  }
+
+  toggleValgtStrekningRetur() {
+    this.hentAlleAvganger();
+    this.strekningValgtRetur = true;
+  }
+
+  toggleValgtAvgangRetur() {
+    console.log("TRYKKET!");
+    this.valgtAvgangRetur = true;
+    this.avgangId = (<HTMLSelectElement>document.getElementById('avgangRetur')).value;
   }
 }

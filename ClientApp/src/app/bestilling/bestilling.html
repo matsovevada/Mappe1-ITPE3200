@@ -1,24 +1,49 @@
 <div class="container">
-  <div class="col-md-4" id="strekning">
-    <div>
-      <div *ngFor="let strekning of alleStrekninger"></div>
-      <select (change)="toggleValgtStrekning()" [(ngModel)]="strekning">
-          <option disabled hidden [value]="selectUndefinedOptionValue">Velg destinasjon</option>
-          <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
-      </select>
+    <div class="col-md-4" id="strekning">
+        <div>
+            <div *ngFor="let strekning of alleStrekninger"></div>
+            <select (change)="toggleValgtStrekning()" [(ngModel)]="strekning">
+                <option disabled hidden [value]="selectUndefinedOptionValue">Velg destinasjon</option>
+                <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
+            </select>
 
+        </div>
+        <div>
+
+            <select id="avgang" *ngIf="strekningValgt" (change)="toggleValgtAvgang()">
+                <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
+                <option *ngFor="let avgang of alleAvganger" value={{avgang.id}}>{{avgang.datoTid}}</option>
+            </select>
+
+        </div>
+        <div *ngIf="valgtAvgang">
+            <input type="checkbox" name="returCheckBox" [(ngModel)]="valgtRetur" (change)="toggleValgtRetur()" />
+            <label for="returCheckBox">Velg retur?</label><br>
+        </div>
     </div>
-    <div>
 
-        <select id="avgang" *ngIf="strekningValgt" (change)="toggleValgtAvgang()">
-            <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
-            <option *ngFor="let avgang of alleAvganger" value={{avgang.id}}>{{avgang.datoTid}}</option>
-        </select>
 
+    <!--Returvalg-->
+    <div class="col-md-4" id="strekning">
+        <div *ngIf="valgtRetur">
+            <div *ngFor="let strekning of alleStrekninger"></div>
+            <select (change)="toggleValgtStrekningRetur()" [(ngModel)]="strekning">
+                <option disabled hidden [value]="selectUndefinedOptionValue">Velg destinasjon</option>
+                <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
+            </select>
+
+        </div>
+        <div>
+
+            <select id="avgangRetur" *ngIf="strekningValgtRetur" (change)="toggleValgtAvgangRetur()">
+                <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
+                <option *ngFor="let avgang of alleAvganger" value={{avgang.id}}>{{avgang.datoTid}}</option>
+            </select>
+
+        </div>
     </div>
 
-    <div *ngIf="valgtAvgang">
-      <button><a class="nav-link text-dark" [routerLink]="['/lugarValg', avgangId]">Gå til bestilling</a></button>
+    <div *ngIf="(!valgtRetur && valgtAvgang) || (valgtRetur && valgtAvgangRetur)">
+        <button><a class="nav-link text-dark" [routerLink]="['/lugarValg', avgangId]">Gå til bestilling</a></button>
     </div>
-  </div>
 </div>

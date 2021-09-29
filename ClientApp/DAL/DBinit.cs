@@ -25,14 +25,20 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       var strekning_OsloKobenhavn = new Strekninger
       {
         Fra = "Oslo",
-        Til = "Kobenhavn"
+        Til = "Kobenhavn",
+        strekingReturId = 0
       };
 
       var strekning_KobenhavnOslo = new Strekninger
       {
         Fra = "Kobenhavn",
-        Til = "Oslo"
+        Til = "Oslo",
+        strekingReturId = 0
       };
+
+      //Legger til returstrekninger
+      strekning_OsloKobenhavn.strekingReturId = strekning_KobenhavnOslo.Id;
+      strekning_KobenhavnOslo.strekingReturId = strekning_OsloKobenhavn.Id;
 
       db.Strekninger.Add(strekning_OsloKobenhavn);
       db.Strekninger.Add(strekning_KobenhavnOslo);
