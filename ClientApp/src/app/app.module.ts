@@ -12,6 +12,7 @@ import { KundeForm } from './kundeForm/kundeForm';
 import { LugarValg } from './lugarValg/lugarValg';
 import { visBillett } from './visBillett/visBillett';
 import { LugarComponent } from './lugarComponent/lugarComponent';
+import { BillettComponent } from './billettComponent/billettComponent'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LugarComponent } from './lugarComponent/lugarComponent';
     KundeForm,
     LugarValg,
     visBillett,
-    LugarComponent
+    LugarComponent,
+    BillettComponent
   ],
 
   imports: [
