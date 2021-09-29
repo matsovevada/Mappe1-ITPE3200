@@ -45,6 +45,22 @@ namespace Mappe1_ITPE3200.Controllers
             return alleStrekninger;
         }
 
+        [HttpGet("{strekning}")]
+        [ActionName("hentAvgangRetur")]
+        public async Task<List<Avganger>> HentAlleAvgangerRetur(String strekning)
+        {
+            Array s_split = strekning.Split(" - ");
+
+            Strekning valgtStrekning = new Strekning()
+            {
+                Fra = (string)s_split.GetValue(0),
+                Til = (string)s_split.GetValue(1)
+            };
+
+            List<Avganger> alleStrekninger = await _db.HentAlleAvganger(valgtStrekning);
+            return alleStrekninger;
+        }
+
         [HttpGet("{id}")]
         [ActionName("hentValgtAvgang")]
         public async Task<Avganger> HentValgtAvgang(int id)
