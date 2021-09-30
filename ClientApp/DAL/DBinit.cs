@@ -132,14 +132,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       lugarer2.Add(lugar4);
 
       List<Lugarer> lugarer3 = new List<Lugarer>();
-      lugarer2.Add(lugar1);
-      lugarer2.Add(lugar3);
-      lugarer2.Add(lugar4);
+      lugarer3.Add(lugar1);
+      lugarer3.Add(lugar3);
+      lugarer3.Add(lugar4);
 
       List<Lugarer> lugarer4 = new List<Lugarer>();
-      lugarer2.Add(lugar1);
-      lugarer2.Add(lugar2);
-      lugarer2.Add(lugar4);
+      lugarer4.Add(lugar1);
+      lugarer4.Add(lugar2);
+      lugarer4.Add(lugar4);
 
       // Baater
 
