@@ -5,6 +5,8 @@ export class Billett {
 	avgangId: number;
 	avgangIdRetur: number;
 	kundeId: number;
+	antallPersoner: number;
+	antallPersonerRetur: number;
 	totalPris: number;
 	bilplass: boolean;
 	bilplassRetur: boolean;
