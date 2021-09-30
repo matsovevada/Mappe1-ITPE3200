@@ -88,8 +88,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         }
         else
         {
-          kunde.Poststed.Postnr = sjekkPostnr.Postnr;
-          kunde.Poststed.Poststed = sjekkPostnr.Poststed;
+          var poststedFraDB = new Poststeder();
+          poststedFraDB = sjekkPostnr;
+          kunde.Poststed = poststedFraDB;
         }
 
         _db.Kunder.Add(kunde);
