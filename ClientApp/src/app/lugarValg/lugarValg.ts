@@ -31,6 +31,11 @@ export class LugarValg implements OnInit {
   ngOnInit() {
     this.avgangsID = this._ActivatedRoute.snapshot.paramMap.get('avgang1');
     this.avgangsIDRetur = this._ActivatedRoute.snapshot.paramMap.get('avgang2');
+
+    if (this._ActivatedRoute.snapshot.paramMap.get('valgtRetur') == 'false') {
+      this.avgangsIDRetur = "undefined";
+    }
+
     this.laster = true;
     this.hentValgtAvgang();
     this.valgteLugarer = [];
@@ -123,6 +128,7 @@ export class LugarValg implements OnInit {
 
   sjekkOmReturSkalBestilles() {
     if (this.avgangsIDRetur != "undefined") {
+      console.log("Retur skal bestilles")
       this.billett.avgangIdRetur = Number(this.avgangsIDRetur);
       this.returValgt = true
     };

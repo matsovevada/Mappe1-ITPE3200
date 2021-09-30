@@ -10,7 +10,7 @@
         </div>
         <div>
 
-          <select id="avgang" *ngIf="strekningValgt" (change)="toggleValgtAvgang()" [disabled]="testBool">
+          <select id="avgang" *ngIf="strekningValgt" (change)="toggleValgtAvgang()">
             <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
             <option *ngFor="let avgang of alleAvganger" data-value='{"id": {{avgang.id}}, "datoTidTicks": {{avgang.datoTidTicks}}}'>{{avgang.datoTid}}</option>
           </select>
@@ -36,6 +36,6 @@
 
     <p *ngIf="(avgangValgtReturDatoTidTicks < avgangValgtDatoTidTicks) && valgtRetur">Returavgang kan ikke komme før start-avgnag</p>
     <div *ngIf="(!valgtRetur && valgtAvgang) || (valgtRetur && valgtAvgangRetur) && (avgangValgtReturDatoTidTicks > avgangValgtDatoTidTicks)">
-        <button><a class="nav-link text-dark" [routerLink]="['/lugarValg', avgangId]">Gå til bestilling</a></button>
+        <button><a class="nav-link text-dark" [routerLink]="['/lugarValg', {avgang1:avgangId,avgang2:avgangIdRetur,valgtRetur:valgtRetur}]">Gå til bestilling</a></button>
     </div>
 </div>

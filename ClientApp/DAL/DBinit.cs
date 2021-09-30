@@ -111,9 +111,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       var avgang2 = new Avganger
       {
         Strekning = strekning_KobenhavnOslo,
+        Baat = baat2,
         DatoTid = date2String,
         DatoTidTicks = date2Ticks,
-        Baat = baat2,
         AntallLedigeBilplasser = baat2.AntallBilplasser,
         LedigeLugarer = baat2.Lugarer,
       };
