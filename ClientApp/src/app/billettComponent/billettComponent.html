@@ -10,14 +10,14 @@
   <div class="col-md-6">
     <div [(ngModel)]="avgang">
       <h3>Avgangsinformasjon:</h3>
-      <h4 *ngIf="{{boolRetur}}">Tur:</h4>
+      <h4 *ngIf="boolRetur">Tur:</h4>
       <p>Strekning: {{avgang.strekning}}</p>
       <p>Båt: {{avgang.baat}}</p>
       <p>Dato: {{avgang.datoTid}}</p>
       <p>Bilplass: {{avgangBilplass}}</p>
       <p>FIKS Å SE VALGTE LUGARER</p>
     </div>
-    <div [(ngModel)]="retur" *ngIf="{{boolRetur}}">
+    <div [(ngModel)]="retur" *ngIf="boolRetur">
       <h4>Retur:</h4>
       <p>Strekning: {{retur.strekning}}</p>
       <p>Båt: {{retur.baat}}</p>

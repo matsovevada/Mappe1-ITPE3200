@@ -38,13 +38,13 @@ export class BillettComponent implements OnInit {
   }
 
   checkBilplass() {
-    if (this.billett.avgangBilplass) {
+    if (this.billett.bilplass) {
       this.avgangBilplass = "Ja"
     }
     else {
       this.avgangBilplass = "Nei"
     }
-    if (this.billett.returBilplass) {
+    if (this.billett.bilplassRetur) {
       this.returBilplass = "Ja"
     }
     else {

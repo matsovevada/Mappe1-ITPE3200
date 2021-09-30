@@ -112,17 +112,30 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         List<Lugarer> lug = new List<Lugarer>();
         innBillett.lugarer.ForEach(lugar => lug.Add((Lugarer)lugar));
 
-        List<Lugarer> lugRetur = new List<Lugarer>();
-        innBillett.lugarerRetur.ForEach(lugar => lugRetur.Add((Lugarer)lugar));
-
+        List<Lugarer> lugRetur;
         Billetter billett = new Billetter();
+
+        if (innBillett.lugarerRetur != null)
+        {
+          lugRetur = new List<Lugarer>();
+          innBillett.lugarerRetur.ForEach(lugar => lugRetur.Add((Lugarer)lugar));
+          billett.lugarerRetur = lugRetur;
+          billett.BilplassRetur = innBillett.Bilplass;
+          billett.AvgangIdRetur = innBillett.AvgangIdRetur;
+        }
+        else
+        {
+          billett.lugarerRetur = null;
+          billett.BilplassRetur = false;
+          billett.AvgangIdRetur = null;
+        }
+
+
+
         billett.AvgangId = innBillett.AvgangId;
-        billett.AvgangIdRetur = innBillett.AvgangIdRetur;
         billett.KundeId = innBillett.KundeId;
         billett.Bilplass = innBillett.Bilplass;
-        billett.BilplassRetur = innBillett.Bilplass;
         billett.lugarer = lug;
-        billett.lugarerRetur = lugRetur;
         billett.TotalPris = innBillett.TotalPris;
         _db.Billetter.Add(billett);
         await _db.SaveChangesAsync();

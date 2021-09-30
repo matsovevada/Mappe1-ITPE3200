@@ -29,10 +29,7 @@ export class visBillett {
   ngOnInit() {
     this.billettId = this._ActivatedRoute.snapshot.paramMap.get('id');
     this.hentBillett();
-    this.kundeId = this.billett.kundeId
-    this.hentKunde();
     this.hentAvgang();
-
     //if (this.billett.returId) {
     //  this.hentRetur();
     //}
@@ -44,6 +41,17 @@ export class visBillett {
         this.billett = hentetBillett;
         console.log("BIIIILLLLLL!!!!1");
         console.log(this.billett);
+
+        this.avgangsId = this.billett.avgangId;
+        this.hentAvgang();
+
+        if (this.billett.avgangIdRetur) {
+          this.returId = this.billett.avgangIdRetur;
+          this.hentRetur();
+        }
+
+        this.kundeId = this.billett.kundeId
+        this.hentKunde();
       },
         error => console.log(error)
       );
@@ -53,6 +61,8 @@ export class visBillett {
     this.http.get<Kunde>("api/Bestilling/hentKunde/" + this.kundeId).
       subscribe(kunde => {
         this.kunde = kunde;
+        console.log("KUNDE:")
+        console.log(this.kunde);
       },
         error => console.log(error)
       );
