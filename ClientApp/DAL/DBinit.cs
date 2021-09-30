@@ -25,14 +25,20 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       var strekning_OsloKobenhavn = new Strekninger
       {
         Fra = "Oslo",
-        Til = "Kobenhavn"
+        Til = "Kobenhavn",
+        strekingReturId = 0
       };
 
       var strekning_KobenhavnOslo = new Strekninger
       {
         Fra = "Kobenhavn",
-        Til = "Oslo"
+        Til = "Oslo",
+        strekingReturId = 0
       };
+
+      //Legger til returstrekninger
+      strekning_OsloKobenhavn.strekingReturId = strekning_KobenhavnOslo.Id;
+      strekning_KobenhavnOslo.strekingReturId = strekning_OsloKobenhavn.Id;
 
       db.Strekninger.Add(strekning_OsloKobenhavn);
       db.Strekninger.Add(strekning_KobenhavnOslo);
@@ -62,6 +68,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       lugarer.Add(lugar1);
       lugarer.Add(lugar2);
 
+      List<Lugarer> lugarer2 = new List<Lugarer>();
+      lugarer2.Add(lugar1);
+
       // Baater
 
       var baat1 = new Baater
@@ -71,27 +80,42 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         AntallBilplasser = 300
     };
 
-      db.Baater.Add(baat1);
+      var baat2 = new Baater
+      {
+        Navn = "Color Magic",
+        Lugarer = lugarer2,
+        AntallBilplasser = 50,
+      };
 
-      // Avganger
-      String date = DateTime.Now.ToString("dddd, dd MMMM yyy");
+      db.Baater.Add(baat1);
+      db.Baater.Add(baat2);
+
+      // Avganger 
+      DateTime date1 = new DateTime(2021, 11, 1, 11, 30, 0);
+      String date1String = date1.ToString();
+      long date1Ticks = date1.Ticks;
+
       var avgang1 = new Avganger
       {
         Strekning = strekning_OsloKobenhavn,
         Baat = baat1,
-        DatoTid = date,
+        DatoTid = date1String,
+        DatoTidTicks = date1Ticks,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = lugarer
+        LedigeLugarer = baat1.Lugarer,
       };
 
-      String date2 = "12/25/2015 12:00:00 AM";
+      DateTime date2 = new DateTime(2022, 11, 5, 11, 30, 0);
+      String date2String = date2.ToString();
+      long date2Ticks = date2.Ticks;
       var avgang2 = new Avganger
       {
         Strekning = strekning_KobenhavnOslo,
-        Baat = baat1,
-        DatoTid = date2,
-        AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = baat1.Lugarer,
+        Baat = baat2,
+        DatoTid = date2String,
+        DatoTidTicks = date2Ticks,
+        AntallLedigeBilplasser = baat2.AntallBilplasser,
+        LedigeLugarer = baat2.Lugarer,
       };
 
       db.Avganger.Add(avgang1);
