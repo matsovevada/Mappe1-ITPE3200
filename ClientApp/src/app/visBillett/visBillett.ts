@@ -6,6 +6,7 @@ import { Billett } from "../Billett";
 import { Avgang } from "../Avgang";
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router'
+import { Lugar } from "../Lugar";
 
 @Component({
   selector: 'visBillett',
@@ -21,18 +22,23 @@ export class visBillett {
   avgangsId: number;
   retur: Avgang;
   returId: number;
+  bestilteLugarer: Array<Lugar>;
+  bestilteLugarerRetur: Array<Lugar>;
+
+  avgangBilplass: String;
+  returBilplass: String;
+
+  visRetur: boolean = false;
 
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute, private location: Location) {
     
   }
 
+
   ngOnInit() {
     this.billettId = this._ActivatedRoute.snapshot.paramMap.get('id');
     this.hentBillett();
     this.hentAvgang();
-    //if (this.billett.returId) {
-    //  this.hentRetur();
-    //}
   }
 
   hentBillett() {
@@ -45,13 +51,19 @@ export class visBillett {
         this.avgangsId = this.billett.avgangId;
         this.hentAvgang();
 
-        if (this.billett.avgangIdRetur) {
+        if (this.billett.avgangIdRetur != null) {
           this.returId = this.billett.avgangIdRetur;
+          this.bestilteLugarerRetur = this.billett.lugarerRetur;
           this.hentRetur();
+          this.visRetur = true;
         }
 
         this.kundeId = this.billett.kundeId
         this.hentKunde();
+
+        this.bestilteLugarer = this.billett.lugarer;
+ 
+        this.checkBilplass();
       },
         error => console.log(error)
       );
@@ -69,20 +81,40 @@ export class visBillett {
   }
 
   hentAvgang() {
-    this.http.get<Avgang>("api/Bestilling/hentAvgang" + this.avgangsId).
+    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.avgangsId).
       subscribe(avgang => {
         this.avgang = avgang;
+        console.log("AVGANG!:")
+        console.log(this.avgang);
       },
         error => console.log(error)
     )
   }
 
   hentRetur() {
-    this.http.get<Avgang>("api/Bestilling/hentAvgang" + this.returId).
+    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.returId).
       subscribe(avgang => {
         this.retur = avgang;
+        console.log("RETUR!:")
+        console.log(this.retur);
       },
         error => console.log(error)
     )
+  }
+
+  checkBilplass() {
+    if (this.billett.bilplass) {
+      this.avgangBilplass = "Ja"
+    }
+    else {
+      this.avgangBilplass = "Nei"
+    }
+    if (this.billett.bilplassRetur) {
+      this.returBilplass = "Ja"
+    }
+    else {
+      this.returBilplass = "Nei"
+    }
+
   }
 }

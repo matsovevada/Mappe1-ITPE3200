@@ -1,36 +1,38 @@
-<div class="container" [(ngModel)]="billett" ngDefaultControl>
+<div class="container" ngDefaultControl>
   <h2>Billett</h2>
-  <div [(ngModel)]="kunde" class="col-md-6">
+  <div class="col-md-6">
     <h3>Kundeinformsajon:</h3>
     <p>Navn: {{kunde.fornavn}} {{kunde.etternavn}}</p>
     <p>Adresse: {{kunde.adresse}}</p>
-    <p>Poststed: {{kunde.postnummer}}, {{kunde.poststed}}</p>
+    <p>Poststed: {{kunde.poststed.postnr}}, {{kunde.poststed.poststed}}</p>
     <p>Telefon: {{kunde.telefonnummer}}</p>
     <p>Epost: {{kunde.epost}}</p>
   </div>
   <div class="col-md-6">
-    <div [(ngModel)]="avgang">
-      <h3>Avgangsinformasjon:</h3>
-      <h4 *ngIf="boolRetur">Tur:</h4>
-      <p>Strekning: {{avgang.strekning}}</p>
-      <p>Båt: {{avgang.baat}}</p>
-      <p>Dato: {{avgang.datoTid}}</p>
-      <p>Bilplass: {{avgangBilplass}}</p>
-      <p>FIKS Å SE VALGTE LUGARER</p>
-    </div>
-    <div [(ngModel)]="retur" *ngIf="boolRetur">
-      <h4>Retur:</h4>
-      <p>Strekning: {{retur.strekning}}</p>
-      <p>Båt: {{retur.baat}}</p>
-      <p>Dato: {{retur.datoTid}}</p>
-      <p>Bilplass: {{returBilplass}}</p>
-      <p>FIKS Å SE VALGTE LUGARER</p>
+      <div>
+        <h3>Avgangsinformasjon:</h3>
+        <h4>Tur:</h4>
+        <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
+        <p>Båt: {{avgang.baat.navn}}</p>
+        <p>Dato: {{avgang.datoTid}}</p>
+        <p>Bilplass: {{avgangBilplass}}</p>
+        <ul>
+            <li *ngFor="let lugar of bestilteLugarer">{{lugar.navn}} ({{lugar.pris}})</li>
+        </ul>
+      </div>
+    <div *ngIf="visRetur">
+        <h4>Retur:</h4>
+        <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
+        <p>Båt: {{avgang.baat.navn}}</p>
+        <p>Dato: {{retur.datoTid}}</p>
+        <p>Bilplass: {{returBilplass}}</p>
+        <ul>
+            <li *ngFor="let lugar of bestilteLugarerRetur">{{lugar.navn}} ({{lugar.pris}})</li>
+        </ul>
     </div>
     <div>
       <h4>Tilleggsinformasjon:</h4>
       <p>TOTALPRIS: {{billett.totalPris}}</p>
-      <h1>JA, VI VIL PÅ CRUISE PETER :)</h1>
-      <h1>DET ER JO SÅ BILLIG :O</h1>
     </div>
   </div>
 </div>
