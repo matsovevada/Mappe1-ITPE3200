@@ -26,13 +26,11 @@ export class visBillett {
     
   }
 
+
   ngOnInit() {
     this.billettId = this._ActivatedRoute.snapshot.paramMap.get('id');
     this.hentBillett();
     this.hentAvgang();
-    //if (this.billett.returId) {
-    //  this.hentRetur();
-    //}
   }
 
   hentBillett() {
