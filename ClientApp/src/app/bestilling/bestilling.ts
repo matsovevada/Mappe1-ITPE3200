@@ -13,7 +13,6 @@ export class Bestilling {
   alleStrekninger: Array<Strekning>;
   strekning: String;
   avgangValgtDatoTidTicks: number;
-  avgangID: String;
   laster: boolean;
   strekningValgt: boolean = false;
   valgtAvgang: boolean = false;
@@ -40,12 +39,8 @@ export class Bestilling {
         this.alleAvganger = avgangene;
         this.laster = false;
 
-        this.avgangID = avgangene[0].id.toString();
+        this.avgangId = avgangene[0].id.toString();
         this.avgangValgtDatoTidTicks = avgangene[0].datoTidTicks;
-
-        console.log("avgangChange")
-        console.log(this.avgangID);
-        console.log(this.avgangValgtDatoTidTicks);
       },
         error => console.log(error)
       );
@@ -70,16 +65,11 @@ export class Bestilling {
   }
 
   toggleValgtAvgang() {
-    console.log("TRYKKET!");
     this.valgtAvgang = true;
 
     let avgangValgt = JSON.parse((<HTMLSelectElement>document.getElementById('avgang')).value);
-    this.avgangID = avgangValgt['id'];
+    this.avgangId = avgangValgt['id'];
     this.avgangValgtDatoTidTicks = avgangValgt['datoTidTicks'];
-
-    console.log("avgangChange")
-    console.log(this.avgangID);
-    console.log(this.avgangValgtDatoTidTicks);
   }
 
 
@@ -93,10 +83,6 @@ export class Bestilling {
 
         this.avgangIdRetur = avgangene[0].id.toString();
         this.avgangValgtReturDatoTidTicks = avgangene[0].datoTidTicks;
-
-        console.log("avgangChangeRetur")
-        console.log(this.avgangIdRetur);
-        console.log(this.avgangValgtReturDatoTidTicks);
       },
         error => console.log(error)
       );
@@ -108,21 +94,15 @@ export class Bestilling {
   }
 
   toggleValgtRetur() {
-    console.log("TRYKKET CHECKBOX!!!");
     this.valgtRetur = !this.valgtRetur;
   }
 
 
   toggleValgtAvgangRetur() {
-    console.log("TRYKKET!");
     this.valgtAvgangRetur = true;
 
     let avgangValgt = JSON.parse((<HTMLSelectElement>document.getElementById('avgangRetur')).value);
     this.avgangIdRetur = avgangValgt['id'];
     this.avgangValgtReturDatoTidTicks = avgangValgt['datoTidTicks'];
-
-    console.log("avgangChangerRetur")
-    console.log(this.avgangIdRetur);
-    console.log(this.avgangValgtReturDatoTidTicks);
   }
 }
