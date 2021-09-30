@@ -107,9 +107,6 @@ export class LugarValg implements OnInit {
     else return true;
   }
 
-  gaaTilKvittering() {
-    alert(this.sjekkPersonerSengeplasser());
-  }
 
   changeBilplass() {
     this.billett.bilplass = this.valgtBilplass;
@@ -131,8 +128,11 @@ export class LugarValg implements OnInit {
       console.log("Retur skal bestilles")
       this.billett.avgangIdRetur = Number(this.avgangsIDRetur);
       this.returValgt = true
-    };
-  
+    }; 
+  }
+
+  settAntallPersoner() {
+    this.billett.antallPersoner = this.personer;
   }
 
 }

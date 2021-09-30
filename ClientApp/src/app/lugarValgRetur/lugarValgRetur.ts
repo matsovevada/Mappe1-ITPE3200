@@ -122,5 +122,9 @@ export class LugarValgRetur implements OnInit {
     }
   }
 
+  settAntallPersoner() {
+    this.billett.antallPersonerRetur = this.personer;
+  }
+
 
 }

@@ -10,26 +10,28 @@
   </div>
   <div class="col-md-6">
       <div>
-        <h3>Avgangsinformasjon:</h3>
-        <h4>Tur:</h4>
-        <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
-        <p>Båt: {{avgang.baat.navn}}</p>
-        <p>Dato: {{avgang.datoTid}}</p>
-        <p>Bilplass: {{avgangBilplass}}</p>
-        <ul>
-            <li *ngFor="let lugar of bestilteLugarer">{{lugar.navn}} ({{lugar.pris}})</li>
-        </ul>
+          <h3>Avgangsinformasjon:</h3>
+          <h4>Tur:</h4>
+          <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
+          <p>Båt: {{avgang.baat.navn}}</p>
+          <p>Dato: {{avgang.datoTid}}</p>
+          <p>Antall personer: {{billett.antallPersoner}}</p>
+          <p>Bilplass: {{avgangBilplass}}</p>
+          <ul>
+              <li *ngFor="let lugar of bestilteLugarer">{{lugar.navn}} ({{lugar.pris}})</li>
+          </ul>
       </div>
-    <div *ngIf="visRetur">
-        <h4>Retur:</h4>
-        <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
-        <p>Båt: {{avgang.baat.navn}}</p>
-        <p>Dato: {{retur.datoTid}}</p>
-        <p>Bilplass: {{returBilplass}}</p>
-        <ul>
-            <li *ngFor="let lugar of bestilteLugarerRetur">{{lugar.navn}} ({{lugar.pris}})</li>
-        </ul>
-    </div>
+      <div *ngIf="visRetur">
+          <h4>Retur:</h4>
+          <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
+          <p>Båt: {{avgang.baat.navn}}</p>
+          <p>Dato: {{retur.datoTid}}</p>
+          <p>Antall personer: {{billett.antallPersonerRetur}}</p>
+          <p>Bilplass: {{returBilplass}}</p>
+          <ul>
+              <li *ngFor="let lugar of bestilteLugarerRetur">{{lugar.navn}} ({{lugar.pris}})</li>
+          </ul>
+      </div>
     <div>
       <h4>Tilleggsinformasjon:</h4>
       <p>TOTALPRIS: {{billett.totalPris}}</p>
