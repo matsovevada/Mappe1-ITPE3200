@@ -101,7 +101,13 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       {
         return -1;
       }
+    }
 
+    [HttpGet]
+    public async Task<Kunder> HentKunde(int id)
+    {
+      Kunder kunde = await _db.Kunder.FindAsync(id);
+      return kunde;
     }
 
     [HttpPost]
