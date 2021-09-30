@@ -31,6 +31,7 @@ export class BillettComponent implements OnInit {
   checkRetur() {
     if (this.retur) {
       this.boolRetur = true;
+
     }
     else {
       this.boolRetur = false;

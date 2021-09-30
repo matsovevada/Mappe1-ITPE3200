@@ -101,7 +101,13 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       {
         return -1;
       }
+    }
 
+    [HttpGet]
+    public async Task<Kunder> HentKunde(int id)
+    {
+      Kunder kunde = await _db.Kunder.FindAsync(id);
+      return kunde;
     }
 
     [HttpPost]
@@ -123,18 +129,21 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
           billett.lugarerRetur = lugRetur;
           billett.BilplassRetur = innBillett.Bilplass;
           billett.AvgangIdRetur = innBillett.AvgangIdRetur;
+          billett.AntallPersonerRetur = innBillett.AntallPersonerRetur;
         }
         else
         {
           billett.lugarerRetur = null;
           billett.BilplassRetur = false;
           billett.AvgangIdRetur = null;
+          billett.AntallPersonerRetur = null;
         }
 
 
 
         billett.AvgangId = innBillett.AvgangId;
         billett.KundeId = innBillett.KundeId;
+        billett.AntallPersoner = innBillett.AntallPersoner;
         billett.Bilplass = innBillett.Bilplass;
         billett.lugarer = lug;
         billett.TotalPris = innBillett.TotalPris;

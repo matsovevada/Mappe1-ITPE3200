@@ -40,14 +40,14 @@
                 <label>Epost</label>
                 <input class="form-control" formControlName="epost" />
                 <p class="alert alert-warning" [hidden]="kundeSkjema.controls.epost.valid || (kundeSkjema.controls.epost.pristine && !submitted)">
-                    Fyll inn epost
+                    Fyll inn en gyldig epost (kun små bokstaver)
                 </p>
             </div>
             <div class="form-group">
                 <label>Telefonnummer</label>
                 <input class="form-control" formControlName="tlf" />
                 <p class="alert alert-warning" [hidden]="kundeSkjema.controls.tlf.valid || (kundeSkjema.controls.tlf.pristine && !submitted)">
-                    Fyll inn telefonnummer
+                    Fyll inn telefonnummer (8 siffer)
                 </p>
             </div>
             <div class="form-group">

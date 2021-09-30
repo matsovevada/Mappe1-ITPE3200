@@ -36,10 +36,10 @@ export class KundeForm implements OnInit {
       null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
     ],
     epost: [
-      null, Validators.compose([Validators.required, Validators.pattern("")])
+      null, Validators.compose([Validators.required, Validators.pattern("[a-z0-9!#$ %& '*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")])
     ],
     tlf: [
-      null, Validators.compose([Validators.required, Validators.pattern("")])
+      null, Validators.compose([Validators.required, Validators.pattern("[0-9]{8}")])
     ],
   }
 

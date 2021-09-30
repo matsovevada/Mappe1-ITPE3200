@@ -92,6 +92,15 @@ namespace Mappe1_ITPE3200.Controllers
         }
 
 
+        [HttpGet("{id}")]
+        [ActionName("hentKunde")]
+        public async Task<Kunder> hentKunde(int id)
+        {
+            Kunder kunde = await _db.HentKunde(id);
+            return kunde;
+        }
+
+
 
         [HttpPost]
         [ActionName("lagreBillett")]
