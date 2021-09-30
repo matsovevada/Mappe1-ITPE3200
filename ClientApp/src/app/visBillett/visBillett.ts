@@ -67,18 +67,22 @@ export class visBillett {
   }
 
   hentAvgang() {
-    this.http.get<Avgang>("api/Bestilling/hentAvgang" + this.avgangsId).
+    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.avgangsId).
       subscribe(avgang => {
         this.avgang = avgang;
+        console.log("AVGANG!:")
+        console.log(this.avgang);
       },
         error => console.log(error)
     )
   }
 
   hentRetur() {
-    this.http.get<Avgang>("api/Bestilling/hentAvgang" + this.returId).
+    this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.returId).
       subscribe(avgang => {
         this.retur = avgang;
+        console.log("RETUR!:")
+        console.log(this.retur);
       },
         error => console.log(error)
     )
