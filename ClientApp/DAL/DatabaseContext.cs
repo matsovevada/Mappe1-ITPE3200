@@ -113,7 +113,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   {
       [Key]
       public int Id { get; set; }
-      public int strekingReturId { get; set; }
       public string Fra { get; set; }
       public string Til { get; set; }
   }
