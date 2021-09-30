@@ -1,8 +1,9 @@
 <div id="billett">
   <h2>Billett</h2>
-  
-  <div [(ngModel)]="billett" ngDefaultControl>
-      Bilplass : {{billett.bilplass}}
-      Pris : {{billett.totalPris}}
-  </div>
+  <billett
+    [billett]="billett"
+    [kunde]="kunde"
+    [avgang]="avgang"
+    [retur]="retur">
+  </billett>
 </div>

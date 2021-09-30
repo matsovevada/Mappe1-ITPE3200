@@ -14,6 +14,7 @@ import { LugarValgRetur } from './lugarValgRetur/lugarValgRetur';
 import { visBillett } from './visBillett/visBillett';
 import { LugarComponent } from './lugarComponent/lugarComponent';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BillettComponent } from './billettComponent/billettComponent'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     LugarValg,
     LugarValgRetur,
     visBillett,
-    LugarComponent
+    LugarComponent,
+    BillettComponent
   ],
 
   imports: [
