@@ -347,7 +347,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         LedigeLugarer = baat4.Lugarer,
       };
 
-      DateTime date14 = new DateTime(2021, 07, 6, 11, 30, 0);
+      DateTime date14 = new DateTime(2021, 06, 6, 11, 30, 0);
       String date14String = date14.ToString();
       long date14Ticks = date14.Ticks;
       var avgang14 = new Avganger
