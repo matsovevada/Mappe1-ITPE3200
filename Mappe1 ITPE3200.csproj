@@ -40,14 +40,12 @@
     <None Remove="ClientApp\src\app\lugarComponent\lugarComponent.ts" />
     <None Remove="ClientApp\src\app\lugarValg\lugarValg.ts" />
     <None Remove="ClientApp\src\app\Strekning.ts" />
-    <None Remove="ClientApp\src\app\strekning\dropdownStrekning.ts" />
     <None Remove="ClientApp\src\app\test\test.ts" />
     <None Remove="ClientApp\src\app\tilpassBestilling\tilpassBestilling.ts" />
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="Controllers\" />
     <None Remove="ClientApp\DAL\" />
-    <None Remove="ClientApp\src\app\velgDato\" />
     <None Remove="ClientApp\src\app\kundeForm\" />
     <None Remove="ClientApp\src\app\visBillett\" />
     <None Remove="ClientApp\src\app\lugarValgRetur\" />
@@ -55,7 +53,6 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\DAL\" />
-    <Folder Include="ClientApp\src\app\velgDato\" />
     <Folder Include="ClientApp\src\app\kundeForm\" />
     <Folder Include="ClientApp\src\app\visBillett\" />
     <Folder Include="Logs\" />
@@ -64,7 +61,6 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\Strekning.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\strekning\dropdownStrekning.ts" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

@@ -69,17 +69,15 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         kunde.Adresse = innKunde.Adresse;
         kunde.Epost = innKunde.Epost;
         kunde.Telefonnummer = innKunde.Telefonnummer;
-        Console.WriteLine("TEST1");
-        Console.WriteLine(innKunde.Poststed);
 
+        /*Sjekker om postnummer finnes i DB fra før. Poststed (postnr + poststed) lagres i DB og settes til kunde. Hvis postnummer
+        finnes settes kundes poststed til det som ligger i DB fra før. */
         var sjekkPostnr = await _db.Poststeder.FindAsync(innKunde.Postnr);
         if (sjekkPostnr == null)
         {
-          Console.WriteLine("HERRR!");
           var nyttPoststed = new Poststeder();
           nyttPoststed.Poststed = innKunde.Poststed;
           nyttPoststed.Postnr = innKunde.Postnr;
-          Console.WriteLine(nyttPoststed.Poststed);
           _db.Poststeder.Add(nyttPoststed);
           await _db.SaveChangesAsync();
 
@@ -115,13 +113,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     {
       try
       {
-        //Kopierer innListe til ny liste av type Lugarer.
+        //Kopierer innListe til ny liste av type Lugarer. Metoden tar inn type Lugar og må konverteres (castes) til Lugarer.
         List<Lugarer> lug = new List<Lugarer>();
         innBillett.lugarer.ForEach(lugar => lug.Add((Lugarer)lugar));
 
         List<Lugarer> lugRetur;
         Billetter billett = new Billetter();
 
+        //Setter returfelter hvis billetten er bestilt med retur
         if (innBillett.lugarerRetur != null)
         {
           lugRetur = new List<Lugarer>();
@@ -138,8 +137,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
           billett.AvgangIdRetur = null;
           billett.AntallPersonerRetur = null;
         }
-
-
 
         billett.AvgangId = innBillett.AvgangId;
         billett.KundeId = innBillett.KundeId;
@@ -164,6 +161,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       return billett;
     }
 
+
+    //Setter antall ledige bilplasser for avgangen
     public async Task<bool> DecrementBilplass(int id)
     {
       try
@@ -179,6 +178,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       }
     }
 
+    //Setter antall ledige lugarer for avgangen
     public async Task<bool> OppdaterAntallLedigeLugarer(int id, List<Lugar> lugarer)
     {
       try
@@ -206,43 +206,3 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     }
   }
 }
-
-
-
-
-
-//Alt søke metode, filter etter 
-//new Avganger
-//{
-//  Id = a.Id,
-//  Strekning = a.Strekning,
-//  Baat = a.Baat,
-//  DatoTid = a.DatoTid,
-//  AntallLedigeBilplasser = a.AntallLedigeBilplasser,
-//  LedigeLugarer = a.LedigeLugarer,
-//}).ToListAsync();
-
-//alleAvganger.
-
-//alt 2, hvis models skal brukes
-// Strekning = new Strekninger
-//        {
-//          Id = a.Strekning.Id,
-//          Fra = a.Strekning.Fra,
-//          Til = a.Strekning.Til
-//        },
-//        Baat = new Baater
-//        {
-//          Id = a.Baat.Id,
-//          Navn = a.Baat.Navn,
-//          Lugarer = new List<Lugar>()
-//          {
-
-//          },
-//          AntallBilplasser = a.Baat.AntallBilplasser
-//        },
-//        DatoTid = a.DatoTid,
-//        AntallLedigeBilplasser = a.AntallLedigeBilplasser,
-//        LedigeLugarer = new List<Lugar>()
-//      }).ToListAsync();
-///*

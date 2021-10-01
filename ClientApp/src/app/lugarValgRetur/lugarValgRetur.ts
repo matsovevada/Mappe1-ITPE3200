@@ -27,14 +27,13 @@ export class LugarValgRetur implements OnInit {
   BILPLASS_PRIS: number = 500;
 
   constructor(private http: HttpClient, private router: Router, private location: Location) {
+    /* Billett objektet blir sendt inn og felter knyttet til retursettes */
     this.billett = this.router.getCurrentNavigation().extras.state.billett;
     this.lugarerTotalPris = this.billett.totalPris;
   }
 
   ngOnInit() {
     this.laster = true;
-    console.log("BILLLETTT!");
-    console.log(this.billett);
     this.hentValgtAvgang();
     this.valgteLugarer = [];
     this.billett.antallPersonerRetur = 1;
@@ -44,7 +43,6 @@ export class LugarValgRetur implements OnInit {
     console.log(this.billett.avgangIdRetur);
     this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.billett.avgangIdRetur)
       .subscribe(avgang => {
-        console.log(avgang)
         this.valgtAvgang = avgang;
         this.alleLugarer = this.valgtAvgang.ledigeLugarer;
         this.laster = false;
@@ -103,9 +101,6 @@ export class LugarValgRetur implements OnInit {
     else return true;
   }
 
-  gaaTilKvittering() {
-    alert(this.sjekkPersonerSengeplasser());
-  }
 
   changeBilplass() {
     this.billett.bilplassRetur = this.valgtBilplass;
