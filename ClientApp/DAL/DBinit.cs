@@ -83,99 +83,115 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal1
       string Navn = "Suite";
-      string Beskrivelse = "Lorem ipsum sit...";
+      string Beskrivelse = "Veldig stort rom med totalt 8 sengeplasser. Passer for en stor familie. Utstyrt med piano, boblebad og gratis minibar.";
       int AntallSengeplasser = 8;
-      int Antall = 20;
-      int AntallLedige = 20;
-      int Pris = 1200;
+      int Antall = 5;
+      int AntallLedige = 5;
+      int Pris = 7500;
 
       // mal2
       string Navn1 = "Balkong lugar";
-      string Beskrivelse1 = "Lorem ipsum...";
+      string Beskrivelse1 = "Lugar med flott sjøutsikt. Denne lugartypen har totalt 4 sengeplasser og er ideel for en vennegruppe eller liten familie.";
       int AntallSengeplasser1 = 4;
-      int Antall1 = 10;
-      int AntallLedige1 = 10;
-      int Pris1 = 2400;
+      int Antall1 = 75;
+      int AntallLedige1 = 75;
+      int Pris1 = 1500;
 
       // mal3
       string Navn2 = "Innvendig lugar";
-        string Beskrivelse2 = "Lorem ipsum...";
+        string Beskrivelse2 = "Vår BILLIGSTE alternativ. Liten lugar med 2 sengeplasser.";
         int AntallSengeplasser2 = 2;
-        int Antall2 = 15;
-        int AntallLedige2 = 15;
-        int Pris2 = 599;
+        int Antall2 = 150;
+        int AntallLedige2 = 150;
+        int Pris2 = 400;
 
       // mal4
       string Navn3 = "Familielugar";
-      string Beskrivelse3 = "Lorem ipsum...";
+      string Beskrivelse3 = "Den perfekte lugaren for familier! Har totalt 6 sengeplasser og utsikt til sjøen.";
       int AntallSengeplasser3 = 6;
       int Antall3 = 40;
       int AntallLedige3 = 40;
-      int Pris3 = 800;
+      int Pris3 = 1000;
   
       List<Lugarer> lugarer = new List<Lugarer>();
-      lugarer.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
+      lugarer.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
 
       List<Lugarer> lugarer2 = new List<Lugarer>();
-      lugarer2.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer2.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer2.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer2.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
+      lugarer2.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
 
       List<Lugarer> lugarer3 = new List<Lugarer>();
-      lugarer3.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer3.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer3.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer3.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
+      lugarer3.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
 
       List<Lugarer> lugarer4 = new List<Lugarer>();
-      lugarer4.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer4.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer4.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer4.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
+      lugarer4.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
 
       List<Lugarer> lugarer5 = new List<Lugarer>();
-      lugarer5.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer5.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer5.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer5.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer5.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
 
       List<Lugarer> lugarer6 = new List<Lugarer>();
-      lugarer6.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer6.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer6.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer6.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer6.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
 
       List<Lugarer> lugarer7 = new List<Lugarer>();
-      lugarer7.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer7.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer7.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer7.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer7.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
 
       List<Lugarer> lugarer8 = new List<Lugarer>();
-      lugarer8.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer8.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer8.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer8.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer8.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
 
       List<Lugarer> lugarer9 = new List<Lugarer>();
-      lugarer9.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer9.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer9.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
+      lugarer9.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer9.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
 
       List<Lugarer> lugarer10 = new List<Lugarer>();
-      lugarer10.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer10.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer10.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
+      lugarer10.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer10.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
 
       List<Lugarer> lugarer11 = new List<Lugarer>();
-      lugarer11.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer11.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer11.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
+      lugarer11.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer11.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
 
       List<Lugarer> lugarer12 = new List<Lugarer>();
-      lugarer12.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer12.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer12.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
+      lugarer12.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
+      lugarer12.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
 
       List<Lugarer> lugarer13 = new List<Lugarer>();
-      lugarer13.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer13.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer13.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer13.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
+      lugarer13.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
 
       List<Lugarer> lugarer14 = new List<Lugarer>();
-      lugarer14.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer14.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer14.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer14.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
+      lugarer14.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
 
       List<Lugarer> lugarer15 = new List<Lugarer>();
-      lugarer15.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer15.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer15.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer15.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
+      lugarer15.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
 
       List<Lugarer> lugarer16 = new List<Lugarer>();
-      lugarer16.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
-      lugarer16.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+      lugarer16.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer16.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
+      lugarer16.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
 
       // Baater
 
