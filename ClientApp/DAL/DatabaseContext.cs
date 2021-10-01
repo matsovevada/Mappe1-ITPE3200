@@ -70,15 +70,19 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       public int AntallLedige { get; set; }
       public int Pris { get; set; }
 
+    public Lugarer(string Navn, string Beskrivelse, int AntallSengeplasser, int Antall, int AntallLedige, int Pris)
+    {
+      this.Navn = Navn;
+      this.Beskrivelse = Beskrivelse;
+      this.AntallSengeplasser = AntallSengeplasser;
+      this.Antall = Antall;
+      this.AntallLedige = AntallLedige;
+      this.Pris = Pris;
+    }
+
     public static explicit operator Lugarer(Lugar v)
     {
-      Lugarer lug = new Lugarer();
-      lug.Navn = v.Navn;
-      lug.Beskrivelse = v.Beskrivelse;
-      lug.AntallSengeplasser = v.AntallSengeplasser;
-      lug.Antall = v.Antall;
-      lug.AntallLedige = v.Antall;
-      lug.Pris = v.Pris;
+      Lugarer lug = new Lugarer(v.Navn, v.Beskrivelse, v.AntallSengeplasser, v.Antall, v.AntallLedige, v.Pris);
       return lug;
     }
   }

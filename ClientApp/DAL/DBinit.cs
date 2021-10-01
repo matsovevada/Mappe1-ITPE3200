@@ -79,67 +79,103 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       db.Strekninger.Add(strekning_StavangerGeiranger);
       db.Strekninger.Add(strekning_GeirangerStavanger);
 
-      // Lugarer
-      var lugar1 = new Lugarer
-      {
-        Navn = "Suite",
-        Beskrivelse = "Lorem ipsum sit...",
-        AntallSengeplasser = 8,
-        Antall = 20,
-        AntallLedige = 20,
-        Pris = 1200
-      };
+      // Lugarer-maler
 
-      var lugar2 = new Lugarer
-      {
-        Navn = "Balkong lugar",
-        Beskrivelse = "Lorem ipsum...",
-        AntallSengeplasser = 4,
-        Antall = 10,
-        AntallLedige = 10,
-        Pris = 2400
-      };
+      // mal1
+      string Navn = "Suite";
+      string Beskrivelse = "Lorem ipsum sit...";
+      int AntallSengeplasser = 8;
+      int Antall = 20;
+      int AntallLedige = 20;
+      int Pris = 1200;
 
-      var lugar3 = new Lugarer
-      {
-        Navn = "Innvendig lugar",
-        Beskrivelse = "Lorem ipsum...",
-        AntallSengeplasser = 2,
-        Antall = 15,
-        AntallLedige = 15,
-        Pris = 599
-      };
+      // mal2
+      string Navn1 = "Balkong lugar";
+      string Beskrivelse1 = "Lorem ipsum...";
+      int AntallSengeplasser1 = 4;
+      int Antall1 = 10;
+      int AntallLedige1 = 10;
+      int Pris1 = 2400;
 
-      var lugar4 = new Lugarer
-      {
-        Navn = "Familielugar",
-        Beskrivelse = "Lorem ipsum...",
-        AntallSengeplasser = 6,
-        Antall = 40,
-        AntallLedige = 40,
-        Pris = 800
-      };
+      // mal3
+      string Navn2 = "Innvendig lugar";
+        string Beskrivelse2 = "Lorem ipsum...";
+        int AntallSengeplasser2 = 2;
+        int Antall2 = 15;
+        int AntallLedige2 = 15;
+        int Pris2 = 599;
 
-
+      // mal4
+      string Navn3 = "Familielugar";
+      string Beskrivelse3 = "Lorem ipsum...";
+      int AntallSengeplasser3 = 6;
+      int Antall3 = 40;
+      int AntallLedige3 = 40;
+      int Pris3 = 800;
+  
       List<Lugarer> lugarer = new List<Lugarer>();
-      lugarer.Add(lugar1);
-      lugarer.Add(lugar2);
-      lugarer.Add(lugar3);
+      lugarer.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
 
       List<Lugarer> lugarer2 = new List<Lugarer>();
-      lugarer2.Add(lugar3);
-      lugarer2.Add(lugar2);
-      lugarer2.Add(lugar4);
+      lugarer2.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer2.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
 
       List<Lugarer> lugarer3 = new List<Lugarer>();
-      lugarer3.Add(lugar1);
-      lugarer3.Add(lugar3);
-      lugarer3.Add(lugar4);
+      lugarer3.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer3.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
 
       List<Lugarer> lugarer4 = new List<Lugarer>();
-      lugarer4.Add(lugar1);
-      lugarer4.Add(lugar2);
-      lugarer4.Add(lugar4);
+      lugarer4.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer4.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer5 = new List<Lugarer>();
+      lugarer5.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer5.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer6 = new List<Lugarer>();
+      lugarer6.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer6.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer7 = new List<Lugarer>();
+      lugarer7.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer7.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer8 = new List<Lugarer>();
+      lugarer8.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer8.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer9 = new List<Lugarer>();
+      lugarer9.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer9.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer10 = new List<Lugarer>();
+      lugarer10.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer10.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer11 = new List<Lugarer>();
+      lugarer11.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer11.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer12 = new List<Lugarer>();
+      lugarer12.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer12.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer13 = new List<Lugarer>();
+      lugarer13.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer13.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer14 = new List<Lugarer>();
+      lugarer14.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer14.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer15 = new List<Lugarer>();
+      lugarer15.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer15.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
+
+      List<Lugarer> lugarer16 = new List<Lugarer>();
+      lugarer16.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris1));
+      lugarer16.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser, Antall1, AntallLedige1, Pris));
 
       // Baater
 
@@ -188,7 +224,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date1String,
         DatoTidTicks = date1Ticks,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = baat1.Lugarer,
+        LedigeLugarer = lugarer,
       };
 
       DateTime date2 = new DateTime(2021, 11, 5, 11, 30, 0);
@@ -201,7 +237,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date2String,
         DatoTidTicks = date2Ticks,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = baat1.Lugarer,
+        LedigeLugarer = lugarer2,
       };
 
       DateTime date3 = new DateTime(2021, 12, 23, 11, 30, 0);
@@ -214,7 +250,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date3String,
         DatoTidTicks = date3Ticks,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = baat1.Lugarer,
+        LedigeLugarer = lugarer3,
       };
 
       DateTime date4 = new DateTime(2021, 12, 27, 11, 30, 0);
@@ -227,7 +263,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date4String,
         DatoTidTicks = date4Ticks,
         AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = baat1.Lugarer,
+        LedigeLugarer = lugarer4,
       };
 
       DateTime date5 = new DateTime(2021, 08, 29, 11, 30, 0);
@@ -240,7 +276,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date5String,
         DatoTidTicks = date5Ticks,
         AntallLedigeBilplasser = baat2.AntallBilplasser,
-        LedigeLugarer = baat2.Lugarer,
+        LedigeLugarer = lugarer5,
       };
 
       DateTime date6 = new DateTime(2021, 09, 2, 11, 30, 0);
@@ -253,7 +289,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date6String,
         DatoTidTicks = date6Ticks,
         AntallLedigeBilplasser = baat2.AntallBilplasser,
-        LedigeLugarer = baat2.Lugarer,
+        LedigeLugarer = lugarer6,
       };
 
       DateTime date7 = new DateTime(2022, 5, 11, 11, 30, 0);
@@ -266,7 +302,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date7String,
         DatoTidTicks = date7Ticks,
         AntallLedigeBilplasser = baat2.AntallBilplasser,
-        LedigeLugarer = baat2.Lugarer,
+        LedigeLugarer = lugarer7,
       };
 
       DateTime date8 = new DateTime(2022, 5, 13, 11, 30, 0);
@@ -279,7 +315,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date8String,
         DatoTidTicks = date8Ticks,
         AntallLedigeBilplasser = baat2.AntallBilplasser,
-        LedigeLugarer = baat2.Lugarer,
+        LedigeLugarer = lugarer8,
       };
 
       DateTime date9 = new DateTime(2021, 02, 28, 11, 30, 0);
@@ -292,7 +328,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date9String,
         DatoTidTicks = date9Ticks,
         AntallLedigeBilplasser = baat3.AntallBilplasser,
-        LedigeLugarer = baat3.Lugarer,
+        LedigeLugarer = lugarer9,
       };
 
       DateTime date10 = new DateTime(2021, 03, 4, 11, 30, 0);
@@ -305,7 +341,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date10String,
         DatoTidTicks = date10Ticks,
         AntallLedigeBilplasser = baat3.AntallBilplasser,
-        LedigeLugarer = baat3.Lugarer,
+        LedigeLugarer = lugarer10,
       };
 
       DateTime date11 = new DateTime(2021, 12, 15, 11, 30, 0);
@@ -318,7 +354,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date11String,
         DatoTidTicks = date11Ticks,
         AntallLedigeBilplasser = baat3.AntallBilplasser,
-        LedigeLugarer = baat3.Lugarer,
+        LedigeLugarer = lugarer11,
       };
 
       DateTime date12 = new DateTime(2021, 12, 20, 11, 30, 0);
@@ -331,7 +367,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date12String,
         DatoTidTicks = date12Ticks,
         AntallLedigeBilplasser = baat3.AntallBilplasser,
-        LedigeLugarer = baat3.Lugarer,
+        LedigeLugarer = lugarer12,
       };
 
       DateTime date13 = new DateTime(2021, 06, 1, 11, 30, 0);
@@ -344,7 +380,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date13String,
         DatoTidTicks = date13Ticks,
         AntallLedigeBilplasser = baat4.AntallBilplasser,
-        LedigeLugarer = baat4.Lugarer,
+        LedigeLugarer = lugarer13,
       };
 
       DateTime date14 = new DateTime(2021, 06, 6, 11, 30, 0);
@@ -357,7 +393,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date14String,
         DatoTidTicks = date14Ticks,
         AntallLedigeBilplasser = baat4.AntallBilplasser,
-        LedigeLugarer = baat4.Lugarer,
+        LedigeLugarer = lugarer14,
       };
 
       DateTime date15 = new DateTime(2021, 06, 5, 11, 30, 0);
@@ -370,7 +406,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date15String,
         DatoTidTicks = date15Ticks,
         AntallLedigeBilplasser = baat4.AntallBilplasser,
-        LedigeLugarer = baat4.Lugarer,
+        LedigeLugarer = lugarer15,
       };
 
       DateTime date16 = new DateTime(2021, 06, 10, 11, 30, 0);
@@ -383,7 +419,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTid = date16String,
         DatoTidTicks = date16Ticks,
         AntallLedigeBilplasser = baat4.AntallBilplasser,
-        LedigeLugarer = baat4.Lugarer,
+        LedigeLugarer = lugarer16,
       };
 
       db.Avganger.Add(avgang1);
