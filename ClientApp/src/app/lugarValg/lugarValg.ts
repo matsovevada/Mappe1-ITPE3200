@@ -29,6 +29,7 @@ export class LugarValg implements OnInit {
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    /* Tar inn avgangsID(er)*/
     this.avgangsID = this._ActivatedRoute.snapshot.paramMap.get('avgang1');
     this.avgangsIDRetur = this._ActivatedRoute.snapshot.paramMap.get('avgang2');
 
@@ -39,11 +40,12 @@ export class LugarValg implements OnInit {
     this.laster = true;
     this.hentValgtAvgang();
     this.valgteLugarer = [];
-    this.billett = new Billett();
+    this.billett = new Billett(); 
     this.billett.avgangId = Number(this.avgangsID);
     this.sjekkOmReturSkalBestilles();
   }
 
+  /* Henter avgangen for å vise lugarer på bestillingssider */
   hentValgtAvgang() {
     console.log(this.avgangsID);
     this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.avgangsID)
@@ -123,9 +125,9 @@ export class LugarValg implements OnInit {
     }
   }
 
+  /* Hvis retur er valgt skal bruker redirctes til lugerValg for retur. Verdien som avgjør dette settes her  */
   sjekkOmReturSkalBestilles() {
     if (this.avgangsIDRetur != "undefined") {
-      console.log("Retur skal bestilles")
       this.billett.avgangIdRetur = Number(this.avgangsIDRetur);
       this.returValgt = true
     }; 

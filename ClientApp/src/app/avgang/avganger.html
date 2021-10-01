@@ -1,8 +1,0 @@
-<div class="container">
-  <div class="col-md-4" id="strekning">
-    <div *ngIf="!strekningValgt"></div>
-    <select (change)="skrivUt()">>
-      <option *ngFor="let avgang of alleAvganger" value="{{avgang.id}}" id="avgang">{{avgang.id}}</option>
-    </select>
-  </div>
-</div>

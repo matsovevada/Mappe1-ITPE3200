@@ -17,7 +17,7 @@ export class KundeForm implements OnInit {
   kundeSkjema: FormGroup;
   feilMelding: String = "";
   
-
+  /* Form er hentet og tilpasset fra eksempel prosjekt "Kunde-SPA-Routing" */
   validering = {
     id: [""],
     fornavn: [
@@ -51,18 +51,6 @@ export class KundeForm implements OnInit {
   }
 
   ngOnInit() {
-    // this.billett = this._ActivatedRoute.snapshot.paramMap.get(bill); 
-    /*   console.log("BILLLETTT!!");
-     console.log(this.location.getState());*/
-
-
-    /*const navigation = this.router.getCurrentNavigation();
-  const state = navigation.extras.state as { billett: Billett };
-  this.billett = state.billett;
-
-  console.log(this.billett);*/
-
-
   }
 
 
@@ -82,7 +70,10 @@ export class KundeForm implements OnInit {
     lagretKunde.epost = this.kundeSkjema.value.epost;
 
 
-
+    /*
+     * Kunde lagres og returnert kundeID settes til billett. På dette tidspunktet har billett alle felter og kan lagres i DB.
+     * BillettID sendes til neste side når kallene er ferdig
+     */
     this.http.post<number>("api/Bestilling/lagreKunde", lagretKunde)
       .subscribe(lagretKundeId => {
         this.billett.kundeId = lagretKundeId;

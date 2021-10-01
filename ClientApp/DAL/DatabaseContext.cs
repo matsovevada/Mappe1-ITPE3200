@@ -59,7 +59,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   }
 
 
-  public class Lugarer
+  public struct Lugarer
   {
       [Key]
       public int Id { get; set; }
@@ -70,6 +70,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       public int AntallLedige { get; set; }
       public int Pris { get; set; }
 
+    //Gj?r det mulig ? caste fra type Lugar til type Lugarer
     public static explicit operator Lugarer(Lugar v)
     {
       Lugarer lug = new Lugarer();
