@@ -57,6 +57,10 @@ export class Bestilling {
       );
   }
 
+  /*
+   * Gjør avganger (dropdown) synlig i front. Setter returstrekning og henter avganger for retur.
+   */
+
   toggleValgtStrekning() {
     this.hentAlleAvganger();
     this.settStrekningRetur();
@@ -64,9 +68,9 @@ export class Bestilling {
     this.strekningValgt = true;
   }
 
+  /* DatotidTicks brukes for å sammenligne tidspunkt for avganger slik at bruker ikke kan velge en retur som er satt opp til å gå før tur (avgang) */
   toggleValgtAvgang() {
     this.valgtAvgang = true;
-
     let avgangValgt = JSON.parse((<HTMLSelectElement>document.getElementById('avgang')).value);
     this.avgangId = avgangValgt['id'];
     this.avgangValgtDatoTidTicks = avgangValgt['datoTidTicks'];
