@@ -42,6 +42,7 @@ export class LugarValg implements OnInit {
     this.billett = new Billett();
     this.billett.avgangId = Number(this.avgangsID);
     this.sjekkOmReturSkalBestilles();
+    this.billett.antallPersoner = 1;
   }
 
   hentValgtAvgang() {

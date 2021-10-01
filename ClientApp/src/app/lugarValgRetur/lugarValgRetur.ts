@@ -37,7 +37,7 @@ export class LugarValgRetur implements OnInit {
     console.log(this.billett);
     this.hentValgtAvgang();
     this.valgteLugarer = [];
-
+    this.billett.antallPersonerRetur = 1;
   }
 
   hentValgtAvgang() {
