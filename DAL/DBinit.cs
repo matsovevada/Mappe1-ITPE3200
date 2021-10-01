@@ -156,22 +156,22 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       List<Lugarer> lugarer9 = new List<Lugarer>();
       lugarer9.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
       lugarer9.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
-      lugarer9.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer9.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
 
       List<Lugarer> lugarer10 = new List<Lugarer>();
       lugarer10.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
       lugarer10.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
-      lugarer10.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer10.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
 
       List<Lugarer> lugarer11 = new List<Lugarer>();
       lugarer11.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
       lugarer11.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
-      lugarer11.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer11.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
 
       List<Lugarer> lugarer12 = new List<Lugarer>();
       lugarer12.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
       lugarer12.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
-      lugarer12.Add(new Lugarer(Navn, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
+      lugarer12.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
 
       List<Lugarer> lugarer13 = new List<Lugarer>();
       lugarer13.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
