@@ -80,6 +80,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       this.Pris = Pris;
     }
 
+    //Gj?r det mulig ? caste fra Lugar til Lugarer 
     public static explicit operator Lugarer(Lugar v)
     {
       Lugarer lug = new Lugarer(v.Navn, v.Beskrivelse, v.AntallSengeplasser, v.Antall, v.AntallLedige, v.Pris);
