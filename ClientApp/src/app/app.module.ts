@@ -3,7 +3,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { dropdownStrekning } from './strekning/dropdownStrekning'
 import { BrowserModule } from '@angular/platform-browser'
 import { Bestilling } from './bestilling/bestilling';
 import { FormsModule } from '@angular/forms';
@@ -14,19 +13,16 @@ import { LugarValgRetur } from './lugarValgRetur/lugarValgRetur';
 import { visBillett } from './visBillett/visBillett';
 import { LugarComponent } from './lugarComponent/lugarComponent';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { BillettComponent } from './billettComponent/billettComponent'
 
 @NgModule({
   declarations: [
     AppComponent,
-    dropdownStrekning,
     Bestilling,
     KundeForm,
     LugarValg,
     LugarValgRetur,
     visBillett,
     LugarComponent,
-    BillettComponent
   ],
 
   imports: [
