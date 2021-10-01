@@ -29,36 +29,40 @@ namespace Mappe1_ITPE3200.Controllers
             return alleStrekninger;
         }
 
+        // finner alle avgangene som hører til den valgte strekningen
         [HttpGet("{strekning}")]
         [ActionName("hentAvgang")]
         public async Task<List<Avganger>> HentAlleAvganger(String strekning)
         {
             Array s_split = strekning.Split(" - ");
 
+            // strekningen kommer inn som en streng ("fra - til") og et strekning-objekt lages ut ifra denne strengen
             Strekning valgtStrekning = new Strekning()
             {
                 Fra = (string)s_split.GetValue(0),
                 Til = (string)s_split.GetValue(1)
             };
 
-            List<Avganger> alleStrekninger = await _db.HentAlleAvganger(valgtStrekning);
-            return alleStrekninger;
+            List<Avganger> alleAvganger = await _db.HentAlleAvganger(valgtStrekning);
+            return alleAvganger;
         }
 
+        // finner alle retur-avgangene som hører til den valgte strekningen
         [HttpGet("{strekning}")]
         [ActionName("hentAvgangRetur")]
         public async Task<List<Avganger>> HentAlleAvgangerRetur(String strekning)
         {
             Array s_split = strekning.Split(" - ");
 
+            // strekningen kommer inn som en streng ("fra - til") og et strekning-objekt lages ut ifra denne strengen
             Strekning valgtStrekning = new Strekning()
             {
                 Fra = (string)s_split.GetValue(0),
                 Til = (string)s_split.GetValue(1)
             };
 
-            List<Avganger> alleStrekninger = await _db.HentAlleAvganger(valgtStrekning);
-            return alleStrekninger;
+            List<Avganger> alleAvganger = await _db.HentAlleAvganger(valgtStrekning);
+            return alleAvganger;
         }
 
         [HttpGet("{id}")]
@@ -69,24 +73,16 @@ namespace Mappe1_ITPE3200.Controllers
             return avgang;
         }
 
-        [HttpGet("{bestilling}")]
-        [ActionName("hentBaat")]
-        public async Task<Baater> HentBaat(int id)
-        {
-            Baater baat = await _db.HentBaat(id);
-            return baat;
-        }
-
-        //Må se på routing 
         [HttpPost]
         [ActionName("lagreKunde")]
         public async Task<ActionResult> LagreKunde(Kunde lagretKunde)
         {
-            if (ModelState.IsValid)
+            // sjekk at kunde-objektet tilfredsstiller regex-mønsterert som er definert i Kunde-modellen
+            if (ModelState.IsValid) 
             {
                 Console.WriteLine("testController");
                 int kundeLagretId = await _db.LagreKunde(lagretKunde);
-                return Ok(kundeLagretId); //BRUKE BADREQUEST OG ActionResult IKKE BOOLS?!
+                return Ok(kundeLagretId);
             }
             return BadRequest("Feil i inputvalidering på server");
         }
@@ -100,15 +96,13 @@ namespace Mappe1_ITPE3200.Controllers
             return kunde;
         }
 
-
-
         [HttpPost]
         [ActionName("lagreBillett")]
         public async Task<int> LagreBillett(Billett innBillett)
         {   
             int billettLagret = await _db.LagreBillett(innBillett);
             
-            // oppdater antall ledige bilplasser for avgangen
+            // fjern en bilplass for avgangen hvis bilplass er valgt i billetten
             if (innBillett.Bilplass)
             {
                 await _db.DecrementBilplass(innBillett.AvgangId);
@@ -122,7 +116,6 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("hentBillett")]
         public async Task<Billetter> HentBillett(int id)
         {
-            Console.WriteLine("HALLO I CONTROLLER");
             Billetter billett = await _db.HentBillett(id);
             return billett;
         }
