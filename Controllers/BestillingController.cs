@@ -80,7 +80,6 @@ namespace Mappe1_ITPE3200.Controllers
             // sjekk at kunde-objektet tilfredsstiller regex-mønsterert som er definert i Kunde-modellen
             if (ModelState.IsValid) 
             {
-                Console.WriteLine("testController");
                 int kundeLagretId = await _db.LagreKunde(lagretKunde);
                 return Ok(kundeLagretId);
             }

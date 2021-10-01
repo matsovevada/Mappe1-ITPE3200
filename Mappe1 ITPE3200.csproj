@@ -52,11 +52,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\DAL\" />
+    <Folder Include="DAL\" />
     <Folder Include="ClientApp\src\app\kundeForm\" />
     <Folder Include="ClientApp\src\app\visBillett\" />
     <Folder Include="Logs\" />
     <Folder Include="ClientApp\src\app\lugarValgRetur\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="DAL\BestillingRepository.cs" />
+    <None Include="DAL\DatabaseContext.cs" />
+    <None Include="DAL\DBinit.cs" />
+    <None Include="DAL\IBestillingRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -82,7 +89,7 @@
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
       <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
-      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
