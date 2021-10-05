@@ -1,41 +1,46 @@
 <div class="container" ngDefaultControl>
-  <h2>Billett</h2>
-  <div class="col-md-6">
-    <h3>Kundeinformsajon:</h3>
-    <p>Navn: {{kunde.fornavn}} {{kunde.etternavn}}</p>
-    <p>Adresse: {{kunde.adresse}}</p>
-    <p>Poststed: {{kunde.poststed.postnr}}, {{kunde.poststed.poststed}}</p>
-    <p>Telefon: {{kunde.telefonnummer}}</p>
-    <p>Epost: {{kunde.epost}}</p>
+  <h1>Billett</h1>
+  <div class="container row">
+    <h3 class="col-md-4">Kundeinformasjon:</h3>
+    <h3 class="col-md-8">Avgangsinformasjon:</h3>
   </div>
-  <div class="col-md-6">
-      <div>
-          <h3>Avgangsinformasjon:</h3>
-          <h4>Tur:</h4>
-          <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
-          <p>Båt: {{avgang.baat.navn}}</p>
-          <p>Dato: {{avgang.datoTid}}</p>
-          <p>Antall personer: {{billett.antallPersoner}}</p>
-          <p>Bilplass: {{avgangBilplass}}</p>
-          <ul>
-              <li *ngFor="let lugar of bestilteLugarer">{{lugar.navn}} ({{lugar.pris}})</li>
-          </ul>
-      </div>
-      <div *ngIf="visRetur">
-          <h4>Retur:</h4>
-          <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
-          <p>Båt: {{avgang.baat.navn}}</p>
-          <p>Dato: {{retur.datoTid}}</p>
-          <p>Antall personer: {{billett.antallPersonerRetur}}</p>
-          <p>Bilplass: {{returBilplass}}</p>
-          <ul>
-              <li *ngFor="let lugar of bestilteLugarerRetur">{{lugar.navn}} ({{lugar.pris}})</li>
-          </ul>
-      </div>
-    <div>
-      <h4>Tilleggsinformasjon:</h4>
-      <p>TOTALPRIS: {{billett.totalPris}}</p>
+  <div class="container row">
+    <div class="col-md-4">
+      <p>Navn: {{kunde.fornavn}} {{kunde.etternavn}}</p>
+      <p>Adresse: {{kunde.adresse}}</p>
+      <p>Poststed: {{kunde.poststed.postnr}}, {{kunde.poststed.poststed}}</p>
+      <p>Telefon: {{kunde.telefonnummer}}</p>
+      <p>Epost: {{kunde.epost}}</p>
     </div>
+    <div class="col-md-8 container row">
+      <div class="col-md-6 avgangBox">
+        <h4>Tur:</h4>
+        <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
+        <p>Båt: {{avgang.baat.navn}}</p>
+        <p>Dato: {{avgang.datoTid}}</p>
+        <p>Antall personer: {{billett.antallPersoner}}</p>
+        <p>Bilplass: {{avgangBilplass}}</p>
+        <p>Bestilte lugarer:</p>
+        <ul>
+          <li *ngFor="let lugar of bestilteLugarer">{{lugar.navn}}: {{lugar.pris}}kr</li>
+        </ul>
+      </div>
+      <div *ngIf="visRetur" class="col-md-6 avgangBox">
+        <h4>Retur:</h4>
+        <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
+        <p>Båt: {{avgang.baat.navn}}</p>
+        <p>Dato: {{retur.datoTid}}</p>
+        <p>Antall personer: {{billett.antallPersonerRetur}}</p>
+        <p>Bilplass: {{returBilplass}}</p>
+        <p>Bestilte lugarer:</p>
+        <ul>
+          <li *ngFor="let lugar of bestilteLugarerRetur">{{lugar.navn}} ({{lugar.pris}}kr)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="totalpris">
+    <h4>TOTALPRIS: {{billett.totalPris}}kr</h4>
   </div>
 </div>
 

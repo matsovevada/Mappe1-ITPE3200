@@ -5,10 +5,13 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Kunde } from "../Kunde";
 import { Billett } from "../Billett";
+import { ViewEncapsulation } from "@angular/cli/lib/config/schema";
 
 @Component({
   selector: 'kundeForm',
-  templateUrl: "kundeForm.html"
+  templateUrl: "kundeForm.html",
+  styleUrls: ["kundeFormStyle.css"],
+  encapsulation: ViewEncapsulation.None
 })
 
 

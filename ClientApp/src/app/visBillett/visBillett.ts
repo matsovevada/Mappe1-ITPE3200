@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Kunde } from "../Kunde";
@@ -10,7 +10,9 @@ import { Lugar } from "../Lugar";
 
 @Component({
   selector: 'visBillett',
-  templateUrl: "visBillett.html"
+  templateUrl: "visBillett.html",
+  styleUrls: ["visBillettStyle.css"],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class visBillett {
