@@ -39,6 +39,7 @@
     <None Remove="ClientApp\src\app\Lugar.ts" />
     <None Remove="ClientApp\src\app\lugarComponent\lugarComponent.ts" />
     <None Remove="ClientApp\src\app\lugarValg\lugarValg.ts" />
+    <None Remove="ClientApp\src\app\navbar\navbar.ts" />
     <None Remove="ClientApp\src\app\Strekning.ts" />
     <None Remove="ClientApp\src\app\test\test.ts" />
     <None Remove="ClientApp\src\app\tilpassBestilling\tilpassBestilling.ts" />

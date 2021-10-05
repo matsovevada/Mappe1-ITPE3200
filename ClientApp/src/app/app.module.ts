@@ -12,7 +12,7 @@ import { LugarValg } from './lugarValg/lugarValg';
 import { LugarValgRetur } from './lugarValgRetur/lugarValgRetur';
 import { visBillett } from './visBillett/visBillett';
 import { LugarComponent } from './lugarComponent/lugarComponent';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Navbar } from "./navbar/navbar";
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     LugarValgRetur,
     visBillett,
     LugarComponent,
+    Navbar
   ],
 
   imports: [
@@ -31,8 +32,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     RouterModule.forRoot([]),
     FormsModule,
-    ReactiveFormsModule,
-    NoopAnimationsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
