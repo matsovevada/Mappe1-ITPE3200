@@ -1,0 +1,59 @@
+body {
+  background-color: #fcfced;
+}
+
+.form-control {
+    width: 10%;
+}
+
+.bestillingValg {
+  margin-top: 40px;
+  margin-bottom: 50px;
+  padding: 10px;
+  background-color: #ebe8e1;
+  border: solid;
+}
+
+.valgtLugarBox {
+  margin-top: 20px;
+}
+
+.valgteLugarer {
+  padding: 10px;
+  border: solid;
+  background-color: #ebe8e1;
+}
+
+.valgtLugarBox button {
+  width: 1px;
+}
+
+lugar {
+  display: block;
+  margin-top: 30px;
+  padding: 10px;
+  border-style: solid;
+  background-color: #ebe8e1;
+}
+
+#errorIkkeNokPersoner {
+  padding-bottom: 30px;
+  margin-top: 20px;
+  margin-left: 15px;
+  color: red;
+  font-size: x-large;
+}
+
+.btnBekreft {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.btnFjernLugar {
+    width: 1%;
+}
+
+#totalpris {
+    font-size: x-large;
+}
