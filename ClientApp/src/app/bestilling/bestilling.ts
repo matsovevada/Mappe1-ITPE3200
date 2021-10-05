@@ -3,11 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Avgang } from '../Avgang';
 import { Strekning } from '../Strekning';
+import { ViewEncapsulation } from "@angular/core";
 
 @Component({
   selector: 'bestilling',
-  templateUrl: 'bestilling.html'
+  templateUrl: 'bestilling.html',
+  styleUrls: [
+    'bestillingStylesheet.css'
+  ],
+  encapsulation: ViewEncapsulation.None,
 })
+
 export class Bestilling {
   alleAvganger: Array<Avgang>;
   alleStrekninger: Array<Strekning>;

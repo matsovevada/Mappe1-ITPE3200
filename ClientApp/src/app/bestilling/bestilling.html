@@ -1,41 +1,44 @@
+<img id="banner" src="/assets/img/bannercruise.png" alt="Bannerbilde av ett cruiseskip" />
 <div class="container">
-    <div class="col-md-4" id="strekning">
-        <div>
-            <div *ngFor="let strekning of alleStrekninger"></div>
-            <select (change)="toggleValgtStrekning()" [(ngModel)]="strekning">
-                <option disabled hidden [value]="selectUndefinedOptionValue">Velg destinasjon</option>
-                <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
-            </select>
+    <div class="text-center">
+        <div class="tur" id="strekning">
+            <div>
+                <div *ngFor="let strekning of alleStrekninger"></div>
+                <select class="dropdown" (change)="toggleValgtStrekning()" [(ngModel)]="strekning">
+                    <option disabled hidden [value]="selectUndefinedOptionValue">Velg destinasjon</option>
+                    <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
+                </select>
 
+            </div>
+            <div>
+
+                <select class="dropdown" id="avgang" *ngIf="strekningValgt" (change)="toggleValgtAvgang()">
+                    <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
+                    <option *ngFor="let avgang of alleAvganger" data-value='{"id": {{avgang.id}}, "datoTidTicks": {{avgang.datoTidTicks}}}'>{{avgang.datoTid}}</option>
+                </select>
+
+            </div>
+            <div *ngIf="valgtAvgang">
+                <input type="checkbox" name="returCheckBox" [(ngModel)]="valgtRetur" />
+                <label for="returCheckBox">Velg retur?</label><br>
+            </div>
         </div>
-        <div>
 
-          <select id="avgang" *ngIf="strekningValgt" (change)="toggleValgtAvgang()">
-            <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
-            <option *ngFor="let avgang of alleAvganger" data-value='{"id": {{avgang.id}}, "datoTidTicks": {{avgang.datoTidTicks}}}'>{{avgang.datoTid}}</option>
-          </select>
-          
+
+        <!--Returvalg-->
+        <div class="retur" id="strekning">
+            <div *ngIf="valgtRetur">
+                <p id="strekningReturContainer">Returreise: {{strekningRetur}}</p>
+                <select class="dropdown" id="avgangRetur" (change)="toggleValgtAvgangRetur()">
+                    <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
+                    <option *ngFor="let avgang of alleAvgangerRetur" data-value='{"id": {{avgang.id}}, "datoTidTicks": {{avgang.datoTidTicks}}}'>{{avgang.datoTid}}</option>
+                </select>
+            </div>
         </div>
-        <div *ngIf="valgtAvgang">
-            <input type="checkbox" name="returCheckBox" [(ngModel)]="valgtRetur" />
-            <label for="returCheckBox">Velg retur?</label><br>
+        <br />
+        <p *ngIf="(avgangValgtReturDatoTidTicks < avgangValgtDatoTidTicks) && valgtRetur">Returavgang må ha avreise etter utreisen</p>
+        <div *ngIf="(!valgtRetur && valgtAvgang) || (valgtRetur && valgtAvgangRetur) && (avgangValgtReturDatoTidTicks > avgangValgtDatoTidTicks)">
+            <button class="btn btn-light btn-lg btn-block"><a class="nav-link text-dark" [routerLink]="['/lugarValg', {avgang1:avgangId,avgang2:avgangIdRetur,valgtRetur:valgtRetur}]">Gå til bestilling</a></button>
         </div>
-    </div>
-
-
-    <!--Returvalg-->
-    <div class="col-md-4" id="strekning">
-        <div *ngIf="valgtRetur">
-            <p>{{strekningRetur}}</p>
-            <select id="avgangRetur" (change)="toggleValgtAvgangRetur()">
-                <option disabled hidden [value]="selectUndefinedOptionValue">Velg avgang</option>
-                <option *ngFor="let avgang of alleAvgangerRetur" data-value='{"id": {{avgang.id}}, "datoTidTicks": {{avgang.datoTidTicks}}}'>{{avgang.datoTid}}</option>
-            </select>
-        </div>
-    </div>
-
-    <p *ngIf="(avgangValgtReturDatoTidTicks < avgangValgtDatoTidTicks) && valgtRetur">Returavgang kan ikke komme før start-avgnag</p>
-    <div *ngIf="(!valgtRetur && valgtAvgang) || (valgtRetur && valgtAvgangRetur) && (avgangValgtReturDatoTidTicks > avgangValgtDatoTidTicks)">
-        <button><a class="nav-link text-dark" [routerLink]="['/lugarValg', {avgang1:avgangId,avgang2:avgangIdRetur,valgtRetur:valgtRetur}]">Gå til bestilling</a></button>
     </div>
 </div>
