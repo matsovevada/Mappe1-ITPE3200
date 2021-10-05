@@ -39,7 +39,6 @@
     <None Remove="ClientApp\src\app\Lugar.ts" />
     <None Remove="ClientApp\src\app\lugarComponent\lugarComponent.ts" />
     <None Remove="ClientApp\src\app\lugarValg\lugarValg.ts" />
-    <None Remove="ClientApp\src\app\navbar\navbar.ts" />
     <None Remove="ClientApp\src\app\Strekning.ts" />
     <None Remove="ClientApp\src\app\test\test.ts" />
     <None Remove="ClientApp\src\app\tilpassBestilling\tilpassBestilling.ts" />
@@ -50,14 +49,13 @@
     <None Remove="ClientApp\src\app\kundeForm\" />
     <None Remove="ClientApp\src\app\visBillett\" />
     <None Remove="ClientApp\src\app\lugarValgRetur\" />
-    <None Remove="ClientApp\src\assets\images\" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="DAL\" />
+    <Folder Include="ClientApp\src\app\kundeForm\" />
+    <Folder Include="ClientApp\src\app\visBillett\" />
     <Folder Include="Logs\" />
-    <Folder Include="ClientApp\src\app\lugarValgRetur\" />
-    <Folder Include="ClientApp\src\assets\img\" />
   </ItemGroup>
 
   <ItemGroup>
