@@ -4,12 +4,12 @@
     <div class="row">
       <div class="col-sm">
         <label for="antallPersoner">Antall personer</label>
-        <input type="number" class="form-control" placeholder="1" min="1" max="50" [(ngModel)]="personer" (change)="settAntallPersoner()" [ngModelOptions]="{standalone: true}" />
+        <input type="number" class="form-control bestillingValgFormGroup" placeholder="1" min="1" max="50" [(ngModel)]="personer" (change)="settAntallPersoner()" [ngModelOptions]="{standalone: true}" />
       </div>
 
       <div class="col-sm">
         <label for="bilplass">Bilplass (ledige plasser: {{valgtAvgang.antallLedigeBilplasser}})</label>
-        <input class="form-control" *ngIf="valgtAvgang.antallLedigeBilplasser > 0 else antallLedigeBilplasserError" type="checkbox" (change)="changeBilplass()" [(ngModel)]="valgtBilplass" [ngModelOptions]="{standalone: true}" />
+        <input class="form-control bestillingValgFormGroup" *ngIf="valgtAvgang.antallLedigeBilplasser > 0 else antallLedigeBilplasserError" type="checkbox" (change)="changeBilplass()" [(ngModel)]="valgtBilplass" [ngModelOptions]="{standalone: true}" />
         <ng-template #antallLedigeBilplasserError>Ingen flere ledige bilplasser!</ng-template>
       </div>
     </div>
