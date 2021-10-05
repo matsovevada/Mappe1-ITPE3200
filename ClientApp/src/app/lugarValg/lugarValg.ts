@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Lugar } from '../Lugar'
@@ -9,8 +9,11 @@ import { Billett } from '../Billett';
 
 @Component({
   selector: 'lugar-valg',
-  templateUrl: 'lugarValg.html'
+  templateUrl: 'lugarValg.html',
+  styleUrls: ['StyleSheet.css'],
+  encapsulation: ViewEncapsulation.None,
 })
+
 export class LugarValg implements OnInit {
   avgangsID: String;
   avgangsIDRetur: String;

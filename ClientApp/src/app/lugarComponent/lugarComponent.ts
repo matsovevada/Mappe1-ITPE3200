@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Lugar } from '../Lugar'
@@ -6,7 +6,9 @@ import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'lugar',
-  templateUrl: 'lugarComponent.html'
+  templateUrl: 'lugarComponent.html',
+  styleUrls: ['StyleSheet.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class LugarComponent implements OnInit {

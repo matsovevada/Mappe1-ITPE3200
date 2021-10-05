@@ -1,35 +1,48 @@
-<form>
-  <div class="form-group">
-    <label for="antallPersoner">Antall personer</label>
-    <input type="number" placeholder="1" min="1" max="50" [(ngModel)]="personer" (change)="settAntallPersoner()" [ngModelOptions]="{standalone: true}" />
+<div class="container">
+  <h1>Tilpass bestilling</h1>
+  <div class="container bestillingValg">
+    <div class="row">
+      <div class="col-sm">
+        <label for="antallPersoner">Antall personer</label>
+        <input type="number" class="form-control" placeholder="1" min="1" max="50" [(ngModel)]="personer" (change)="settAntallPersoner()" [ngModelOptions]="{standalone: true}" />
+      </div>
+
+      <div class="col-sm">
+        <label for="bilplass">Bilplass (ledige plasser: {{valgtAvgang.antallLedigeBilplasser}})</label>
+        <input class="form-control" *ngIf="valgtAvgang.antallLedigeBilplasser > 0 else antallLedigeBilplasserError" type="checkbox" (change)="changeBilplass()" [(ngModel)]="valgtBilplass" [ngModelOptions]="{standalone: true}" />
+        <ng-template #antallLedigeBilplasserError>Ingen flere ledige bilplasser!</ng-template>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="bilplass">Bilplass</label>
-    <input *ngIf="valgtAvgang.antallLedigeBilplasser > 0 else antallLedigeBilplasserError" type="checkbox" (change)="changeBilplass()" [(ngModel)]="valgtBilplass" [ngModelOptions]="{standalone: true}" />
-    <ng-template #antallLedigeBilplasserError>Ingen flere ledige bilplasser!</ng-template>
-  </div>
-</form>
+  <div class="container-fluid">
+    <div class="row">
 
-<div>
-  <p>Antall ledige bilplasser:</p>
-  <p>{{valgtAvgang.antallLedigeBilplasser}}</p>
+      <div class="col-sm">
+        <h3>Tilgjengelige lugarer</h3>
+        <lugar *ngFor="let lugar of alleLugarer"
+               [lugar]="lugar"
+               (onAddLugar)="leggTilLugar($event)">
+        </lugar>
+      </div>
+
+      <div class="col-sm valgteLugarer">
+        <h3>Valgte lugarer</h3>
+          
+            <div *ngFor="let lugar of valgteLugarer" class="container valgtLugarBox">
+              <div class="row">
+                <p class="col-sm-10">{{lugar.navn}}</p>
+                <button class="col-sm-2 btn btn-danger btnFjernLugar" (click)="fjernLugar(lugar)">x</button>
+              </div> 
+            </div>
+
+        <p id="totalpris">Totalpris: {{lugarerTotalPris}}</p>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="btn btn-primary btnBekreft" *ngIf="nokSengeplasser && returValgt"><a class="nav-link text-dark" [routerLink]="['/lugarValgRetur']" [state]="{ billett:billett }">Bekreft</a></button>
+  <button class="btn btn-primary btnBekreft" *ngIf="nokSengeplasser && !returValgt"><a class="nav-link text-dark" [routerLink]="['/kundeForm']" [state]="{ billett:billett }">Bekreft</a></button>
+  <p id="errorIkkeNokPersoner" *ngIf="!nokSengeplasser">Du maa legge til flere lugarer for aa ha plass til alle personene du har valgt</p>
 </div>
-
-<div>
-  <h3>Valgte lugarer</h3>
-  <div *ngFor="let lugar of valgteLugarer">
-    <p>{{lugar.navn}}</p>
-    <button (click)="fjernLugar(lugar)">X</button>
-  </div>
-  <p>Totalpris: {{lugarerTotalPris}}</p>
-</div>
-
-<lugar *ngFor="let lugar of alleLugarer"
-       [lugar]="lugar"
-       (onAddLugar)="leggTilLugar($event)">
-</lugar>
-
-<button *ngIf="nokSengeplasser && returValgt"><a class="nav-link text-dark" [routerLink]="['/lugarValgRetur']" [state]="{ billett:billett }">Bekreft</a></button>
-<button *ngIf="nokSengeplasser && !returValgt"><a class="nav-link text-dark" [routerLink]="['/kundeForm']" [state]="{ billett:billett }">Bekreft</a></button>
-<p *ngIf="!nokSengeplasser">Du maa legge til flere lugarer for aa ha plass til alle personene</p>
