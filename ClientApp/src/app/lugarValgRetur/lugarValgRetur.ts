@@ -25,7 +25,7 @@ export class LugarValgRetur implements OnInit {
   BILPLASS_PRIS: number = 500;
 
   constructor(private http: HttpClient, private router: Router, private location: Location) {
-    /* Billett objektet blir sendt inn og felter knyttet til retursettes */
+    /* Billett objektet blir sendt inn og felter knyttet til retur settes */
     this.billett = this.router.getCurrentNavigation().extras.state.billett;
     this.lugarerTotalPris = this.billett.totalPris;
   }
