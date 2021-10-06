@@ -24,8 +24,8 @@ Prosjektet er utviklet med .NET Core og Angular.
 - I databasen er det lagret informsjon om hvor mange av hver lugar som er ledige og hvor mange bilplasser som er igjen. Denne informasjonen blir oppdatert i databasen hver gang en kunde foretar en bestilling
 - Utvalg av lugarer er knyttet til båten som kjører den valgte avgangen. Kun tilgjengelige lugarer lastes inn. Det samme gjelder for bilplasser.
 - Det foretas en sjekk for at kunden har valgt nok sengeplasser i forhold til hvor mange personer kunden har valgt
-- Billett-objektet bygges dynamisk etterhvert som kunden foretar valg. Billett-objektet sendes videre fra route til route før den blir lagret i databasen.
+- Billett-objektet bygges dynamisk etterhvert som kunden foretar valg. Billett-objektet sendes videre fra route til route før den blir lagret i databasen når kunde bekrefter bestillingen.
 
 ## Referanser til kode som ikke er egen-utviklet
 
-- Koden for form-en for registrering av kunder (kundeForm.html og kundeForm.ts) er tatt fra "Kunde SPA med routing"-prosjektet til faglærer
+- Koden for form-en for registrering av kunder (kundeForm.html og kundeForm.ts) er laget med utgangspunkt i "Kunde SPA med routing"-prosjektet til faglærer
