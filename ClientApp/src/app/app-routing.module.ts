@@ -9,6 +9,7 @@ import { visBillett } from './visBillett/visBillett';
 
 const appRoots: Routes = [
   { path: '', component: Bestilling },
+  { path: 'index', component: Bestilling },
   { path: 'lugarValg', component: LugarValg },
   { path: 'lugarValgRetur', component: LugarValgRetur },
   { path: '', redirectTo: 'bestilling', pathMatch: 'full' },

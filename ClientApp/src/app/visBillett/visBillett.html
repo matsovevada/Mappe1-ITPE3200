@@ -27,7 +27,7 @@
       </div>
       <div *ngIf="visRetur" class="col-md-6 avgangBox">
         <h4>Retur:</h4>
-        <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
+        <p>Strekning: {{retur.strekning.fra}} --> {{retur.strekning.til}} </p>
         <p>Båt: {{avgang.baat.navn}}</p>
         <p>Dato: {{retur.datoTid}}</p>
         <p>Antall personer: {{billett.antallPersonerRetur}}</p>
@@ -42,5 +42,6 @@
   <div class="totalpris">
     <h4>TOTALPRIS: {{billett.totalPris}}kr</h4>
   </div>
+  <button class="btn btn-primary"><a [routerLink]="['/index', {}]" class="doneBtn">Ferdig</a></button>
 </div>
 
