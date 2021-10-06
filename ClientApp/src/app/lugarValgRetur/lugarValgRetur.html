@@ -28,7 +28,7 @@
         </lugar>
       </div>
 
-      <div class="col-sm valgteLugarer">
+      <div class="col-sm">
         <h3>Valgte lugarer</h3>
         <div *ngFor="let lugar of valgteLugarer" class="container valgtLugarBox">
           <div class="row">
@@ -45,6 +45,6 @@
 
 
 
-  <button class="btn btn-primary btnBekreft" *ngIf="nokSengeplasser && !returValgt"><a class="nav-link text-light" [routerLink]="['/kundeForm']" [state]="{ billett:billett }">Bekreft</a></button>
+  <button class="btn btn-primary btnBekreft" *ngIf="nokSengeplasser && !returValgt"><a class="nav-link text-dark" [routerLink]="['/kundeForm']" [state]="{ billett:billett }">Bekreft</a></button>
   <p id="errorIkkeNokPersoner" *ngIf="!nokSengeplasser">Du maa legge til flere lugarer for aa ha plass til alle personene</p>
 </div>
