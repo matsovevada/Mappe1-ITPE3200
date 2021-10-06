@@ -1,12 +1,12 @@
 body {
-  background-color: rgb(40, 60, 99);
-
+  background-color: #97c4e6;
+  font-family: Helvetica, sans-serif;
 }
 
-.container bestilling {
+.bestilling {
   margin-top: 2%;
   width: 50%;
-  color: white;
+  color: black;
   font-size: large;
   text-align-last: center;
 
@@ -29,4 +29,10 @@ body {
   color: black;
   margin-left: 5%;
   margin-right: 5%;
+  font-size: large;
 }
+
+#velgRetur {
+    font-size: x-large;
+}
+

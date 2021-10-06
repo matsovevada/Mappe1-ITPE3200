@@ -1,5 +1,5 @@
 body {
-  background-color: #fcfced;
+  background-color: #97c4e6;
 }
 
 .bestillingValgFormGroup {
@@ -10,7 +10,7 @@ body {
   margin-top: 40px;
   margin-bottom: 50px;
   padding: 10px;
-  background-color: #ebe8e1;
+  background-color: #f0f8ff;
   border: solid;
 }
 
@@ -21,7 +21,7 @@ body {
 .valgteLugarer {
   padding: 10px;
   border: solid;
-  background-color: #ebe8e1;
+  background-color: #f0f8ff;
 }
 
 .valgtLugarBox button {
@@ -33,7 +33,7 @@ lugar {
   margin-top: 30px;
   padding: 10px;
   border-style: solid;
-  background-color: #ebe8e1;
+  background-color: #f0f8ff;
 }
 
 #errorIkkeNokPersoner {
@@ -48,6 +48,7 @@ lugar {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 15px;
+  color: white;
 }
 
 .btnFjernLugar {
