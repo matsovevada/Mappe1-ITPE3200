@@ -31,7 +31,7 @@
           
             <div *ngFor="let lugar of valgteLugarer" class="container valgtLugarBox">
               <div class="row">
-                <p class="col-sm-10">{{lugar.navn}}</p>
+                <p id="lugarNavn" class="col-sm-10">{{lugar.navn}}</p>
                 <button class="col-sm-2 btn btn-danger btnFjernLugar" (click)="fjernLugar(lugar)">x</button>
               </div> 
             </div>
@@ -44,5 +44,5 @@
 
   <button class="btn btn-primary btnBekreft" *ngIf="nokSengeplasser && returValgt"><a class="nav-link text-light"   [routerLink]="['/lugarValgRetur']" [state]="{ billett:billett }">Bekreft</a></button>
   <button class="btn btn-primary btnBekreft" *ngIf="nokSengeplasser && !returValgt"><a class="nav-link text-light"  [routerLink]="['/kundeForm']" [state]="{ billett:billett }">Bekreft</a></button>
-  <p id="errorIkkeNokPersoner" *ngIf="!nokSengeplasser">Du maa legge til flere lugarer for aa ha plass til alle personene du har valgt</p>
+  <p id="errorIkkeNokPersoner" *ngIf="!nokSengeplasser">Du ma legge til flere lugarer for a ha plass til alle personene du har valgt</p>
 </div>
