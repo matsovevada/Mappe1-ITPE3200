@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Lugar } from '../Lugar'
-import { Strekning } from '../Strekning'
 import { Avgang } from '../Avgang'
-import { ActivatedRoute, NavigationExtras } from '@angular/router'
 import { Billett } from '../Billett';
 
 @Component({
@@ -40,7 +38,6 @@ export class LugarValgRetur implements OnInit {
   }
 
   hentValgtAvgang() {
-    console.log(this.billett.avgangIdRetur);
     this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.billett.avgangIdRetur)
       .subscribe(avgang => {
         this.valgtAvgang = avgang;

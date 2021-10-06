@@ -49,8 +49,6 @@ export class KundeForm implements OnInit {
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private location: Location) {
     this.kundeSkjema = fb.group(this.validering);
     this.billett = this.router.getCurrentNavigation().extras.state.billett;
-    console.log("BILLETTET I KUNDENE FORMEM");
-    console.log(this.billett);
   }
 
   ngOnInit() {

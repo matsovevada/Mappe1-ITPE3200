@@ -51,10 +51,8 @@ export class LugarValg implements OnInit {
 
   /* Henter avgangen for å vise lugarer på bestillingssider */
   hentValgtAvgang() {
-    console.log(this.avgangsID);
     this.http.get<Avgang>("api/Bestilling/hentValgtAvgang/" + this.avgangsID)
       .subscribe(avgang => {
-        console.log(avgang)
         this.valgtAvgang = avgang;
         this.alleLugarer = this.valgtAvgang.ledigeLugarer;
         this.laster = false;

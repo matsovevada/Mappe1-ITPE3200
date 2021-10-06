@@ -55,7 +55,6 @@ export class Bestilling {
   hentAlleStrekninger() {
     this.http.get<Strekning[]>("api/Bestilling/hentStrekning")
       .subscribe(strekningene => {
-        console.log(strekningene)
         this.alleStrekninger = strekningene;
         this.laster = false;
       },
