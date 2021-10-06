@@ -99,7 +99,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal3
       string Navn2 = "Innvendig lugar";
-        string Beskrivelse2 = "Vår BILLIGSTE alternativ. Liten lugar med 2 sengeplasser.";
+        string Beskrivelse2 = "Vårt billigste alternativ. Liten lugar med 2 sengeplasser.";
         int AntallSengeplasser2 = 2;
         int Antall2 = 150;
         int AntallLedige2 = 150;
@@ -211,14 +211,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       var baat3 = new Baater
       {
-        Navn = "Color Magic",
+        Navn = "Color Heaven",
         Lugarer = lugarer3,
         AntallBilplasser = 150,
       };
 
       var baat4 = new Baater
       {
-        Navn = "Color Magic",
+        Navn = "Color Titanic",
         Lugarer = lugarer4,
         AntallBilplasser = 75,
       };
