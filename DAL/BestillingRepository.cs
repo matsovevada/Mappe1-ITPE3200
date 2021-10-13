@@ -204,5 +204,40 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         return false;
       }   
     }
+
+
+    //Henter alle båter fra DB
+    [HttpGet]
+    public async Task<List<Baater>> HentAlleBaater()
+        {
+            try
+            {
+                List<Baater> alleBaater = await _db.Baater.ToListAsync();
+                return alleBaater;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+    [HttpDelete]
+    public async Task<bool> slettBaat(int id)
+        {
+            try
+            {
+                Baater slettBaat = await _db.Baater.FindAsync(id);
+                List<Avganger> alleAvgangerMedValgtBaat = await _db.Avganger.Where(a => a.Baat.Equals(slettBaat)).ToListAsync();
+                alleAvgangerMedValgtBaat.ForEach(avgang => _db.Avganger.Remove(avgang));
+                await _db.SaveChangesAsync();
+                
+                _db.Baater.Remove(slettBaat);
+                await _db.SaveChangesAsync();
+                return true;
+            } catch
+            {
+                return false;
+            }
+        }
   }
 }

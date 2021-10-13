@@ -120,5 +120,19 @@ namespace Mappe1_ITPE3200.Controllers
         }
 
 
+        [ActionName("hentBaater")]
+        public async Task<List<Baater>> HentBaater()
+        {
+            List<Baater> baater = await _db.HentAlleBaater();
+            return baater;
+        }
+
+
+        [HttpDelete("{id}")]
+        [ActionName("slettBaat")]
+        public async Task<bool> slettBaat(int id)
+        {
+            return await _db.slettBaat(id);
+        }
     }
 }

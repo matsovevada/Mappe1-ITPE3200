@@ -1,0 +1,24 @@
+<div class="container">
+    <h2> Rediger båter</h2>
+    <div>
+        <div class="col-md-12">
+            <div *ngIf="laster">Laster båter.....</div>
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>Båtnavn</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let baat of alleBaater" ng-model="alleBaater">
+                    <tr>
+                        <td>{{baat.navn}}</td>
+                        <td><button class="btn btn-success">Endre</button></td>
+                        <td><button class="btn btn-danger" (click)="slettValgtBaat(baat.id)">Slett</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
