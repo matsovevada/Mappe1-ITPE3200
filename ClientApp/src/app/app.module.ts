@@ -13,6 +13,7 @@ import { LugarValgRetur } from './lugarValgRetur/lugarValgRetur';
 import { visBillett } from './visBillett/visBillett';
 import { LugarComponent } from './lugarComponent/lugarComponent';
 import { Navbar } from "./navbar/navbar";
+import { Meny } from "./admin/meny/meny";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { Navbar } from "./navbar/navbar";
     LugarValgRetur,
     visBillett,
     LugarComponent,
-    Navbar
+    Navbar,
+    Meny
   ],
 
   imports: [
