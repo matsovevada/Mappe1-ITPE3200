@@ -31,6 +31,7 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Remove="ClientApp\src\app\admin\strekning\strekning.ts" />
     <None Remove="ClientApp\src\app\Avgang.ts" />
     <None Remove="ClientApp\src\app\avgang\avganger.ts" />
     <None Remove="ClientApp\src\app\Baater.ts" />
@@ -52,7 +53,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\admin\" />
     <Folder Include="DAL\" />
     <Folder Include="ClientApp\src\app\kundeForm\" />
     <Folder Include="ClientApp\src\app\visBillett\" />

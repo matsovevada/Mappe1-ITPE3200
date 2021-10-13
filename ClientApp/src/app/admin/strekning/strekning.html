@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Strekninger</h2>
+  <div>
+    <div class="col-md-12">
+      <div *ngIf="laster">Laster kunder.....</div>
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Fra</th>
+            <th>Til</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let strekning of alleStrekninger">
+          <tr>
+            <td>{{strekning.fra}}</td>
+            <td>{{strekning.til}}</td>
+            <td><button class="btn btn-danger" (click)="slettStrekning(strekning.id)">Slett</button></td>
+            <td><button class="btn btn-success">Endre</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
