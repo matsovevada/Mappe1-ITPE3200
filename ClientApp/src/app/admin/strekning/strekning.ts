@@ -16,6 +16,7 @@ import { ViewEncapsulation } from "@angular/core";
 export class AdminStrekning {
   alleStrekninger: Array<Strekning>;
   laster: boolean = true;
+  strekningFra: string;
   
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -38,8 +39,20 @@ export class AdminStrekning {
     this.http.delete('api/Bestilling/slettStrekning/' + strekningId)
       .subscribe((ok) => {
         if (ok) {
-          this.router.navigate(['/adminStrekning']);
+          location.reload();
         }
       });
+  }
+
+  endreStrekning(strekningId, strekningFra, strekningTil) {
+  
+    this.http.put("api/Bestilling/endreStrekning/" + strekningId + "/" + strekningFra + "/" + strekningTil, null)
+      .subscribe(ok => {
+        if (ok) {
+          location.reload();
+        }
+      },
+        error => console.log(error)
+      );
   }
 }

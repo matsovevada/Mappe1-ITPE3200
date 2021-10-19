@@ -127,5 +127,13 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.SlettStrekning(id);
         }
 
+        [HttpPut("{id}/{strekningFra}/{strekningTil}")]
+        [ActionName("endreStrekning")]
+        public async Task<bool> EndreStrekning(int id, string strekningFra, string strekningTil)
+        {
+          
+            return await _db.EndreStrekning(id, strekningFra, strekningTil);
+        }
+
     }
 }

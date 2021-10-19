@@ -211,6 +211,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             {
                 Strekninger strekning = await _db.Strekninger.FindAsync(id);
 
+                //SLETTE AVGANGER KNYTTET TIL STREKNINGEN?
                 // slett avganger som har strekningen
              /*   await _db.Avganger.ForEachAsync(avgang =>
                 {
@@ -222,6 +223,22 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
                 _db.Strekninger.Remove(strekning);
 
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> EndreStrekning(int id, string nyStrekningFra, string nyStrekningTil)
+        {
+            try
+            {
+                Strekninger strekning = await _db.Strekninger.FindAsync(id);
+                strekning.Fra = nyStrekningFra;
+                strekning.Til = nyStrekningTil;
                 await _db.SaveChangesAsync();
                 return true;
             }

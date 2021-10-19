@@ -14,10 +14,11 @@
         </thead>
         <tbody *ngFor="let strekning of alleStrekninger">
           <tr>
-            <td>{{strekning.fra}}</td>
-            <td>{{strekning.til}}</td>
+            <td><input value="{{strekning.fra}}" id="strekningFra" #strekningFra/></td>
+            <td><input value="{{strekning.til}}" id="strekningTil" #strekningTil/></td>
+            <td><input hidden value="{{strekning.id}}" id="strekningId" #strekningId/></td>
             <td><button class="btn btn-danger" (click)="slettStrekning(strekning.id)">Slett</button></td>
-            <td><button class="btn btn-success">Endre</button></td>
+            <td><button class="btn btn-success" (click)="endreStrekning(strekningId.value, strekningFra.value, strekningTil.value)">Endre</button></td>
           </tr>
         </tbody>
       </table>
