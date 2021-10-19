@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Strekninger</h2>
+  <div>
+    <div class="col-md-12">
+      <div *ngIf="laster">Laster strekninger.....</div>
+
+      <h3>Lagre strekning</h3>
+      <input placeholder="Fra" id="lagreStrekningFra" #lagreStrekningFra/>
+      <input placeholder="Til" id="lagreStrekningTil" #lagreStrekningTil/>
+      <button class="btn btn-success" (click)="lagreStrekning(lagreStrekningFra.value, lagreStrekningTil.value)">Lagre</button>
+
+      <h3>Strekninger</h3>
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Fra</th>
+            <th>Til</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let strekning of alleStrekninger">
+          <tr>
+            <td><input value="{{strekning.fra}}" id="strekningFra" #strekningFra/></td>
+            <td><input value="{{strekning.til}}" id="strekningTil" #strekningTil/></td>
+            <td><input hidden value="{{strekning.id}}" id="strekningId" #strekningId/></td>
+            <td><button class="btn btn-danger" (click)="slettStrekning(strekning.id)">Slett</button></td>
+            <td><button class="btn btn-success" (click)="endreStrekning(strekningId.value, strekningFra.value, strekningTil.value)">Endre</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

@@ -5,6 +5,7 @@ import { KundeForm } from './kundeForm/kundeForm';
 import { LugarValg } from './lugarValg/lugarValg'
 import { LugarValgRetur } from './lugarValgRetur/lugarValgRetur'
 import { visBillett } from './visBillett/visBillett';
+import { AdminStrekning } from './admin/strekning/strekning';
 
 
 const appRoots: Routes = [
@@ -14,7 +15,8 @@ const appRoots: Routes = [
   { path: 'lugarValgRetur', component: LugarValgRetur },
   { path: '', redirectTo: 'bestilling', pathMatch: 'full' },
   { path: 'visBillett/:id', component: visBillett },
-  { path: 'kundeForm', component: KundeForm }
+  { path: 'kundeForm', component: KundeForm },
+  { path: 'adminStrekning', component: AdminStrekning }
 ]
 
 @NgModule({

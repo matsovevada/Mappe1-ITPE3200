@@ -26,7 +26,7 @@ namespace Mappe1_ITPE3200
         {
 
             services.AddControllers();
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlite("Data source=Bestillinger.db"));
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlite("Data source=Bestillinger.db;Foreign Keys=False"));
 
             services.AddScoped<IBestillingRepository, BestillingRepository>();
 

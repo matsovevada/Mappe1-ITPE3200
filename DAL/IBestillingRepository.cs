@@ -18,5 +18,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<bool> DecrementBilplass(int id);
     Task<bool> OppdaterAntallLedigeLugarer(int id, List<Lugar> lugarer);
     Task<Kunder> HentKunde(int id);
+    Task<bool> SlettStrekning(int id);
+    Task<bool> EndreStrekning(int id, string nyStrekningFra, string nyStrekningTil);
+    Task<bool> LagreStrekning(string StrekningFra, string StrekningTil);
   }
 }

@@ -34,7 +34,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   public class Billetter
   {
       public int Id { get; set; }
-      public int AvgangId { get; set; }
+      public int? AvgangId { get; set; }
       public int? AvgangIdRetur { get; set; }
       public int KundeId { get; set; }
       public int AntallPersoner { get; set; }
