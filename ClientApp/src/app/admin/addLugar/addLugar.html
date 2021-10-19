@@ -1,10 +1,24 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<form>
+  <div class="form-group">
+    <label for="innNavn">Navn</label>
+    <input type="text" class="form-control" id="innNavn">
+  </div>
+  <div class="form-group">
+    <label for="innSengeplasser">Antall Sengeplasser</label>
+    <input type="number" class="form-control" id="innSengeplasser">
+  </div>
+  <div class="form-group">
+    <label for="innAntallLugarer">Antall Lugarer</label>
+    <input type="number" class="form-control" id="innAntallLugarer" aria-describedby="antallLugarerHelp">
+    <small id="antallLugarerHelp" class="form-text text-muted">Add flavour text here :)</small>
+  </div>
+  <div class="form-group">
+    <label for="innPrisLugar">Pris</label>
+    <input type="password" class="form-control" id="innPrisLugar">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <textarea class="form-control" id="innBeskrivelseLugar" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
