@@ -53,6 +53,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\admin\addLugar\" />
+    <Folder Include="ClientApp\src\app\admin\addKunde\" />
+    <Folder Include="ClientApp\src\app\admin\add\" />
     <Folder Include="DAL\" />
     <Folder Include="ClientApp\src\app\kundeForm\" />
     <Folder Include="ClientApp\src\app\visBillett\" />
