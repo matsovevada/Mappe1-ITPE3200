@@ -350,6 +350,109 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
+    
+
+
+    //Henter alle båter fra DB
+    [HttpGet]
+    public async Task<List<Baater>> HentAlleBaater()
+        {
+            try
+            {
+                List<Baater> alleBaater = await _db.Baater.ToListAsync();
+                return alleBaater;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+    [HttpDelete]
+    public async Task<bool> slettBaat(int id)
+        {
+            try
+            {
+                Baater slettBaat = await _db.Baater.FindAsync(id);
+                List<Avganger> alleAvgangerMedValgtBaat = await _db.Avganger.Where(a => a.Baat.Equals(slettBaat)).ToListAsync();
+                alleAvgangerMedValgtBaat.ForEach(avgang => _db.Avganger.Remove(avgang));
+                await _db.SaveChangesAsync();
+                
+                _db.Baater.Remove(slettBaat);
+                await _db.SaveChangesAsync();
+                return true;
+            } catch
+            {
+                return false;
+            }
+        }
+
+        [HttpPut]
+        public async Task<bool> endreBaat(int id, String navn)
+        {
+            try
+            {
+                Baater endreBaat = await _db.Baater.FindAsync(id);
+                endreBaat.Navn = navn;
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
+        public async Task<bool> lagreBaat(String navn)
+        {
+            try
+            {
+                Baater nyBaat = new Baater();
+                nyBaat.Navn = navn;
+                //SLETT DENNE
+                nyBaat.AntallBilplasser = 200;
+                await _db.Baater.AddAsync(nyBaat);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<List<Kunder>> HentAlleKunder()
+        {
+            try
+            {
+                List<Kunder> alleKunder = await _db.Kunder.ToListAsync();
+                return alleKunder;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        [HttpDelete]
+        public async Task<bool> slettKunde(int id)
+        {
+            try
+            {
+                Kunder slettKunde = await _db.Kunder.FindAsync(id);
+
+                _db.Kunder.Remove(slettKunde);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
 

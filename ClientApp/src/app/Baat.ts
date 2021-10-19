@@ -1,6 +1,6 @@
 import { Lugar } from "./Lugar";
 
-export class Baater {
+export class Baat {
   id: number;
   navn: String;
   lugarer: Array<Lugar>
