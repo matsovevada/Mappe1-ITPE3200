@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Strekning } from '../../Strekning';
 import { ViewEncapsulation } from "@angular/core";
-import { Postnummer } from "../../Postnummer";
+import { Poststed } from "../../Poststed";
 
 @Component({
   selector: 'adminPostnummer',
@@ -15,28 +14,30 @@ import { Postnummer } from "../../Postnummer";
 })
 
 export class AdminPostnummer {
-  allePostnummere: Array<Postnummer>;
+  allePoststeder: Array<Poststed>;
   laster: boolean = true;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    this.hentAllePostnummere()
+    this.hentAllePoststeder()
   }
 
-  hentAlleSPostnummere() {
-    this.http.get<Postnummer[]>("api/Bestilling/hentPostnummer")
-      .subscribe(postnummere => {
-        this.allePostnummere = postnummere;
+  hentAllePoststeder() {
+    this.http.get<Poststed[]>("api/Bestilling/hentPoststed")
+      .subscribe(poststeder => {
+        this.allePoststeder = poststeder;
+        console.log("POSTSTEDER:")
+        console.log(poststeder);
         this.laster = false;
       },
         error => console.log(error)
       );
   }
 
-  slettPostnummer(postnummer) {
+  slettPoststed(postnummer) {
     console.log("Sletter postnummer: " + postnummer);
-    this.http.delete('api/Bestilling/slettPostnummer/' + postnummer)
+    this.http.delete('api/Bestilling/slettPoststed/' + postnummer)
       .subscribe((ok) => {
         if (ok) {
           location.reload();
@@ -44,9 +45,9 @@ export class AdminPostnummer {
       });
   }
 
-  endrePostnummer(postnummer, poststed,) {
+  endrePoststed(postnummer, poststed) {
 
-    this.http.put("api/Bestilling/endrePostnummer/" + postnummer + "/" + poststed, null)
+    this.http.put("api/Bestilling/endrePoststed/" + postnummer + "/" + poststed, null)
       .subscribe(ok => {
         if (ok) {
           location.reload();
@@ -56,7 +57,7 @@ export class AdminPostnummer {
       );
   }
 
-  lagrePostnummer(postnummer, poststed) {
+  lagrePoststed(postnummer, poststed) {
 
     this.http.post("api/Bestilling/lagrePoststed/" + postnummer + "/" + poststed, null)
       .subscribe(ok => {

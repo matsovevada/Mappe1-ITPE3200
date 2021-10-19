@@ -456,7 +456,23 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       db.Avganger.Add(avgang15);
       db.Avganger.Add(avgang16);
 
-      db.SaveChanges();
+    // postnummere
+    Poststeder poststed1 = new Poststeder
+    {
+        Postnr = "1400",
+        Poststed = "Ski"
+    };
+
+    Poststeder poststed2 = new Poststeder
+    {
+        Postnr = "1410",
+        Poststed = "Kolbotn"
+    };
+
+    db.Poststeder.Add(poststed1);
+    db.Poststeder.Add(poststed2);
+
+     db.SaveChanges();
     }
   }
 }

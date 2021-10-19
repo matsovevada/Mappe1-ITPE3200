@@ -21,5 +21,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<bool> SlettStrekning(int id);
     Task<bool> EndreStrekning(int id, string nyStrekningFra, string nyStrekningTil);
     Task<bool> LagreStrekning(string StrekningFra, string StrekningTil);
+    Task<List<Poststeder>> HentAllePoststeder();
+    Task<bool> SlettPoststed(string postnummer);
+    Task<bool> EndrePoststed(string postnummer, string nyttPoststed);
+    Task<bool> LagrePoststed(string postnummer, string poststed);
   }
 }

@@ -266,5 +266,70 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
+
+        public async Task<List<Poststeder>> HentAllePoststeder()
+        {
+            try
+            {
+                List<Poststeder> allePoststeder = await _db.Poststeder.ToListAsync();
+                return allePoststeder;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> SlettPoststed(string postnummer)
+        {
+            try
+            {
+                Poststeder poststed = await _db.Poststeder.FindAsync(postnummer);
+                _db.Poststeder.Remove(poststed);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> EndrePoststed(string postnummer, string nyttPoststed)
+        {
+            try
+            {
+                Poststeder poststed = await _db.Poststeder.FindAsync(postnummer);
+                poststed.Poststed = nyttPoststed;
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
+
+        public async Task<bool> LagrePoststed(string postnummer, string poststed)
+        {
+            try
+            {
+                Poststeder nyttPoststed = new Poststeder
+                {
+                    Postnr = postnummer,
+                    Poststed = poststed
+                };
+
+                await _db.Poststeder.AddAsync(nyttPoststed);
+                await _db.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

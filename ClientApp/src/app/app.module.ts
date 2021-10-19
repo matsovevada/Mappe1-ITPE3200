@@ -15,6 +15,7 @@ import { LugarComponent } from './lugarComponent/lugarComponent';
 import { Navbar } from "./navbar/navbar";
 import { Meny } from "./admin/meny/meny";
 import { AdminStrekning } from './admin/strekning/strekning';
+import { AdminPostnummer } from './admin/postnummer/postnummer';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AdminStrekning } from './admin/strekning/strekning';
     LugarComponent,
     Navbar,
     Meny,
-    AdminStrekning
+    AdminStrekning,
+    AdminPostnummer
   ],
 
   imports: [

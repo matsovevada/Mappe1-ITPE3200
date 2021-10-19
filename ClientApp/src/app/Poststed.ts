@@ -1,4 +1,4 @@
-export class Postnummer {
+export class Poststed {
   postnr: string;
   poststed: string;
 }

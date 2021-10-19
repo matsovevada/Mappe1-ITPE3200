@@ -7,7 +7,7 @@
       <h3>Lagre Postnummer</h3>
       <input placeholder="Postnummer" id="lagrePostnummerNummer" #lagrePostnummerNummer />
       <input placeholder="Poststed" id="lagrePostnummerSted" #lagrePostnummerSted />
-      <button class="btn btn-success" (click)="lagreStrekning(lagrePostnummerNummer.value, lagrePostnummerSted.value)">Lagre</button>
+      <button class="btn btn-success" (click)="lagrePoststed(lagrePostnummerNummer.value, lagrePostnummerSted.value)">Lagre</button>
 
       <h3>Postnummere</h3>
       <table class="table table-bordered table-condensed">
@@ -20,13 +20,13 @@
             <th></th>
           </tr>
         </thead>
-        <tbody *ngFor="let postnummer of allePostnummere">
+        <tbody *ngFor="let poststed of allePoststeder">
           <tr>
-            <td>{{postnummer.postnr}}/></td>
-            <td><input value="{{postnummer.poststed}}" id="postnummerPoststed" #postnummerPoststed /></td>
-            <td><input hidden value="{{postnummer.poststed}}" id="postnummer" #postnummer/></td>
-            <td><button class="btn btn-danger" (click)="slettPostnummer(postnummer.value)">Slett</button></td>
-            <td><button class="btn btn-success" (click)="endrePostnummer(postnummer.value, postnummerPoststed.value)">Endre</button></td>
+            <td>{{poststed.postnr}}</td>
+            <td><input value="{{poststed.poststed}}" id="postnummerPoststed" #postnummerPoststed/></td>
+            <td><input hidden value="{{poststed.postnr}}" id="postnummer" #postnummer/></td>
+            <td><button class="btn btn-danger" (click)="slettPoststed(postnummer.value)">Slett</button></td>
+            <td><button class="btn btn-success" (click)="endrePoststed(postnummer.value, postnummerPoststed.value)">Endre</button></td>
           </tr>
         </tbody>
       </table>

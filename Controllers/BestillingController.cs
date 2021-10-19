@@ -143,5 +143,32 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.LagreStrekning(strekningFra, strekningTil);
         }
 
+        [HttpGet]
+        [ActionName("hentPoststed")]
+        public async Task<List<Poststeder>> HentPoststed()
+        {
+            return await _db.HentAllePoststeder();
+        }
+
+        [HttpDelete("{postnummer}")]
+        [ActionName("slettPoststed")]
+        public async Task<bool> SlettPoststed(string postnummer)
+        {
+            return await _db.SlettPoststed(postnummer);
+        }
+
+        [HttpPut("{postnummer}/{poststed}")]
+        [ActionName("endrePoststed")]
+        public async Task<bool> EndrePoststed(string postnummer, string poststed)
+        {
+            return await _db.EndrePoststed(postnummer, poststed);
+        }
+
+        [HttpPost("{postnummer}/{poststed}")]
+        [ActionName("lagrePoststed")]
+        public async Task<bool> LagrePoststed(string postnummer, string poststed)
+        {
+            return await _db.LagrePoststed(postnummer, poststed);
+        }
     }
 }
