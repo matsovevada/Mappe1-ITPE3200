@@ -204,5 +204,20 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         return false;
       }   
     }
-  }
+    
+    public async Task<bool> LagreLugar(string navn, string beskrivelse, int antallSengeplasser, int antall, int antallLedige, int pris)
+    {
+        try
+        {
+            Lugarer lugar = new Lugarer(navn, beskrivelse, antallSengeplasser, antall, antallLedige, pris);
+            await _db.Lugarer.AddAsync(lugar);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+    }
 }

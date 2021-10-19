@@ -119,6 +119,12 @@ namespace Mappe1_ITPE3200.Controllers
             return billett;
         }
 
+        [HttpPost("{navn}/{beskrivelse}/{antallSengeplasser}/{antall}/{antallLedige}/{pris}")]
+        [ActionName("lagreLugar")]
+        public async Task<bool> LagreLugar(string navn, string beskrivelse, int antallSengeplasser, int antall, int antallLedige, int pris)
+        {
+            return await _db.LagreLugar(navn, beskrivelse, antallSengeplasser, antall, antallLedige, pris);
+        }
 
     }
 }
