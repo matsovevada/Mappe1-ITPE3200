@@ -78,7 +78,7 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<ActionResult> LagreKunde(Kunde lagretKunde)
         {
             // sjekk at kunde-objektet tilfredsstiller regex-mønsterert som er definert i Kunde-modellen
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 int kundeLagretId = await _db.LagreKunde(lagretKunde);
                 return Ok(kundeLagretId);
@@ -98,9 +98,9 @@ namespace Mappe1_ITPE3200.Controllers
         [HttpPost]
         [ActionName("lagreBillett")]
         public async Task<int> LagreBillett(Billett innBillett)
-        {   
+        {
             int billettLagret = await _db.LagreBillett(innBillett);
-            
+
             // fjern en bilplass for avgangen hvis bilplass er valgt i billetten
             if (innBillett.Bilplass)
             {
@@ -140,6 +140,13 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<bool> endreBaat(int id, String navn)
         {
             return await _db.endreBaat(id, navn);
+        }
+
+        [HttpPost("{navn}")]
+        [ActionName("lagreBaat")]
+        public async Task<bool> lagreBaat(String navn)
+        {
+            return await _db.lagreBaat(navn);
         }
     }
 }

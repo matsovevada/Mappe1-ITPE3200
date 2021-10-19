@@ -48,14 +48,18 @@ export class adminBaat {
 
 
   endreValgtBaat(innNavn, innId) {
-    let endreBaat = new Baat();
-    endreBaat.id = innId;
-    endreBaat.navn = innNavn;
-    console.log(endreBaat.id);
-    console.log(endreBaat.navn);
     this.http.put<boolean>("api/Bestilling/endreBaat/" + innId + "/" + innNavn, null)
       .subscribe(endret => {
         location.reload();
+      },
+        error => console.log(error)
+      );
+  }
+
+  lagreBaat(navn) {
+    this.http.post<boolean>("api/Bestilling/lagreBaat/" + navn, null)
+      .subscribe(lagre => {
+        location.reload()
       },
         error => console.log(error)
       );

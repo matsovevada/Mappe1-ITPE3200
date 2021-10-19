@@ -2,6 +2,12 @@
     <h2> Rediger båter</h2>
     <div>
         <div class="col-md-12">
+            <h3>Lagre båt</h3>
+            <input type="text" placeholder="Båtnavn" id="nyBaat" #nyBaat/>
+            <button class="btn btn-success" (click)="lagreBaat(nyBaat.value)">Lagre</button>
+            <div id="melding"></div>
+        </div>
+        <div class="col-md-12">
             <div *ngIf="laster">Laster båter.....</div>
             <table class="table table-bordered table-condensed">
                 <thead>

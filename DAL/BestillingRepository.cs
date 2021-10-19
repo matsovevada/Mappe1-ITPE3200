@@ -256,5 +256,23 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
+
+        [HttpPost]
+        public async Task<bool> lagreBaat(String navn)
+        {
+            try
+            {
+                Baater nyBaat = new Baater();
+                nyBaat.Navn = navn;
+                nyBaat.AntallBilplasser = 200;
+                await _db.Baater.AddAsync(nyBaat);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
