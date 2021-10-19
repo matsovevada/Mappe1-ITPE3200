@@ -148,5 +148,13 @@ namespace Mappe1_ITPE3200.Controllers
         {
             return await _db.lagreBaat(navn);
         }
+
+
+        [ActionName("hentKunder")]
+        public async Task<List<Kunder>> hentKunder()
+        {
+            List<Kunder> kunder = await _db.HentAlleKunder();
+            return kunder;
+        }
     }
 }

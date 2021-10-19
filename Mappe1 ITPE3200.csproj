@@ -50,6 +50,7 @@
     <None Remove="ClientApp\src\app\visBillett\" />
     <None Remove="ClientApp\src\app\lugarValgRetur\" />
     <None Remove="ClientApp\src\app\admin\baat\" />
+    <None Remove="ClientApp\src\app\admin\kunde\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,6 +60,7 @@
     <Folder Include="ClientApp\src\app\visBillett\" />
     <Folder Include="Logs\" />
     <Folder Include="ClientApp\src\app\admin\baat\" />
+    <Folder Include="ClientApp\src\app\admin\kunde\" />
   </ItemGroup>
 
   <ItemGroup>

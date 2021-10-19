@@ -14,6 +14,7 @@ import { visBillett } from './visBillett/visBillett';
 import { LugarComponent } from './lugarComponent/lugarComponent';
 import { Navbar } from "./navbar/navbar";
 import { adminBaat } from './admin/baat/adminBaat';
+import { adminKunde } from './admin/kunde/adminKunde';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { adminBaat } from './admin/baat/adminBaat';
     LugarComponent,
     Navbar,
     adminBaat,
+    adminKunde,
   ],
 
   imports: [

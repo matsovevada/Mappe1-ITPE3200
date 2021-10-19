@@ -274,5 +274,20 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
+
+
+        [HttpGet]
+        public async Task<List<Kunder>> HentAlleKunder()
+        {
+            try
+            {
+                List<Kunder> alleKunder = await _db.Kunder.ToListAsync();
+                return alleKunder;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
