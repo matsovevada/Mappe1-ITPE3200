@@ -55,4 +55,16 @@ export class AdminStrekning {
         error => console.log(error)
       );
   }
+
+  lagreStrekning(lagreStrekningFra, lagreStrekningTil) {
+
+    this.http.post("api/Bestilling/lagreStrekning/" + lagreStrekningFra + "/" + lagreStrekningTil, null)
+      .subscribe(ok => {
+        if (ok) {
+          location.reload();
+        }
+      },
+        error => console.log(error)
+      );
+  }
 }

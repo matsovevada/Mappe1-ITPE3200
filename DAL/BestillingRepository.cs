@@ -247,5 +247,24 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
+
+        public async Task<bool> LagreStrekning(string StrekningFra, string StrekningTil)
+        {
+            try
+            {
+                Strekninger strekning = new Strekninger();
+                strekning.Fra = StrekningFra;
+                strekning.Til = StrekningTil;
+
+                await _db.Strekninger.AddAsync(strekning);
+                await _db.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

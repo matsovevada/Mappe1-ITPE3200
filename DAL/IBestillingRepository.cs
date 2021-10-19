@@ -20,5 +20,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<Kunder> HentKunde(int id);
     Task<bool> SlettStrekning(int id);
     Task<bool> EndreStrekning(int id, string nyStrekningFra, string nyStrekningTil);
+    Task<bool> LagreStrekning(string StrekningFra, string StrekningTil);
   }
 }

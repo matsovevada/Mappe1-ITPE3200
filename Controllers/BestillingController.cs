@@ -135,5 +135,13 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.EndreStrekning(id, strekningFra, strekningTil);
         }
 
+        [HttpPost("{strekningFra}/{strekningTil}")]
+        [ActionName("lagreStrekning")]
+        public async Task<bool> LagreStrekning(string strekningFra, string strekningTil)
+        {
+
+            return await _db.LagreStrekning(strekningFra, strekningTil);
+        }
+
     }
 }

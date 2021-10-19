@@ -2,7 +2,14 @@
   <h2>Strekninger</h2>
   <div>
     <div class="col-md-12">
-      <div *ngIf="laster">Laster kunder.....</div>
+      <div *ngIf="laster">Laster strekninger.....</div>
+
+      <h3>Lagre strekning</h3>
+      <input placeholder="Fra" id="lagreStrekningFra" #lagreStrekningFra/>
+      <input placeholder="Til" id="lagreStrekningTil" #lagreStrekningTil/>
+      <button class="btn btn-success" (click)="lagreStrekning(lagreStrekningFra.value, lagreStrekningTil.value)">Lagre</button>
+
+      <h3>Strekninger</h3>
       <table class="table table-bordered table-condensed">
         <thead>
           <tr>
