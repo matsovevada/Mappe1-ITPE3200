@@ -13,8 +13,9 @@
                 </thead>
                 <tbody *ngFor="let baat of alleBaater" ng-model="alleBaater">
                     <tr>
-                        <td>{{baat.navn}}</td>
-                        <td><button class="btn btn-success">Endre</button></td>
+                        <td><input type="text" value="{{baat.navn}}" id="baatNavn" #baatNavn/>
+                        <input hidden value="{{baat.id}}" id="baatId" #baatId></td>
+                        <td><button class="btn btn-success" (click)="endreValgtBaat(baatNavn.value, baatId.value)">Endre</button></td>
                         <td><button class="btn btn-danger" (click)="slettValgtBaat(baat.id)">Slett</button></td>
                     </tr>
                 </tbody>

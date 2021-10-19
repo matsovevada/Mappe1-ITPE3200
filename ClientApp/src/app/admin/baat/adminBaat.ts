@@ -13,13 +13,16 @@ export class adminBaat {
   alleBaater: Array<Baat>;
   baatSlettet: boolean;
   laster: boolean;
+  endreValgt: boolean;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   ngOnInit() {
     this.laster = true;
     this.hentAlleBaater();
     this.baatSlettet = false;
+    this.endreValgt = false;
   }
 
   hentAlleBaater() {
@@ -36,9 +39,25 @@ export class adminBaat {
     this.http.delete<boolean>("api/Bestilling/slettBaat/" + id)
       .subscribe(slettet => {
         this.baatSlettet = slettet
+        if (this.baatSlettet) { location.reload(); }
       },
         error => console.log(error)
     );
-    if (this.baatSlettet) { location.reload(); }
+    this.baatSlettet = false;
+  }
+
+
+  endreValgtBaat(innNavn, innId) {
+    let endreBaat = new Baat();
+    endreBaat.id = innId;
+    endreBaat.navn = innNavn;
+    console.log(endreBaat.id);
+    console.log(endreBaat.navn);
+    this.http.put<boolean>("api/Bestilling/endreBaat/" + innId + "/" + innNavn, null)
+      .subscribe(endret => {
+        location.reload();
+      },
+        error => console.log(error)
+      );
   }
 }

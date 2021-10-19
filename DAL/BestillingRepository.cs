@@ -239,5 +239,22 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
-  }
+
+        [HttpPut]
+        public async Task<bool> endreBaat(int id, String navn)
+        {
+            try
+            {
+                Console.WriteLine("HALLO");
+                Baater endreBaat = await _db.Baater.FindAsync(id);
+                endreBaat.Navn = navn;
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
 }

@@ -134,5 +134,12 @@ namespace Mappe1_ITPE3200.Controllers
         {
             return await _db.slettBaat(id);
         }
+
+        [HttpPut("{id}/{navn}")]
+        [ActionName("endreBaat")]
+        public async Task<bool> endreBaat(int id, String navn)
+        {
+            return await _db.endreBaat(id, navn);
+        }
     }
 }
