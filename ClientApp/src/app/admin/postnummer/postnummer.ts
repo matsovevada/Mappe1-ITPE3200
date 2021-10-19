@@ -3,39 +3,40 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Strekning } from '../../Strekning';
 import { ViewEncapsulation } from "@angular/core";
+import { Postnummer } from "../../Postnummer";
 
 @Component({
-  selector: 'adminStrekning',
-  templateUrl: 'strekning.html',
+  selector: 'adminPostnummer',
+  templateUrl: 'postnummer.html',
   styleUrls: [
     'StyleSheet.css'
   ],
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AdminStrekning {
-  alleStrekninger: Array<Strekning>;
+export class AdminPostnummer {
+  allePostnummere: Array<Postnummer>;
   laster: boolean = true;
-  
+
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    this.hentAlleStrekninger()
+    this.hentAllePostnummere()
   }
 
-  hentAlleStrekninger() {
-    this.http.get<Strekning[]>("api/Bestilling/hentStrekning")
-      .subscribe(strekningene => {
-        this.alleStrekninger = strekningene;
+  hentAlleSPostnummere() {
+    this.http.get<Postnummer[]>("api/Bestilling/hentPostnummer")
+      .subscribe(postnummere => {
+        this.allePostnummere = postnummere;
         this.laster = false;
       },
         error => console.log(error)
       );
   }
 
-  slettStrekning(strekningId) {
-    console.log("Sletter strekning med id " + strekningId);
-    this.http.delete('api/Bestilling/slettStrekning/' + strekningId)
+  slettPostnummer(postnummer) {
+    console.log("Sletter postnummer: " + postnummer);
+    this.http.delete('api/Bestilling/slettPostnummer/' + postnummer)
       .subscribe((ok) => {
         if (ok) {
           location.reload();
@@ -43,9 +44,9 @@ export class AdminStrekning {
       });
   }
 
-  endreStrekning(strekningId, strekningFra, strekningTil) {
-  
-    this.http.put("api/Bestilling/endreStrekning/" + strekningId + "/" + strekningFra + "/" + strekningTil, null)
+  endrePostnummer(postnummer, poststed,) {
+
+    this.http.put("api/Bestilling/endrePostnummer/" + postnummer + "/" + poststed, null)
       .subscribe(ok => {
         if (ok) {
           location.reload();
@@ -55,9 +56,9 @@ export class AdminStrekning {
       );
   }
 
-  lagreStrekning(lagreStrekningFra, lagreStrekningTil) {
+  lagrePostnummer(postnummer, poststed) {
 
-    this.http.post("api/Bestilling/lagreStrekning/" + lagreStrekningFra + "/" + lagreStrekningTil, null)
+    this.http.post("api/Bestilling/lagrePoststed/" + postnummer + "/" + poststed, null)
       .subscribe(ok => {
         if (ok) {
           location.reload();

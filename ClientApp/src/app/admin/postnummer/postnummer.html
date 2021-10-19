@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Postnummer</h2>
+  <div>
+    <div class="col-md-12">
+      <div *ngIf="laster">Laster postnummere.....</div>
+
+      <h3>Lagre Postnummer</h3>
+      <input placeholder="Postnummer" id="lagrePostnummerNummer" #lagrePostnummerNummer />
+      <input placeholder="Poststed" id="lagrePostnummerSted" #lagrePostnummerSted />
+      <button class="btn btn-success" (click)="lagreStrekning(lagrePostnummerNummer.value, lagrePostnummerSted.value)">Lagre</button>
+
+      <h3>Postnummere</h3>
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Postnummer</th>
+            <th>Poststed</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let postnummer of allePostnummere">
+          <tr>
+            <td>{{postnummer.postnr}}/></td>
+            <td><input value="{{postnummer.poststed}}" id="postnummerPoststed" #postnummerPoststed /></td>
+            <td><input hidden value="{{postnummer.poststed}}" id="postnummer" #postnummer/></td>
+            <td><button class="btn btn-danger" (click)="slettPostnummer(postnummer.value)">Slett</button></td>
+            <td><button class="btn btn-success" (click)="endrePostnummer(postnummer.value, postnummerPoststed.value)">Endre</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

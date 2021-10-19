@@ -32,6 +32,7 @@
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
     <None Remove="ClientApp\src\app\admin\meny\meny.ts" />
+    <None Remove="ClientApp\src\app\admin\postnummer\postnummer.ts" />
     <None Remove="ClientApp\src\app\Avgang.ts" />
     <None Remove="ClientApp\src\app\avgang\avganger.ts" />
     <None Remove="ClientApp\src\app\Baater.ts" />
@@ -40,6 +41,7 @@
     <None Remove="ClientApp\src\app\Lugar.ts" />
     <None Remove="ClientApp\src\app\lugarComponent\lugarComponent.ts" />
     <None Remove="ClientApp\src\app\lugarValg\lugarValg.ts" />
+    <None Remove="ClientApp\src\app\postnummer.ts" />
     <None Remove="ClientApp\src\app\Strekning.ts" />
     <None Remove="ClientApp\src\app\test\test.ts" />
     <None Remove="ClientApp\src\app\tilpassBestilling\tilpassBestilling.ts" />
@@ -53,7 +55,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\admin\postnummer\" />
     <Folder Include="DAL\" />
     <Folder Include="ClientApp\src\app\kundeForm\" />
     <Folder Include="ClientApp\src\app\visBillett\" />
