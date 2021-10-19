@@ -10,7 +10,7 @@ import { Kunde } from '../../Kunde'
   templateUrl: 'adminKunde.html'
 })
 
-export class adminKunde {
+export class AdminKunde {
   alleKunder: Array<Kunde>;
   laster: boolean;
   kundeSkjema: FormGroup;
