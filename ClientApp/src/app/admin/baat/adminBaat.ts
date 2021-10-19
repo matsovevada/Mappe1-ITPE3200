@@ -9,7 +9,7 @@ import { Baat } from '../../Baat'
   templateUrl: 'adminBaat.html'
 })
 
-export class adminBaat {
+export class AdminBaat {
   alleBaater: Array<Baat>;
   baatSlettet: boolean;
   laster: boolean;

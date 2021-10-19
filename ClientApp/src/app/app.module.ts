@@ -16,8 +16,8 @@ import { Navbar } from "./navbar/navbar";
 import { Meny } from "./admin/meny/meny";
 import { AdminStrekning } from './admin/strekning/strekning';
 import { AdminPostnummer } from './admin/postnummer/postnummer';
-import { adminBaat } from './admin/baat/adminBaat';
-import { adminKunde } from './admin/kunde/adminKunde';
+import { AdminBaat } from './admin/baat/adminBaat';
+import { AdminKunde } from './admin/kunde/adminKunde';
 import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
 
 @NgModule({
@@ -33,8 +33,8 @@ import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
     Meny,
     AdminStrekning,
     AdminPostnummer,
-    adminBaat,
-    adminKunde,
+    AdminBaat,
+    AdminKunde,
     EndreKundeForm,
   ],
 
