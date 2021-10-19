@@ -28,6 +28,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     public DbSet<Baater> Baater { get; set; }
     public DbSet<Strekninger> Strekninger { get; set; }
     public DbSet<Poststeder> Poststeder { get; set; }
+    public DbSet<Lugarer> Lugarer { get; set; }
   }
 
 
