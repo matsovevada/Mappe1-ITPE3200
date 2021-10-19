@@ -25,5 +25,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<bool> SlettPoststed(string postnummer);
     Task<bool> EndrePoststed(string postnummer, string nyttPoststed);
     Task<bool> LagrePoststed(string postnummer, string poststed);
+    Task<bool> LagreLugar(string navn, string beskrivelse, int antallSengeplasser, int antall, int antallLedige, int pris);
   }
 }
