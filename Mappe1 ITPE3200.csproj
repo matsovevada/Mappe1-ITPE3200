@@ -51,6 +51,7 @@
     <None Remove="ClientApp\src\app\lugarValgRetur\" />
     <None Remove="ClientApp\src\app\admin\baat\" />
     <None Remove="ClientApp\src\app\admin\kunde\" />
+    <None Remove="ClientApp\src\app\admin\endreKundeForm\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +62,7 @@
     <Folder Include="Logs\" />
     <Folder Include="ClientApp\src\app\admin\baat\" />
     <Folder Include="ClientApp\src\app\admin\kunde\" />
+    <Folder Include="ClientApp\src\app\admin\endreKundeForm\" />
   </ItemGroup>
 
   <ItemGroup>

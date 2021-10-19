@@ -245,7 +245,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         {
             try
             {
-                Console.WriteLine("HALLO");
                 Baater endreBaat = await _db.Baater.FindAsync(id);
                 endreBaat.Navn = navn;
                 await _db.SaveChangesAsync();
@@ -264,6 +263,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             {
                 Baater nyBaat = new Baater();
                 nyBaat.Navn = navn;
+                //SLETT DENNE
                 nyBaat.AntallBilplasser = 200;
                 await _db.Baater.AddAsync(nyBaat);
                 await _db.SaveChangesAsync();
@@ -287,6 +287,23 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             catch
             {
                 return null;
+            }
+        }
+
+        [HttpDelete]
+        public async Task<bool> slettKunde(int id)
+        {
+            try
+            {
+                Kunder slettKunde = await _db.Kunder.FindAsync(id);
+
+                _db.Kunder.Remove(slettKunde);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

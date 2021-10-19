@@ -15,6 +15,7 @@ import { LugarComponent } from './lugarComponent/lugarComponent';
 import { Navbar } from "./navbar/navbar";
 import { adminBaat } from './admin/baat/adminBaat';
 import { adminKunde } from './admin/kunde/adminKunde';
+import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { adminKunde } from './admin/kunde/adminKunde';
     Navbar,
     adminBaat,
     adminKunde,
+    EndreKundeForm,
   ],
 
   imports: [

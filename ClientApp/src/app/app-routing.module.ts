@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { adminBaat } from './admin/baat/adminBaat';
+import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
 import { adminKunde } from './admin/kunde/adminKunde';
 import { Bestilling } from './bestilling/bestilling';
 import { KundeForm } from './kundeForm/kundeForm';
@@ -17,7 +18,8 @@ const appRoots: Routes = [
   { path: '', redirectTo: 'bestilling', pathMatch: 'full' },
   { path: 'visBillett/:id', component: visBillett },
   { path: 'kundeForm', component: KundeForm },
-  { path: 'test', component: adminKunde }
+  { path: 'test', component: adminKunde },
+  { path: 'endreKundeForm', component: EndreKundeForm },
 ]
 
 @NgModule({

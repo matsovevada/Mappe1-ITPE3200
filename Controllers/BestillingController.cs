@@ -156,5 +156,12 @@ namespace Mappe1_ITPE3200.Controllers
             List<Kunder> kunder = await _db.HentAlleKunder();
             return kunder;
         }
+
+        [HttpDelete("{id}")]
+        [ActionName("slettKunde")]
+        public async Task<bool> slettKunde(int id)
+        {
+            return await _db.slettKunde(id);
+        }
     }
 }

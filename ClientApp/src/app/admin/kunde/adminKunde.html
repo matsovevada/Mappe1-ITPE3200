@@ -17,7 +17,7 @@
                             <p id="kundeNavn" #kundeNavn>{{kunde.fornavn}} {{kunde.etternavn}}</p>
                             <input hidden value="{{kunde.id}}" id="kundeId" #kundeId>
                         </td>
-                        <td><button class="btn btn-success">Endre</button></td>
+                        <td><button class="btn btn-primary" [routerLink]="['/endreKundeForm', {kundeId:kunde.id}]">Endre</button></td>
                         <td><button class="btn btn-danger" (click)="slettValgtKunde(kundeId.value)">Slett</button></td>
                     </tr>
                 </tbody>
