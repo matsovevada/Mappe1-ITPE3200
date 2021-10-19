@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="col-md-6 container kundeForm">
+        <form [formGroup]="kundeSkjema" (ngSubmit)="onSubmit()">
+          <h2>Fyll ut kundeinformasjon:</h2>
+            <div class="form-group">
+                <label>Fornavn</label>
+                <input class="form-control" formControlName="fornavn" />
+                <p class="alert alert-warning" [hidden]="kundeSkjema.controls.fornavn.valid || (kundeSkjema.controls.fornavn.pristine && !submitted)">
+                    Fyll inn fornavn
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Etternavn</label>
+                <input class="form-control" formControlName="etternavn" />
+                <p class="alert alert-warning" [hidden]="kundeSkjema.controls.etternavn.valid || (kundeSkjema.controls.etternavn.pristine && !submitted)">
+                    Fyll inn etternavn
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Adresse</label>
+                <input class="form-control" formControlName="adresse" value="HEIEIEIEI" />
+                <p class="alert alert-warning" [hidden]="kundeSkjema.controls.adresse.valid || (kundeSkjema.controls.adresse.pristine && !submitted)">
+                    Fyll inn adresse
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Postnr</label>
+                <input class="form-control" formControlName="postnr" />
+                <p class="alert alert-warning" [hidden]="kundeSkjema.controls.postnr.valid || (kundeSkjema.controls.postnr.pristine && !submitted)">
+                    Fyll inn postnummer (4 siffer)
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Poststed</label>
+                <input class="form-control" formControlName="poststed" />
+                <p class="alert alert-warning" [hidden]="kundeSkjema.controls.poststed.valid || (kundeSkjema.controls.poststed.pristine && !submitted)">
+                    Fyll inn poststed
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Epost</label>
+                <input class="form-control" formControlName="epost" />
+                <p class="alert alert-warning" [hidden]="kundeSkjema.controls.epost.valid || (kundeSkjema.controls.epost.pristine && !submitted)">
+                    Fyll inn en gyldig epost (kun små bokstaver)
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Telefonnummer</label>
+                <input class="form-control" formControlName="tlf" />
+                <p class="alert alert-warning" [hidden]="kundeSkjema.controls.tlf.valid || (kundeSkjema.controls.tlf.pristine && !submitted)">
+                    Fyll inn telefonnummer (8 siffer)
+                </p>
+            </div>
+            <div class="form-group">
+                <button type="submit" [disabled]="!kundeSkjema.valid" class="btn btn-primary">Bestill</button>
+            </div>
+            <div id="melding">{{feilMelding}}</div>
+        </form>
+    </div>
+  <footer style="color:lightgray; align-content:center;">Laget av Peter, Zaka og Mats</footer>
+</div>
+

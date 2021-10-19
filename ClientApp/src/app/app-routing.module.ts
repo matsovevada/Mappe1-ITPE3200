@@ -19,6 +19,8 @@ const appRoots: Routes = [
   { path: 'kundeForm', component: KundeForm },
   { path: 'adminStrekning', component: AdminStrekning },
   { path: 'adminPostnummer', component: AdminPostnummer }
+  { path: 'test', component: adminKunde },
+  { path: 'endreKundeForm', component: EndreKundeForm },
 ]
 
 @NgModule({

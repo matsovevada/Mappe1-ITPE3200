@@ -176,5 +176,49 @@ namespace Mappe1_ITPE3200.Controllers
         {
             return await _db.LagrePoststed(postnummer, poststed);
         }
+
+        [ActionName("hentBaater")]
+        public async Task<List<Baater>> HentBaater()
+        {
+            List<Baater> baater = await _db.HentAlleBaater();
+            return baater;
+        }
+
+
+        [HttpDelete("{id}")]
+        [ActionName("slettBaat")]
+        public async Task<bool> slettBaat(int id)
+        {
+            return await _db.slettBaat(id);
+        }
+
+        [HttpPut("{id}/{navn}")]
+        [ActionName("endreBaat")]
+        public async Task<bool> endreBaat(int id, String navn)
+        {
+            return await _db.endreBaat(id, navn);
+        }
+
+        [HttpPost("{navn}")]
+        [ActionName("lagreBaat")]
+        public async Task<bool> lagreBaat(String navn)
+        {
+            return await _db.lagreBaat(navn);
+        }
+
+
+        [ActionName("hentKunder")]
+        public async Task<List<Kunder>> hentKunder()
+        {
+            List<Kunder> kunder = await _db.HentAlleKunder();
+            return kunder;
+        }
+
+        [HttpDelete("{id}")]
+        [ActionName("slettKunde")]
+        public async Task<bool> slettKunde(int id)
+        {
+            return await _db.slettKunde(id);
+        }
     }
 }
