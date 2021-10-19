@@ -14,6 +14,7 @@ import { visBillett } from './visBillett/visBillett';
 import { LugarComponent } from './lugarComponent/lugarComponent';
 import { Navbar } from "./navbar/navbar";
 import { Meny } from "./admin/meny/meny";
+import { AdminStrekning } from './admin/strekning/strekning';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { Meny } from "./admin/meny/meny";
     visBillett,
     LugarComponent,
     Navbar,
-    Meny
+    Meny,
+    AdminStrekning
   ],
 
   imports: [

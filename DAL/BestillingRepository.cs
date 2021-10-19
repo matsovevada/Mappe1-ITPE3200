@@ -204,5 +204,67 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         return false;
       }   
     }
-  }
+
+        public async Task<bool> SlettStrekning(int id)
+        {
+            try
+            {
+                Strekninger strekning = await _db.Strekninger.FindAsync(id);
+
+                //SLETTE AVGANGER KNYTTET TIL STREKNINGEN?
+                // slett avganger som har strekningen
+             /*   await _db.Avganger.ForEachAsync(avgang =>
+                {
+                    if (avgang.Strekning.Id == strekning.Id)
+                    {
+                        _db.Avganger.Remove(avgang);
+                    }
+                });*/
+
+                _db.Strekninger.Remove(strekning);
+
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> EndreStrekning(int id, string nyStrekningFra, string nyStrekningTil)
+        {
+            try
+            {
+                Strekninger strekning = await _db.Strekninger.FindAsync(id);
+                strekning.Fra = nyStrekningFra;
+                strekning.Til = nyStrekningTil;
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> LagreStrekning(string StrekningFra, string StrekningTil)
+        {
+            try
+            {
+                Strekninger strekning = new Strekninger();
+                strekning.Fra = StrekningFra;
+                strekning.Til = StrekningTil;
+
+                await _db.Strekninger.AddAsync(strekning);
+                await _db.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
 }

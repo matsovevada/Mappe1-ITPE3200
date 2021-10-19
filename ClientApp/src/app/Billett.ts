@@ -12,7 +12,6 @@ export class Billett {
 	bilplassRetur: boolean;
 	lugarer: Array<Lugar>;
 	lugarerRetur: Array<Lugar>;
-	
 }
 
 

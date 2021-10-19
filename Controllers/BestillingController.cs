@@ -78,7 +78,7 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<ActionResult> LagreKunde(Kunde lagretKunde)
         {
             // sjekk at kunde-objektet tilfredsstiller regex-mønsterert som er definert i Kunde-modellen
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 int kundeLagretId = await _db.LagreKunde(lagretKunde);
                 return Ok(kundeLagretId);
@@ -98,9 +98,9 @@ namespace Mappe1_ITPE3200.Controllers
         [HttpPost]
         [ActionName("lagreBillett")]
         public async Task<int> LagreBillett(Billett innBillett)
-        {   
+        {
             int billettLagret = await _db.LagreBillett(innBillett);
-            
+
             // fjern en bilplass for avgangen hvis bilplass er valgt i billetten
             if (innBillett.Bilplass)
             {
@@ -119,6 +119,29 @@ namespace Mappe1_ITPE3200.Controllers
             return billett;
         }
 
+
+        [HttpDelete("{id}")]
+        [ActionName("slettStrekning")]
+        public async Task<bool> SlettStrekning(int id)
+        {
+            return await _db.SlettStrekning(id);
+        }
+
+        [HttpPut("{id}/{strekningFra}/{strekningTil}")]
+        [ActionName("endreStrekning")]
+        public async Task<bool> EndreStrekning(int id, string strekningFra, string strekningTil)
+        {
+          
+            return await _db.EndreStrekning(id, strekningFra, strekningTil);
+        }
+
+        [HttpPost("{strekningFra}/{strekningTil}")]
+        [ActionName("lagreStrekning")]
+        public async Task<bool> LagreStrekning(string strekningFra, string strekningTil)
+        {
+
+            return await _db.LagreStrekning(strekningFra, strekningTil);
+        }
 
     }
 }

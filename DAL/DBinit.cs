@@ -70,6 +70,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         Til = "Geiranger"
       };
 
+    
       db.Strekninger.Add(strekning_OsloKobenhavn);
       db.Strekninger.Add(strekning_KobenhavnOslo);
       db.Strekninger.Add(strekning_OsloKiel);
