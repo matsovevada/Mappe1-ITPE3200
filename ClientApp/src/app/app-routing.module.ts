@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { adminBaat } from './admin/baat/adminBaat';
+import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
+import { adminKunde } from './admin/kunde/adminKunde';
 import { Bestilling } from './bestilling/bestilling';
 import { KundeForm } from './kundeForm/kundeForm';
 import { LugarValg } from './lugarValg/lugarValg'
@@ -18,7 +21,7 @@ const appRoots: Routes = [
   { path: 'visBillett/:id', component: visBillett },
   { path: 'kundeForm', component: KundeForm },
   { path: 'adminStrekning', component: AdminStrekning },
-  { path: 'adminPostnummer', component: AdminPostnummer }
+  { path: 'adminPostnummer', component: AdminPostnummer },
   { path: 'test', component: adminKunde },
   { path: 'endreKundeForm', component: EndreKundeForm },
 ]
