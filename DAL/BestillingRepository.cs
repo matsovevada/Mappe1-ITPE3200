@@ -204,11 +204,11 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 {
                     avgang.LedigeLugarer.ForEach(lugarIAvgang =>
             {
-                      if (lugar.Navn.Equals(lugarIAvgang.Navn))
-                      {
-                          lugarIAvgang.AntallLedige--;
-                      }
-                  });
+                if (lugar.Navn.Equals(lugarIAvgang.Navn))
+                {
+                    lugarIAvgang.AntallLedige--;
+                }
+            });
                 });
 
                 await _db.SaveChangesAsync();
@@ -363,12 +363,12 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
-    
 
 
-    //Henter alle båter fra DB
-    [HttpGet]
-    public async Task<List<Baater>> HentAlleBaater()
+
+        //Henter alle båter fra DB
+        [HttpGet]
+        public async Task<List<Baater>> HentAlleBaater()
         {
             try
             {
@@ -381,8 +381,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-    [HttpDelete]
-    public async Task<bool> slettBaat(int id)
+        [HttpDelete]
+        public async Task<bool> slettBaat(int id)
         {
             try
             {
@@ -390,11 +390,12 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 List<Avganger> alleAvgangerMedValgtBaat = await _db.Avganger.Where(a => a.Baat.Equals(slettBaat)).ToListAsync();
                 alleAvgangerMedValgtBaat.ForEach(avgang => _db.Avganger.Remove(avgang));
                 await _db.SaveChangesAsync();
-                
+
                 _db.Baater.Remove(slettBaat);
                 await _db.SaveChangesAsync();
                 return true;
-            } catch
+            }
+            catch
             {
                 return false;
             }
@@ -466,6 +467,57 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
-    }
-}
 
+        [HttpPut]
+        public async Task<bool> endreKunde(Kunde k)
+        {
+            try
+
+            {
+                Kunder kunde = await _db.Kunder.FindAsync(k.Id);
+                kunde.Fornavn = k.Fornavn;
+                kunde.Etternavn = k.Etternavn;
+                kunde.Adresse = k.Adresse;
+                kunde.Telefonnummer = k.Telefonnummer;
+                kunde.Epost = k.Epost;
+
+
+                //Sjekker om postnr/poststed er endret. Sjekkes mot DB og settes til verdi fra DB hvis det er registrert. Oppretter
+                //nytt felt i Poststeder DB hvis det ikke finnes. Verdi settes til kunde.
+                if ((k.Postnr != kunde.Poststed.Postnr) && (k.Poststed != kunde.Poststed.Poststed)) {
+                    var sjekkPostnr = await _db.Poststeder.FindAsync(k.Postnr);
+                    if (sjekkPostnr == null)
+                    {
+                        var nyttPoststed = new Poststeder();
+                        nyttPoststed.Poststed = k.Poststed;
+                        nyttPoststed.Postnr = k.Postnr;
+                        _db.Poststeder.Add(nyttPoststed);
+                        await _db.SaveChangesAsync();
+
+                        kunde.Poststed = nyttPoststed;
+
+                    }
+                    else
+                    {
+                        var poststedFraDB = new Poststeder();
+                        poststedFraDB = sjekkPostnr;
+                        kunde.Poststed = poststedFraDB;
+                    }
+                }
+
+                _db.Kunder.Add(kunde);
+                await _db.SaveChangesAsync();
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+    }
+
+
+}

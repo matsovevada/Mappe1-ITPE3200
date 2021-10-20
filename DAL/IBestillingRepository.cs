@@ -32,5 +32,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<bool> lagreBaat(String navn);
     Task<List<Kunder>> HentAlleKunder();
     Task<bool> slettKunde(int id);
+    Task<bool> endreKunde(Kunde k);
   }
 }
