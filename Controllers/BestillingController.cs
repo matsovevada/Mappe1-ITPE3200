@@ -206,7 +206,7 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.lagreBaat(navn);
         }
 
-
+        [HttpGet]
         [ActionName("hentKunder")]
         public async Task<List<Kunder>> hentKunder()
         {
@@ -221,10 +221,11 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.slettKunde(id);
         }
 
-        [HttpPut("{kunde}")]
-        public async Task<bool> endreKunde(Kunde k)
+        [HttpPut]
+        [ActionName("endreKunde")]
+        public async Task<bool> endreKunde(Kunde kunde)
         {
-            return await _db.endreKunde(k);
+            return await _db.endreKunde(kunde);
         }
     }
 }

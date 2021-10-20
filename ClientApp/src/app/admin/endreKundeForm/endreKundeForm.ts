@@ -36,6 +36,7 @@ export class EndreKundeForm implements OnInit {
   oppdaterKunde() {
     const kunde = new Kunde();
 
+    kunde.id = this.kundeId;
     kunde.fornavn = this.kundeSkjema.value.fornavn;
     kunde.etternavn = this.kundeSkjema.value.etternavn;
     kunde.adresse = this.kundeSkjema.value.adresse;
@@ -44,13 +45,18 @@ export class EndreKundeForm implements OnInit {
     kunde.telefonnummer = this.kundeSkjema.value.tlf;
     kunde.epost = this.kundeSkjema.value.epost;
 
+    this.http.put<boolean>("api/Bestilling/endreKunde", kunde)
+      .subscribe(kundeEndret => {
+        if (kundeEndret) { this.router.navigateByUrl('/adminKunde') }
+      },
+    error => console.log(error)
+      );
   }
 
   hentValgtKunde(id) {
     this.http.get<Kunde>("api/Bestilling/hentKunde/" + id)
       .subscribe(kunde => {
         this.valgtKunde = kunde;
-        console.log(this.valgtKunde)
         this.kundeSkjema.patchValue({
           fornavn: this.valgtKunde.fornavn,
           etternavn: this.valgtKunde.etternavn,

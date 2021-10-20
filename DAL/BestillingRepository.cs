@@ -468,7 +468,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpPut]
         public async Task<bool> endreKunde(Kunde k)
         {
             try
@@ -505,7 +504,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                     }
                 }
 
-                _db.Kunder.Add(kunde);
                 await _db.SaveChangesAsync();
                 return true;
 

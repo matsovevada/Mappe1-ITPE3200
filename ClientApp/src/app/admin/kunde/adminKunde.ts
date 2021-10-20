@@ -70,8 +70,6 @@ export class AdminKunde {
     );
   }
 
-  endreValgtKunde(id) {
 
-  }
 
 }
