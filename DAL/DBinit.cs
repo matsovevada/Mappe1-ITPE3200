@@ -194,6 +194,12 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       lugarer16.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
       lugarer16.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
 
+            lugarer16.ForEach(l =>
+            {
+                db.Lugarer.Add(l);
+        
+            });
+
       // Baater
 
       var baat1 = new Baater

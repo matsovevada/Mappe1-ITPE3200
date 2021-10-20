@@ -137,7 +137,7 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("endreStrekning")]
         public async Task<bool> EndreStrekning(int id, string strekningFra, string strekningTil)
         {
-          
+
             return await _db.EndreStrekning(id, strekningFra, strekningTil);
         }
 
@@ -219,6 +219,13 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<bool> slettKunde(int id)
         {
             return await _db.slettKunde(id);
+        }
+
+        [HttpGet]
+        [ActionName("hentAlleLugarer")]
+        public async Task<List<Lugarer>> HentAlleLugarer ()
+        {
+            return await _db.HentAlleLugarer();
         }
     }
 }

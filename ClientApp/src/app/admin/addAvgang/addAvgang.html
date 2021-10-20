@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Legg til avgang</h2>
+  <form>
+
+    <div class="form-group">
+      <label>Båt</label>
+      <select class="form-control">
+        <option *ngFor="let baat of alleBaater">{{baat.navn}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Strekning</label>
+      <select class="form-control">
+        <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label>Dag</label>
+          <input type='number' class="form-control" id='datetimepicker4' />
+        </div>
+        <div class="col">
+          <label>Måned</label>
+          <input type='number' class="form-control" id='datetimepicker4' />
+        </div>
+        <div class="col">
+          <label>År</label>
+          <input type='number' class="form-control" id='datetimepicker4' />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <select class="select" multiple>
+        <option></option>
+      </select>
+    </div>
+
+  </form>
+</div>

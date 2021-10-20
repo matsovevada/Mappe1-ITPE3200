@@ -466,6 +466,18 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
+
+        public async Task<List<Lugarer>> HentAlleLugarer()
+        {
+            try
+            {
+                return await _db.Lugarer.ToListAsync();
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
 
