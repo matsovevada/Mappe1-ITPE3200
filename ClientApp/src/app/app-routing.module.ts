@@ -21,7 +21,7 @@ const appRoots: Routes = [
   { path: 'visBillett/:id', component: visBillett },
   { path: 'kundeForm', component: KundeForm },
   { path: 'adminStrekning', component: AdminStrekning },
-  { path: 'adminPostnummer', component: AdminPostnummer },
+  { path: 'adminPoststed', component: AdminPostnummer },
   { path: 'adminKunde', component: AdminKunde },
   { path: 'endreKundeForm', component: EndreKundeForm },
   { path: 'adminBaat', component: AdminBaat },
