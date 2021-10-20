@@ -2,7 +2,7 @@
   <div class="adminMenu container row">
     <div class="adminMenuBox flex-row">
       <h3 class="adminMenuItem">Lugar</h3>
-      <button class="btn btn-primary"><a [routerLink]="['']" class="mb-0 h3">Legge til</a></button>
+      <button class="btn btn-primary"><a [routerLink]="['/adminAddLugar']" class="mb-0 h3">Legge til</a></button>
       <button class="btn btn-danger"><a [routerLink]="['']" class="mb-0 h3">Endre</a></button>
     </div>
     <div class="adminMenuBox flex-row">
@@ -12,22 +12,21 @@
     </div>
     <div class="adminMenuBox flex-row">
       <h3 class="adminMenuItem">Kunde</h3>
-      <button class="btn btn-primary"><a [routerLink]="['']" class="mb-0 h3">Legge til</a></button>
       <button class="btn btn-danger"><a [routerLink]="['']" class="mb-0 h3">Endre</a></button>
     </div>
   </div>
   <div class="container row">
     <div class="adminMenuBox flex-row">
       <h3 class="adminMenuItem">Båt</h3>
-      <button class="btn btn-primary"><a [routerLink]="['']" class="mb-0 h3">Legge til/Endre</a></button>
+      <button class="btn btn-primary"><a [routerLink]="['/adminBaat']" class="mb-0 h3">Legge til/Endre</a></button>
     </div>
     <div class="adminMenuBox flex-row">
       <h3 class="adminMenuItem">Strekning</h3>
-      <button class="btn btn-primary"><a [routerLink]="['']" class="mb-0 h3">Legge til/Endre</a></button>
+      <button class="btn btn-primary"><a [routerLink]="['/adminStrekning']" class="mb-0 h3">Legge til/Endre</a></button>
     </div>
     <div class="adminMenuBox flex-row">
-      <h3 class="adminMenuItem">Postnummer og Sted</h3>
-      <button class="btn btn-primary"><a [routerLink]="['']" class="mb-0 h3">Legge til/Endre</a></button>
+      <h3 class="adminMenuItem">Poststed</h3>
+      <button class="btn btn-primary"><a [routerLink]="['/adminPoststed']" class="mb-0 h3">Legge til/Endre</a></button>
     </div>
   </div>
 </div>
