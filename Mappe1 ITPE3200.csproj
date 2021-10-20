@@ -31,6 +31,8 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Remove="ClientApp\src\app\admin\endreLugarForm\endreLugarForm.ts" />
+    <None Remove="ClientApp\src\app\admin\endreLugar\endreLugar.ts" />
     <None Remove="ClientApp\src\app\admin\meny\meny.ts" />
     <None Remove="ClientApp\src\app\admin\postnummer\postnummer.ts" />
     <None Remove="ClientApp\src\app\Avgang.ts" />
@@ -61,8 +63,6 @@
     <Folder Include="ClientApp\src\app\admin\addLugar\" />
     <Folder Include="ClientApp\src\app\admin\addKunde\" />
     <Folder Include="ClientApp\src\app\admin\add\" />
-    <Folder Include="ClientApp\src\app\admin\endreLugar\" />
-    <Folder Include="ClientApp\src\app\admin\endreLugarForm\" />
     <Folder Include="DAL\" />
     <Folder Include="ClientApp\src\app\kundeForm\" />
     <Folder Include="ClientApp\src\app\visBillett\" />

@@ -508,7 +508,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 _db.Kunder.Add(kunde);
                 await _db.SaveChangesAsync();
                 return true;
-
             }
             catch
             {
@@ -516,7 +515,22 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
+        [HttpDelete]
+        public async Task<bool> SlettLugar(int id)
+        {
+            try
+            {
+                Lugarer slettLugar = await _db.Lugarer.FindAsync(id);
 
+                _db.Lugarer.Remove(slettLugar);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 
 

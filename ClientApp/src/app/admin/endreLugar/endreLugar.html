@@ -1,10 +1,27 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="container">
+  <h2> Rediger lugarer</h2>
+  <div>
+    <div class="col-md-12">
+      <div *ngIf="laster">Laster lugarer.....</div>
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Lugarnavn</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let lugar of alleLugarer" ng-model="alleLugarer">
+          <tr>
+            <td>
+              <p id="kundeNavn" #lugarNavn>{{lugar.navn}}</p>
+              <input hidden value="{{lugar.id}}" id="lugarId" #lugarId>
+            </td>
+            <td><button class="btn btn-primary" [routerLink]="['/endreLugarForm', {lugarId:lugar.id}]">Endre</button></td>
+            <td><button class="btn btn-danger" (click)="slettValgtLugar(lugarId.value)">Slett</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
