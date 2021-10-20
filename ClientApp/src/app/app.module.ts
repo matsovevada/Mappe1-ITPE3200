@@ -19,6 +19,7 @@ import { AdminPostnummer } from './admin/postnummer/postnummer';
 import { AdminBaat } from './admin/baat/adminBaat';
 import { AdminKunde } from './admin/kunde/adminKunde';
 import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
+import { AddLugar } from './admin/addLugar/addLugar';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
     AdminBaat,
     AdminKunde,
     EndreKundeForm,
+    AddLugar
   ],
 
   imports: [
