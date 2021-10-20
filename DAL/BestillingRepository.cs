@@ -103,10 +103,23 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         }
 
         [HttpGet]
-        public async Task<Kunder> HentKunde(int id)
+        public async Task<Kunde> HentKunde(int id)
         {
             Kunder kunde = await _db.Kunder.FindAsync(id);
-            return kunde;
+
+            Kunde returKunde = new Kunde()
+            {
+                Id = kunde.Id,
+                Fornavn = kunde.Fornavn,
+                Etternavn = kunde.Etternavn,
+                Adresse = kunde.Adresse,
+                Postnr = kunde.Poststed.Postnr,
+                Poststed = kunde.Poststed.Poststed,
+                Telefonnummer = kunde.Telefonnummer,
+                Epost = kunde.Epost
+            };
+
+            return returKunde;
         }
 
         [HttpPost]

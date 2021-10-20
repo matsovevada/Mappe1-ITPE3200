@@ -24,7 +24,7 @@ export class EndreKundeForm implements OnInit {
   }
 
   ngOnInit() {
-    this.kundeId = this._ActivatedRoute.snapshot.paramMap.get('kundeId');
+    this.kundeId = Number(this._ActivatedRoute.snapshot.paramMap.get('kundeId'));
     this.hentValgtKunde(this.kundeId);
   }
 
@@ -55,8 +55,8 @@ export class EndreKundeForm implements OnInit {
           fornavn: this.valgtKunde.fornavn,
           etternavn: this.valgtKunde.etternavn,
           adresse: this.valgtKunde.adresse,
-          postnr: this.valgtKunde.poststed.postnr,
-          poststed: this.valgtKunde.poststed.poststed,
+          postnr: this.valgtKunde.postnr,
+          poststed: this.valgtKunde.poststed,
           epost: this.valgtKunde.epost,
           tlf: this.valgtKunde.telefonnummer,
         })
