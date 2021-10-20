@@ -221,7 +221,7 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.slettKunde(id);
         }
 
-        [HttpPut("{kunde")]
+        [HttpPut("{kunde}")]
         public async Task<bool> endreKunde(Kunde k)
         {
             return await _db.endreKunde(k);
