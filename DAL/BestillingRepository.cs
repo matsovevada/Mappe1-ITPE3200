@@ -443,8 +443,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             {
                 Baater nyBaat = new Baater();
                 nyBaat.Navn = navn;
-                //SLETT DENNE
-                nyBaat.AntallBilplasser = 200;
                 await _db.Baater.AddAsync(nyBaat);
                 await _db.SaveChangesAsync();
                 return true;
