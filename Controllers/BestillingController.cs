@@ -227,5 +227,22 @@ namespace Mappe1_ITPE3200.Controllers
         {
             return await _db.endreKunde(kunde);
         }
+
+
+
+        [HttpDelete("{id}")]
+        [ActionName("slettBillett")]
+        public async Task<bool> slettValgtBillett(int id)
+        {
+            return await _db.slettValgtBillett(id);
+        }
+
+        [HttpGet]
+        [ActionName("hentBilletter")]
+        public async Task<List<Billetter>> HentAlleBilletter()
+        {
+            List<Billetter> alleBilletter = await _db.HentAlleBilletter();
+            return alleBilletter;
+        }
     }
 }

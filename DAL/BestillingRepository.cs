@@ -515,6 +515,36 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         }
 
 
+        [HttpGet]
+        public async Task<List<Billetter>> HentAlleBilletter()
+        {
+            try
+            {
+                List<Billetter> alleBilletter = await _db.Billetter.ToListAsync();
+                return alleBilletter;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+        public async Task<bool> slettValgtBillett(int id)
+        {
+            try
+            {
+                Billetter slettBillett = await _db.Billetter.FindAsync(id);
+                _db.Billetter.Remove(slettBillett);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 
 

@@ -7,8 +7,10 @@
                 <thead>
                     <tr>
                         <th>Kundenavn</th>
-                        <th></th>
-                        <th></th>
+                        <th>Adresse</th>
+                        <th>Telefon</th>
+                        <th>Epost</th>
+
                     </tr>
                 </thead>
                 <tbody *ngFor="let kunde of alleKunder" ng-model="alleKunder">
@@ -16,6 +18,15 @@
                         <td>
                             <p id="kundeNavn" #kundeNavn>{{kunde.fornavn}} {{kunde.etternavn}}</p>
                             <input hidden value="{{kunde.id}}" id="kundeId" #kundeId>
+                        </td>
+                        <td>
+                            <p id="kundeAdresse" #kundeNavn>{{kunde.adresse}} {{kunde.poststed.postnr}} {{kunde.poststed.poststed}}</p>
+                        </td>
+                        <td>
+                            <p id="kundeTlf" #kundeNavn>{{kunde.telefonnummer}}</p>
+                        </td>
+                        <td>
+                            <p id="kundeEpost" #kundeNavn>{{kunde.epost}}</p>
                         </td>
                         <td><button class="btn btn-primary" [routerLink]="['/endreKundeForm', {kundeId:kunde.id}]">Endre</button></td>
                         <td><button class="btn btn-danger" (click)="slettValgtKunde(kundeId.value)">Slett</button></td>
