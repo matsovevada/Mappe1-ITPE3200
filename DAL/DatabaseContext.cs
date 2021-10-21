@@ -115,7 +115,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   {
       [Key]
       public int Id { get; set; }
-      public virtual Strekninger Strekning { get; set; }
+        public string StrekningFra { get; set; }
+        public string StrekningTil { get; set; }
       public virtual Baater Baat { get; set; }
       public string DatoTid { get; set; }
       public long DatoTidTicks { get; set; }

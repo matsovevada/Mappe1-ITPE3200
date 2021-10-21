@@ -38,7 +38,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         public async Task<List<Avganger>> HentAlleAvganger(Strekning valgtStrekning)
 
         {
-            List<Avganger> alleAvganger = await _db.Avganger.Where(a => (a.Strekning.Til.Equals(valgtStrekning.Til) && a.Strekning.Fra.Equals(
+            List<Avganger> alleAvganger = await _db.Avganger.Where(a => (a.StrekningTil.Equals(valgtStrekning.Til) && a.StrekningFra.Equals(
               valgtStrekning.Fra))).ToListAsync();
             return alleAvganger;
         }

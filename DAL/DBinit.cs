@@ -236,7 +236,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       var avgang1 = new Avganger
       {
-        Strekning = strekning_OsloKobenhavn,
+        //Strekning = strekning_OsloKobenhavn,
+        StrekningFra = new string(strekning_OsloKobenhavn.Fra),
+        StrekningTil = new string(strekning_OsloKobenhavn.Til),
         Baat = baat1,
         DatoTid = date1String,
         DatoTidTicks = date1Ticks,
@@ -244,7 +246,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         LedigeLugarer = lugarer,
       };
 
-      DateTime date2 = new DateTime(2021, 11, 5, 11, 30, 0);
+      /*DateTime date2 = new DateTime(2021, 11, 5, 11, 30, 0);
       String date2String = date2.ToString();
       long date2Ticks = date2.Ticks;
       var avgang2 = new Avganger
@@ -437,10 +439,10 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         DatoTidTicks = date16Ticks,
         AntallLedigeBilplasser = baat4.AntallBilplasser,
         LedigeLugarer = lugarer16,
-      };
+      };*/
 
       db.Avganger.Add(avgang1);
-      db.Avganger.Add(avgang2);
+     /* db.Avganger.Add(avgang2);
       db.Avganger.Add(avgang3);
       db.Avganger.Add(avgang4);
       db.Avganger.Add(avgang5);
@@ -454,7 +456,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       db.Avganger.Add(avgang13);
       db.Avganger.Add(avgang14);
       db.Avganger.Add(avgang15);
-      db.Avganger.Add(avgang16);
+      db.Avganger.Add(avgang16);*/
 
     // postnummere
     Poststeder poststed1 = new Poststeder
