@@ -29,6 +29,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     public DbSet<Strekninger> Strekninger { get; set; }
     public DbSet<Poststeder> Poststeder { get; set; }
     public DbSet<Lugarer> Lugarer { get; set; }
+    public DbSet<LugarMaler> LugarMaler { get; set; }
   }
 
 
@@ -88,6 +89,18 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       return lug;
     }
   }
+
+  public class LugarMaler
+    {
+        [Key]
+        public int Id { get; set; }
+        public string Navn { get; set; }
+        public string Beskrivelse { get; set; }
+        public int AntallSengeplasser { get; set; }
+        public int Antall { get; set; }
+        public int AntallLedige { get; set; }
+        public int Pris { get; set; }
+    }
 
   public class Baater
   {

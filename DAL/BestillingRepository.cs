@@ -353,8 +353,18 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         {
             try
             {
-                Lugarer lugar = new Lugarer(navn, beskrivelse, antallSengeplasser, antall, antallLedige, pris);
-                await _db.Lugarer.AddAsync(lugar);
+
+                LugarMaler lugarMal = new LugarMaler()
+                {
+                    Navn = navn,
+                    Beskrivelse = beskrivelse,
+                    AntallSengeplasser = antallSengeplasser,
+                    Antall = antall,
+                    AntallLedige = antallLedige,
+                    Pris = pris
+                };
+
+                await _db.LugarMaler.AddAsync(lugarMal);
                 await _db.SaveChangesAsync();
                 return true;
             }
@@ -520,9 +530,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         {
             try
             {
-                Lugarer slettLugar = await _db.Lugarer.FindAsync(id);
+                LugarMaler slettLugarMal = await _db.LugarMaler.FindAsync(id);
 
-                _db.Lugarer.Remove(slettLugar);
+                _db.LugarMaler.Remove(slettLugarMal);
                 await _db.SaveChangesAsync();
                 return true;
             }

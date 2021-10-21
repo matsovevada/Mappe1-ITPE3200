@@ -11,6 +11,7 @@ import { AdminPostnummer } from './admin/postnummer/postnummer';
 import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
 import { AdminKunde } from './admin/kunde/adminKunde';
 import { Meny } from './admin/meny/meny';
+import { AddLugar } from './admin/addLugar/addLugar';
 
 
 const appRoots: Routes = [
@@ -26,7 +27,8 @@ const appRoots: Routes = [
   { path: 'adminKunde', component: AdminKunde },
   { path: 'endreKundeForm', component: EndreKundeForm },
   { path: 'adminBaat', component: AdminBaat },
-  { path: 'adminIndex', component: Meny }
+  { path: 'adminIndex', component: Meny },
+  { path: 'adminAddLugar', component: AddLugar }
 ]
 
 @NgModule({

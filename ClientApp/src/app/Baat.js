@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Baater = void 0;
-var Baater = /** @class */ (function () {
-    function Baater() {
+exports.Baat = void 0;
+var Baat = /** @class */ (function () {
+    function Baat() {
     }
-    return Baater;
+    return Baat;
 }());
-exports.Baater = Baater;
-//# sourceMappingURL=Baater.js.map
+exports.Baat = Baat;
+//# sourceMappingURL=Baat.js.map
