@@ -4,36 +4,36 @@
     <div class="form-group">
       <label for="innNavn">Navn</label>
       <input type="text" class="form-control" id="innNavn" formControlName="navn">
-      <p class="alert alert-warning" [hidden]="nyLugar.controls.poststed.valid || (kundeSkjema.controls.poststed.pristine && !submitted)">
+      <p class="alert alert-warning" [hidden]="nyLugarSkjema.controls.navn.valid || (nyLugarSkjema.controls.navn.pristine && !submitted)">
         Fyll inn navn
       </p>
     </div>
     <div class="form-group">
       <label for="innSengeplasser">Antall Sengeplasser</label>
       <input type="number" class="form-control" id="innSengeplasser" formControlName="antSengeplasser">
-      <p class="alert alert-warning" [hidden]="kundeSkjema.controls.poststed.valid || (kundeSkjema.controls.poststed.pristine && !submitted)">
+      <p class="alert alert-warning" [hidden]="nyLugarSkjema.controls.antSengeplasser.valid || (nyLugarSkjema.controls.antSengeplasser.pristine && !submitted)">
         Fyll inn antall sengeplasser i lugaren
       </p>
     </div>
     <div class="form-group">
       <label for="innAntallLugarer">Antall Lugarer</label>
       <input type="number" class="form-control" id="innAntallLugarer" aria-describedby="antallLugarerHelp" formControlName="antLugarer">
-      <p class="alert alert-warning" [hidden]="kundeSkjema.controls.poststed.valid || (kundeSkjema.controls.poststed.pristine && !submitted)">
+      <p class="alert alert-warning" [hidden]="nyLugarSkjema.controls.antLugarer.valid || (nyLugarSkjema.controls.antLugarer.pristine && !submitted)">
         Fyll inn antall lugarer
       </p>
       <small id="antallLugarerHelp" class="form-text text-muted">Add flavour text here :)</small>
     </div>
     <div class="form-group">
       <label for="innPrisLugar">Pris</label>
-      <input type="password" class="form-control" id="innPrisLugar" formControlName="pris">
-      <p class="alert alert-warning" [hidden]="kundeSkjema.controls.poststed.valid || (kundeSkjema.controls.poststed.pristine && !submitted)">
+      <input type="number" class="form-control" id="innPrisLugar" formControlName="pris">
+      <p class="alert alert-warning" [hidden]="nyLugarSkjema.controls.pris.valid || (nyLugarSkjema.controls.pris.pristine && !submitted)">
         Fyll inn pris
       </p>
     </div>
     <div class="form-group">
       <label for="innBeskrivelseLugar">Beskrivelse</label>
       <textarea class="form-control" id="innBeskrivelseLugar" rows="3" formControlName="beskrivelse"></textarea>
-      <p class="alert alert-warning" [hidden]="kundeSkjema.controls.poststed.valid || (kundeSkjema.controls.poststed.pristine && !submitted)">
+      <p class="alert alert-warning" [hidden]="nyLugarSkjema.controls.beskrivelse.valid || (nyLugarSkjema.controls.beskrivelse.pristine && !submitted)">
         Fyll inn beskrivelse
       </p>
     </div>

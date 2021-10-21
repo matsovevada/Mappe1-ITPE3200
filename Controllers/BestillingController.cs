@@ -133,6 +133,14 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.SlettStrekning(id);
         }
 
+        [HttpDelete("{id}")]
+        [ActionName("slettLugar")]
+
+        public async Task<bool> SlettLugar(int id)
+        {
+            return await _db.SlettLugar(id);
+        }
+
         [HttpPut("{id}/{strekningFra}/{strekningTil}")]
         [ActionName("endreStrekning")]
         public async Task<bool> EndreStrekning(int id, string strekningFra, string strekningTil)
@@ -223,9 +231,15 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpGet]
         [ActionName("hentAlleLugarer")]
-        public async Task<List<Lugarer>> HentAlleLugarer ()
+        public async Task<List<Lugarer>> HentAlleLugarer()
         {
             return await _db.HentAlleLugarer();
+        }
+
+        [HttpPut("{kunde}")]
+        public async Task<bool> endreKunde(Kunde k)
+        {
+            return await _db.endreKunde(k);
         }
     }
 }

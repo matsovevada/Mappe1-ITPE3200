@@ -15,7 +15,7 @@
     <div class="col-md-8 container row">
       <div class="col-md-6 avgangBox">
         <h4>Tur:</h4>
-        <p>Strekning: {{avgang.strekning.fra}} --> {{avgang.strekning.til}} </p>
+        <p>Strekning: {{avgang.strekningFra}} --> {{avgang.strekningTil}} </p>
         <p>Båt: {{avgang.baat.navn}}</p>
         <p>Dato: {{avgang.datoTid}}</p>
         <p>Antall personer: {{billett.antallPersoner}}</p>
@@ -27,7 +27,7 @@
       </div>
       <div *ngIf="visRetur" class="col-md-6 avgangBox">
         <h4>Retur:</h4>
-        <p>Strekning: {{retur.strekning.fra}} --> {{retur.strekning.til}} </p>
+        <p>Strekning: {{retur.strekningFra}} --> {{retur.strekningTil}} </p>
         <p>Båt: {{avgang.baat.navn}}</p>
         <p>Dato: {{retur.datoTid}}</p>
         <p>Antall personer: {{billett.antallPersonerRetur}}</p>

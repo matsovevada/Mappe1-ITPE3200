@@ -1,10 +1,10 @@
 import { Baat } from "./Baat";
 import { Lugar } from "./Lugar";
-import { Strekning } from "./Strekning";
 
 export class Avgang {
   id: number;
-  strekning: Strekning;
+  strekningFra: string;
+  strekningTil: string;
   baat: Baat;
   datoTid: string;
   datoTidTicks: number;
