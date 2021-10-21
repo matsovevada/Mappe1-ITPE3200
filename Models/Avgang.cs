@@ -12,6 +12,6 @@ namespace Mappe1_ITPE3200.Models
         public long DatoTidTicks { get; set; }
         public int AntallLedigeBilplasser { get; set; }
         public List<Lugar> LedigeLugarer { get; set; }
-        
+        public bool Aktiv { get; set; } 
     }
 }

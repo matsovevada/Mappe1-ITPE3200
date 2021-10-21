@@ -40,7 +40,7 @@ export class Bestilling {
   }
 
   hentAlleAvganger() {
-    this.http.get<Avgang[]>("api/Bestilling/hentAvgang/" + this.strekning)
+    this.http.get<Avgang[]>("api/Bestilling/hentAktiveAvganger/" + this.strekning)
       .subscribe(avgangene => {
         this.alleAvganger = avgangene;
         this.laster = false;

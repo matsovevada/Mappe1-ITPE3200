@@ -234,15 +234,16 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       String date1String = date1.ToString();
       long date1Ticks = date1.Ticks;
 
-      var avgang1 = new Avganger
-      {
-        StrekningFra = new string(strekning_OsloKobenhavn.Fra),
-        StrekningTil = new string(strekning_OsloKobenhavn.Til),
-        Baat = baat1,
-        DatoTid = date1String,
-        DatoTidTicks = date1Ticks,
-        AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = lugarer,
+            var avgang1 = new Avganger
+            {
+                StrekningFra = new string(strekning_OsloKobenhavn.Fra),
+                StrekningTil = new string(strekning_OsloKobenhavn.Til),
+                Baat = baat1,
+                DatoTid = date1String,
+                DatoTidTicks = date1Ticks,
+                AntallLedigeBilplasser = baat1.AntallBilplasser,
+                LedigeLugarer = lugarer,
+                Aktiv = true
       };
 
             DateTime date2 = new DateTime(2021, 11, 5, 11, 30, 0);
@@ -257,6 +258,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 DatoTidTicks = date2Ticks,
                 AntallLedigeBilplasser = baat1.AntallBilplasser,
                 LedigeLugarer = lugarer2,
+                Aktiv = true
             };
 
             DateTime date3 = new DateTime(2021, 12, 23, 11, 30, 0);
@@ -271,6 +273,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 DatoTidTicks = date3Ticks,
                 AntallLedigeBilplasser = baat1.AntallBilplasser,
                 LedigeLugarer = lugarer3,
+                Aktiv = false
             };
 
            /* DateTime date4 = new DateTime(2021, 12, 27, 11, 30, 0);
