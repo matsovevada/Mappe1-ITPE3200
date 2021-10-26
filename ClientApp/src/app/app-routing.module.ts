@@ -12,7 +12,7 @@ import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
 import { AdminKunde } from './admin/kunde/adminKunde';
 import { Meny } from './admin/meny/meny';
 import { AddLugar } from './admin/addLugar/addLugar';
-
+import { LoggInn } from './admin/loggInn/loggInn';
 
 const appRoots: Routes = [
   { path: '', component: Bestilling },
@@ -28,7 +28,8 @@ const appRoots: Routes = [
   { path: 'endreKundeForm', component: EndreKundeForm },
   { path: 'adminBaat', component: AdminBaat },
   { path: 'adminIndex', component: Meny },
-  { path: 'adminAddLugar', component: AddLugar }
+  { path: 'adminAddLugar', component: AddLugar },
+  { path: 'loggInn', component: LoggInn }
 ]
 
 @NgModule({

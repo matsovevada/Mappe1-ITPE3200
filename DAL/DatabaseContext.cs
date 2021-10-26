@@ -30,6 +30,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     public DbSet<Poststeder> Poststeder { get; set; }
     public DbSet<Lugarer> Lugarer { get; set; }
     public DbSet<LugarMaler> LugarMaler { get; set; }
+    public DbSet<Brukere> Brukere { get; set; }
   }
 
 
@@ -138,4 +139,12 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       public string Fra { get; set; }
       public string Til { get; set; }
   }
+
+    public class Brukere
+    {
+        public int Id { get; set; }
+        public string Brukernavn { get; set; }
+        public byte[] Passord { get; set; }
+        public byte[] Salt { get; set; }
+    }
 }

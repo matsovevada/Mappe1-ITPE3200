@@ -47,9 +47,10 @@ namespace Mappe1_ITPE3200.Controllers
             return alleAvganger;
         }
 
+        // finner alle retur-avgangene som hører til den valgte strekningen
         [HttpGet("{strekning}")]
-        [ActionName("hentAktiveAvganger")]
-        public async Task<List<Avganger>> HentAktiveAvganger(String strekning)
+        [ActionName("hentAvgangRetur")]
+        public async Task<List<Avganger>> HentAlleAvgangerRetur(String strekning)
         {
             Array s_split = strekning.Split(" - ");
 
@@ -60,10 +61,9 @@ namespace Mappe1_ITPE3200.Controllers
                 Til = (string)s_split.GetValue(1)
             };
 
-            List<Avganger> alleAvganger = await _db.HentAktiveAvganger(valgtStrekning);
+            List<Avganger> alleAvganger = await _db.HentAlleAvganger(valgtStrekning);
             return alleAvganger;
         }
-
 
         [HttpGet("{id}")]
         [ActionName("hentValgtAvgang")]
@@ -233,6 +233,25 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<bool> endreKunde(Kunde k)
         {
             return await _db.endreKunde(k);
+        }
+
+        [HttpPost]
+        [ActionName("loggInn")]
+        public async Task<bool> LoggInn(Bruker bruker)
+        {
+            Console.WriteLine("LOGGER INN");
+            Console.WriteLine(bruker.Brukernavn);
+            Console.WriteLine(bruker.Passord);
+
+            bool returnOK = await _db.LoggInn(bruker);
+            if (!returnOK)
+            {
+                //_log.LogInformation("Innloggingen feilet for bruker" + bruker.Brukernavn);
+                //HttpContext.Session.SetString(_loggetInn, "");
+                return false;
+            }
+            //HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+            return true;
         }
     }
 }
