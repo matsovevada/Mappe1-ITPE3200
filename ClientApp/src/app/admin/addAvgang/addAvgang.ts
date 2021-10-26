@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Baat } from '../../Baat';
 import { Lugar } from '../../Lugar';
 import { Strekning } from '../../Strekning';
+import { Avgang } from '../../Avgang';
 
 @Component({
   selector: 'addAvgang',
@@ -17,7 +18,7 @@ export class AddAvgang {
   alleBaater: Array<Baat>
   alleStrekninger: Array<Strekning>
   alleLugarer: Array<Lugar>
-
+ 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
@@ -54,6 +55,36 @@ export class AddAvgang {
         console.log(lugarene)
         this.alleLugarer = lugarene;
         this.laster = false;
+      },
+        error => console.log(error)
+      );
+  }
+
+  selectChangeHandler(e) {
+    console.log(e);
+  }
+
+  submit() {
+    let element = (document.getElementById('selectLugarer')) as HTMLSelectElement;
+    let options = element.selectedOptions;
+    var values = Array.from(options).map(({ value }) => value);
+    console.log(values);
+
+    var e = document.getElementById("selectBaat") as HTMLSelectElement;
+    var strUser = e.value;
+
+    console.log(strUser);
+
+    let avgang = new Avgang();
+
+    let object = {
+      "a": "some value",
+      "b": "another value"
+    };
+
+    this.http.post("api/Bestilling/lagreAvgang", JSON.stringify(object))
+      .subscribe(ok => {
+        console.log(ok);
       },
         error => console.log(error)
       );

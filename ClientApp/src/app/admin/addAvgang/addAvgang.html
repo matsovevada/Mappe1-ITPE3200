@@ -4,10 +4,11 @@
 
     <div class="form-group">
       <label>Båt</label>
-      <select class="form-control">
+      <select class="form-control" id="selectBaat">
         <option *ngFor="let baat of alleBaater">{{baat.navn}}</option>
       </select>
     </div>
+
 
     <div class="form-group">
       <label>Strekning</label>
@@ -20,24 +21,32 @@
       <div class="row">
         <div class="col">
           <label>Dag</label>
-          <input type='number' class="form-control" id='datetimepicker4' />
+          <input type='number' class="form-control" />
         </div>
         <div class="col">
           <label>Måned</label>
-          <input type='number' class="form-control" id='datetimepicker4' />
+          <input type='number' class="form-control" />
         </div>
         <div class="col">
           <label>År</label>
-          <input type='number' class="form-control" id='datetimepicker4' />
+          <input type='number' class="form-control" />
         </div>
       </div>
     </div>
 
     <div class="form-group">
-      <select class="select" multiple>
-        <option></option>
+      <label>Lugarer (velg flere ved å trykke på en lugar samtidig som 'ctrl' holdes inne)</label>
+      <select class="select" multiple id="selectLugarer">
+        <option *ngFor="let lugar of alleLugarer">{{lugar.navn}}</option>
       </select>
     </div>
+
+    <div class="form-group">
+      <label>Antall ledige bilplasser</label>
+      <input type="number"/>
+    </div>
+
+    <button class="btn btn-success" (click)="submit()">Lagre</button>
 
   </form>
 </div>

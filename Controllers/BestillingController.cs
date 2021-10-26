@@ -1,10 +1,13 @@
 ﻿using Mappe1_ITPE3200.ClientApp.DAL;
 using Mappe1_ITPE3200.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Mappe1_ITPE3200.Controllers
@@ -231,7 +234,7 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpGet]
         [ActionName("hentAlleLugarer")]
-        public async Task<List<Lugarer>> HentAlleLugarer()
+        public async Task<List<LugarMaler>> HentAlleLugarer()
         {
             return await _db.HentAlleLugarer();
         }
@@ -240,6 +243,18 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<bool> endreKunde(Kunde k)
         {
             return await _db.endreKunde(k);
+        }
+
+        [HttpPost]
+        [ActionName("lagreAvgang")]
+        public async Task<bool> LagreAvgang(object jsonObject)
+        {
+
+            Console.WriteLine("CONTROLLER: LAGRE AVGANG");
+
+            Console.WriteLine(jsonObject);
+
+            return true;
         }
     }
 }

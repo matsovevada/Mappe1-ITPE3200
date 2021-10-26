@@ -478,11 +478,11 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        public async Task<List<Lugarer>> HentAlleLugarer()
+        public async Task<List<LugarMaler>> HentAlleLugarer()
         {
             try
             {
-                return await _db.Lugarer.ToListAsync();
+                return await _db.LugarMaler.ToListAsync();
             }
             catch
             {

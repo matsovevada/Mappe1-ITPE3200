@@ -113,6 +113,29 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       int Antall3 = 40;
       int AntallLedige3 = 40;
       int Pris3 = 1000;
+
+    LugarMaler lugarMal1 = new LugarMaler()
+    {
+        Navn = new string(Navn),
+        Beskrivelse = new string(Beskrivelse),
+        AntallSengeplasser = AntallSengeplasser,
+        Antall = Antall,
+        AntallLedige = AntallLedige,
+        Pris = Pris
+    };
+
+    LugarMaler lugarMal2 = new LugarMaler()
+    {
+        Navn = new string(Navn1),
+        Beskrivelse = new string(Beskrivelse1),
+        AntallSengeplasser = AntallSengeplasser1,
+        Antall = Antall1,
+        AntallLedige = AntallLedige1,
+        Pris = Pris1
+    };
+
+    db.LugarMaler.Add(lugarMal1);
+    db.LugarMaler.Add(lugarMal2);
   
       List<Lugarer> lugarer = new List<Lugarer>();
       lugarer.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
@@ -193,12 +216,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       lugarer16.Add(new Lugarer(Navn1, Beskrivelse1, AntallSengeplasser1, Antall1, AntallLedige1, Pris1));
       lugarer16.Add(new Lugarer(Navn3, Beskrivelse3, AntallSengeplasser3, Antall3, AntallLedige3, Pris3));
       lugarer16.Add(new Lugarer(Navn2, Beskrivelse2, AntallSengeplasser2, Antall2, AntallLedige2, Pris2));
-
-            lugarer16.ForEach(l =>
-            {
-                db.Lugarer.Add(l);
-        
-            });
 
       // Baater
 
