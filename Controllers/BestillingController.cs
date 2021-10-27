@@ -1,5 +1,6 @@
 ﻿using Mappe1_ITPE3200.ClientApp.DAL;
 using Mappe1_ITPE3200.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Mappe1_ITPE3200.Controllers
     public class BestillingController : ControllerBase
     {
         private IBestillingRepository _db;
+        private const string _loggetInn = "loggetInn";
 
         public BestillingController(IBestillingRepository db)
         {
@@ -247,11 +249,29 @@ namespace Mappe1_ITPE3200.Controllers
             if (!returnOK)
             {
                 //_log.LogInformation("Innloggingen feilet for bruker" + bruker.Brukernavn);
-                //HttpContext.Session.SetString(_loggetInn, "");
+                HttpContext.Session.SetString(_loggetInn, "");
                 return false;
             }
-            //HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+            HttpContext.Session.SetString(_loggetInn, "LoggetInn");
             return true;
+        }
+
+        [HttpGet]
+        [ActionName("loggUt")]
+        public void LoggUt()
+        {
+            HttpContext.Session.SetString(_loggetInn, "");
+        }
+
+        [HttpGet]
+        [ActionName("isLoggedIn")]
+        public async Task<ActionResult> IsLoggedIn()
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            return Ok();
         }
     }
 }

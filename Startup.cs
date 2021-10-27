@@ -39,6 +39,14 @@ namespace Mappe1_ITPE3200
             // m? ha med dette for ? sette opp databasen
             services.AddConnections();
 
+            // sessions
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(1800); // 30 minutter
+                options.Cookie.IsEssential = true;
+            });
+            services.AddDistributedMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +73,7 @@ namespace Mappe1_ITPE3200
             }
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
@@ -85,6 +94,7 @@ namespace Mappe1_ITPE3200
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
         }
     }
 }

@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'meny',
@@ -9,4 +11,19 @@ import { Component, ViewEncapsulation } from "@angular/core";
 
 export class Meny {
 
+  constructor(private http: HttpClient, private router: Router) { }
+
+  ngOnInit() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+        console.log(ok)
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+          console.log(error)
+        }
+      );
+  }
 }
