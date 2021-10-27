@@ -39,7 +39,7 @@ export class LoggInn {
     this.http.post("api/Bestilling/loggInn", bruker)
       .subscribe(ok => {
         if (ok) {
-
+          this.router.navigate(['/adminIndex']);
         }
         else {
           this.feilmelding = "Feil brukernavn eller passord";

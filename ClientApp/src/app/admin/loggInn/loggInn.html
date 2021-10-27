@@ -4,7 +4,7 @@
 
     <div class="form-group">
       <label>Brukernavn</label>
-      <input type="text" class="form-control" formControlName="brukernavn" (ngChange)="resetFeilmelding()"/>
+      <input type="text" class="form-control" formControlName="brukernavn" (click)="resetFeilmelding()"/>
       <p class="alert alert-warning" [hidden]="loggInnSkjema.controls.brukernavn.valid || (loggInnSkjema.controls.brukernavn.pristine && !submitted)">
         Fyll inn en gyldig brukernavn (mellom 2 og 30 tegn)
       </p>
@@ -12,7 +12,7 @@
 
     <div class="form-group">
       <label>Passord</label>
-      <input type="password" class="form-control" formControlName="passord" />
+      <input type="password" class="form-control" formControlName="passord" (click)="resetFeilmelding()"/>
       <p class="alert alert-warning" [hidden]="loggInnSkjema.controls.passord.valid || (loggInnSkjema.controls.passord.pristine && !submitted)">
         Fyll inn en gyldig passord (minst 6 tegn)
       </p>
