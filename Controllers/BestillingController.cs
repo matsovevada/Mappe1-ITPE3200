@@ -188,10 +188,14 @@ namespace Mappe1_ITPE3200.Controllers
         }
 
         [ActionName("hentBaater")]
-        public async Task<List<Baater>> HentBaater()
+        public async Task<ActionResult> HentBaater()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
             List<Baater> baater = await _db.HentAlleBaater();
-            return baater;
+            return Ok(baater);
         }
 
 
