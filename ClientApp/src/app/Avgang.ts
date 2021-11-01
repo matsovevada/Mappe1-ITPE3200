@@ -10,4 +10,5 @@ export class Avgang {
   datoTidTicks: number;
   antallLedigeBilplasser: number;
   ledigeLugarer: Array<Lugar>;
+  aktiv: boolean;
 }

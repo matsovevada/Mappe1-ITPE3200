@@ -50,10 +50,9 @@ namespace Mappe1_ITPE3200.Controllers
             return alleAvganger;
         }
 
-        // finner alle retur-avgangene som hører til den valgte strekningen
         [HttpGet("{strekning}")]
-        [ActionName("hentAvgangRetur")]
-        public async Task<List<Avganger>> HentAlleAvgangerRetur(String strekning)
+        [ActionName("hentAktiveAvganger")]
+        public async Task<List<Avganger>> HentAktiveAvganger(String strekning)
         {
             Array s_split = strekning.Split(" - ");
 
@@ -64,9 +63,10 @@ namespace Mappe1_ITPE3200.Controllers
                 Til = (string)s_split.GetValue(1)
             };
 
-            List<Avganger> alleAvganger = await _db.HentAlleAvganger(valgtStrekning);
+            List<Avganger> alleAvganger = await _db.HentAktiveAvganger(valgtStrekning);
             return alleAvganger;
         }
+
 
         [HttpGet("{id}")]
         [ActionName("hentValgtAvgang")]
@@ -245,16 +245,47 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.endreKunde(k);
         }
 
-        [HttpPost]
+        [HttpPost("{baat}/{strekningFra}/{strekningTil}/{datoTidDag}/{datoTidMnd}/{datoTidAar}/{datoTidTime}/{datoTidMin}/{antallLedigeBilplasser}/{lugarer}/{aktiv}")]
         [ActionName("lagreAvgang")]
-        public async Task<bool> LagreAvgang(object jsonObject)
+        public async Task<bool> LagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
         {
+            Avganger nyAvgang = new Avganger();
+            Baater baatFraDB = await _db.HentBaatPaaNavn(baat);
 
-            Console.WriteLine("CONTROLLER: LAGRE AVGANG");
+            nyAvgang.Baat = baatFraDB;
 
-            Console.WriteLine(jsonObject);
+            nyAvgang.StrekningFra = strekningFra;
+            nyAvgang.StrekningTil = strekningTil;
 
-            return true;
+
+            DateTime date = new DateTime(Int32.Parse(datoTidAar), Int32.Parse(datoTidMnd), Int32.Parse(datoTidDag), Int32.
+            Parse(datoTidTime), Int32.Parse(datoTidMin), 0);
+
+            string dateString = date.ToString();
+            long date1Ticks = date.Ticks;
+            nyAvgang.DatoTid = dateString;
+            nyAvgang.DatoTidTicks = date1Ticks;
+
+            List<Lugarer> lugarListe = new List<Lugarer>();
+            string[] lugarerSplit = lugarer.Split(",");
+            foreach(string lug in lugarerSplit)
+            {
+
+                LugarMaler lugarFraDB = await _db.HentLugarPaaNavn(lug);
+                Lugarer lugarTilAvgang = new Lugarer(lugarFraDB.Navn, lugarFraDB.Beskrivelse, lugarFraDB.AntallSengeplasser, lugarFraDB.Antall, lugarFraDB.AntallLedige, lugarFraDB.Pris);
+                lugarListe.Add(lugarTilAvgang);
+            }
+       
+
+
+   
+
+            nyAvgang.AntallLedigeBilplasser = Int32.Parse(antallLedigeBilplasser);
+
+            nyAvgang.Aktiv = Convert.ToBoolean(aktiv);
+
+
+            return await _db.lagreAvgang(nyAvgang);
         }
     }
 }

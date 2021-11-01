@@ -10,6 +10,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
   {
     Task<List<Strekning>> HentAlleStrekninger();
     Task<List<Avganger>> HentAlleAvganger(Strekning valgtStrekning);
+    Task<List<Avganger>> HentAktiveAvganger(Strekning valgtStrekning);
     Task<Avganger> HentValgtAvgang(int id);
     Task<Baater> HentBaat(int id);
     Task<int> LagreKunde(Kunde kunde);
@@ -35,5 +36,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<bool> slettKunde(int id);
     Task<List<LugarMaler>> HentAlleLugarer();
     Task<bool> endreKunde(Kunde k);
+    Task<Baater> HentBaatPaaNavn(String baatnavn);
+    Task<LugarMaler> HentLugarPaaNavn(string navn);
+    Task<bool> lagreAvgang(Avganger avgang);
+
   }
 }

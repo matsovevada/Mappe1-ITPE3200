@@ -44,6 +44,15 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         }
 
         [HttpGet]
+        public async Task<List<Avganger>> HentAktiveAvganger(Strekning valgtStrekning)
+
+        {
+            List<Avganger> alleAvganger = await _db.Avganger.Where(a => (a.StrekningTil.Equals(valgtStrekning.Til) && a.StrekningFra.Equals(
+              valgtStrekning.Fra) && a.Aktiv)).ToListAsync();
+            return alleAvganger;
+        }
+
+        [HttpGet]
         public async Task<Avganger> HentValgtAvgang(int id)
         {
             Avganger avgang = await _db.Avganger.FindAsync(id);
@@ -54,6 +63,13 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         public async Task<Baater> HentBaat(int id)
         {
             Baater baat = await _db.Baater.FindAsync(id);
+            return baat;
+        }
+
+        [HttpGet]
+        public async Task<Baater> HentBaatPaaNavn(String baatnavn)
+        {
+            Baater baat = await _db.Baater.FindAsync(baatnavn);
             return baat;
         }
 
@@ -434,8 +450,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             {
                 Baater nyBaat = new Baater();
                 nyBaat.Navn = navn;
-                //SLETT DENNE
-                nyBaat.AntallBilplasser = 200;
                 await _db.Baater.AddAsync(nyBaat);
                 await _db.SaveChangesAsync();
                 return true;
@@ -483,6 +497,19 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             try
             {
                 return await _db.LugarMaler.ToListAsync();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+        public async Task<LugarMaler> HentLugarPaaNavn(string navn)
+        {
+            try
+            {
+                return await _db.LugarMaler.FindAsync(navn);
             }
             catch
             {
@@ -545,6 +572,22 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 LugarMaler slettLugarMal = await _db.LugarMaler.FindAsync(id);
 
                 _db.LugarMaler.Remove(slettLugarMal);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<bool> lagreAvgang(Avganger avgang)
+        {
+            try
+            {
+                await _db.Avganger.AddAsync(avgang);
                 await _db.SaveChangesAsync();
                 return true;
             }
