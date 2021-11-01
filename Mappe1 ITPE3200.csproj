@@ -33,6 +33,7 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
     <None Remove="ClientApp\src\app\admin\endreLugarForm\endreLugarForm.ts" />
     <None Remove="ClientApp\src\app\admin\endreLugar\endreLugar.ts" />
+    <None Remove="ClientApp\src\app\admin\endreSlettAvgang\endreSlettAvgang.ts" />
     <None Remove="ClientApp\src\app\admin\meny\meny.ts" />
     <None Remove="ClientApp\src\app\admin\postnummer\postnummer.ts" />
     <None Remove="ClientApp\src\app\Avgang.ts" />

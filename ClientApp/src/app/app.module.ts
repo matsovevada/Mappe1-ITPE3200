@@ -21,6 +21,7 @@ import { AdminKunde } from './admin/kunde/adminKunde';
 import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
 import { AddAvgang } from './admin/addAvgang/addAvgang';
 import { AddLugar } from './admin/addLugar/addLugar';
+import { EndreSlettAvgang } from './admin/endreSlettAvgang/endreSlettAvgang';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AddLugar } from './admin/addLugar/addLugar';
     AdminKunde,
     EndreKundeForm,
     AddAvgang,
-    AddLugar
+    AddLugar,
+    EndreSlettAvgang
   ],
 
   imports: [

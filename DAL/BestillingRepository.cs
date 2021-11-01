@@ -596,6 +596,18 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return false;
             }
         }
+
+        public async Task<List<Avganger>> HentAlleAvganger()
+        {
+            try
+            {
+                return await _db.Avganger.ToListAsync();
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 
 

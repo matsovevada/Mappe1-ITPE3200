@@ -39,6 +39,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<Baater> HentBaatPaaNavn(String baatnavn);
     Task<LugarMaler> HentLugarPaaNavn(string navn);
     Task<bool> lagreAvgang(Avganger avgang);
-
+    Task<List<Avganger>> HentAlleAvganger();
   }
 }

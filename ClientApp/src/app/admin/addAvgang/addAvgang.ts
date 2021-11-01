@@ -85,17 +85,13 @@ export class AddAvgang {
     let selectLugarer = (document.getElementById('selectLugarer')) as HTMLSelectElement;
     let options = selectLugarer.selectedOptions;
     var values = Array.from(options).map(({ value }) => value);
-    console.log(values);
-    let lugarer = ""
 
+    let lugarer = ""
     lugarer += values[0];
 
     for (let i = 1; i < values.length; i++) {
       lugarer += "," + values[i];
     }
-
-    console.log(lugarer);
-
 
     // baat,strekningFra,strekningTil,dag,måned,år,time,minutt,bilplasser,lugarer,aktiv
     this.http.post("api/Bestilling/lagreAvgang/" + baatNavn + "/" + strekningFra + "/" + strekningTil + "/" + this.datoDag.toString() + "/" + this.datoManed.toString() + "/" + this.datoAr.toString() + "/" + this.datoTime.toString() + "/" + this.datoMinutt + "/" + this.bilplasser + "/" + lugarer + "/" + this.aktiv.toString(), null)

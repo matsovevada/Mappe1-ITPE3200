@@ -76,6 +76,14 @@ namespace Mappe1_ITPE3200.Controllers
             return avgang;
         }
 
+        [HttpGet]
+        [ActionName("hentAlleAvganger")]
+        public async Task<List<Avganger>> HentAlleAvganger()
+        {
+            List<Avganger> avganger = await _db.HentAlleAvganger();
+            return avganger;
+        }
+
         [HttpPost]
         [ActionName("lagreKunde")]
         public async Task<ActionResult> LagreKunde(Kunde lagretKunde)
@@ -267,11 +275,6 @@ namespace Mappe1_ITPE3200.Controllers
             nyAvgang.DatoTidTicks = date1Ticks;
 
             List<Lugarer> lugarListe = new List<Lugarer>();
-
-            Console.WriteLine("LUGARER");
-            Console.WriteLine(lugarer);
-
-
 
             string[] lugarerSplit = lugarer.Split(",");
             foreach(string lug in lugarerSplit)
