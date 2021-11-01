@@ -16,13 +16,11 @@ export class Meny {
   ngOnInit() {
     this.http.get("api/Bestilling/isLoggedIn").
       subscribe(ok => {
-        console.log(ok)
       },
         error => {
           if (error.status == '401') {
             this.router.navigate(['/loggInn']);
           }
-          console.log(error)
         }
       );
   }

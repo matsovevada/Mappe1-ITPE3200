@@ -33,7 +33,7 @@ namespace Mappe1_ITPE3200.Controllers
 
         // finner alle avgangene som hører til den valgte strekningen
         [HttpGet("{strekning}")]
-        [ActionName("hentAvgang")]
+        [ActionName("hentAktiveAvganger")]
         public async Task<List<Avganger>> HentAlleAvganger(String strekning)
         {
             Array s_split = strekning.Split(" - ");
@@ -218,10 +218,16 @@ namespace Mappe1_ITPE3200.Controllers
 
 
         [ActionName("hentKunder")]
-        public async Task<List<Kunder>> hentKunder()
+        public async Task<ActionResult> hentKunder()
         {
+
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+
             List<Kunder> kunder = await _db.HentAlleKunder();
-            return kunder;
+            return Ok(kunder);
         }
 
         [HttpDelete("{id}")]

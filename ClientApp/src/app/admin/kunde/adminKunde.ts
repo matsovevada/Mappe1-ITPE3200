@@ -57,7 +57,11 @@ export class AdminKunde {
         this.alleKunder = kunder;
         this.laster = false;
       },
-        error => console.log(error)
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 
