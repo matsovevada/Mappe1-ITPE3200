@@ -69,7 +69,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         [HttpGet]
         public async Task<Baater> HentBaatPaaNavn(String baatnavn)
         {
-            Baater baat = await _db.Baater.FindAsync(baatnavn);
+            Baater baat = await _db.Baater.FirstOrDefaultAsync(b => b.Navn.Equals(baatnavn));
             return baat;
         }
 
@@ -509,7 +509,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         {
             try
             {
-                return await _db.LugarMaler.FindAsync(navn);
+                return await _db.LugarMaler.FirstOrDefaultAsync(lug => lug.Navn.Equals(navn));
             }
             catch
             {
