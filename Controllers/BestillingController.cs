@@ -1,5 +1,6 @@
 ﻿using Mappe1_ITPE3200.ClientApp.DAL;
 using Mappe1_ITPE3200.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -17,6 +18,7 @@ namespace Mappe1_ITPE3200.Controllers
     public class BestillingController : ControllerBase
     {
         private IBestillingRepository _db;
+        private const string _loggetInn = "loggetInn";
 
         public BestillingController(IBestillingRepository db)
         {
@@ -26,15 +28,15 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpGet]
         [ActionName("hentStrekning")]
-        public async Task<List<Strekning>> HentAlleStrekninger()
+        public async Task<ActionResult> HentAlleStrekninger()
         {
             List<Strekning> alleStrekninger = await _db.HentAlleStrekninger();
-            return alleStrekninger;
+            return Ok(alleStrekninger);
         }
 
         // finner alle avgangene som hører til den valgte strekningen
         [HttpGet("{strekning}")]
-        [ActionName("hentAvgang")]
+        [ActionName("hentAktiveAvganger")]
         public async Task<List<Avganger>> HentAlleAvganger(String strekning)
         {
             Array s_split = strekning.Split(" - ");
@@ -50,9 +52,10 @@ namespace Mappe1_ITPE3200.Controllers
             return alleAvganger;
         }
 
+        // finner alle retur-avgangene som hører til den valgte strekningen
         [HttpGet("{strekning}")]
-        [ActionName("hentAktiveAvganger")]
-        public async Task<List<Avganger>> HentAktiveAvganger(String strekning)
+        [ActionName("hentAvgangRetur")]
+        public async Task<List<Avganger>> HentAlleAvgangerRetur(String strekning)
         {
             Array s_split = strekning.Split(" - ");
 
@@ -63,10 +66,9 @@ namespace Mappe1_ITPE3200.Controllers
                 Til = (string)s_split.GetValue(1)
             };
 
-            List<Avganger> alleAvganger = await _db.HentAktiveAvganger(valgtStrekning);
+            List<Avganger> alleAvganger = await _db.HentAlleAvganger(valgtStrekning);
             return alleAvganger;
         }
-
 
         [HttpGet("{id}")]
         [ActionName("hentValgtAvgang")]
@@ -170,9 +172,14 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpGet]
         [ActionName("hentPoststed")]
-        public async Task<List<Poststeder>> HentPoststed()
+        public async Task<ActionResult> HentPoststed()
         {
-            return await _db.HentAllePoststeder();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            List<Poststeder> allePoststeder = await _db.HentAllePoststeder();
+            return Ok(allePoststeder);
         }
 
         [HttpDelete("{postnummer}")]
@@ -197,10 +204,14 @@ namespace Mappe1_ITPE3200.Controllers
         }
 
         [ActionName("hentBaater")]
-        public async Task<List<Baater>> HentBaater()
+        public async Task<ActionResult> HentBaater()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
             List<Baater> baater = await _db.HentAlleBaater();
-            return baater;
+            return Ok(baater);
         }
 
 
@@ -227,10 +238,16 @@ namespace Mappe1_ITPE3200.Controllers
 
 
         [ActionName("hentKunder")]
-        public async Task<List<Kunder>> hentKunder()
+        public async Task<ActionResult> hentKunder()
         {
+
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+
             List<Kunder> kunder = await _db.HentAlleKunder();
-            return kunder;
+            return Ok(kunder);
         }
 
         [HttpDelete("{id}")]
@@ -251,6 +268,43 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<bool> endreKunde(Kunde k)
         {
             return await _db.endreKunde(k);
+        }
+
+        [HttpPost]
+        [ActionName("loggInn")]
+        public async Task<bool> LoggInn(Bruker bruker)
+        {
+            Console.WriteLine("LOGGER INN");
+            Console.WriteLine(bruker.Brukernavn);
+            Console.WriteLine(bruker.Passord);
+
+            bool returnOK = await _db.LoggInn(bruker);
+            if (!returnOK)
+            {
+                //_log.LogInformation("Innloggingen feilet for bruker" + bruker.Brukernavn);
+                HttpContext.Session.SetString(_loggetInn, "");
+                return false;
+            }
+            HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+            return true;
+        }
+
+        [HttpGet]
+        [ActionName("loggUt")]
+        public void LoggUt()
+        {
+            HttpContext.Session.SetString(_loggetInn, "");
+        }
+
+        [HttpGet]
+        [ActionName("isLoggedIn")]
+        public async Task<ActionResult> IsLoggedIn()
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            return Ok();
         }
 
         [HttpPost("{baat}/{strekningFra}/{strekningTil}/{datoTidDag}/{datoTidMnd}/{datoTidAar}/{datoTidTime}/{datoTidMin}/{antallLedigeBilplasser}/{lugarer}/{aktiv}")]

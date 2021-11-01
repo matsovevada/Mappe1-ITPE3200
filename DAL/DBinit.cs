@@ -496,7 +496,17 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     db.Poststeder.Add(poststed1);
     db.Poststeder.Add(poststed2);
 
-     db.SaveChanges();
+    // lag admin-bruker
+    var bruker = new Brukere();
+    bruker.Brukernavn = "admin";
+    string passord = "admin123";
+    byte[] salt = BestillingRepository.LagSalt();
+    byte[] hash = BestillingRepository.LagHash(passord, salt);
+    bruker.Passord = hash;
+    bruker.Salt = salt;
+    db.Brukere.Add(bruker);
+
+    db.SaveChanges();
     }
   }
 }

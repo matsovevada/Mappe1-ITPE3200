@@ -31,7 +31,11 @@ export class AdminBaat {
         this.alleBaater = baater
         this.laster = false;
       },
-        error => console.log(error)
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 

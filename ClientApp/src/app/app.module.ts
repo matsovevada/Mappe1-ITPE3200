@@ -24,6 +24,8 @@ import { AddLugar } from './admin/addLugar/addLugar';
 import { LoggInn } from './admin/loggInn/loggInn';
 import { EndreSlettAvgang } from './admin/endreSlettAvgang/endreSlettAvgang';
 import { EndreAvgang } from './admin/endreAvgang/endreAvgang';
+import { EndreLugar } from './admin/endreLugar/endreLugar';
+import { EndreLugarForm } from './admin/endreLugarForm/endreLugarForm';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { EndreAvgang } from './admin/endreAvgang/endreAvgang';
     AddLugar,
     EndreSlettAvgang,
     EndreAvgang,
-    EndreKundeForm
+    EndreKundeForm,
+    EndreLugar,
+    EndreLugarForm
   ],
 
   imports: [
