@@ -12,7 +12,7 @@
 
     <div class="form-group">
       <label>Strekning</label>
-      <select class="form-control">
+      <select class="form-control" id="selectStrekning">
         <option *ngFor="let strekning of alleStrekninger">{{strekning.fra}} - {{strekning.til}}</option>
       </select>
     </div>
@@ -21,15 +21,28 @@
       <div class="row">
         <div class="col">
           <label>Dag</label>
-          <input type='number' class="form-control" />
+          <input type='number' class="form-control" [(ngModel)]="datoDag" [ngModelOptions]="{standalone: true}" />
         </div>
         <div class="col">
           <label>Måned</label>
-          <input type='number' class="form-control" />
+          <input type='number' class="form-control" [(ngModel)]="datoManed" [ngModelOptions]="{standalone: true}"/>
         </div>
         <div class="col">
           <label>År</label>
-          <input type='number' class="form-control" />
+          <input type='number' class="form-control" [(ngModel)]="datoAr" [ngModelOptions]="{standalone: true}"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label>Klokkeslett, time</label>
+          <input type='number' class="form-control" [(ngModel)]="datoTime" [ngModelOptions]="{standalone: true}"/>
+        </div>
+        <div class="col">
+          <label>Klokkeslett, minutt</label>
+          <input type='number' class="form-control" [(ngModel)]="datoMinutt" [ngModelOptions]="{standalone: true}"/>
         </div>
       </div>
     </div>
@@ -43,7 +56,12 @@
 
     <div class="form-group">
       <label>Antall ledige bilplasser</label>
-      <input type="number"/>
+      <input type="number"  [(ngModel)]="bilplasser" [ngModelOptions]="{standalone: true}"/>
+    </div>
+
+    <div class="form-group">
+      <label>Aktiv</label>
+      <input type="checkbox" [(ngModel)]="aktiv" [ngModelOptions]="{standalone: true}"/>
     </div>
 
     <button class="btn btn-success" (click)="submit()">Lagre</button>
