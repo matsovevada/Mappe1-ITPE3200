@@ -15,7 +15,8 @@ import { AddAvgang } from './admin/addAvgang/addAvgang';
 import { AddLugar } from './admin/addLugar/addLugar';
 import { EndreSlettAvgang } from './admin/endreSlettAvgang/endreSlettAvgang';
 import { EndreAvgang } from './admin/endreAvgang/endreAvgang';
-
+import { EndreLugar } from './admin/endreLugar/endreLugar';
+import { EndreLugarForm } from './admin/endreLugarForm/endreLugarForm';
 
 
 const appRoots: Routes = [
@@ -36,6 +37,9 @@ const appRoots: Routes = [
   { path: 'adminAddLugar', component: AddLugar },
   { path: 'endreSlettAvgang', component: EndreSlettAvgang },
   { path: 'endreAvgang', component: EndreAvgang }
+  { path: 'adminAddLugar', component: AddLugar },
+  { path: 'endreLugar', component: EndreLugar },
+  { path: 'endreLugarForm', component: EndreLugarForm}
 ]
 
 @NgModule({

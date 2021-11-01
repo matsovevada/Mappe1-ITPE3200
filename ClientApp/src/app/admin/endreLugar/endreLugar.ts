@@ -22,7 +22,7 @@ export class EndreLugar {
   }
 
   hentAlleLugarer() {
-    this.http.get<Lugar[]>("api/Bestilling/hentLugarer")
+    this.http.get<Lugar[]>("api/Bestilling/hentAlleLugarer")
       .subscribe(lugarer => {
         this.alleLugarer = lugarer;
         this.laster = false;
@@ -40,8 +40,6 @@ export class EndreLugar {
       );
   }
 
-  endreValgtKunde(id) {
 
-  }
 
 }

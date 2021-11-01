@@ -21,6 +21,7 @@ import { AdminKunde } from './admin/kunde/adminKunde';
 import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
 import { AddAvgang } from './admin/addAvgang/addAvgang';
 import { AddLugar } from './admin/addLugar/addLugar';
+import { LoggInn } from './admin/loggInn/loggInn';
 import { EndreSlettAvgang } from './admin/endreSlettAvgang/endreSlettAvgang';
 import { EndreAvgang } from './admin/endreAvgang/endreAvgang';
 
@@ -39,11 +40,13 @@ import { EndreAvgang } from './admin/endreAvgang/endreAvgang';
     AdminPostnummer,
     AdminBaat,
     AdminKunde,
-    EndreKundeForm,
+    AddLugar,
+    LoggInn,
     AddAvgang,
     AddLugar,
     EndreSlettAvgang,
-    EndreAvgang
+    EndreAvgang,
+    EndreKundeForm
   ],
 
   imports: [

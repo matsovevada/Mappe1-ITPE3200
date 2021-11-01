@@ -620,7 +620,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
                 nyAvgang.Aktiv = Convert.ToBoolean(aktiv);
 
-                await _db.Avganger.AddAsync(nyAvgang);  
+                await _db.Avganger.AddAsync(nyAvgang);
                 await _db.SaveChangesAsync();
                 return true;
             }
@@ -706,7 +706,39 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return null;
             }
         }
+
+
+      /*  public async Task<List<LugarMaler>> HentAlleLugarer()
+        {
+            List<LugarMaler> alleLugarer = await _db.LugarMaler.ToListAsync();
+            return alleLugarer;
+        }*/
+
+        public async Task<LugarMaler> HentLugar(int id)
+        {
+            LugarMaler billett = await _db.LugarMaler.FindAsync(id);
+            return billett;
+        }
+
+        public async Task<bool> EndreLugar(string id, string navn, string antallSengeplasser, string antLugarer, string pris, string beskrivelse)
+        {
+            try
+            {
+                LugarMaler lugar = await _db.LugarMaler.FindAsync(Int32.Parse(id));
+                lugar.Navn = navn;
+                lugar.AntallSengeplasser = Int32.Parse(antallSengeplasser);
+                lugar.Antall = Int32.Parse(antLugarer);
+                lugar.AntallLedige = Int32.Parse(antLugarer);
+                lugar.Pris = Int32.Parse(pris);
+                lugar.Beskrivelse = beskrivelse;
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
-
-
+}
 }
