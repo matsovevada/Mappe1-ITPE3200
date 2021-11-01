@@ -68,7 +68,8 @@ export class AddAvgang {
   }
 
   submit() {
-
+    console.log("DAOTOMIN");
+    console.log(this.datoMinutt);
     let selectBaat = (document.getElementById('selectBaat')) as HTMLSelectElement;
     let baatNavn = selectBaat.value;
 
@@ -93,10 +94,23 @@ export class AddAvgang {
       lugarer += "," + values[i];
     }
 
-    // baat,strekningFra,strekningTil,dag,måned,år,time,minutt,bilplasser,lugarer,aktiv
+    // validering
+    if (values.length < 1 || this.datoDag < 1 || this.datoDag > 31 || this.datoManed < 1 || this.datoManed > 12
+      || this.datoAr < 2020 || this.datoAr > 2030 || this.datoTime < 0 || this.datoTime > 23 || this.datoMinutt < 0
+      || this.datoMinutt > 59 || this.bilplasser < 0 || this.bilplasser > 1000
+      || this.datoDag == null || this.datoManed == null || this.datoAr == null || this.datoTime == null || this.datoMinutt == null || this.bilplasser == null) {
+
+      if (values.length < 1) {
+        let feilmelding = (document.getElementById('feilmelding')) as HTMLElement;
+        feilmelding.innerHTML = "Minst én lugar må legges til";
+      }
+
+      return;
+    }
+
     this.http.post("api/Bestilling/lagreAvgang/" + baatNavn + "/" + strekningFra + "/" + strekningTil + "/" + this.datoDag.toString() + "/" + this.datoManed.toString() + "/" + this.datoAr.toString() + "/" + this.datoTime.toString() + "/" + this.datoMinutt + "/" + this.bilplasser + "/" + lugarer + "/" + this.aktiv.toString(), null)
       .subscribe(ok => {
-        console.log(ok);
+        this.router.navigate(['/endreSlettAvgang']);
       },
         error => console.log(error)
       );

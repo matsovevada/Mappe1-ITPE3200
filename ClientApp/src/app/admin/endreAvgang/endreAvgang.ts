@@ -84,8 +84,6 @@ export class EndreAvgang {
   hentAlleLugarer() {
     this.http.get<Lugar[]>("api/Bestilling/hentAlleLugarer")
       .subscribe(lugarene => {
-        console.log("LUG:")
-        console.log(lugarene)
         this.alleLugarer = lugarene;
         this.laster = false;
       },
@@ -102,12 +100,6 @@ export class EndreAvgang {
     let strekningFra = selectStrekning.value.split(" - ")[0];
     let strekningTil = selectStrekning.value.split(" - ")[1];
 
-    console.log(this.datoDag);
-    console.log(this.datoManed);
-    console.log(this.datoAr);
-    console.log(this.datoTime);
-    console.log(this.datoMinutt);
-
     let selectLugarer = (document.getElementById('selectLugarer')) as HTMLSelectElement;
     let options = selectLugarer.selectedOptions;
     var values = Array.from(options).map(({ value }) => value);
@@ -119,9 +111,23 @@ export class EndreAvgang {
       lugarer += "," + values[i];
     }
 
+    // validering
+    if (values.length < 1 || this.datoDag < 1 || this.datoDag > 31 || this.datoManed < 1 || this.datoManed > 12
+      || this.datoAr < 2020 || this.datoAr > 2030 || this.datoTime < 0 || this.datoTime > 23 || this.datoMinutt < 0
+      || this.datoMinutt > 59 || this.bilplasser < 0 || this.bilplasser > 1000
+      || this.datoDag == null || this.datoManed == null || this.datoAr == null || this.datoTime == null || this.datoMinutt == null || this.bilplasser == null) {
+
+      if (values.length < 1) {
+        let feilmelding = (document.getElementById('feilmelding')) as HTMLElement;
+        feilmelding.innerHTML = "Minst én lugar må legges til";
+      }
+      
+      return;
+    }
+
     this.http.put("api/Bestilling/endreAvgang/" + this.avgangId.toString() + "/" + baatNavn + "/" + strekningFra + "/" + strekningTil + "/" + this.datoDag.toString() + "/" + this.datoManed.toString() + "/" + this.datoAr.toString() + "/" + this.datoTime.toString() + "/" + this.datoMinutt + "/" + this.bilplasser + "/" + lugarer + "/" + this.aktiv.toString(), null)
       .subscribe(ok => {
-        console.log(ok);
+        this.router.navigate(['/endreSlettAvgang']);
       },
         error => console.log(error)
       );
