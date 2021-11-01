@@ -637,7 +637,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         {
             try
             {
-                Avganger endreAvgang = await HentValgtAvgang(Int32.Parse(id));
+                Avganger endreAvgang = await _db.Avganger.FindAsync(Int32.Parse(id));
 
                 Baater baatFraDB = await HentBaatPaaNavn(baat);
 
@@ -670,6 +670,22 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
                 endreAvgang.Aktiv = Convert.ToBoolean(aktiv);
 
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        [HttpDelete]
+        public async Task<bool> SlettAvgang(int id)
+        {
+            try
+            {
+                Avganger slettAvgang = await _db.Avganger.FindAsync(id);
+                _db.Avganger.Remove(slettAvgang);
                 await _db.SaveChangesAsync();
                 return true;
             }

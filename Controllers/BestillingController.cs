@@ -251,5 +251,13 @@ namespace Mappe1_ITPE3200.Controllers
         {
             return await _db.lagreAvgang(baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
         }
+
+        [HttpDelete("{id}")]
+        [ActionName("slettAvgang")]
+        public async Task<bool> slettAvgang(string id)
+        {
+            int idInt = Int32.Parse(id);
+            return await _db.SlettAvgang(idInt);
+        }
     }
 }
