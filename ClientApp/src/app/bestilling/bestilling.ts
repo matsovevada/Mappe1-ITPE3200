@@ -40,7 +40,7 @@ export class Bestilling {
   }
 
   hentAlleAvganger() {
-    this.http.get<Avgang[]>("api/Bestilling/hentAvgang/" + this.strekning)
+    this.http.get<Avgang[]>("api/Bestilling/hentAktiveAvganger/" + this.strekning)
       .subscribe(avgangene => {
         this.alleAvganger = avgangene;
         this.laster = false;
@@ -85,11 +85,10 @@ export class Bestilling {
   //RETUR
 
   hentAlleAvgangerRetur() {
-    this.http.get<Avgang[]>("api/Bestilling/hentAvgangRetur/" + this.strekningRetur)
+    this.http.get<Avgang[]>("api/Bestilling/hentAktiveAvganger/" + this.strekningRetur)
       .subscribe(avgangene => {
         this.alleAvgangerRetur = avgangene;
         this.laster = false;
-
         this.avgangIdRetur = avgangene[0].id.toString();
         this.avgangValgtReturDatoTidTicks = avgangene[0].datoTidTicks;
       },

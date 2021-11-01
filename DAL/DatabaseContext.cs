@@ -107,22 +107,21 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       [Key]
       public int Id { get; set; }
       public string Navn { get; set; }
-      public virtual List<Lugarer> Lugarer { get; set; }
-      public int AntallBilplasser { get; set; }
+
   }
 
   public class Avganger
   {
       [Key]
       public int Id { get; set; }
-        public string StrekningFra { get; set; }
-        public string StrekningTil { get; set; }
+      public string StrekningFra { get; set; }
+      public string StrekningTil { get; set; }
       public virtual Baater Baat { get; set; }
       public string DatoTid { get; set; }
       public long DatoTidTicks { get; set; }
       public int AntallLedigeBilplasser { get; set; }
       public virtual List<Lugarer> LedigeLugarer { get; set; }
-
+      public bool Aktiv { get; set; }
   }
 
   public class Poststeder

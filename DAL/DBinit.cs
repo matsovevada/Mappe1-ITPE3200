@@ -222,29 +222,24 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       var baat1 = new Baater
       {
         Navn = "Color Fantasy",
-        Lugarer = lugarer,
-        AntallBilplasser = 300
     };
 
       var baat2 = new Baater
       {
         Navn = "Color Magic",
-        Lugarer = lugarer2,
-        AntallBilplasser = 50,
+    
       };
 
       var baat3 = new Baater
       {
         Navn = "Color Heaven",
-        Lugarer = lugarer3,
-        AntallBilplasser = 150,
+      
       };
 
       var baat4 = new Baater
       {
         Navn = "Color Titanic",
-        Lugarer = lugarer4,
-        AntallBilplasser = 75,
+      
       };
 
       db.Baater.Add(baat1);
@@ -257,15 +252,16 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       String date1String = date1.ToString();
       long date1Ticks = date1.Ticks;
 
-      var avgang1 = new Avganger
-      {
-        StrekningFra = new string(strekning_OsloKobenhavn.Fra),
-        StrekningTil = new string(strekning_OsloKobenhavn.Til),
-        Baat = baat1,
-        DatoTid = date1String,
-        DatoTidTicks = date1Ticks,
-        AntallLedigeBilplasser = baat1.AntallBilplasser,
-        LedigeLugarer = lugarer,
+            var avgang1 = new Avganger
+            {
+                StrekningFra = new string(strekning_OsloKobenhavn.Fra),
+                StrekningTil = new string(strekning_OsloKobenhavn.Til),
+                Baat = baat1,
+                DatoTid = date1String,
+                DatoTidTicks = date1Ticks,
+                AntallLedigeBilplasser = 123,
+                LedigeLugarer = lugarer,
+                Aktiv = true
       };
 
             DateTime date2 = new DateTime(2021, 11, 5, 11, 30, 0);
@@ -278,8 +274,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 Baat = baat1,
                 DatoTid = date2String,
                 DatoTidTicks = date2Ticks,
-                AntallLedigeBilplasser = baat1.AntallBilplasser,
+                AntallLedigeBilplasser = 321,
                 LedigeLugarer = lugarer2,
+                Aktiv = true
             };
 
             DateTime date3 = new DateTime(2021, 12, 23, 11, 30, 0);
@@ -292,8 +289,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 Baat = baat1,
                 DatoTid = date3String,
                 DatoTidTicks = date3Ticks,
-                AntallLedigeBilplasser = baat1.AntallBilplasser,
+                AntallLedigeBilplasser = 666,
                 LedigeLugarer = lugarer3,
+                Aktiv = false
             };
 
            /* DateTime date4 = new DateTime(2021, 12, 27, 11, 30, 0);

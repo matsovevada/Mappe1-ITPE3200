@@ -44,6 +44,15 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         }
 
         [HttpGet]
+        public async Task<List<Avganger>> HentAktiveAvganger(Strekning valgtStrekning)
+
+        {
+            List<Avganger> alleAvganger = await _db.Avganger.Where(a => (a.StrekningTil.Equals(valgtStrekning.Til) && a.StrekningFra.Equals(
+              valgtStrekning.Fra) && a.Aktiv)).ToListAsync();
+            return alleAvganger;
+        }
+
+        [HttpGet]
         public async Task<Avganger> HentValgtAvgang(int id)
         {
             Avganger avgang = await _db.Avganger.FindAsync(id);
@@ -441,8 +450,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             {
                 Baater nyBaat = new Baater();
                 nyBaat.Navn = navn;
-                //SLETT DENNE
-                nyBaat.AntallBilplasser = 200;
                 await _db.Baater.AddAsync(nyBaat);
                 await _db.SaveChangesAsync();
                 return true;

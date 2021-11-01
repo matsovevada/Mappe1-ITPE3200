@@ -50,10 +50,9 @@ namespace Mappe1_ITPE3200.Controllers
             return alleAvganger;
         }
 
-        // finner alle retur-avgangene som hører til den valgte strekningen
         [HttpGet("{strekning}")]
-        [ActionName("hentAvgangRetur")]
-        public async Task<List<Avganger>> HentAlleAvgangerRetur(String strekning)
+        [ActionName("hentAktiveAvganger")]
+        public async Task<List<Avganger>> HentAktiveAvganger(String strekning)
         {
             Array s_split = strekning.Split(" - ");
 
@@ -64,9 +63,10 @@ namespace Mappe1_ITPE3200.Controllers
                 Til = (string)s_split.GetValue(1)
             };
 
-            List<Avganger> alleAvganger = await _db.HentAlleAvganger(valgtStrekning);
+            List<Avganger> alleAvganger = await _db.HentAktiveAvganger(valgtStrekning);
             return alleAvganger;
         }
+
 
         [HttpGet("{id}")]
         [ActionName("hentValgtAvgang")]
