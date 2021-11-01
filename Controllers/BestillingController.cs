@@ -267,13 +267,21 @@ namespace Mappe1_ITPE3200.Controllers
             nyAvgang.DatoTidTicks = date1Ticks;
 
             List<Lugarer> lugarListe = new List<Lugarer>();
+
+            Console.WriteLine("LUGARER");
+            Console.WriteLine(lugarer);
+
+
+
             string[] lugarerSplit = lugarer.Split(",");
             foreach(string lug in lugarerSplit)
             {
-
-                LugarMaler lugarFraDB = await _db.HentLugarPaaNavn(lug);
+                Console.WriteLine(lug);
+                LugarMaler lugarFraDB = new LugarMaler();
+                lugarFraDB = await _db.HentLugarPaaNavn(lug);
                 Lugarer lugarTilAvgang = new Lugarer(lugarFraDB.Navn, lugarFraDB.Beskrivelse, lugarFraDB.AntallSengeplasser, lugarFraDB.Antall, lugarFraDB.AntallLedige, lugarFraDB.Pris);
                 lugarListe.Add(lugarTilAvgang);
+                Console.WriteLine(lugarTilAvgang.Antall);
             }
        
 
