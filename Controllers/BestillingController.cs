@@ -2,10 +2,13 @@
 using Mappe1_ITPE3200.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Mappe1_ITPE3200.Controllers
@@ -77,6 +80,14 @@ namespace Mappe1_ITPE3200.Controllers
         {
             Avganger avgang = await _db.HentValgtAvgang(id);
             return avgang;
+        }
+
+        [HttpGet]
+        [ActionName("hentAlleAvganger")]
+        public async Task<List<Avganger>> HentAlleAvganger()
+        {
+            List<Avganger> avganger = await _db.HentAlleAvganger();
+            return avganger;
         }
 
         [HttpPost]
@@ -151,7 +162,7 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("endreStrekning")]
         public async Task<bool> EndreStrekning(int id, string strekningFra, string strekningTil)
         {
-          
+
             return await _db.EndreStrekning(id, strekningFra, strekningTil);
         }
 
@@ -250,6 +261,13 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.slettKunde(id);
         }
 
+        [HttpGet]
+        [ActionName("hentAlleLugarer")]
+        public async Task<List<LugarMaler>> HentAlleLugarer()
+        {
+            return await _db.HentAlleLugarer();
+        }
+
         [HttpPut("{kunde}")]
         public async Task<bool> endreKunde(Kunde k)
         {
@@ -291,6 +309,29 @@ namespace Mappe1_ITPE3200.Controllers
                 return Unauthorized();
             }
             return Ok();
+        }
+
+        [HttpPost("{baat}/{strekningFra}/{strekningTil}/{datoTidDag}/{datoTidMnd}/{datoTidAar}/{datoTidTime}/{datoTidMin}/{antallLedigeBilplasser}/{lugarer}/{aktiv}")]
+        [ActionName("lagreAvgang")]
+        public async Task<bool> LagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
+        {
+            return await _db.lagreAvgang(baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
+        }
+
+
+        [HttpPut("{id}/{baat}/{strekningFra}/{strekningTil}/{datoTidDag}/{datoTidMnd}/{datoTidAar}/{datoTidTime}/{datoTidMin}/{antallLedigeBilplasser}/{lugarer}/{aktiv}")]
+        [ActionName("endreAvgang")]
+        public async Task<bool> endreAvgang(string id, string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
+        {
+            return await _db.endreAvgang(id, baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
+        }
+
+        [HttpDelete("{id}")]
+        [ActionName("slettAvgang")]
+        public async Task<bool> slettAvgang(string id)
+        {
+            int idInt = Int32.Parse(id);
+            return await _db.SlettAvgang(idInt);
         }
     }
 }

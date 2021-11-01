@@ -19,8 +19,11 @@ import { AdminPostnummer } from './admin/postnummer/postnummer';
 import { AdminBaat } from './admin/baat/adminBaat';
 import { AdminKunde } from './admin/kunde/adminKunde';
 import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
+import { AddAvgang } from './admin/addAvgang/addAvgang';
 import { AddLugar } from './admin/addLugar/addLugar';
 import { LoggInn } from './admin/loggInn/loggInn';
+import { EndreSlettAvgang } from './admin/endreSlettAvgang/endreSlettAvgang';
+import { EndreAvgang } from './admin/endreAvgang/endreAvgang';
 
 @NgModule({
   declarations: [
@@ -37,9 +40,13 @@ import { LoggInn } from './admin/loggInn/loggInn';
     AdminPostnummer,
     AdminBaat,
     AdminKunde,
-    EndreKundeForm,
     AddLugar,
-    LoggInn
+    LoggInn,
+    AddAvgang,
+    AddLugar,
+    EndreSlettAvgang,
+    EndreAvgang,
+    EndreKundeForm
   ],
 
   imports: [
