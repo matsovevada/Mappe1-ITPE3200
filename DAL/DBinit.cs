@@ -113,6 +113,29 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       int Antall3 = 40;
       int AntallLedige3 = 40;
       int Pris3 = 1000;
+
+    LugarMaler lugarMal1 = new LugarMaler()
+    {
+        Navn = new string(Navn),
+        Beskrivelse = new string(Beskrivelse),
+        AntallSengeplasser = AntallSengeplasser,
+        Antall = Antall,
+        AntallLedige = AntallLedige,
+        Pris = Pris
+    };
+
+    LugarMaler lugarMal2 = new LugarMaler()
+    {
+        Navn = new string(Navn1),
+        Beskrivelse = new string(Beskrivelse1),
+        AntallSengeplasser = AntallSengeplasser1,
+        Antall = Antall1,
+        AntallLedige = AntallLedige1,
+        Pris = Pris1
+    };
+
+    db.LugarMaler.Add(lugarMal1);
+    db.LugarMaler.Add(lugarMal2);
   
       List<Lugarer> lugarer = new List<Lugarer>();
       lugarer.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));

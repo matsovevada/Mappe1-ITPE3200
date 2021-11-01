@@ -11,7 +11,11 @@ import { AdminPostnummer } from './admin/postnummer/postnummer';
 import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
 import { AdminKunde } from './admin/kunde/adminKunde';
 import { Meny } from './admin/meny/meny';
+import { AddAvgang } from './admin/addAvgang/addAvgang';
 import { AddLugar } from './admin/addLugar/addLugar';
+import { EndreSlettAvgang } from './admin/endreSlettAvgang/endreSlettAvgang';
+import { EndreAvgang } from './admin/endreAvgang/endreAvgang';
+
 
 
 const appRoots: Routes = [
@@ -28,7 +32,10 @@ const appRoots: Routes = [
   { path: 'endreKundeForm', component: EndreKundeForm },
   { path: 'adminBaat', component: AdminBaat },
   { path: 'adminIndex', component: Meny },
-  { path: 'adminAddLugar', component: AddLugar }
+  { path: 'adminAddAvgang', component: AddAvgang },
+  { path: 'adminAddLugar', component: AddLugar },
+  { path: 'endreSlettAvgang', component: EndreSlettAvgang },
+  { path: 'endreAvgang', component: EndreAvgang }
 ]
 
 @NgModule({
