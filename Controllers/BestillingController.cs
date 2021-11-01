@@ -256,10 +256,14 @@ namespace Mappe1_ITPE3200.Controllers
             nyAvgang.StrekningFra = strekningFra;
             nyAvgang.StrekningTil = strekningTil;
 
+            List<Lugarer> lugarListe = new List<Lugarer>();
             string[] lugarerSplit = lugarer.Split(",");
             foreach(string lug in lugarerSplit)
             {
 
+                LugarMaler lugarFraDB = await _db.HentLugarPaaNavn(lug);
+                Lugarer lugarTilAvgang = new Lugarer(lugarFraDB.Navn, lugarFraDB.Beskrivelse, lugarFraDB.AntallSengeplasser, lugarFraDB.Antall, lugarFraDB.AntallLedige, lugarFraDB.Pris);
+                lugarListe.Add(lugarTilAvgang);
             }
        
 
@@ -276,7 +280,7 @@ namespace Mappe1_ITPE3200.Controllers
             nyAvgang.Aktiv = aktiv;
 
 
-            return true;
+            return await _db.lagreAvgang(nyAvgang);
         }
     }
 }

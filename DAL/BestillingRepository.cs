@@ -504,6 +504,19 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
+
+        public async Task<LugarMaler> HentLugarPaaNavn(string navn)
+        {
+            try
+            {
+                return await _db.LugarMaler.FindAsync(navn);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         [HttpPut]
         public async Task<bool> endreKunde(Kunde k)
         {
@@ -559,6 +572,22 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 LugarMaler slettLugarMal = await _db.LugarMaler.FindAsync(id);
 
                 _db.LugarMaler.Remove(slettLugarMal);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<bool> lagreAvgang(Avganger avgang)
+        {
+            try
+            {
+                await _db.Avganger.AddAsync(avgang);
                 await _db.SaveChangesAsync();
                 return true;
             }
