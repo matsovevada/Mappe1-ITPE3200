@@ -18,6 +18,13 @@ export class AddAvgang {
   alleBaater: Array<Baat>
   alleStrekninger: Array<Strekning>
   alleLugarer: Array<Lugar>
+  datoDag: number;
+  datoManed: number;
+  datoAr: number;
+  datoTime: number;
+  datoMinutt: number;
+  aktiv: boolean = true;
+  bilplasser: number;
  
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -60,29 +67,32 @@ export class AddAvgang {
       );
   }
 
-  selectChangeHandler(e) {
-    console.log(e);
-  }
-
   submit() {
-    let element = (document.getElementById('selectLugarer')) as HTMLSelectElement;
-    let options = element.selectedOptions;
+
+    let selectBaat = (document.getElementById('selectBaat')) as HTMLSelectElement;
+    let baatNavn = selectBaat.value;
+
+    let selectStrekning = (document.getElementById('selectBaat')) as HTMLSelectElement;
+    let strekningFra = selectStrekning.value.split(" - ")[0];
+    let strekningTil = selectStrekning.value.split(" - ")[1];
+
+    console.log(this.datoDag);
+    console.log(this.datoManed);
+    console.log(this.datoAr);
+    console.log(this.datoTime);
+    console.log(this.datoMinutt);
+
+    let selectLugarer = (document.getElementById('selectLugarer')) as HTMLSelectElement;
+    let options = selectLugarer.selectedOptions;
     var values = Array.from(options).map(({ value }) => value);
     console.log(values);
+    let lugarer = ""
+    values.forEach(value => {
+      lugarer += value + ","
+    });
 
-    var e = document.getElementById("selectBaat") as HTMLSelectElement;
-    var strUser = e.value;
-
-    console.log(strUser);
-
-    let avgang = new Avgang();
-
-    let object = {
-      "a": "some value",
-      "b": "another value"
-    };
-
-    this.http.post("api/Bestilling/lagreAvgang", JSON.stringify(object))
+    // baat,strekningFra,strekningTil,dag,måned,år,time,minutt,bilplasser,lugarer,aktiv
+    this.http.post("api/Bestilling/lagreAvgang/" + baatNavn + "/" + strekningFra + "/" + strekningTil + "/" + this.datoDag.toString() + "/" + this.datoManed.toString() + "/" + this.datoAr.toString() + "/" + this.datoTime.toString() + "/" + this.datoMinutt + "/" + this.bilplasser + "/" + lugarer + "/" + this.aktiv.toString(), null)
       .subscribe(ok => {
         console.log(ok);
       },
