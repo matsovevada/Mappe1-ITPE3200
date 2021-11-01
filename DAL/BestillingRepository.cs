@@ -57,6 +57,13 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return baat;
         }
 
+        [HttpGet]
+        public async Task<Baater> HentBaatPaaNavn(String baatnavn)
+        {
+            Baater baat = await _db.Baater.FindAsync(baatnavn);
+            return baat;
+        }
+
         [HttpPost]
         public async Task<int> LagreKunde(Kunde innKunde)
         {

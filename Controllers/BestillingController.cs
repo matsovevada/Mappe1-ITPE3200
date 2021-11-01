@@ -245,14 +245,36 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.endreKunde(k);
         }
 
-        [HttpPost]
+        [HttpPost("{baat}/{strekningFra}/{strekningTil}/{datoTidDag}/{datoTidMnd}/{datoTidAar}/{datoTidTime}/{datoTidMin}/{antallLedigeBilplasser}/{lugarer}/{aktiv}")]
         [ActionName("lagreAvgang")]
-        public async Task<bool> LagreAvgang(object jsonObject)
+        public async Task<bool> LagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, int antallLedigeBilplasser, string lugarer, bool aktiv)
         {
+            Avganger nyAvgang = new Avganger();
+            Baater baatFraDB = await _db.HentBaatPaaNavn(baat);
 
-            Console.WriteLine("CONTROLLER: LAGRE AVGANG");
+            nyAvgang.Baat = baatFraDB;
+            nyAvgang.StrekningFra = strekningFra;
+            nyAvgang.StrekningTil = strekningTil;
 
-            Console.WriteLine(jsonObject);
+            string[] lugarerSplit = lugarer.Split(",");
+            foreach(string lug in lugarerSplit)
+            {
+
+            }
+       
+
+
+            DateTime date = new DateTime(Int32.Parse(datoTidAar), Int32.Parse(datoTidMnd), Int32.Parse(datoTidDag), Int32.
+                Parse(datoTidTime), Int32.Parse(datoTidMin), 0);
+            String dateString = date.ToString();
+            long date1Ticks = date.Ticks;
+            nyAvgang.DatoTid = dateString;
+            nyAvgang.DatoTidTicks = date1Ticks;
+
+            nyAvgang.AntallLedigeBilplasser = antallLedigeBilplasser;
+
+            nyAvgang.Aktiv = aktiv;
+
 
             return true;
         }

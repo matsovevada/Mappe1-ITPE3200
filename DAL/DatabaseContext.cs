@@ -122,6 +122,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       public long DatoTidTicks { get; set; }
       public int AntallLedigeBilplasser { get; set; }
       public virtual List<Lugarer> LedigeLugarer { get; set; }
+
   }
 
   public class Poststeder

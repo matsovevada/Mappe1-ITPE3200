@@ -35,5 +35,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<bool> slettKunde(int id);
     Task<List<LugarMaler>> HentAlleLugarer();
     Task<bool> endreKunde(Kunde k);
+    Task<Baater> HentBaatPaaNavn(String baatnavn);
+
   }
 }
