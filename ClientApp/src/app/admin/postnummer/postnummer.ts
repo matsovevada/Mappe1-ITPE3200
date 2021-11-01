@@ -27,11 +27,13 @@ export class AdminPostnummer {
     this.http.get<Poststed[]>("api/Bestilling/hentPoststed")
       .subscribe(poststeder => {
         this.allePoststeder = poststeder;
-        console.log("POSTSTEDER:")
-        console.log(poststeder);
         this.laster = false;
       },
-        error => console.log(error)
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 

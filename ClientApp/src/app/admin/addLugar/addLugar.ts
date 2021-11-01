@@ -36,6 +36,19 @@ export class AddLugar {
     this.nyLugarSkjema = fb.group(this.validering)
   }
 
+  ngOnInit() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+          console.log(error)
+        }
+      );
+  }
+
   onSubmit() {
     this.lagreLugar();
   }

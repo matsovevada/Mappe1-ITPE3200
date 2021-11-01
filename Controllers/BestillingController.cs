@@ -25,10 +25,14 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpGet]
         [ActionName("hentStrekning")]
-        public async Task<List<Strekning>> HentAlleStrekninger()
+        public async Task<ActionResult> HentAlleStrekninger()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
             List<Strekning> alleStrekninger = await _db.HentAlleStrekninger();
-            return alleStrekninger;
+            return Ok(alleStrekninger);
         }
 
         // finner alle avgangene som hører til den valgte strekningen
@@ -161,9 +165,14 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpGet]
         [ActionName("hentPoststed")]
-        public async Task<List<Poststeder>> HentPoststed()
+        public async Task<ActionResult> HentPoststed()
         {
-            return await _db.HentAllePoststeder();
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            List<Poststeder> allePoststeder = await _db.HentAllePoststeder();
+            return Ok(allePoststeder);
         }
 
         [HttpDelete("{postnummer}")]
