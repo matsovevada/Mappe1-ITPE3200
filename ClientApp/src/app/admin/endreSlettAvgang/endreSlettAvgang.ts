@@ -40,15 +40,4 @@ export class EndreSlettAvgang {
       });
   }
 
-  endreStrekning(strekningId, strekningFra, strekningTil) {
-
-    this.http.put("api/Bestilling/endreStrekning/" + strekningId + "/" + strekningFra + "/" + strekningTil, null)
-      .subscribe(ok => {
-        if (ok) {
-          location.reload();
-        }
-      },
-        error => console.log(error)
-      );
-  }
 }

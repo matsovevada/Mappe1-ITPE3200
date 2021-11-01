@@ -24,7 +24,7 @@
             <td>{{avgang.strekningTil}}</td>
             <td>{{avgang.datoTid}}</td>
             <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
-            <td><button class="btn btn-success" (click)="endreAvgang(avgang.id)">Endre</button></td>
+            <td><button class="btn btn-success" [routerLink]="['/endreAvgang', {avgangId:avgang.id}]">Endre</button></td> 
           </tr>
         </tbody>
       </table>

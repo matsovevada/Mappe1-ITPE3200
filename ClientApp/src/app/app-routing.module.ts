@@ -14,6 +14,7 @@ import { Meny } from './admin/meny/meny';
 import { AddAvgang } from './admin/addAvgang/addAvgang';
 import { AddLugar } from './admin/addLugar/addLugar';
 import { EndreSlettAvgang } from './admin/endreSlettAvgang/endreSlettAvgang';
+import { EndreAvgang } from './admin/endreAvgang/endreAvgang';
 
 
 
@@ -33,7 +34,8 @@ const appRoots: Routes = [
   { path: 'adminIndex', component: Meny },
   { path: 'adminAddAvgang', component: AddAvgang },
   { path: 'adminAddLugar', component: AddLugar },
-  { path: 'endreSlettAvgang', component: EndreSlettAvgang }
+  { path: 'endreSlettAvgang', component: EndreSlettAvgang },
+  { path: 'endreAvgang', component: EndreAvgang }
 ]
 
 @NgModule({
