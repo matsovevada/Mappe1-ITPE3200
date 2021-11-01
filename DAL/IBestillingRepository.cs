@@ -38,7 +38,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     Task<bool> endreKunde(Kunde k);
     Task<Baater> HentBaatPaaNavn(String baatnavn);
     Task<LugarMaler> HentLugarPaaNavn(string navn);
-    Task<bool> lagreAvgang(Avganger avgang);
     Task<List<Avganger>> HentAlleAvganger();
+    Task<bool> lagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv);
+    Task<bool> endreAvgang(string id, string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv);
+    Task<bool> SlettAvgang(int id);
   }
 }

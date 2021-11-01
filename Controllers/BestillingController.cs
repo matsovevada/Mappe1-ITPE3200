@@ -257,46 +257,23 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreAvgang")]
         public async Task<bool> LagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
         {
-            Avganger nyAvgang = new Avganger();
-            Baater baatFraDB = await _db.HentBaatPaaNavn(baat);
-
-            nyAvgang.Baat = baatFraDB;
-
-            nyAvgang.StrekningFra = strekningFra;
-            nyAvgang.StrekningTil = strekningTil;
+            return await _db.lagreAvgang(baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
+        }
 
 
-            DateTime date = new DateTime(Int32.Parse(datoTidAar), Int32.Parse(datoTidMnd), Int32.Parse(datoTidDag), Int32.
-            Parse(datoTidTime), Int32.Parse(datoTidMin), 0);
+        [HttpPut("{id}/{baat}/{strekningFra}/{strekningTil}/{datoTidDag}/{datoTidMnd}/{datoTidAar}/{datoTidTime}/{datoTidMin}/{antallLedigeBilplasser}/{lugarer}/{aktiv}")]
+        [ActionName("endreAvgang")]
+        public async Task<bool> endreAvgang(string id, string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
+        {
+            return await _db.endreAvgang(id, baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
+        }
 
-            string dateString = date.ToString();
-            long date1Ticks = date.Ticks;
-            nyAvgang.DatoTid = dateString;
-            nyAvgang.DatoTidTicks = date1Ticks;
-
-            List<Lugarer> lugarListe = new List<Lugarer>();
-
-            string[] lugarerSplit = lugarer.Split(",");
-            foreach(string lug in lugarerSplit)
-            {
-                Console.WriteLine(lug);
-                LugarMaler lugarFraDB = new LugarMaler();
-                lugarFraDB = await _db.HentLugarPaaNavn(lug);
-                Lugarer lugarTilAvgang = new Lugarer(lugarFraDB.Navn, lugarFraDB.Beskrivelse, lugarFraDB.AntallSengeplasser, lugarFraDB.Antall, lugarFraDB.AntallLedige, lugarFraDB.Pris);
-                lugarListe.Add(lugarTilAvgang);
-                Console.WriteLine(lugarTilAvgang.Antall);
-            }
-       
-
-
-   
-
-            nyAvgang.AntallLedigeBilplasser = Int32.Parse(antallLedigeBilplasser);
-
-            nyAvgang.Aktiv = Convert.ToBoolean(aktiv);
-
-
-            return await _db.lagreAvgang(nyAvgang);
+        [HttpDelete("{id}")]
+        [ActionName("slettAvgang")]
+        public async Task<bool> slettAvgang(string id)
+        {
+            int idInt = Int32.Parse(id);
+            return await _db.SlettAvgang(idInt);
         }
     }
 }
