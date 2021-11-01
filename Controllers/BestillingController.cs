@@ -247,14 +247,24 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpPost("{baat}/{strekningFra}/{strekningTil}/{datoTidDag}/{datoTidMnd}/{datoTidAar}/{datoTidTime}/{datoTidMin}/{antallLedigeBilplasser}/{lugarer}/{aktiv}")]
         [ActionName("lagreAvgang")]
-        public async Task<bool> LagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, int antallLedigeBilplasser, string lugarer, bool aktiv)
+        public async Task<bool> LagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
         {
             Avganger nyAvgang = new Avganger();
             Baater baatFraDB = await _db.HentBaatPaaNavn(baat);
 
             nyAvgang.Baat = baatFraDB;
+
             nyAvgang.StrekningFra = strekningFra;
             nyAvgang.StrekningTil = strekningTil;
+
+
+            DateTime date = new DateTime(Int32.Parse(datoTidAar), Int32.Parse(datoTidMnd), Int32.Parse(datoTidDag), Int32.
+            Parse(datoTidTime), Int32.Parse(datoTidMin), 0);
+
+            string dateString = date.ToString();
+            long date1Ticks = date.Ticks;
+            nyAvgang.DatoTid = dateString;
+            nyAvgang.DatoTidTicks = date1Ticks;
 
             List<Lugarer> lugarListe = new List<Lugarer>();
             string[] lugarerSplit = lugarer.Split(",");
@@ -268,16 +278,11 @@ namespace Mappe1_ITPE3200.Controllers
        
 
 
-            DateTime date = new DateTime(Int32.Parse(datoTidAar), Int32.Parse(datoTidMnd), Int32.Parse(datoTidDag), Int32.
-                Parse(datoTidTime), Int32.Parse(datoTidMin), 0);
-            String dateString = date.ToString();
-            long date1Ticks = date.Ticks;
-            nyAvgang.DatoTid = dateString;
-            nyAvgang.DatoTidTicks = date1Ticks;
+   
 
-            nyAvgang.AntallLedigeBilplasser = antallLedigeBilplasser;
+            nyAvgang.AntallLedigeBilplasser = Int32.Parse(antallLedigeBilplasser);
 
-            nyAvgang.Aktiv = aktiv;
+            nyAvgang.Aktiv = Convert.ToBoolean(aktiv);
 
 
             return await _db.lagreAvgang(nyAvgang);
