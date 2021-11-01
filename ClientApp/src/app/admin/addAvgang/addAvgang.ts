@@ -72,7 +72,7 @@ export class AddAvgang {
     let selectBaat = (document.getElementById('selectBaat')) as HTMLSelectElement;
     let baatNavn = selectBaat.value;
 
-    let selectStrekning = (document.getElementById('selectBaat')) as HTMLSelectElement;
+    let selectStrekning = (document.getElementById('selectStrekning')) as HTMLSelectElement;
     let strekningFra = selectStrekning.value.split(" - ")[0];
     let strekningTil = selectStrekning.value.split(" - ")[1];
 
