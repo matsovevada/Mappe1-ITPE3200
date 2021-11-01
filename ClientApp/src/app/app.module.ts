@@ -20,6 +20,8 @@ import { AdminBaat } from './admin/baat/adminBaat';
 import { AdminKunde } from './admin/kunde/adminKunde';
 import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
 import { AddLugar } from './admin/addLugar/addLugar';
+import { EndreLugar } from './admin/endreLugar/endreLugar';
+import { EndreLugarForm } from './admin/endreLugarForm/endreLugarForm';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AddLugar } from './admin/addLugar/addLugar';
     AdminBaat,
     AdminKunde,
     EndreKundeForm,
-    AddLugar
+    AddLugar,
+    EndreLugar,
+    EndreLugarForm
   ],
 
   imports: [

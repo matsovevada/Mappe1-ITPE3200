@@ -234,5 +234,30 @@ namespace Mappe1_ITPE3200.Controllers
         {
             return await _db.endreKunde(k);
         }
+
+
+        [HttpGet]
+        [ActionName("hentAlleLugarer")]
+        public async Task<List<LugarMaler>> HentAlleLugarer()
+        {
+            List<LugarMaler> alleAvganger = await _db.HentAlleLugarer();
+            return alleAvganger;
+        }
+
+        [HttpGet("{id}")]
+        [ActionName("hentLugar")]
+        public async Task<LugarMaler> hentLugar(int id)
+        {
+            LugarMaler lugar = await _db.HentLugar(id);
+            return lugar;
+        }
+
+
+        [HttpPut("{id}/{navn}/{antallSengeplasser}/{antLugarer}/{pris}/{beskrivelse}")]
+        [ActionName("endreLugar")]
+        public async Task<bool> endreLugar(string id, string navn, string antallSengeplasser, string antLugarer, string pris, string beskrivelse)
+        {
+            return await _db.EndreLugar(id, navn, antallSengeplasser, antLugarer, pris, beskrivelse);
+        }
     }
 }

@@ -14,7 +14,7 @@
         <tbody *ngFor="let lugar of alleLugarer" ng-model="alleLugarer">
           <tr>
             <td>
-              <p id="kundeNavn" #lugarNavn>{{lugar.navn}}</p>
+              <p id="lugarNavn" #lugarNavn>{{lugar.navn}}</p>
               <input hidden value="{{lugar.id}}" id="lugarId" #lugarId>
             </td>
             <td><button class="btn btn-primary" [routerLink]="['/endreLugarForm', {lugarId:lugar.id}]">Endre</button></td>

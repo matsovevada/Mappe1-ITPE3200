@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Kunde } from "../../Kunde";
-import { ActivatedRoute, NavigationExtras } from '@angular/router'
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ViewEncapsulation } from "@angular/cli/lib/config/schema";
 
 @Component({
@@ -50,7 +50,6 @@ export class EndreKundeForm implements OnInit {
     this.http.get<Kunde>("api/Bestilling/hentKunde/" + id)
       .subscribe(kunde => {
         this.valgtKunde = kunde;
-        console.log(this.valgtKunde)
         this.kundeSkjema.patchValue({
           fornavn: this.valgtKunde.fornavn,
           etternavn: this.valgtKunde.etternavn,
