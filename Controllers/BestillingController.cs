@@ -351,6 +351,23 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("endreLugar")]
         public async Task<bool> endreLugar(string id, string navn, string antallSengeplasser, string antLugarer, string pris, string beskrivelse)
         {
+            var regexNavn = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var regexAntallSengeplasser = @"[0-9]{1,2}";
+            var regexAntall = @"[0-9]{1,5}";
+            var regexPris = @"[0-9]{2,5}";
+            var regexBeskrivelse = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
+
+            var navnMatch = Regex.Match(navn, regexNavn);
+            var antallSengeplasserMatch = Regex.Match(antallSengeplasser.ToString(), regexAntallSengeplasser);
+            var antallMatch = Regex.Match(antLugarer.ToString(), regexAntall);
+            var prisMatch = Regex.Match(pris.ToString(), regexPris);
+            var beskrivelseMatch = Regex.Match(beskrivelse, regexBeskrivelse);
+
+            if (!navnMatch.Success || !antallSengeplasserMatch.Success || !antallMatch.Success || !prisMatch.Success || !beskrivelseMatch.Success)
+            {
+                return false;
+            }
+
             return await _db.EndreLugar(id, navn, antallSengeplasser, antLugarer, pris, beskrivelse);
         }
     }
