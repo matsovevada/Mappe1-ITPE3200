@@ -311,6 +311,27 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreAvgang")]
         public async Task<bool> LagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
         {
+           /* var regexBaat = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var regexStrekningFra = @"[0-9]{1,2}";
+            var regexStrekningTil = @"[0-9]{1,5}";
+            var regexDatoTidDag = @"[0-9]{2,5}";
+            var regexDatoTidMnd = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
+            var regexDatoTidAar = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
+            var regexDatoTidTime = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
+            var regexDatoTidMin = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
+            var regexAntallLedigeBilplasser = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
+
+            var navnMatch = Regex.Match(navn, regexNavn);
+            var antallSengeplasserMatch = Regex.Match(antallSengeplasser.ToString(), regexAntallSengeplasser);
+            var antallMatch = Regex.Match(antall.ToString(), regexAntall);
+            var prisMatch = Regex.Match(pris.ToString(), regexPris);
+            var beskrivelseMatch = Regex.Match(beskrivelse, regexBeskrivelse);
+
+            if (!navnMatch.Success || !antallSengeplasserMatch.Success || !antallMatch.Success || !prisMatch.Success || !beskrivelseMatch.Success)
+            {
+                return false;
+            }*/
+
             return await _db.lagreAvgang(baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
         }
 

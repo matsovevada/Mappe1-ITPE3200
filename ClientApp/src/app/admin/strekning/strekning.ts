@@ -16,6 +16,8 @@ import { ViewEncapsulation } from "@angular/core";
 export class AdminStrekning {
   alleStrekninger: Array<Strekning>;
   laster: boolean = true;
+  feilInputLagre: boolean;
+  feilInputEndre: boolean;
   
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -82,5 +84,19 @@ export class AdminStrekning {
           }
         }
       );
+  }
+
+  validerLagre(value) {
+    if (value.length < 2 || value.length > 30) {
+      this.feilInputLagre = true;
+    }
+    else this.feilInputLagre = false;
+  }
+
+  validerEndre(value) {
+    if (value.length < 2 || value.length > 30) {
+      this.feilInputEndre = true;
+    }
+    else this.feilInputEndre = false;
   }
 }

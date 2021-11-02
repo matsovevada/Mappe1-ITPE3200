@@ -14,6 +14,7 @@ export class AdminBaat {
   baatSlettet: boolean;
   laster: boolean;
   endreValgt: boolean;
+  feilInput: boolean;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -23,7 +24,7 @@ export class AdminBaat {
     this.loggetInnSjekk();
     this.hentAlleBaater();
     this.baatSlettet = false;
-    this.endreValgt = false;
+    this.endreValgt = true;
   }
 
   hentAlleBaater() {
@@ -80,5 +81,12 @@ export class AdminBaat {
           }
         }
       );
+  }
+
+  valider(value) {
+    if (value.length < 2 || value.length > 30) {
+      this.feilInput = true;
+    }
+    else this.feilInput = false;
   }
 }

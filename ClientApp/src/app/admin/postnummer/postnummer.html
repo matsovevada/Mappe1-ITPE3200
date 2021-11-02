@@ -5,11 +5,14 @@
       <div *ngIf="laster">Laster postnummere.....</div>
 
       <h3>Lagre Postnummer</h3>
-      <input placeholder="Postnummer" id="lagrePostnummerNummer" #lagrePostnummerNummer />
-      <input placeholder="Poststed" id="lagrePostnummerSted" #lagrePostnummerSted />
-      <button class="btn btn-success" (click)="lagrePoststed(lagrePostnummerNummer.value, lagrePostnummerSted.value)">Lagre</button>
+      <p *ngIf="feilInputLagrePoststed" style="color:red;">Poststed må ha mellom 2 og 30 bokstaver</p>
+      <p *ngIf="feilInputLagrePostnummer" style="color:red;">Postnummer må ha 4 siffer</p>
+      <input placeholder="Postnummer" id="lagrePostnummerNummer" #lagrePostnummerNummer (input)="validerLagrePostnummer($event.target.value)" />
+      <input placeholder="Poststed" id="lagrePostnummerSted" #lagrePostnummerSted (input)="validerLagrePoststed($event.target.value)" />
+      <button class="btn btn-success" (click)="lagrePoststed(lagrePostnummerNummer.value, lagrePostnummerSted.value)" [disabled]="feilInputLagrePoststed || feilInputLagrePostnummer ? true : null">Lagre</button>
 
       <h3>Postnummere</h3>
+      <p *ngIf="feilInputEndre" style="color:red;">Poststed må ha mellom 2 og 30 bokstaver</p>
       <table class="table table-bordered table-condensed">
         <thead>
           <tr>
@@ -23,10 +26,10 @@
         <tbody *ngFor="let poststed of allePoststeder">
           <tr>
             <td>{{poststed.postnr}}</td>
-            <td><input value="{{poststed.poststed}}" id="postnummerPoststed" #postnummerPoststed/></td>
-            <td><input hidden value="{{poststed.postnr}}" id="postnummer" #postnummer/></td>
+            <td><input value="{{poststed.poststed}}" id="postnummerPoststed" #postnummerPoststed (input)="validerEndre($event.target.value)" /></td>
+            <td><input hidden value="{{poststed.postnr}}" id="postnummer" #postnummer /></td>
             <td><button class="btn btn-danger" (click)="slettPoststed(postnummer.value)">Slett</button></td>
-            <td><button class="btn btn-success" (click)="endrePoststed(postnummer.value, postnummerPoststed.value)">Endre</button></td>
+            <td><button class="btn btn-success" (click)="endrePoststed(postnummer.value, postnummerPoststed.value)" [disabled]="feilInputEndre ? true : null">Endre</button></td>
           </tr>
         </tbody>
       </table>
