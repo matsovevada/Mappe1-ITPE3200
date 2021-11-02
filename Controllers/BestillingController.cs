@@ -284,11 +284,18 @@ namespace Mappe1_ITPE3200.Controllers
             return await _db.HentAlleLugarer();
         }*/
 
-        [HttpPut("{kunde}")]
-        public async Task<bool> endreKunde(Kunde k)
+        [HttpPut]
+        [ActionName("endreKunde")]
+        public async Task<ActionResult> endreKunde(Kunde kunde)
         {
-            _log.LogInformation("PUT: Endret kunde med ID: " + k.Id);
-            return await _db.endreKunde(k);
+            if (ModelState.IsValid)
+            {
+                _log.LogInformation("PUT: Endret kunde med ID: " + kunde.Id);
+                bool kundeEndret = await _db.endreKunde(kunde);
+                return Ok(kundeEndret);
+            }
+            _log.LogInformation("Feil i endreKunde");
+            return BadRequest("Feil i inputvalidering på server");
         }
 
         [HttpPost]
