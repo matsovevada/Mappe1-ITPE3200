@@ -557,8 +557,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
         public async Task<LugarMaler> HentLugar(int id)
         {
-            LugarMaler billett = await _db.LugarMaler.FindAsync(id);
-            return billett;
+            LugarMaler lugar = await _db.LugarMaler.FindAsync(id);
+            return lugar;
         }
 
         public async Task<bool> EndreLugar(string id, string navn, string antallSengeplasser, string antLugarer, string pris, string beskrivelse)
@@ -579,6 +579,22 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             {
                 return false;
             }
+        }
+
+        public async Task<bool> SlettBillett(string id)
+        {
+            try
+            {
+                Billetter bill = await _db.Billetter.FindAsync(Int32.Parse(id));
+                _db.Billetter.Remove(bill);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
     }
 }
