@@ -200,6 +200,17 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("endreStrekning")]
         public async Task<bool> EndreStrekning(int id, string strekningFra, string strekningTil)
         {
+
+            var regexStrekning = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var strekningFraMatch = Regex.Match(strekningFra, regexStrekning);
+            var strekningTilMatch = Regex.Match(strekningTil, regexStrekning);
+
+            if (!strekningFraMatch.Success || !strekningTilMatch.Success)
+            {
+                _log.LogInformation("FEIL: Feil i regex i EndreStrekning()");
+                return false;
+            }
+
             _log.LogInformation("PUT: Endret strekning med ID: " + id);
             return await _db.EndreStrekning(id, strekningFra, strekningTil);
         }
@@ -208,6 +219,16 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreStrekning")]
         public async Task<bool> LagreStrekning(string strekningFra, string strekningTil)
         {
+            var regexStrekning = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var strekningFraMatch = Regex.Match(strekningFra, regexStrekning);
+            var strekningTilMatch = Regex.Match(strekningTil, regexStrekning);
+
+            if (!strekningFraMatch.Success || !strekningTilMatch.Success)
+            {
+                _log.LogInformation("FEIL: Feil i regex i LagreStrekning()");
+                return false;
+            }
+
             _log.LogInformation("POST: Lagret strekning" + strekningFra + " - " +strekningTil);
             return await _db.LagreStrekning(strekningFra, strekningTil);    
         }
