@@ -233,6 +233,18 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("endrePoststed")]
         public async Task<bool> EndrePoststed(string postnummer, string poststed)
         {
+            var regPostnummer = @"[0-9]{4}";
+            var regPoststed = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+
+            var pnrMatch = Regex.Match(postnummer, regPostnummer);
+            var pstdMatch = Regex.Match(poststed, regPoststed);
+
+            if (!pnrMatch.Success || !pstdMatch.Success)
+            {
+                _log.LogInformation("ERROR: Feil i RegEx i EndrePoststed()");
+                return false;
+            }
+
             _log.LogInformation("PUT: Endret poststed med postnummer: " + postnummer);
             return await _db.EndrePoststed(postnummer, poststed);
         }
@@ -241,6 +253,18 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagrePoststed")]
         public async Task<bool> LagrePoststed(string postnummer, string poststed)
         {
+            var regPostnummer = @"[0-9]{4}";
+            var regPoststed = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+
+            var pnrMatch = Regex.Match(postnummer, regPostnummer);
+            var pstdMatch = Regex.Match(poststed, regPoststed);
+
+            if (!pnrMatch.Success || !pstdMatch.Success)
+            {
+                _log.LogInformation("ERROR: Feil i RegEx i LagrePoststed()");
+                return false;
+            }
+
             _log.LogInformation("POST: Lagret poststed med postnummer: " + postnummer);
             return await _db.LagrePoststed(postnummer, poststed);
         }
