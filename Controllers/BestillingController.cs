@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Mappe1_ITPE3200.Controllers
@@ -136,6 +137,23 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreLugar")]
         public async Task<bool> LagreLugar(string navn, string beskrivelse, int antallSengeplasser, int antall, int antallLedige, int pris)
         {
+            var regexNavn = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var regexAntallSengeplasser = @"[0-9]{1,2}";
+            var regexAntall = @"[0-9]{1,5}";
+            var regexPris = @"[0-9]{2,5}";
+            var regexBeskrivelse = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
+
+            var navnMatch = Regex.Match(navn, regexNavn);
+            var antallSengeplasserMatch = Regex.Match(antallSengeplasser.ToString(), regexAntallSengeplasser);
+            var antallMatch = Regex.Match(antall.ToString(), regexAntall);
+            var prisMatch = Regex.Match(pris.ToString(), regexPris);
+            var beskrivelseMatch = Regex.Match(beskrivelse, regexBeskrivelse);
+
+            if (!navnMatch.Success || !antallSengeplasserMatch.Success || !antallMatch.Success || !prisMatch.Success || !beskrivelseMatch.Success)
+            {
+                return false;
+            }
+
             return await _db.LagreLugar(navn, beskrivelse, antallSengeplasser, antall, antallLedige, pris);
         }
 
