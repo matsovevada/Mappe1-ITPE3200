@@ -266,6 +266,15 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("endreBaat")]
         public async Task<bool> endreBaat(int id, String navn)
         {
+            var regexNavn = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var navnMatch = Regex.Match(navn, regexNavn);
+
+            if (!navnMatch.Success)
+            {
+                _log.LogInformation("FEIL: Feil i regex i endreBaat()");
+                return false;
+            }
+
             _log.LogInformation("PUT: Endret båt med ID: " + id);
             return await _db.endreBaat(id, navn);
         }
@@ -274,6 +283,16 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreBaat")]
         public async Task<bool> lagreBaat(String navn)
         {
+
+            var regexNavn = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var navnMatch = Regex.Match(navn, regexNavn);
+
+            if (!navnMatch.Success)
+            {
+                _log.LogInformation("FEIL: Feil i regex i lagreBaat()");
+                return false;
+            }
+
             _log.LogInformation("POST: Lagret båt med navn: " + navn);
             return await _db.lagreBaat(navn);
         }
