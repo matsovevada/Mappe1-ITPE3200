@@ -390,30 +390,35 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreAvgang")]
         public async Task<bool> LagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
         {
+            var regexBaat = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var regexStrekningFra = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var regexStrekningTil = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var regexDatoTidDag = @"[1-31]{1,2}";
+            var regexDatoTidMnd = @"[1-12]{1,2}";
+            var regexDatoTidAar = @"[2021-2030]{4}";
+            var regexDatoTidTime = @"[0-23]{1,2}";
+            var regexDatoTidMin = @"[0-59]{1,2}";
+            var regexAntallLedigeBilplasser = @"[0-1000]{1,4}";
+
+            var baatMatch = Regex.Match(baat, regexBaat);
+            var strekningFraMatch = Regex.Match(strekningFra, regexStrekningFra);
+            var strekningTilMatch = Regex.Match(strekningTil, regexStrekningTil);
+            var datoTidDagMatch = Regex.Match(datoTidDag, regexDatoTidDag);
+            var datoTidMndMatch = Regex.Match(datoTidMnd, regexDatoTidMnd);
+            var datoTidAarMatch = Regex.Match(datoTidAar, regexDatoTidAar);
+            var datoTidTimeMatch = Regex.Match(datoTidTime, regexDatoTidTime);
+            var datoTidMinMatch = Regex.Match(datoTidMin, regexDatoTidMin);
+            var antallLedigeBilplasserMatch = Regex.Match(antallLedigeBilplasser, regexAntallLedigeBilplasser);
+            
+
+            if (!baatMatch.Success || !strekningFraMatch.Success || !strekningTilMatch.Success || !datoTidDagMatch.Success || !datoTidMndMatch.Success
+               || !datoTidAarMatch.Success || !datoTidTimeMatch.Success || !datoTidMinMatch.Success || !antallLedigeBilplasserMatch.Success)
+            {
+                _log.LogInformation("FEIL: Feil i regex i lagreAvgang()");
+                return false;
+            }
 
             _log.LogInformation("POST: Lagret avgang");
-
-           /* var regexBaat = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
-            var regexStrekningFra = @"[0-9]{1,2}";
-            var regexStrekningTil = @"[0-9]{1,5}";
-            var regexDatoTidDag = @"[0-9]{2,5}";
-            var regexDatoTidMnd = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
-            var regexDatoTidAar = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
-            var regexDatoTidTime = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
-            var regexDatoTidMin = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
-            var regexAntallLedigeBilplasser = @"[a-zA-ZøæåØÆÅ. \-]{2,500}";
-
-            var navnMatch = Regex.Match(navn, regexNavn);
-            var antallSengeplasserMatch = Regex.Match(antallSengeplasser.ToString(), regexAntallSengeplasser);
-            var antallMatch = Regex.Match(antall.ToString(), regexAntall);
-            var prisMatch = Regex.Match(pris.ToString(), regexPris);
-            var beskrivelseMatch = Regex.Match(beskrivelse, regexBeskrivelse);
-
-            if (!navnMatch.Success || !antallSengeplasserMatch.Success || !antallMatch.Success || !prisMatch.Success || !beskrivelseMatch.Success)
-            {
-                return false;
-            }*/
-
             return await _db.lagreAvgang(baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
         }
 
@@ -422,6 +427,35 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("endreAvgang")]
         public async Task<bool> endreAvgang(string id, string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
         {
+
+            var regexBaat = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var regexStrekningFra = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var regexStrekningTil = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
+            var regexDatoTidDag = @"[1-31]{1,2}";
+            var regexDatoTidMnd = @"[1-12]{1,2}";
+            var regexDatoTidAar = @"[2021-2030]{4}";
+            var regexDatoTidTime = @"[0-23]{1,2}";
+            var regexDatoTidMin = @"[0-59]{1,2}";
+            var regexAntallLedigeBilplasser = @"[0-1000]{1,4}";
+
+            var baatMatch = Regex.Match(baat, regexBaat);
+            var strekningFraMatch = Regex.Match(strekningFra, regexStrekningFra);
+            var strekningTilMatch = Regex.Match(strekningTil, regexStrekningTil);
+            var datoTidDagMatch = Regex.Match(datoTidDag, regexDatoTidDag);
+            var datoTidMndMatch = Regex.Match(datoTidMnd, regexDatoTidMnd);
+            var datoTidAarMatch = Regex.Match(datoTidAar, regexDatoTidAar);
+            var datoTidTimeMatch = Regex.Match(datoTidTime, regexDatoTidTime);
+            var datoTidMinMatch = Regex.Match(datoTidMin, regexDatoTidMin);
+            var antallLedigeBilplasserMatch = Regex.Match(antallLedigeBilplasser, regexAntallLedigeBilplasser);
+
+
+            if (!baatMatch.Success || !strekningFraMatch.Success || !strekningTilMatch.Success || !datoTidDagMatch.Success || !datoTidMndMatch.Success
+               || !datoTidAarMatch.Success || !datoTidTimeMatch.Success || !datoTidMinMatch.Success || !antallLedigeBilplasserMatch.Success)
+            {
+                _log.LogInformation("FEIL: Feil i regex i endreAvgang()");
+                return false;
+            }
+
             _log.LogInformation("PUT: Endret avgang med ID: " + id);
             return await _db.endreAvgang(id, baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
         }
