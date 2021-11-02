@@ -125,7 +125,39 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreBillett")]
         public async Task<int> LagreBillett(Billett innBillett)
         {
-            int billettLagret = await _db.LagreBillett(innBillett);
+
+ 
+            var regexAntallPersoner = @"[0-9]{1,2}";
+            var regexAntallPersonerRetur = @"[0-9]{1,2}";
+            var regexTotalpris = @"[0-9]{1,5}";
+
+            var antallpersonerMatch = Regex.Match(innBillett.AntallPersoner.ToString(), regexAntallPersoner);
+            var antallpersonerReturMatch = Regex.Match(innBillett.AntallPersonerRetur.ToString(), regexAntallPersonerRetur);
+            var totalprisMatch = Regex.Match(innBillett.TotalPris.ToString(), regexTotalpris);
+
+            if(innBillett.AntallPersonerRetur == 0)
+            {
+                if(!antallpersonerMatch.Success || !totalprisMatch.Success || !(innBillett.lugarer.Count() > 0))
+                {
+                    _log.LogInformation("FEIL: Feil i regex LagreBillett()");
+                    return -1;
+                }
+            }
+
+            //Alternativ validering ved retur valgt
+            if (innBillett.AntallPersonerRetur != 0)
+            {
+                if (!antallpersonerMatch.Success || !totalprisMatch.Success || innBillett.lugarer.Count() <= 0 ||
+                    !antallpersonerReturMatch.Success || innBillett.lugarerRetur.Count() <= 0)
+                {
+                    _log.LogInformation("FEIL: Feil i regex LagreBillett()");
+                    return -1;
+                }
+            }
+
+           
+           int billettLagret = await _db.LagreBillett(innBillett);
+
 
             // fjern en bilplass for avgangen hvis bilplass er valgt i billetten
             if (innBillett.Bilplass)
@@ -158,7 +190,7 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreLugar")]
         public async Task<bool> LagreLugar(string navn, string beskrivelse, int antallSengeplasser, int antall, int antallLedige, int pris)
         {
-            _log.LogInformation("POST: Lagret lugar med navn " + navn);
+            
             var regexNavn = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var regexAntallSengeplasser = @"[0-9]{1,2}";
             var regexAntall = @"[0-9]{1,5}";
@@ -175,7 +207,7 @@ namespace Mappe1_ITPE3200.Controllers
             {
                 return false;
             }
-
+            _log.LogInformation("POST: Lagret lugar med navn " + navn);
             return await _db.LagreLugar(navn, beskrivelse, antallSengeplasser, antall, antallLedige, pris);
         }
 

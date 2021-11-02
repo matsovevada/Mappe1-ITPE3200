@@ -92,7 +92,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal2
       string Navn1 = "Balkong lugar";
-      string Beskrivelse1 = "Lugar med flott sjøutsikt. Denne lugartypen har totalt 4 sengeplasser og er ideel for en vennegruppe eller liten familie.";
+      string Beskrivelse1 = "Lugar med flott sj?utsikt. Denne lugartypen har totalt 4 sengeplasser og er ideel for en vennegruppe eller liten familie.";
       int AntallSengeplasser1 = 4;
       int Antall1 = 75;
       int AntallLedige1 = 75;
@@ -100,7 +100,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal3
       string Navn2 = "Innvendig lugar";
-        string Beskrivelse2 = "Vårt billigste alternativ. Liten lugar med 2 sengeplasser.";
+        string Beskrivelse2 = "V?rt billigste alternativ. Liten lugar med 2 sengeplasser.";
         int AntallSengeplasser2 = 2;
         int Antall2 = 150;
         int AntallLedige2 = 150;
@@ -108,7 +108,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal4
       string Navn3 = "Familielugar";
-      string Beskrivelse3 = "Den perfekte lugaren for familier! Har totalt 6 sengeplasser og utsikt til sjøen.";
+      string Beskrivelse3 = "Den perfekte lugaren for familier! Har totalt 6 sengeplasser og utsikt til sj?en.";
       int AntallSengeplasser3 = 6;
       int Antall3 = 40;
       int AntallLedige3 = 40;
@@ -291,20 +291,22 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 DatoTidTicks = date3Ticks,
                 AntallLedigeBilplasser = 666,
                 LedigeLugarer = lugarer3,
-                Aktiv = false
+                Aktiv = true
             };
 
-           /* DateTime date4 = new DateTime(2021, 12, 27, 11, 30, 0);
+           DateTime date4 = new DateTime(2021, 12, 27, 11, 30, 0);
             String date4String = date4.ToString();
             long date4Ticks = date4.Ticks;
             var avgang4 = new Avganger
             {
-                Strekning = strekning_OsloKobenhavn,
+                StrekningFra = new string(strekning_KobenhavnOslo.Fra),
+                StrekningTil = new string(strekning_KobenhavnOslo.Til),
                 Baat = baat1,
                 DatoTid = date4String,
                 DatoTidTicks = date4Ticks,
-                AntallLedigeBilplasser = baat1.AntallBilplasser,
+                AntallLedigeBilplasser = 550,
                 LedigeLugarer = lugarer4,
+                Aktiv = true
             };
 
             DateTime date5 = new DateTime(2021, 08, 29, 11, 30, 0);
@@ -312,12 +314,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date5Ticks = date5.Ticks;
             var avgang5 = new Avganger
             {
-                Strekning = strekning_TrondheimBergen,
+                StrekningFra = new string(strekning_TrondheimBergen.Fra),
+                StrekningTil = new string(strekning_TrondheimBergen.Til),
                 Baat = baat2,
                 DatoTid = date5String,
                 DatoTidTicks = date5Ticks,
-                AntallLedigeBilplasser = baat2.AntallBilplasser,
+                AntallLedigeBilplasser = 400,
                 LedigeLugarer = lugarer5,
+                Aktiv = true
             };
 
             DateTime date6 = new DateTime(2021, 09, 2, 11, 30, 0);
@@ -325,12 +329,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date6Ticks = date6.Ticks;
             var avgang6 = new Avganger
             {
-                Strekning = strekning_BergenTrondheim,
+                StrekningFra = new string(strekning_TrondheimBergen.Fra),
+                StrekningTil = new string(strekning_TrondheimBergen.Til),
                 Baat = baat2,
                 DatoTid = date6String,
                 DatoTidTicks = date6Ticks,
-                AntallLedigeBilplasser = baat2.AntallBilplasser,
+                AntallLedigeBilplasser = 200,
                 LedigeLugarer = lugarer6,
+                Aktiv = true
             };
 
             DateTime date7 = new DateTime(2022, 5, 11, 11, 30, 0);
@@ -338,12 +344,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date7Ticks = date7.Ticks;
             var avgang7 = new Avganger
             {
-                Strekning = strekning_TrondheimBergen,
+                StrekningFra = new string(strekning_TrondheimBergen.Fra),
+                StrekningTil = new string(strekning_TrondheimBergen.Til),
                 Baat = baat2,
                 DatoTid = date7String,
                 DatoTidTicks = date7Ticks,
-                AntallLedigeBilplasser = baat2.AntallBilplasser,
+                AntallLedigeBilplasser = 200,
                 LedigeLugarer = lugarer7,
+                Aktiv = true
             };
 
             DateTime date8 = new DateTime(2022, 5, 13, 11, 30, 0);
@@ -351,12 +359,15 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date8Ticks = date8.Ticks;
             var avgang8 = new Avganger
             {
-                Strekning = strekning_BergenTrondheim,
+                StrekningFra = new string(strekning_BergenTrondheim.Fra),
+                StrekningTil = new string(strekning_BergenTrondheim.Til),
                 Baat = baat2,
                 DatoTid = date8String,
                 DatoTidTicks = date8Ticks,
-                AntallLedigeBilplasser = baat2.AntallBilplasser,
+                AntallLedigeBilplasser = 140,
                 LedigeLugarer = lugarer8,
+                Aktiv = true
+
             };
 
             DateTime date9 = new DateTime(2021, 02, 28, 11, 30, 0);
@@ -364,12 +375,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date9Ticks = date9.Ticks;
             var avgang9 = new Avganger
             {
-                Strekning = strekning_KielOslo,
+                StrekningFra = new string(strekning_KielOslo.Fra),
+                StrekningTil = new string(strekning_KielOslo.Til),
                 Baat = baat3,
                 DatoTid = date9String,
                 DatoTidTicks = date9Ticks,
-                AntallLedigeBilplasser = baat3.AntallBilplasser,
+                AntallLedigeBilplasser = 400,
                 LedigeLugarer = lugarer9,
+                Aktiv = true
             };
 
             DateTime date10 = new DateTime(2021, 03, 4, 11, 30, 0);
@@ -377,12 +390,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date10Ticks = date10.Ticks;
             var avgang10 = new Avganger
             {
-                Strekning = strekning_OsloKiel,
+                StrekningFra = new string(strekning_OsloKiel.Fra),
+                StrekningTil = new string(strekning_OsloKiel.Til),
                 Baat = baat3,
                 DatoTid = date10String,
                 DatoTidTicks = date10Ticks,
-                AntallLedigeBilplasser = baat3.AntallBilplasser,
+                AntallLedigeBilplasser = 200,
                 LedigeLugarer = lugarer10,
+                Aktiv = true
             };
 
             DateTime date11 = new DateTime(2021, 12, 15, 11, 30, 0);
@@ -390,12 +405,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date11Ticks = date11.Ticks;
             var avgang11 = new Avganger
             {
-                Strekning = strekning_KielOslo,
+                StrekningFra = new string(strekning_OsloKiel.Fra),
+                StrekningTil = new string(strekning_OsloKiel.Til),
                 Baat = baat3,
                 DatoTid = date11String,
                 DatoTidTicks = date11Ticks,
-                AntallLedigeBilplasser = baat3.AntallBilplasser,
+                AntallLedigeBilplasser = 320,
                 LedigeLugarer = lugarer11,
+                Aktiv = true
             };
 
             DateTime date12 = new DateTime(2021, 12, 20, 11, 30, 0);
@@ -403,12 +420,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date12Ticks = date12.Ticks;
             var avgang12 = new Avganger
             {
-                Strekning = strekning_OsloKiel,
+                StrekningFra = new string(strekning_OsloKiel.Fra),
+                StrekningTil = new string(strekning_OsloKiel.Til),
                 Baat = baat3,
                 DatoTid = date12String,
                 DatoTidTicks = date12Ticks,
-                AntallLedigeBilplasser = baat3.AntallBilplasser,
+                AntallLedigeBilplasser = 320,
                 LedigeLugarer = lugarer12,
+                Aktiv = true
             };
 
             DateTime date13 = new DateTime(2021, 06, 1, 11, 30, 0);
@@ -416,12 +435,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date13Ticks = date13.Ticks;
             var avgang13 = new Avganger
             {
-                Strekning = strekning_StavangerGeiranger,
+                StrekningFra = new string(strekning_StavangerGeiranger.Fra),
+                StrekningTil = new string(strekning_StavangerGeiranger.Til),
                 Baat = baat4,
                 DatoTid = date13String,
                 DatoTidTicks = date13Ticks,
-                AntallLedigeBilplasser = baat4.AntallBilplasser,
+                AntallLedigeBilplasser = 70,
                 LedigeLugarer = lugarer13,
+                Aktiv = true
             };
 
             DateTime date14 = new DateTime(2021, 06, 6, 11, 30, 0);
@@ -429,12 +450,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date14Ticks = date14.Ticks;
             var avgang14 = new Avganger
             {
-                Strekning = strekning_GeirangerStavanger,
+                StrekningFra = new string(strekning_GeirangerStavanger.Fra),
+                StrekningTil = new string(strekning_GeirangerStavanger.Til),
                 Baat = baat4,
                 DatoTid = date14String,
                 DatoTidTicks = date14Ticks,
-                AntallLedigeBilplasser = baat4.AntallBilplasser,
+                AntallLedigeBilplasser = 70,
                 LedigeLugarer = lugarer14,
+                Aktiv = true
             };
 
             DateTime date15 = new DateTime(2021, 06, 5, 11, 30, 0);
@@ -442,12 +465,14 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date15Ticks = date15.Ticks;
             var avgang15 = new Avganger
             {
-                Strekning = strekning_StavangerGeiranger,
+                StrekningFra = new string(strekning_StavangerGeiranger.Fra),
+                StrekningTil = new string(strekning_StavangerGeiranger.Til),
                 Baat = baat4,
                 DatoTid = date15String,
                 DatoTidTicks = date15Ticks,
-                AntallLedigeBilplasser = baat4.AntallBilplasser,
+                AntallLedigeBilplasser = 85,
                 LedigeLugarer = lugarer15,
+                Aktiv = true
             };
 
             DateTime date16 = new DateTime(2021, 06, 10, 11, 30, 0);
@@ -455,18 +480,20 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date16Ticks = date16.Ticks;
             var avgang16 = new Avganger
             {
-                Strekning = strekning_GeirangerStavanger,
+                StrekningFra = new string(strekning_GeirangerStavanger.Fra),
+                StrekningTil = new string(strekning_GeirangerStavanger.Til),
                 Baat = baat4,
                 DatoTid = date16String,
                 DatoTidTicks = date16Ticks,
-                AntallLedigeBilplasser = baat4.AntallBilplasser,
+                AntallLedigeBilplasser = 85,
                 LedigeLugarer = lugarer16,
-            };*/
+                Aktiv = true
+            };
 
-            db.Avganger.Add(avgang1);
+      db.Avganger.Add(avgang1);
       db.Avganger.Add(avgang2);
       db.Avganger.Add(avgang3);
-  /*    db.Avganger.Add(avgang4);
+      db.Avganger.Add(avgang4);
       db.Avganger.Add(avgang5);
       db.Avganger.Add(avgang6);
       db.Avganger.Add(avgang7);
@@ -478,7 +505,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       db.Avganger.Add(avgang13);
       db.Avganger.Add(avgang14);
       db.Avganger.Add(avgang15);
-      db.Avganger.Add(avgang16);*/
+      db.Avganger.Add(avgang16);
 
     // postnummere
     Poststeder poststed1 = new Poststeder
