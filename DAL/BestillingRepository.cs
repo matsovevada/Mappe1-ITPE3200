@@ -532,6 +532,9 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 kunde.Telefonnummer = k.Telefonnummer;
                 kunde.Epost = k.Epost;
 
+                Console.WriteLine("HEI FRA REPO");
+              
+                Console.WriteLine(kunde.Fornavn);
 
                 //Sjekker om postnr/poststed er endret. Sjekkes mot DB og settes til verdi fra DB hvis det er registrert. Oppretter
                 //nytt felt i Poststeder DB hvis det ikke finnes. Verdi settes til kunde.
@@ -556,7 +559,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                     }
                 }
 
-                _db.Kunder.Add(kunde);
                 await _db.SaveChangesAsync();
                 return true;
             }
