@@ -113,6 +113,29 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
       int Antall3 = 40;
       int AntallLedige3 = 40;
       int Pris3 = 1000;
+
+    LugarMaler lugarMal1 = new LugarMaler()
+    {
+        Navn = new string(Navn),
+        Beskrivelse = new string(Beskrivelse),
+        AntallSengeplasser = AntallSengeplasser,
+        Antall = Antall,
+        AntallLedige = AntallLedige,
+        Pris = Pris
+    };
+
+    LugarMaler lugarMal2 = new LugarMaler()
+    {
+        Navn = new string(Navn1),
+        Beskrivelse = new string(Beskrivelse1),
+        AntallSengeplasser = AntallSengeplasser1,
+        Antall = Antall1,
+        AntallLedige = AntallLedige1,
+        Pris = Pris1
+    };
+
+    db.LugarMaler.Add(lugarMal1);
+    db.LugarMaler.Add(lugarMal2);
   
       List<Lugarer> lugarer = new List<Lugarer>();
       lugarer.Add(new Lugarer(Navn, Beskrivelse, AntallSengeplasser, Antall, AntallLedige, Pris));
@@ -473,7 +496,17 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
     db.Poststeder.Add(poststed1);
     db.Poststeder.Add(poststed2);
 
-     db.SaveChanges();
+    // lag admin-bruker
+    var bruker = new Brukere();
+    bruker.Brukernavn = "admin";
+    string passord = "admin123";
+    byte[] salt = BestillingRepository.LagSalt();
+    byte[] hash = BestillingRepository.LagHash(passord, salt);
+    bruker.Passord = hash;
+    bruker.Salt = salt;
+    db.Brukere.Add(bruker);
+
+    db.SaveChanges();
     }
   }
 }

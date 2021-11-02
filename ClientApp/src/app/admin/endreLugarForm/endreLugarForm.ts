@@ -1,4 +1,4 @@
-﻿import { HttpClient } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -40,9 +40,9 @@ export class EndreLugarForm {
   }
 
   ngOnInit() {
+    this.loggetInnSjekk();
     this.lugarID = Number(this._ActivatedRoute.snapshot.paramMap.get('lugarId'));
     this.hentValgtLugar(this.lugarID);
-  
   }
 
   hentValgtLugar(id) {
@@ -79,6 +79,18 @@ export class EndreLugarForm {
       },
         error => console.log(error)
       );
-
   }
+
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
+      );
+  }
+
 }

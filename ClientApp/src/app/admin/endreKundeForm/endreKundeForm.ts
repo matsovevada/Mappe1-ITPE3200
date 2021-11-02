@@ -24,6 +24,7 @@ export class EndreKundeForm implements OnInit {
   }
 
   ngOnInit() {
+    this.loggetInnSjekk();
     this.kundeId = Number(this._ActivatedRoute.snapshot.paramMap.get('kundeId'));
     this.hentValgtKunde(this.kundeId);
   }
@@ -61,6 +62,18 @@ export class EndreKundeForm implements OnInit {
         })
       },
         error => console.log(error)
+      );
+  }
+
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 

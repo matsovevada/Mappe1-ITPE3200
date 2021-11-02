@@ -20,6 +20,7 @@ export class AdminPostnummer {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    this.loggetInnSjekk();
     this.hentAllePoststeder()
   }
 
@@ -27,11 +28,13 @@ export class AdminPostnummer {
     this.http.get<Poststed[]>("api/Bestilling/hentPoststed")
       .subscribe(poststeder => {
         this.allePoststeder = poststeder;
-        console.log("POSTSTEDER:")
-        console.log(poststeder);
         this.laster = false;
       },
-        error => console.log(error)
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 
@@ -66,6 +69,18 @@ export class AdminPostnummer {
         }
       },
         error => console.log(error)
+      );
+  }
+
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 }

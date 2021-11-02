@@ -20,6 +20,7 @@ export class AdminStrekning {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    this.loggetInnSjekk();
     this.hentAlleStrekninger()
   }
 
@@ -29,7 +30,11 @@ export class AdminStrekning {
         this.alleStrekninger = strekningene;
         this.laster = false;
       },
-        error => console.log(error)
+      error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 
@@ -64,6 +69,18 @@ export class AdminStrekning {
         }
       },
         error => console.log(error)
+      );
+  }
+
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 }

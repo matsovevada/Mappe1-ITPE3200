@@ -18,6 +18,7 @@ export class EndreLugar {
 
 
   ngOnInit() {
+    this.loggetInnSjekk();
     this.hentAlleLugarer();
   }
 
@@ -40,6 +41,16 @@ export class EndreLugar {
       );
   }
 
-
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
+      );
+  }
 
 }

@@ -19,7 +19,11 @@ import { AdminPostnummer } from './admin/postnummer/postnummer';
 import { AdminBaat } from './admin/baat/adminBaat';
 import { AdminKunde } from './admin/kunde/adminKunde';
 import { EndreKundeForm } from './admin/endreKundeForm/endreKundeForm';
+import { AddAvgang } from './admin/addAvgang/addAvgang';
 import { AddLugar } from './admin/addLugar/addLugar';
+import { LoggInn } from './admin/loggInn/loggInn';
+import { EndreSlettAvgang } from './admin/endreSlettAvgang/endreSlettAvgang';
+import { EndreAvgang } from './admin/endreAvgang/endreAvgang';
 import { EndreLugar } from './admin/endreLugar/endreLugar';
 import { EndreLugarForm } from './admin/endreLugarForm/endreLugarForm';
 
@@ -38,8 +42,13 @@ import { EndreLugarForm } from './admin/endreLugarForm/endreLugarForm';
     AdminPostnummer,
     AdminBaat,
     AdminKunde,
-    EndreKundeForm,
     AddLugar,
+    LoggInn,
+    AddAvgang,
+    AddLugar,
+    EndreSlettAvgang,
+    EndreAvgang,
+    EndreKundeForm,
     EndreLugar,
     EndreLugarForm
   ],

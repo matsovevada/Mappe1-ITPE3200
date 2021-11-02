@@ -1,9 +1,11 @@
 using Mappe1_ITPE3200.Models;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 
@@ -63,6 +65,13 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
         public async Task<Baater> HentBaat(int id)
         {
             Baater baat = await _db.Baater.FindAsync(id);
+            return baat;
+        }
+
+        [HttpGet]
+        public async Task<Baater> HentBaatPaaNavn(String baatnavn)
+        {
+            Baater baat = await _db.Baater.FirstOrDefaultAsync(b => b.Navn.Equals(baatnavn));
             return baat;
         }
 
@@ -485,6 +494,31 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
+        public async Task<List<LugarMaler>> HentAlleLugarer()
+        {
+            try
+            {
+                return await _db.LugarMaler.ToListAsync();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+        public async Task<LugarMaler> HentLugarPaaNavn(string navn)
+        {
+            try
+            {
+                return await _db.LugarMaler.FirstOrDefaultAsync(lug => lug.Navn.Equals(navn));
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         [HttpPut]
         public async Task<bool> endreKunde(Kunde k)
         {
@@ -549,11 +583,177 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        public async Task<List<LugarMaler>> HentAlleLugarer()
+        public static byte[] LagHash(string passord, byte[] salt)
+        {
+            return KeyDerivation.Pbkdf2(
+                                password: passord,
+                                salt: salt,
+                                prf: KeyDerivationPrf.HMACSHA512,
+                                iterationCount: 1000,
+                                numBytesRequested: 32);
+        }
+
+        public static byte[] LagSalt()
+        {
+            var csp = new RNGCryptoServiceProvider();
+            var salt = new byte[24];
+            csp.GetBytes(salt);
+            return salt;
+        }
+
+        public async Task<bool> LoggInn(Bruker bruker)
+        {
+            try
+            {
+                Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.Brukernavn);
+
+                if (funnetBruker == null) return false;
+
+                // sjekk passordet
+                byte[] hash = LagHash(bruker.Passord, funnetBruker.Salt);
+                bool ok = hash.SequenceEqual(funnetBruker.Passord);
+                if (ok)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
+        public async Task<bool> lagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
+        {
+            try
+            {
+                Avganger nyAvgang = new Avganger();
+                Baater baatFraDB = await HentBaatPaaNavn(baat);
+
+                nyAvgang.Baat = baatFraDB;
+
+                nyAvgang.StrekningFra = strekningFra;
+                nyAvgang.StrekningTil = strekningTil;
+
+
+                DateTime date = new DateTime(Int32.Parse(datoTidAar), Int32.Parse(datoTidMnd), Int32.Parse(datoTidDag), Int32.
+                Parse(datoTidTime), Int32.Parse(datoTidMin), 0);
+
+                string dateString = date.ToString();
+                long date1Ticks = date.Ticks;
+                nyAvgang.DatoTid = dateString;
+                nyAvgang.DatoTidTicks = date1Ticks;
+
+                List<Lugarer> lugarListe = new List<Lugarer>();
+                string[] lugarerSplit = lugarer.Split(",");
+                foreach (string lug in lugarerSplit)
+                {
+
+                    LugarMaler lugarFraDB = await HentLugarPaaNavn(lug);
+                    Lugarer lugarTilAvgang = new Lugarer(lugarFraDB.Navn, lugarFraDB.Beskrivelse, lugarFraDB.AntallSengeplasser, lugarFraDB.Antall, lugarFraDB.AntallLedige, lugarFraDB.Pris);
+                    lugarListe.Add(lugarTilAvgang);
+                }
+                nyAvgang.LedigeLugarer = lugarListe;
+
+
+                nyAvgang.AntallLedigeBilplasser = Int32.Parse(antallLedigeBilplasser);
+
+                nyAvgang.Aktiv = Convert.ToBoolean(aktiv);
+
+                await _db.Avganger.AddAsync(nyAvgang);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+        [HttpPut]
+        public async Task<bool> endreAvgang(string id, string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
+        {
+            try
+            {
+                Avganger endreAvgang = await _db.Avganger.FindAsync(Int32.Parse(id));
+
+                Baater baatFraDB = await HentBaatPaaNavn(baat);
+
+                endreAvgang.Baat = baatFraDB;
+
+                endreAvgang.StrekningFra = strekningFra;
+                endreAvgang.StrekningTil = strekningTil;
+
+
+                DateTime date = new DateTime(Int32.Parse(datoTidAar), Int32.Parse(datoTidMnd), Int32.Parse(datoTidDag), Int32.
+                Parse(datoTidTime), Int32.Parse(datoTidMin), 0);
+
+                string dateString = date.ToString();
+                long date1Ticks = date.Ticks;
+                endreAvgang.DatoTid = dateString;
+                endreAvgang.DatoTidTicks = date1Ticks;
+
+                List<Lugarer> lugarListe = new List<Lugarer>();
+                string[] lugarerSplit = lugarer.Split(",");
+                foreach (string lug in lugarerSplit)
+                {
+
+                    LugarMaler lugarFraDB = await HentLugarPaaNavn(lug);
+                    Lugarer lugarTilAvgang = new Lugarer(lugarFraDB.Navn, lugarFraDB.Beskrivelse, lugarFraDB.AntallSengeplasser, lugarFraDB.Antall, lugarFraDB.AntallLedige, lugarFraDB.Pris);
+                    lugarListe.Add(lugarTilAvgang);
+                }
+                endreAvgang.LedigeLugarer = lugarListe;
+
+                endreAvgang.AntallLedigeBilplasser = Int32.Parse(antallLedigeBilplasser);
+
+                endreAvgang.Aktiv = Convert.ToBoolean(aktiv);
+
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        [HttpDelete]
+        public async Task<bool> SlettAvgang(int id)
+        {
+            try
+            {
+                Avganger slettAvgang = await _db.Avganger.FindAsync(id);
+                _db.Avganger.Remove(slettAvgang);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public async Task<List<Avganger>> HentAlleAvganger()
+        {
+            try
+            {
+                return await _db.Avganger.ToListAsync();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+      /*  public async Task<List<LugarMaler>> HentAlleLugarer()
         {
             List<LugarMaler> alleLugarer = await _db.LugarMaler.ToListAsync();
-            return alleLugarer;   
-        }
+            return alleLugarer;
+        }*/
 
         public async Task<LugarMaler> HentLugar(int id)
         {

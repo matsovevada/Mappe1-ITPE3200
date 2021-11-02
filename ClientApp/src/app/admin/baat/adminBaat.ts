@@ -20,6 +20,7 @@ export class AdminBaat {
 
   ngOnInit() {
     this.laster = true;
+    this.loggetInnSjekk();
     this.hentAlleBaater();
     this.baatSlettet = false;
     this.endreValgt = false;
@@ -31,7 +32,11 @@ export class AdminBaat {
         this.alleBaater = baater
         this.laster = false;
       },
-        error => console.log(error)
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 
@@ -62,6 +67,18 @@ export class AdminBaat {
         location.reload()
       },
         error => console.log(error)
+      );
+  }
+
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 }
