@@ -145,6 +145,14 @@ namespace Mappe1_ITPE3200.Controllers
             return billett;
         }
 
+        [HttpGet]
+        [ActionName("hentAlleBilletter")]
+        public async Task<List<Billetter>> HentAlleBillett()
+        {
+            List<Billetter> billetter = await _db.HentAlleBilletter();
+            return billetter;
+        }
+
         [HttpPost("{navn}/{beskrivelse}/{antallSengeplasser}/{antall}/{antallLedige}/{pris}")]
         [ActionName("lagreLugar")]
         public async Task<bool> LagreLugar(string navn, string beskrivelse, int antallSengeplasser, int antall, int antallLedige, int pris)
@@ -371,6 +379,14 @@ namespace Mappe1_ITPE3200.Controllers
         {
             _log.LogInformation("PUT: Endret lugar med ID: " + id);
             return await _db.EndreLugar(id, navn, antallSengeplasser, antLugarer, pris, beskrivelse);
+        }
+
+
+        [HttpDelete("{id}")]
+        [ActionName("slettBillett")]
+        public async Task<bool> slettBillett(string id)
+        {
+            return await _db.SlettBillett(id);
         }
     }
 }

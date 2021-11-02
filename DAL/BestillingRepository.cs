@@ -794,7 +794,12 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             {
                 return false;
             }
+        }
 
+        public async Task<List<Billetter>> HentAlleBilletter()
+        {
+            List<Billetter> alleBill = await _db.Billetter.ToListAsync();
+            return alleBill;
         }
     }
 }
