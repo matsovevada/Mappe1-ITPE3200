@@ -16,6 +16,9 @@ import { Poststed } from "../../Poststed";
 export class AdminPostnummer {
   allePoststeder: Array<Poststed>;
   laster: boolean = true;
+  feilInputLagrePostnummer: boolean;
+  feilInputLagrePoststed: boolean;
+  feilInputEndre: boolean;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -82,5 +85,26 @@ export class AdminPostnummer {
           }
         }
       );
+  }
+
+  validerLagrePostnummer(value) {
+    if (value.length != 4 || isNaN(value)) {
+      this.feilInputLagrePostnummer = true;
+    }
+    else this.feilInputLagrePostnummer = false;
+  }
+
+  validerLagrePoststed(value) {
+    if (value.length < 2 || value.length > 30) {
+      this.feilInputLagrePoststed = true;
+    }
+    else this.feilInputLagrePoststed = false;
+  }
+
+  validerEndre(value) {
+    if (value.length < 2 || value.length > 30) {
+      this.feilInputEndre = true;
+    }
+    else this.feilInputEndre = false;
   }
 }

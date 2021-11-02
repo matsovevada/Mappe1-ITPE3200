@@ -10,7 +10,6 @@ namespace Mappe1_ITPE3200.Models
     {        
         public int Id { get; set; }
         [RegularExpression(@"[a-zA-ZøæåØÆÅ. \-]{2,30}")]
-        // [a-zA-ZæøåÆØÅ. \-]{2,20}
         public String Fornavn { get; set; }
         [RegularExpression(@"[a-zA-ZøæåØÆÅ. \-]{2,30}")]
         public String Etternavn { get; set; }
