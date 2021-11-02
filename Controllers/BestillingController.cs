@@ -158,9 +158,7 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreLugar")]
         public async Task<bool> LagreLugar(string navn, string beskrivelse, int antallSengeplasser, int antall, int antallLedige, int pris)
         {
-<<<<<<< HEAD
             _log.LogInformation("POST: Lagret lugar med navn " + navn);
-=======
             var regexNavn = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var regexAntallSengeplasser = @"[0-9]{1,2}";
             var regexAntall = @"[0-9]{1,5}";
@@ -178,7 +176,6 @@ namespace Mappe1_ITPE3200.Controllers
                 return false;
             }
 
->>>>>>> backendValidation
             return await _db.LagreLugar(navn, beskrivelse, antallSengeplasser, antall, antallLedige, pris);
         }
 
@@ -297,13 +294,6 @@ namespace Mappe1_ITPE3200.Controllers
             _log.LogInformation("DELETE: Slettet kunde med ID: " + id);
             return await _db.slettKunde(id);
         }
-
-      /*  [HttpGet]
-        [ActionName("hentAlleLugarer")]
-        public async Task<List<LugarMaler>> HentAlleLugarer()
-        {
-            return await _db.HentAlleLugarer();
-        }*/
 
         [HttpPut]
         [ActionName("endreKunde")]
