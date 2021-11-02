@@ -32,6 +32,7 @@ export class EndreAvgang {
   constructor(private http: HttpClient, private router: Router, private _ActivatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.loggetInnSjekk();
     this.avgangId = Number(this._ActivatedRoute.snapshot.paramMap.get('avgangId'));
     this.laster = true;
     this.hentAlleBaater();
@@ -130,6 +131,18 @@ export class EndreAvgang {
         this.router.navigate(['/endreSlettAvgang']);
       },
         error => console.log(error)
+      );
+  }
+
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 }

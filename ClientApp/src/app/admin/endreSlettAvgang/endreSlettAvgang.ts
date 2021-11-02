@@ -17,6 +17,7 @@ export class EndreSlettAvgang {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    this.loggetInnSjekk();
     this.hentAlleAvganger()
   }
 
@@ -38,6 +39,18 @@ export class EndreSlettAvgang {
           location.reload();
         }
       });
+  }
+
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
+      );
   }
 
 }

@@ -30,6 +30,7 @@ export class AddAvgang {
 
   ngOnInit() {
     this.laster = true;
+    this.loggetInnSjekk();
     this.hentAlleBaater();
     this.hentAlleStrekninger();
     this.hentAlleLugarer();
@@ -113,6 +114,18 @@ export class AddAvgang {
         this.router.navigate(['/endreSlettAvgang']);
       },
         error => console.log(error)
+      );
+  }
+
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
       );
   }
 }

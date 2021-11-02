@@ -174,10 +174,6 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("hentPoststed")]
         public async Task<ActionResult> HentPoststed()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
-            {
-                return Unauthorized();
-            }
             List<Poststeder> allePoststeder = await _db.HentAllePoststeder();
             return Ok(allePoststeder);
         }
@@ -206,10 +202,6 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("hentBaater")]
         public async Task<ActionResult> HentBaater()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
-            {
-                return Unauthorized();
-            }
             List<Baater> baater = await _db.HentAlleBaater();
             return Ok(baater);
         }
@@ -240,12 +232,6 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("hentKunder")]
         public async Task<ActionResult> hentKunder()
         {
-
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
-            {
-                return Unauthorized();
-            }
-
             List<Kunder> kunder = await _db.HentAlleKunder();
             return Ok(kunder);
         }
@@ -274,10 +260,6 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("loggInn")]
         public async Task<bool> LoggInn(Bruker bruker)
         {
-            Console.WriteLine("LOGGER INN");
-            Console.WriteLine(bruker.Brukernavn);
-            Console.WriteLine(bruker.Passord);
-
             bool returnOK = await _db.LoggInn(bruker);
             if (!returnOK)
             {

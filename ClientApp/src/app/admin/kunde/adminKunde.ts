@@ -48,6 +48,7 @@ export class AdminKunde {
 
 
   ngOnInit() {
+    this.loggetInnSjekk();
     this.hentAlleKunder();
   }
 
@@ -74,8 +75,16 @@ export class AdminKunde {
     );
   }
 
-  endreValgtKunde(id) {
-
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
+        }
+      );
   }
 
 }

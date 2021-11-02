@@ -37,16 +37,7 @@ export class AddLugar {
   }
 
   ngOnInit() {
-    this.http.get("api/Bestilling/isLoggedIn").
-      subscribe(ok => {
-      },
-        error => {
-          if (error.status == '401') {
-            this.router.navigate(['/loggInn']);
-          }
-          console.log(error)
-        }
-      );
+    this.loggetInnSjekk();
   }
 
   onSubmit() {
@@ -71,6 +62,18 @@ export class AddLugar {
         error => {
           console.log(error)
           this.feilMelding = "Kunne ikke lage lugar. Sjekk informasjonen!"
+        }
+      );
+  }
+
+  loggetInnSjekk() {
+    this.http.get("api/Bestilling/isLoggedIn").
+      subscribe(ok => {
+      },
+        error => {
+          if (error.status == '401') {
+            this.router.navigate(['/loggInn']);
+          }
         }
       );
   }
