@@ -56,12 +56,12 @@ export class AddLugar {
 
     this.http.post<boolean>("api/Bestilling/lagreLugar/" + lagretLugar.navn + "/" + lagretLugar.beskrivelse + "/" + lagretLugar.antallSengeplasser + "/" + lagretLugar.antall + "/" + lagretLugar.antallLedige + "/" + lagretLugar.pris, null)
       .subscribe(lagret => {
-        alert("Lugar er laget!")
         this.feilMelding = ""
+        this.router.navigate(['/endreLugar']);
       },
         error => {
           console.log(error)
-          this.feilMelding = "Kunne ikke lage lugar. Sjekk informasjonen!"
+          this.feilMelding = "Kunne ikke lagre lugar. Sjekk informasjonen!"
         }
       );
   }
