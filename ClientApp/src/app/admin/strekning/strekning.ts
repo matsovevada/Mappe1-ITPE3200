@@ -87,7 +87,6 @@ export class AdminStrekning {
   }
 
   validerLagre(value) {
-    console.log("Endrer lagre");
       var pattern = /^[a-zA-Z]{2,30}$/
       if (!pattern.test(value)) {
          this.feilInputLagre = true;
@@ -98,7 +97,6 @@ export class AdminStrekning {
   }
 
   validerEndre(value) {
-    console.log("ENDRER");
     var pattern = /^[a-zA-Z]{2,30}$/
     if (!pattern.test(value)) {
       this.feilInputEndre = true;

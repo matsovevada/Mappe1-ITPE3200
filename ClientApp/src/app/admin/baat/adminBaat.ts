@@ -87,16 +87,22 @@ export class AdminBaat {
   }
 
   validerLagre(value) {
-    if (value.length < 2 || value.length > 30) {
+    var pattern = /^[a-zA-Z]{2,30}$/
+    if (!pattern.test(value)) {
       this.feilInputLagre = true;
     }
-    else this.feilInputLagre = false;
+    else {
+      this.feilInputLagre = false;
+    }
   }
 
   validerEndre(value) {
-    if (value.length < 2 || value.length > 30) {
+    var pattern = /^[a-zA-Z]{2,30}$/
+    if (!pattern.test(value)) {
       this.feilInputEndre = true;
     }
-    else this.feilInputEndre = false;
+    else {
+      this.feilInputEndre = false;
+    }
   }
 }

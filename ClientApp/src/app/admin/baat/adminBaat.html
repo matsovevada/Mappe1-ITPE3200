@@ -3,7 +3,7 @@
     <div>
       <div class="col-md-12">
         <h3>Lagre båt</h3>
-        <p *ngIf="feilInputLagre" style="color:red;">Båtnavn må ha mellom 2 og 30 bokstaver og kan ikke inneholde tall</p>
+        <p *ngIf="feilInputLagre" style="color:red;">Båtnavn må ha mellom 2 og 30 bokstaver og kan ikke inneholde tall eller spesialtegn</p>
 
         <input type="text" placeholder="Båtnavn" id="nyBaat" #nyBaat (input)="validerLagre($event.target.value)" />
         <button class="btn btn-success" (click)="lagreBaat(nyBaat.value)" [disabled]="feilInputLagre ? true : null" style="margin-left:10px">Lagre</button>
@@ -11,7 +11,7 @@
       </div>
         <div class="col-md-12">
           <div *ngIf="laster">Laster båter.....</div>
-          <p *ngIf="feilInputEndre" style="color:red;">Båtnavn må ha mellom 2 og 30 bokstaver og kan ikke inneholde tall</p>
+          <p *ngIf="feilInputEndre" style="color:red;">Båtnavn må ha mellom 2 og 30 bokstaver og kan ikke inneholde tall eller spesialtegn</p>
           <table class="table table-bordered table-condensed endrebaatTabell">
 
             <thead>
