@@ -16,6 +16,7 @@ export class EndreLugarForm {
   valgtLugar: Lugar;
   lugarID: number;
 
+/* Form validering er hentet og tilpasset fra eksempelprosjekt "Kunde-SPA-Routing" */
   validering = {
     id: [""],
     navn: [

@@ -20,8 +20,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             _db = db;
         }
 
-
-        [HttpGet]
         public async Task<List<Strekning>> HentAlleStrekninger()
 
         {
@@ -35,8 +33,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return alleStrekninger;
         }
 
-
-        [HttpGet]
         public async Task<List<Avganger>> HentAlleAvganger(Strekning valgtStrekning)
 
         {
@@ -45,7 +41,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return alleAvganger;
         }
 
-        [HttpGet]
         public async Task<List<Avganger>> HentAktiveAvganger(Strekning valgtStrekning)
 
         {
@@ -54,28 +49,24 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return alleAvganger;
         }
 
-        [HttpGet]
         public async Task<Avganger> HentValgtAvgang(int id)
         {
             Avganger avgang = await _db.Avganger.FindAsync(id);
             return avgang;
         }
 
-        [HttpGet]
         public async Task<Baater> HentBaat(int id)
         {
             Baater baat = await _db.Baater.FindAsync(id);
             return baat;
         }
 
-        [HttpGet]
         public async Task<Baater> HentBaatPaaNavn(String baatnavn)
         {
             Baater baat = await _db.Baater.FirstOrDefaultAsync(b => b.Navn.Equals(baatnavn));
             return baat;
         }
 
-        [HttpPost]
         public async Task<int> LagreKunde(Kunde innKunde)
         {
             try
@@ -120,7 +111,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpGet]
         public async Task<Kunde> HentKunde(int id)
         {
             Kunder kunde = await _db.Kunder.FindAsync(id);
@@ -140,7 +130,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return returKunde;
         }
 
-        [HttpPost]
         public async Task<int> LagreBillett(Billett innBillett)
         {
             try
@@ -187,7 +176,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpGet]
         public async Task<Billetter> HentBillett(int id)
         {
             Billetter billett = await _db.Billetter.FindAsync(id);
@@ -243,17 +231,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             try
             {
                 Strekninger strekning = await _db.Strekninger.FindAsync(id);
-
-                //SLETTE AVGANGER KNYTTET TIL STREKNINGEN?
-                // slett avganger som har strekningen
-                /*   await _db.Avganger.ForEachAsync(avgang =>
-                   {
-                       if (avgang.Strekning.Id == strekning.Id)
-                       {
-                           _db.Avganger.Remove(avgang);
-                       }
-                   });*/
-
                 _db.Strekninger.Remove(strekning);
 
                 await _db.SaveChangesAsync();
@@ -392,10 +369,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-
-
-        //Henter alle båter fra DB
-        [HttpGet]
         public async Task<List<Baater>> HentAlleBaater()
         {
             try
@@ -409,7 +382,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpDelete]
         public async Task<bool> slettBaat(int id)
         {
             try
@@ -429,7 +401,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpPut]
         public async Task<bool> endreBaat(int id, String navn)
         {
             try
@@ -445,7 +416,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpPost]
         public async Task<bool> lagreBaat(String navn)
         {
             try
@@ -462,8 +432,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-
-        [HttpGet]
         public async Task<List<Kunder>> HentAlleKunder()
         {
             try
@@ -477,7 +445,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpDelete]
         public async Task<bool> slettKunde(int id)
         {
             try
@@ -532,10 +499,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 kunde.Telefonnummer = k.Telefonnummer;
                 kunde.Epost = k.Epost;
 
-                Console.WriteLine("HEI FRA REPO");
-              
-                Console.WriteLine(kunde.Fornavn);
-
                 //Sjekker om postnr/poststed er endret. Sjekkes mot DB og settes til verdi fra DB hvis det er registrert. Oppretter
                 //nytt felt i Poststeder DB hvis det ikke finnes. Verdi settes til kunde.
                 if ((k.Postnr != kunde.Poststed.Postnr) && (k.Poststed != kunde.Poststed.Poststed)) {
@@ -568,7 +531,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpDelete]
         public async Task<bool> SlettLugar(int id)
         {
             try
@@ -585,6 +547,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
+        //Hentet fra forelesningnotater "Sikkerhet - logg inn"
         public static byte[] LagHash(string passord, byte[] salt)
         {
             return KeyDerivation.Pbkdf2(
@@ -626,7 +589,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpPost]
         public async Task<bool> lagreAvgang(string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
         {
             try
@@ -648,6 +610,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 nyAvgang.DatoTid = dateString;
                 nyAvgang.DatoTidTicks = date1Ticks;
 
+                //Alle lugarnavn sendes i en komma-separert string, denne splittes og det gjøres kall mot DB for hvert navn slik at lugarmal-objekter kan legges til i avgangen.
                 List<Lugarer> lugarListe = new List<Lugarer>();
                 string[] lugarerSplit = lugarer.Split(",");
                 foreach (string lug in lugarerSplit)
@@ -662,6 +625,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
                 nyAvgang.AntallLedigeBilplasser = Int32.Parse(antallLedigeBilplasser);
 
+                //Aktiv sendes inn som en string som er true eller false, konverteres til boolean
                 nyAvgang.Aktiv = Convert.ToBoolean(aktiv);
 
                 await _db.Avganger.AddAsync(nyAvgang);
@@ -674,9 +638,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-
-
-        [HttpPut]
         public async Task<bool> endreAvgang(string id, string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
         {
             try
@@ -699,6 +660,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 endreAvgang.DatoTid = dateString;
                 endreAvgang.DatoTidTicks = date1Ticks;
 
+                //Alle lugarnavn sendes i en komma-separert string, denne splittes og det gjøres kall mot DB for hvert navn slik at lugarmal-objekter kan legges til i avgangen.
                 List<Lugarer> lugarListe = new List<Lugarer>();
                 string[] lugarerSplit = lugarer.Split(",");
                 foreach (string lug in lugarerSplit)
@@ -712,6 +674,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
                 endreAvgang.AntallLedigeBilplasser = Int32.Parse(antallLedigeBilplasser);
 
+                //Aktiv sendes inn som en string som er true eller false, konverteres til boolean
                 endreAvgang.Aktiv = Convert.ToBoolean(aktiv);
 
                 await _db.SaveChangesAsync();
@@ -723,7 +686,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpDelete]
         public async Task<bool> SlettAvgang(int id)
         {
             try
@@ -749,13 +711,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 return null;
             }
         }
-
-
-      /*  public async Task<List<LugarMaler>> HentAlleLugarer()
-        {
-            List<LugarMaler> alleLugarer = await _db.LugarMaler.ToListAsync();
-            return alleLugarer;
-        }*/
 
         public async Task<LugarMaler> HentLugar(int id)
         {

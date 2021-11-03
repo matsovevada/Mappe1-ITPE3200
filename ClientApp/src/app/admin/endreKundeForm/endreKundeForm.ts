@@ -86,7 +86,7 @@ export class EndreKundeForm implements OnInit {
       );
   }
 
-  /* Form er hentet og tilpasset fra eksempel prosjekt "Kunde-SPA-Routing" */
+  /* Form validering er hentet og tilpasset fra eksempelprosjekt "Kunde-SPA-Routing" */
   validering = {
     id: [""],
     fornavn: [

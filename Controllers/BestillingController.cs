@@ -100,7 +100,7 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("lagreKunde")]
         public async Task<ActionResult> LagreKunde(Kunde lagretKunde)
         {
-            // sjekk at kunde-objektet tilfredsstiller regex-mønsterert som er definert i Kunde-modellen
+            // sjekk at kunde-objektet tilfredsstiller regex-mønsteret som er definert i Kunde-modellen
             if (ModelState.IsValid)
             {
                 int kundeLagretId = await _db.LagreKunde(lagretKunde);
@@ -254,9 +254,6 @@ namespace Mappe1_ITPE3200.Controllers
             var regexStrekning = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var strekningFraMatch = Regex.Match(strekningFra, regexStrekning);
             var strekningTilMatch = Regex.Match(strekningTil, regexStrekning);
-
-            Console.WriteLine("REGEX MATCH?");
-            Console.WriteLine(strekningFraMatch.Success);
 
             if (!strekningFraMatch.Success || !strekningTilMatch.Success)
             {
@@ -486,7 +483,6 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("endreAvgang")]
         public async Task<bool> endreAvgang(string id, string baat, string strekningFra, string strekningTil, string datoTidDag, string datoTidMnd, string datoTidAar, string datoTidTime, string datoTidMin, string antallLedigeBilplasser, string lugarer, string aktiv)
         {
-
             var regexBaat = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var regexStrekningFra = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var regexStrekningTil = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
@@ -551,9 +547,6 @@ namespace Mappe1_ITPE3200.Controllers
         [ActionName("endreLugar")]
         public async Task<bool> endreLugar(string id, string navn, string antallSengeplasser, string antLugarer, string pris, string beskrivelse)
         {
-
-            _log.LogInformation("PUT: Endret lugar med ID: " + id);
-
             var regexNavn = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var regexAntallSengeplasser = @"[0-9]{1,2}";
             var regexAntall = @"[0-9]{1,5}";
@@ -570,6 +563,7 @@ namespace Mappe1_ITPE3200.Controllers
             {
                 return false;
             }
+            _log.LogInformation("PUT: Endret lugar med ID: " + id);
 
             return await _db.EndreLugar(id, navn, antallSengeplasser, antLugarer, pris, beskrivelse);
         }
