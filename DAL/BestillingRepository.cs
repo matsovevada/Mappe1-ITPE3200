@@ -20,8 +20,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             _db = db;
         }
 
-
-        [HttpGet]
         public async Task<List<Strekning>> HentAlleStrekninger()
 
         {
@@ -35,8 +33,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return alleStrekninger;
         }
 
-
-        [HttpGet]
         public async Task<List<Avganger>> HentAlleAvganger(Strekning valgtStrekning)
 
         {
@@ -45,7 +41,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return alleAvganger;
         }
 
-        [HttpGet]
         public async Task<List<Avganger>> HentAktiveAvganger(Strekning valgtStrekning)
 
         {
@@ -54,7 +49,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return alleAvganger;
         }
 
-        [HttpGet]
         public async Task<Avganger> HentValgtAvgang(int id)
         {
             Avganger avgang = await _db.Avganger.FindAsync(id);
