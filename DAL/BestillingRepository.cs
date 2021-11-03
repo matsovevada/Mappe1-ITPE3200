@@ -231,17 +231,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             try
             {
                 Strekninger strekning = await _db.Strekninger.FindAsync(id);
-
-                //SLETTE AVGANGER KNYTTET TIL STREKNINGEN?
-                // slett avganger som har strekningen
-                /*   await _db.Avganger.ForEachAsync(avgang =>
-                   {
-                       if (avgang.Strekning.Id == strekning.Id)
-                       {
-                           _db.Avganger.Remove(avgang);
-                       }
-                   });*/
-
                 _db.Strekninger.Remove(strekning);
 
                 await _db.SaveChangesAsync();
@@ -380,10 +369,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-
-
-        //Henter alle båter fra DB
-        [HttpGet]
         public async Task<List<Baater>> HentAlleBaater()
         {
             try
@@ -397,7 +382,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpDelete]
         public async Task<bool> slettBaat(int id)
         {
             try
@@ -417,7 +401,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpPut]
         public async Task<bool> endreBaat(int id, String navn)
         {
             try
@@ -433,7 +416,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpPost]
         public async Task<bool> lagreBaat(String navn)
         {
             try
