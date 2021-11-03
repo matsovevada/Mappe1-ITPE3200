@@ -110,7 +110,7 @@ export class EndreAvgang {
       lugarer += "," + values[i];
     }
 
-    // validering
+    // validering //
     if (values.length < 1 || this.datoDag < 1 || this.datoDag > 31 || this.datoManed < 1 || this.datoManed > 12
       || this.datoAr < 2020 || this.datoAr > 2030 || this.datoTime < 0 || this.datoTime > 23 || this.datoMinutt < 0
       || this.datoMinutt > 59 || this.bilplasser < 0 || this.bilplasser > 1000
