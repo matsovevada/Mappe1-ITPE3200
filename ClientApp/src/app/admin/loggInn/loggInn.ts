@@ -1,12 +1,17 @@
 import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Bruker } from "../../Bruker";
 
+
 @Component({
   selector: 'loggInn',
-  templateUrl: 'loggInn.html'
+  templateUrl: 'loggInn.html',
+  styleUrls: [
+    'Stylesheet.css'
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class LoggInn {
