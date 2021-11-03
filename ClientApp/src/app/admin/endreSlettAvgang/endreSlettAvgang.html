@@ -1,31 +1,30 @@
 <div class="container">
-  <h2>Endre / slett avganger</h2>
+  <h2 style="margin-top:20px">Endre / slett avganger</h2>
   <div>
     <div class="col-md-12">
       <div *ngIf="laster">Laster avganger.....</div>
 
-      <h3>Avganger</h3>
-      <table class="table table-bordered table-condensed">
+      <h3 style="margin-top:20px">Avganger</h3>
+      <table class="table table-bordered table-condensed endreavgangTabell">
         <thead>
           <tr>
-            <th>Bat</th>
+            <th>Båtnavn</th>
             <th>Fra</th>
             <th>Til</th>
             <th>Dato</th>
             <th></th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody *ngFor="let avgang of alleAvganger">
-          <tr>
-            <td>{{avgang.baat.navn}}</td>
-            <td>{{avgang.strekningFra}}</td>
-            <td>{{avgang.strekningTil}}</td>
-            <td>{{avgang.datoTid}}</td>
-            <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
-            <td><button class="btn btn-success" [routerLink]="['/endreAvgang', {avgangId:avgang.id}]">Endre</button></td> 
-          </tr>
+            <tr>
+                <td>{{avgang.baat.navn}}</td>
+                <td>{{avgang.strekningFra}}</td>
+                <td>{{avgang.strekningTil}}</td>
+                <td>{{avgang.datoTid}}</td>
+                <td><button class="btn btn-success" [routerLink]="['/endreAvgang', {avgangId:avgang.id}]">Endre</button></td>
+                <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
+            </tr>
         </tbody>
       </table>
     </div>

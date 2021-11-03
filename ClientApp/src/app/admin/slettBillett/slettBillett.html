@@ -1,9 +1,9 @@
 <div class="container">
-    <h2> Slett billett</h2>
+    <h2 style="margin-top:20px">Slett billett</h2>
     <div>
         <div class="col-md-12">
             <div *ngIf="laster">Laster billetter.....</div>
-            <table class="table table-bordered table-condensed">
+            <table class="table table-bordered table-condensed slettbillettTable">
                 <thead>
                     <tr>
                         <th>KundeID</th>
@@ -16,8 +16,8 @@
                         <input hidden value="{{bill.id}}" id="billId" #billId>
                         <td><p id="kundeId" #kundeId>{{bill.kundeId}}</p></td>
                         <td><p id="antallPersoner" #antallPersoner>{{bill.antallPersoner}}</p></td>
-                        <td><p id="totalPris" #kundeId>{{bill.totalPris}},-</p></td>
-                        <td><button class="btn btn-danger" (click)="slettValgtBillett(billId.value)">Slett</button></td>
+                        <td><p id="totalPris" #totalPris>{{bill.totalPris}},-</p></td>
+                        <td><button class="btn btn-danger" (click)="slettValgtBillett(billId.value)" style="margin-left:10px">Slett</button></td>
                     </tr>
                 </tbody>
             </table>

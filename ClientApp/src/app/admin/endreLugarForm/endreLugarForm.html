@@ -1,6 +1,6 @@
 ﻿<div class="container">
     <form [formGroup]="nyLugarSkjema" (ngSubmit)="onSubmit()">
-        <h2>Fyll ut lugarinformasjon</h2>
+        <h2 style="margin-top:20px">Fyll ut lugarinformasjon</h2>
         <div class="form-group">
             <label for="innNavn">Navn</label>
             <input type="text" class="form-control" id="innNavn" formControlName="navn">
@@ -37,7 +37,7 @@
             </p>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!nyLugar.valid">Submit</button>
-        <button class="btn btn-secondary" [routerLink]="['/adminIndex']">Tilbake</button>
+        <button class="btn btn-secondary" [routerLink]="['/adminIndex']"  style="margin-left:10px">Tilbake</button>
         <div id="melding">{{feilMelding}}</div>
     </form>
 </div>

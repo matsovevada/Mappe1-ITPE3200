@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,7 +7,9 @@ import { Lugar } from '../../Lugar'
 
 @Component({
   selector: 'endreLugar',
-  templateUrl: 'endreLugar.html'
+  templateUrl: 'endreLugar.html',
+  styleUrls: ["endreLugarStyle.css"],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class EndreLugar {

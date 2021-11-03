@@ -1,13 +1,17 @@
 import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Lugar } from "../../Lugar";
 
+
 @Component({
   selector: 'add-lugar',
-  templateUrl: 'addLugar.html'
+  templateUrl: 'addLugar.html',
+  styleUrls: ["addLugarStyle.css"],
+  encapsulation: ViewEncapsulation.None
 })
+
 
 export class AddLugar {
   nyLugarSkjema: FormGroup;

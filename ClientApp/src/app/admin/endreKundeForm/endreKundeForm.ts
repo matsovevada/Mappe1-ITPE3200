@@ -1,16 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Kunde } from "../../Kunde";
 import { ActivatedRoute, NavigationExtras } from '@angular/router';
-import { ViewEncapsulation } from "@angular/cli/lib/config/schema";
 
 @Component({
   selector: 'endreKundeForm',
-  templateUrl: "endreKundeForm.html"
+  templateUrl: "endreKundeForm.html",
+  styleUrls: ["endreKundeForm.css"],
+  encapsulation: ViewEncapsulation.None
 })
+
 
 
 export class EndreKundeForm implements OnInit {

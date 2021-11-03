@@ -1,9 +1,9 @@
 <div class="container">
-    <h2> Rediger kunde</h2>
+    <h2 style="margin-top:20px"> Rediger kunde</h2>
     <div>
         <div class="col-md-12">
             <div *ngIf="laster">Laster kunder.....</div>
-            <table class="table table-bordered table-condensed">
+            <table class="table table-bordered table-condensed endrekundeTabell">
                 <thead>
                     <tr>
                         <th>Kundenavn</th>
@@ -18,7 +18,7 @@
                             <input hidden value="{{kunde.id}}" id="kundeId" #kundeId>
                         </td>
                         <td><button class="btn btn-primary" [routerLink]="['/endreKundeForm', {kundeId:kunde.id}]">Endre</button></td>
-                        <td><button class="btn btn-danger" (click)="slettValgtKunde(kundeId.value)">Slett</button></td>
+                        <td><button class="btn btn-danger" (click)="slettValgtKunde(kundeId.value)" style="margin-left:10px">Slett</button></td>
                     </tr>
                 </tbody>
             </table>

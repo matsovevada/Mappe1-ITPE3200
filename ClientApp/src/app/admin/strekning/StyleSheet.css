@@ -1,2 +1,8 @@
 body {
+  background-color: #97c4e6;
+}
+
+.endrestrekningTabell {
+  background-color: white;
+  margin-top: 10px;
 }

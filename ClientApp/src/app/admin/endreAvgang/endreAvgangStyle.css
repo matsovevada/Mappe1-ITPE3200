@@ -1,12 +1,12 @@
-﻿body {
+body {
   background-color: #97c4e6;
 }
 
 #labelMultiselect {
-    float:left;
+  float: left;
 }
 
 .multiselectLugar {
-    width:49%;
-    margin-left: 40px;
+  width: 49%;
+  margin-left: 40px;
 }

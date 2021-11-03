@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-md-6 container kundeForm">
         <form [formGroup]="kundeSkjema" (ngSubmit)="onSubmit()">
-          <h2>Endre kundeinformasjon:</h2>
+          <h2 style="margin-top:20px">Endre kundeinformasjon:</h2>
             <div class="form-group">
                 <label>Fornavn</label>
                 <input class="form-control" formControlName="fornavn" />
@@ -52,7 +52,7 @@
                 </p>
             </div>
             <div class="form-group">
-                <button type="submit" [disabled]="!kundeSkjema.valid" class="btn btn-primary">Endre</button>
+                <button type="submit" [disabled]="!kundeSkjema.valid" class="btn btn-primary">Endre kundeinformajson</button>
             </div>
             <div id="melding">{{feilMelding}}</div>
         </form>

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Legg til avgang</h2>
+  <h2 style="margin-top:20px">Legg til avgang</h2>
   <form>
 
     <div class="form-group">
@@ -52,21 +52,22 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label>Lugarer (velg flere ved å trykke på en lugar samtidig som 'ctrl' holdes inne)</label>
-      <select class="select" multiple id="selectLugarer">
+   
+    <div class="form-group .multiselectLugar">
+      <label id="labelMultiselect">Lugarer (velg flere ved å trykke på en lugar samtidig som 'ctrl' holdes inne)</label>
+      <select class="select multiselectLugar" multiple id="selectLugarer">
         <option *ngFor="let lugar of alleLugarer">{{lugar.navn}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label>Antall ledige bilplasser</label>
+      <label style="margin-right:10px">Antall ledige bilplasser</label>
       <input type="number" [(ngModel)]="bilplasser" [ngModelOptions]="{standalone: true}" />
       <p *ngIf="bilplasser < 0 || bilplasser > 1000 || bilplasser == null" style="color:red;">Bilplasser må være mellom 0 og 1000</p>
     </div>
 
     <div class="form-group">
-      <label>Aktiv</label>
+      <label style="margin-right:10px">Aktiv avgang?</label>
       <input type="checkbox" [(ngModel)]="aktiv" [ngModelOptions]="{standalone: true}" />
     </div>
 

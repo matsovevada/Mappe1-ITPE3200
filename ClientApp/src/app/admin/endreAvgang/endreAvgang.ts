@@ -10,7 +10,7 @@ import { Avgang } from '../../Avgang';
 @Component({
   selector: 'endreAvgang',
   templateUrl: 'endreAvgang.html',
-  styleUrls: ['StyleSheet.css'],
+  styleUrls: ['endreAvgangStyle.css'],
   encapsulation: ViewEncapsulation.None
 })
 
