@@ -123,10 +123,9 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpPost]
         [ActionName("lagreBillett")]
-        public async Task<int> LagreBillett(Billett innBillett)
+        public async Task<ActionResult> LagreBillett(Billett innBillett)
         {
-
- 
+          
             var regexAntallPersoner = @"[0-9]{1,2}";
             var regexAntallPersonerRetur = @"[0-9]{1,2}";
             var regexTotalpris = @"[0-9]{1,5}";
@@ -140,7 +139,7 @@ namespace Mappe1_ITPE3200.Controllers
                 if(!antallpersonerMatch.Success || !totalprisMatch.Success || !(innBillett.lugarer.Count() > 0))
                 {
                     _log.LogInformation("FEIL: Feil i regex LagreBillett()");
-                    return -1;
+                    return BadRequest("Feil input validering på server");
                 }
             }
 
@@ -151,13 +150,12 @@ namespace Mappe1_ITPE3200.Controllers
                     !antallpersonerReturMatch.Success || innBillett.lugarerRetur.Count() <= 0)
                 {
                     _log.LogInformation("FEIL: Feil i regex LagreBillett()");
-                    return -1;
+                    return BadRequest("Feil input validering på server");
                 }
             }
 
            
            int billettLagret = await _db.LagreBillett(innBillett);
-
 
             // fjern en bilplass for avgangen hvis bilplass er valgt i billetten
             if (innBillett.Bilplass)
@@ -166,7 +164,8 @@ namespace Mappe1_ITPE3200.Controllers
             }
             await _db.OppdaterAntallLedigeLugarer(innBillett.AvgangId, innBillett.lugarer);
             _log.LogInformation("POST: Lagret billett med ID: " + billettLagret);
-            return billettLagret;
+
+            return Ok(billettLagret);
         }
 
         [HttpGet("{id}")]
@@ -213,25 +212,54 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpDelete("{id}")]
         [ActionName("slettStrekning")]
-        public async Task<bool> SlettStrekning(int id)
+        public async Task<ActionResult> SlettStrekning(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized("Ikke logget inn");
+            }
+
+            bool strekningSlettet = await _db.SlettStrekning(id);
+
+            if (!strekningSlettet)
+            {
+                _log.LogInformation("DELETE: Sletting av strekning ble ikke utført");
+                return NotFound("Sletting av strekning ble ikke utført");
+            }
+
             _log.LogInformation("DELETE: Slettet strekning med ID: " + id);
-            return await _db.SlettStrekning(id);
+            return Ok(strekningSlettet);
         }
 
         [HttpDelete("{id}")]
         [ActionName("slettLugar")]
-
-        public async Task<bool> SlettLugar(int id)
+        public async Task<ActionResult> SlettLugar(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized("Ikke logget inn");
+            }
+
+            bool lugarSlettet = await _db.SlettLugar(id);
+
+            if (!lugarSlettet)
+            {
+                _log.LogInformation("DELETE: Sletting av lugar ble ikke utført");
+                return NotFound("Sletting av lugar ble ikke utført");
+            }
+
             _log.LogInformation("DELETE: Slettet lugar med ID: " + id);
-            return await _db.SlettLugar(id);
+            return Ok(lugarSlettet);
         }
 
         [HttpPut("{id}/{strekningFra}/{strekningTil}")]
         [ActionName("endreStrekning")]
-        public async Task<bool> EndreStrekning(int id, string strekningFra, string strekningTil)
+        public async Task<ActionResult> EndreStrekning(int id, string strekningFra, string strekningTil)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized("Ikke logget inn");
+            }
 
             var regexStrekning = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var strekningFraMatch = Regex.Match(strekningFra, regexStrekning);
@@ -240,12 +268,22 @@ namespace Mappe1_ITPE3200.Controllers
             if (!strekningFraMatch.Success || !strekningTilMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i regex i EndreStrekning()");
-                return false;
+                return BadRequest("FEIL: Feil i inputvalidering i EndreStrekning()"); ;
+            }
+
+            bool strekningEndret = await _db.EndreStrekning(id, strekningFra, strekningTil);
+
+            if(!strekningEndret)
+            {
+                _log.LogInformation("PUT: Endringen av strekning kunne ikke utføres");
+                return NotFound("PUT: Endringen av strekning kunne ikke utføres");
             }
 
             _log.LogInformation("PUT: Endret strekning med ID: " + id);
-            return await _db.EndreStrekning(id, strekningFra, strekningTil);
+            return Ok(strekningEndret);
         }
+
+        //DU HAR KOMMET HIT 
 
         [HttpPost("{strekningFra}/{strekningTil}")]
         [ActionName("lagreStrekning")]
