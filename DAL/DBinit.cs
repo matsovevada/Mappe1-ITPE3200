@@ -284,8 +284,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date3Ticks = date2.Ticks;
             var avgang3 = new Avganger
             {
-                StrekningFra = new string(strekning_KobenhavnOslo.Fra),
-                StrekningTil = new string(strekning_KobenhavnOslo.Til),
+                StrekningFra = new string(strekning_OsloKobenhavn.Fra),
+                StrekningTil = new string(strekning_OsloKobenhavn.Til),
                 Baat = baat1,
                 DatoTid = date3String,
                 DatoTidTicks = date3Ticks,
@@ -329,8 +329,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date6Ticks = date6.Ticks;
             var avgang6 = new Avganger
             {
-                StrekningFra = new string(strekning_TrondheimBergen.Fra),
-                StrekningTil = new string(strekning_TrondheimBergen.Til),
+                StrekningFra = new string(strekning_BergenTrondheim.Fra),
+                StrekningTil = new string(strekning_BergenTrondheim.Til),
                 Baat = baat2,
                 DatoTid = date6String,
                 DatoTidTicks = date6Ticks,
@@ -405,8 +405,8 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             long date11Ticks = date11.Ticks;
             var avgang11 = new Avganger
             {
-                StrekningFra = new string(strekning_OsloKiel.Fra),
-                StrekningTil = new string(strekning_OsloKiel.Til),
+                StrekningFra = new string(strekning_KielOslo.Fra),
+                StrekningTil = new string(strekning_KielOslo.Til),
                 Baat = baat3,
                 DatoTid = date11String,
                 DatoTidTicks = date11Ticks,
