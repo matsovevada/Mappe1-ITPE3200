@@ -13,6 +13,7 @@ export class Meny {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  //Sjekker om bruker er logget inn når siden lastes//
   ngOnInit() {
     this.http.get("api/Bestilling/isLoggedIn").
       subscribe(ok => {

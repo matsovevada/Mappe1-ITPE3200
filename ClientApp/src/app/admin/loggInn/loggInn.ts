@@ -32,7 +32,6 @@ export class LoggInn {
   }
 
   resetFeilmelding() {
-    console.log("Change")
     this.feilmelding = "";
   }
 
