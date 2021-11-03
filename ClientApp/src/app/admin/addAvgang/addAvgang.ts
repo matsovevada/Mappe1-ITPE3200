@@ -69,20 +69,12 @@ export class AddAvgang {
   }
 
   submit() {
-    console.log("DAOTOMIN");
-    console.log(this.datoMinutt);
     let selectBaat = (document.getElementById('selectBaat')) as HTMLSelectElement;
     let baatNavn = selectBaat.value;
 
     let selectStrekning = (document.getElementById('selectStrekning')) as HTMLSelectElement;
     let strekningFra = selectStrekning.value.split(" - ")[0];
     let strekningTil = selectStrekning.value.split(" - ")[1];
-
-    console.log(this.datoDag);
-    console.log(this.datoManed);
-    console.log(this.datoAr);
-    console.log(this.datoTime);
-    console.log(this.datoMinutt);
 
     let selectLugarer = (document.getElementById('selectLugarer')) as HTMLSelectElement;
     let options = selectLugarer.selectedOptions;

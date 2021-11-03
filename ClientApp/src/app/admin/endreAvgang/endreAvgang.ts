@@ -46,8 +46,6 @@ export class EndreAvgang {
       .subscribe(avgang => {
         this.avgang = avgang;
 
-        console.log(avgang.datoTid);
-
         this.datoDag = Number(avgang.datoTid.split("/")[0]);
         this.datoManed = Number(avgang.datoTid.split("/")[1]);
         this.datoAr = Number(avgang.datoTid.split("/")[2].split(" ")[0]);
