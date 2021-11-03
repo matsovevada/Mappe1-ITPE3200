@@ -54,10 +54,11 @@
 
 
         <div class="form-group .multiselectLugarEndre">
-            <label id="labelMultiselectEndre">Lugarer (velg flere ved å trykke på en lugar samtidig som 'ctrl' holdes inne)</label>
-            <select class="select multiselectLugar" multiple id="selectLugarer">
-                <option *ngFor="let lugar of alleLugarer">{{lugar.navn}}</option>
-            </select>
+          <label id="labelMultiselectEndre">Lugarer (velg flere ved å trykke på en lugar samtidig som 'ctrl' holdes inne)</label>
+          <select class="select multiselectLugar" multiple id="selectLugarer">
+            <option *ngFor="let lugar of alleLugarer">{{lugar.navn}}</option>
+          </select>
+          <p id="feilmelding" style="color:red;"></p>
         </div>
 
         <div class="form-group">
@@ -72,6 +73,5 @@
         </div>
 
         <button class="btn btn-success" (click)="submit()">Lagre</button>
-        <p id="feilmelding" style="color:red;"></p>
     </form>
 </div>
