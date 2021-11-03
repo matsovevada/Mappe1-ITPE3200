@@ -14,7 +14,8 @@ export class AdminBaat {
   baatSlettet: boolean;
   laster: boolean;
   endreValgt: boolean;
-  feilInput: boolean;
+  feilInputLagre: boolean;
+  feilInputEndre: boolean;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -83,10 +84,17 @@ export class AdminBaat {
       );
   }
 
-  valider(value) {
+  validerLagre(value) {
     if (value.length < 2 || value.length > 30) {
-      this.feilInput = true;
+      this.feilInputLagre = true;
     }
-    else this.feilInput = false;
+    else this.feilInputLagre = false;
+  }
+
+  validerEndre(value) {
+    if (value.length < 2 || value.length > 30) {
+      this.feilInputEndre = true;
+    }
+    else this.feilInputEndre = false;
   }
 }
