@@ -712,13 +712,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-
-      /*  public async Task<List<LugarMaler>> HentAlleLugarer()
-        {
-            List<LugarMaler> alleLugarer = await _db.LugarMaler.ToListAsync();
-            return alleLugarer;
-        }*/
-
         public async Task<LugarMaler> HentLugar(int id)
         {
             LugarMaler lugar = await _db.LugarMaler.FindAsync(id);
