@@ -1,10 +1,12 @@
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'navbar',
-  templateUrl: 'navbar.html'
+  templateUrl: 'navbar.html',
+  styleUrls: ["stylesheet.css"],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class Navbar {

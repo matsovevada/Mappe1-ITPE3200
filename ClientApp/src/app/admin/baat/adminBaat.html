@@ -1,16 +1,19 @@
 <div class="container">
     <h2 style="margin-top:20px"> Rediger båter</h2>
     <div>
-        <div class="col-md-12">
-            <h3>Lagre båt</h3>
-            <input type="text" placeholder="Båtnavn" id="nyBaat" #nyBaat (input)="valider($event.target.value)"/>
-            <button class="btn btn-success" (click)="lagreBaat(nyBaat.value)" [disabled]="feilInput ? true : null" style="margin-left:10px">Lagre</button>
-            <div id="melding"></div>
-        </div>
+      <div class="col-md-12">
+        <h3>Lagre båt</h3>
+        <p *ngIf="feilInputLagre" style="color:red;">Båtnavn må ha mellom 2 og 30 bokstaver og kan ikke inneholde tall</p>
+
+        <input type="text" placeholder="Båtnavn" id="nyBaat" #nyBaat (input)="validerLagre($event.target.value)" />
+        <button class="btn btn-success" (click)="lagreBaat(nyBaat.value)" [disabled]="feilInputLagre ? true : null" style="margin-left:10px">Lagre</button>
+        <div id="melding"></div>
+      </div>
         <div class="col-md-12">
           <div *ngIf="laster">Laster båter.....</div>
-          <p *ngIf="feilInput" style="color:red;">Båtnavn må ha mellom 2 og 30 bokstaver og kan ikke inneholde tall</p>
+          <p *ngIf="feilInputEndre" style="color:red;">Båtnavn må ha mellom 2 og 30 bokstaver og kan ikke inneholde tall</p>
           <table class="table table-bordered table-condensed endrebaatTabell">
+
             <thead>
               <tr>
                 <th>Båtnavn</th>
@@ -19,12 +22,14 @@
               </tr>
             </thead>
             <tbody *ngFor="let baat of alleBaater" ng-model="alleBaater">
+
                 <tr>
                     <input hidden value="{{baat.id}}" id="baatId" #baatId>
-                    <td><input type="text" value="{{baat.navn}}" id="baatNavn" #baatNavn (input)="valider($event.target.value)"></td>
-                    <td><button class="btn btn-success" (click)="endreValgtBaat(baatNavn.value, baatId.value)" [disabled]="feilInput ? true : null">Endre navn</button></td>
+                    <td><input type="text" value="{{baat.navn}}" id="baatNavn" #baatNavn (input)="validerEndre($event.target.value)"></td>
+                    <td><button class="btn btn-success" (click)="endreValgtBaat(baatNavn.value, baatId.value)" [disabled]="feilInputEndre ? true : null">Endre navn</button></td>
                     <td><button class="btn btn-danger" (click)="slettValgtBaat(baat.id)">Slett</button></td>
                 </tr>
+
             </tbody>
           </table>
         </div>

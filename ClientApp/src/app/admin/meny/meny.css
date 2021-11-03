@@ -4,17 +4,17 @@
   background-color: #f8f9fa;
   margin-top: 25px;
   margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 100px;
   padding: 10px;
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.5);
 }
 
 .adminMenuBox button{
+    margin-top: 10px;
     width:100%;
     flex: auto;
 }
 
 .adminMenuBox a{
     color: inherit;
-
 } 

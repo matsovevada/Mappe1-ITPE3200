@@ -255,6 +255,9 @@ namespace Mappe1_ITPE3200.Controllers
             var strekningFraMatch = Regex.Match(strekningFra, regexStrekning);
             var strekningTilMatch = Regex.Match(strekningTil, regexStrekning);
 
+            Console.WriteLine("REGEX MATCH?");
+            Console.WriteLine(strekningFraMatch.Success);
+
             if (!strekningFraMatch.Success || !strekningTilMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i regex i LagreStrekning()");

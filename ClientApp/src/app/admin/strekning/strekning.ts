@@ -87,16 +87,24 @@ export class AdminStrekning {
   }
 
   validerLagre(value) {
-    if (value.length < 2 || value.length > 30) {
-      this.feilInputLagre = true;
-    }
-    else this.feilInputLagre = false;
+    console.log("Endrer lagre");
+      var pattern = /^[a-zA-Z]{2,30}$/
+      if (!pattern.test(value)) {
+         this.feilInputLagre = true;
+      }
+      else {
+        this.feilInputLagre = false;
+      }
   }
 
   validerEndre(value) {
-    if (value.length < 2 || value.length > 30) {
+    console.log("ENDRER");
+    var pattern = /^[a-zA-Z]{2,30}$/
+    if (!pattern.test(value)) {
       this.feilInputEndre = true;
     }
-    else this.feilInputEndre = false;
+    else {
+      this.feilInputEndre = false;
+    }
   }
 }

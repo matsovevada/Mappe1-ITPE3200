@@ -1,2 +1,21 @@
 body {
+  background-color: #97c4e6;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+.postnummerTabell {
+  background-color: white;
+  margin-top: 10px;
+}
+
+input {
+    margin-left: 10px;
+    margin-right: 10px;
 }

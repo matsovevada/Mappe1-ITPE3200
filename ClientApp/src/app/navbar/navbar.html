@@ -1,6 +1,11 @@
 <nav class="navbar navbar-light" style="background-color: #023e8a; ">
-  <span class="navbar-brand mb-0 h1"><a [routerLink]="['']" style="color:white;">ColorLine</a></span>
-  <span class="navbar-brand mb-0 h1"><a [routerLink]="['/adminIndex']" style="color:white;">Admin-meny</a></span>
-  <span class="navbar-brand mb-0 h1"><button class="btn btn-primary" [routerLink]="['loggInn']" style="color:white;">Logg inn (admin)</button></span>
-  <span class="navbar-brand mb-0 h1"><button class="btn btn-danger" style="color:white;" (click)="loggUt()">Logg ut (admin)</button></span>
+  <ul class="nav navbar-nav" style="display: inline-block;">
+    <li><a [routerLink]="['']" style="color:white;">ColorLine</a></li>
+  </ul>
+
+  <ul class="nav navbar-nav pull-right" style="display: inline-block;">
+    <li class="active"><a [routerLink]="['/adminIndex']" style="color:white;">Admin-meny</a></li>
+    <li class="active"><button class="btn btn-primary" [routerLink]="['loggInn']" style="color:white;">Logg inn (admin)</button></li>
+    <li class="active"><button class="btn btn-danger" style="color:white;" (click)="loggUt()">Logg ut (admin)</button></li>
+  </ul>
 </nav>

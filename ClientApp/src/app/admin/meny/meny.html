@@ -1,36 +1,47 @@
 <div class="container">
-    <div class="adminMenu container row">
-        <div class="adminMenuBox flex-row">
-            <h3 class="adminMenuItem">Lugar</h3>
-            <button class="btn btn-primary"><a [routerLink]="['/adminAddLugar']" class="mb-0 h3">Legge til</a></button>
-            <button class="btn btn-danger"><a [routerLink]="['/endreLugar']" class="mb-0 h3">Endre / Slett</a></button>
-        </div>
-        <div class="adminMenuBox flex-row">
-            <h3 class="adminMenuItem">Avgang</h3>
-            <button class="btn btn-primary"><a [routerLink]="['/adminAddAvgang']" class="mb-0 h3">Legge til</a></button>
-            <button class="btn btn-danger"><a [routerLink]="['/endreSlettAvgang']" class="mb-0 h3">Endre / Slett</a></button>
-        </div>
-        <div class="adminMenuBox flex-row">
-            <h3 class="adminMenuItem">Kunde</h3>
-            <button class="btn btn-danger"><a [routerLink]="['/adminKunde']" class="mb-0 h3">Endre</a></button>
-        </div>
-        <div class="adminMenuBox flex-row">
-            <h3 class="adminMenuItem">Billett</h3>
-            <button class="btn btn-danger"><a [routerLink]="['/slettBillett']" class="mb-0 h3">Slett</a></button>
-        </div>
+  <div class="adminMenu row">
+    <div class="adminMenuBox col-lg-4">
+      <h3 class="adminMenuItem">Lugar</h3>
+      <button class="btn btn-primary"><a [routerLink]="['/adminAddLugar']" class="mb-0 h3">Legge til</a></button>
+      <button class="btn btn-danger"><a [routerLink]="['endreLugar']" class="mb-0 h3">Endre / Slett</a></button>
     </div>
-  <div class="container row">
-    <div class="adminMenuBox flex-row">
+
+    <div class="adminMenuBox col-lg-4">
+      <h3 class="adminMenuItem">Kunde</h3>
+      <button class="btn btn-danger"><a [routerLink]="['/adminKunde']" class="mb-0 h3">Endre</a></button>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="adminMenuBox col-lg-4">
+      <h3 class="adminMenuItem">Avgang</h3>
+      <button class="btn btn-primary"><a [routerLink]="['/adminAddAvgang']" class="mb-0 h3">Legge til</a></button>
+      <button class="btn btn-danger"><a [routerLink]="['/endreSlettAvgang']" class="mb-0 h3">Endre / Slett</a></button>
+    </div>
+
+    <div class="adminMenuBox col-lg-4">
+      <h3 class="adminMenuItem">Billett</h3>
+      <button class="btn btn-danger"><a [routerLink]="['/slettBillett']" class="mb-0 h3">Slett</a></button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="adminMenuBox col-lg-4">
       <h3 class="adminMenuItem">Båt</h3>
       <button class="btn btn-primary"><a [routerLink]="['/adminBaat']" class="mb-0 h3">Legge til/Endre</a></button>
     </div>
-    <div class="adminMenuBox flex-row">
-      <h3 class="adminMenuItem">Strekning</h3>
-      <button class="btn btn-primary"><a [routerLink]="['/adminStrekning']" class="mb-0 h3">Legge til/Endre</a></button>
-    </div>
-    <div class="adminMenuBox flex-row">
+
+    <div class="adminMenuBox col-lg-4">
       <h3 class="adminMenuItem">Poststed</h3>
       <button class="btn btn-primary"><a [routerLink]="['/adminPoststed']" class="mb-0 h3">Legge til/Endre</a></button>
     </div>
   </div>
+
+  <div class="row">
+    <div class="adminMenuBox col-lg-4">
+      <h3 class="adminMenuItem">Strekning</h3>
+      <button class="btn btn-primary"><a [routerLink]="['/adminStrekning']" class="mb-0 h3">Legge til/Endre</a></button>
+    </div>
+  </div>
+
 </div>
