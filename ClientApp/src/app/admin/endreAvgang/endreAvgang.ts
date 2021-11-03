@@ -46,8 +46,6 @@ export class EndreAvgang {
       .subscribe(avgang => {
         this.avgang = avgang;
 
-        console.log(avgang.datoTid);
-
         this.datoDag = Number(avgang.datoTid.split("/")[0]);
         this.datoManed = Number(avgang.datoTid.split("/")[1]);
         this.datoAr = Number(avgang.datoTid.split("/")[2].split(" ")[0]);
@@ -105,9 +103,11 @@ export class EndreAvgang {
     let options = selectLugarer.selectedOptions;
     var values = Array.from(options).map(({ value }) => value);
 
+    // legg til første lugar fra multiselect i en lugar-string (det vil alltid være minst én lugar valgt i multiselect-en)
     let lugarer = ""
     lugarer += values[0];
 
+    // legg til resten av mulgarene fra multiselect i lugar-stringen
     for (let i = 1; i < values.length; i++) {
       lugarer += "," + values[i];
     }
