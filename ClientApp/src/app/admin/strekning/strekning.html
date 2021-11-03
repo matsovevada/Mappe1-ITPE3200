@@ -5,17 +5,17 @@
       <div *ngIf="laster">Laster strekninger.....</div>
 
       <h3>Lagre strekning</h3>
-      <p *ngIf="feilInputLagre" style="color:red;">Strekning må ha mellom 2 og 30 bokstaver og kan ikke inneholde tall eller spesialtegn</p>
+      <p *ngIf="feilInputLagre" style="color:red;">Strekning må ha mellom 2 og 30 bokstaver (ikke æ, ø, å) og kan ikke inneholde tall eller spesialtegn</p>
       <input placeholder="Fra" id="lagreStrekningFra" #lagreStrekningFra (input)="validerLagre($event.target.value)" />
       <input placeholder="Til" id="lagreStrekningTil" #lagreStrekningTil (input)="validerLagre($event.target.value)" style="margin-left:10px" />
       <button class="btn btn-success" (click)="lagreStrekning(lagreStrekningFra.value, lagreStrekningTil.value)" [disabled]="feilInputLagre ? true : null" style="margin-left:10px">Lagre</button>
 
       <h3 style="margin-top:20px">Strekninger</h3>
       <div *ngIf="laster">Laster strekninger.....</div>
-      <p *ngIf="feilInputEndre" style="color:red;">Strekning må ha mellom 2 og 30 bokstaver og kan ikke inneholde tall eller spesialtegn</p>
+      <p *ngIf="feilInputEndre" style="color:red;">Strekning må ha mellom 2 og 30 bokstaver (ikke æ, ø, å) og kan ikke inneholde tall eller spesialtegn</p>
       <table class="table table-bordered table-condensed endrestrekningTabell">
         <thead>
-          <tr>
+          <tr> 
             <th>Fra</th>
             <th>Til</th>
             <th></th>

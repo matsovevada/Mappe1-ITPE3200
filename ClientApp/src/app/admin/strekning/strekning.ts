@@ -87,7 +87,7 @@ export class AdminStrekning {
   }
 
   validerLagre(value) {
-    var pattern = /^[a-zA-Z]{2,30}$/
+    var pattern = /^[a-zA-Z\ÆØÅæøå ]{2,30}$/;
       if (!pattern.test(value)) {
          this.feilInputLagre = true;
       }
@@ -97,7 +97,7 @@ export class AdminStrekning {
   }
 
   validerEndre(value) {
-    var pattern = /^[a-zA-Z]{2,30}$/
+    var pattern = /^[a-zA-Z\ÆØÅæøå ]{2,30}$/;
     if (!pattern.test(value)) {
       this.feilInputEndre = true;
     }
