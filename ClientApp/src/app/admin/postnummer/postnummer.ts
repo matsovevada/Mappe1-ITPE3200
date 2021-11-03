@@ -88,23 +88,32 @@ export class AdminPostnummer {
   }
 
   validerLagrePostnummer(value) {
-    if (value.length != 4 || isNaN(value)) {
+    var pattern = /^[0-9]{4}$/
+    if (!pattern.test(value)) {
       this.feilInputLagrePostnummer = true;
     }
-    else this.feilInputLagrePostnummer = false;
+    else {
+      this.feilInputLagrePostnummer = false;
+    }
   }
 
   validerLagrePoststed(value) {
-    if (value.length < 2 || value.length > 30) {
+    var pattern = /^[a-zA-Z\ÆØÅæøå]{2,30}$/
+    if (!pattern.test(value)) {
       this.feilInputLagrePoststed = true;
     }
-    else this.feilInputLagrePoststed = false;
+    else {
+      this.feilInputLagrePoststed = false;
+    }
   }
 
   validerEndre(value) {
-    if (value.length < 2 || value.length > 30) {
+    var pattern = /^[a-zA-Z\ÆØÅæøå]{2,30}$/
+    if (!pattern.test(value)) {
       this.feilInputEndre = true;
     }
-    else this.feilInputEndre = false;
+    else {
+      this.feilInputEndre = false;
+    }
   }
 }
