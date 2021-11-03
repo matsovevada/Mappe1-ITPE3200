@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Mappe1_ITPE3200.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Mappe1_ITPE3200.ClientApp.DAL
 {
-  public static class DBinit
+    [ExcludeFromCodeCoverage]
+    public static class DBinit
   {
     public static void Seed(IApplicationBuilder app)
     {

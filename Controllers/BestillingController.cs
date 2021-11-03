@@ -213,10 +213,19 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpDelete("{id}")]
         [ActionName("slettStrekning")]
-        public async Task<bool> SlettStrekning(int id)
+        public async Task<ActionResult> SlettStrekning(int id)
         {
-            _log.LogInformation("DELETE: Slettet strekning med ID: " + id);
-            return await _db.SlettStrekning(id);
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized("Ikke logget inn");
+            }
+            bool returOK = await _db.SlettStrekning(id);
+            if (!returOK)
+            {
+                //_log.LogInformation("Sletting av Strekningen ble ikke utført");
+                return NotFound("Sletting av Strekningen ble ikke utført");
+            }
+            return Ok("Strekning slettet");
         }
 
         [HttpDelete("{id}")]

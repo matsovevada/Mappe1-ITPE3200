@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using Mappe1_ITPE3200.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Mappe1_ITPE3200.ClientApp.DAL
 
 {
-  public class DatabaseContext : DbContext
+    [ExcludeFromCodeCoverage]
+    public class DatabaseContext : DbContext
   {
     public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
     {
