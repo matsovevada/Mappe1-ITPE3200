@@ -55,21 +55,18 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return avgang;
         }
 
-        [HttpGet]
         public async Task<Baater> HentBaat(int id)
         {
             Baater baat = await _db.Baater.FindAsync(id);
             return baat;
         }
 
-        [HttpGet]
         public async Task<Baater> HentBaatPaaNavn(String baatnavn)
         {
             Baater baat = await _db.Baater.FirstOrDefaultAsync(b => b.Navn.Equals(baatnavn));
             return baat;
         }
 
-        [HttpPost]
         public async Task<int> LagreKunde(Kunde innKunde)
         {
             try
@@ -114,7 +111,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpGet]
         public async Task<Kunde> HentKunde(int id)
         {
             Kunder kunde = await _db.Kunder.FindAsync(id);
@@ -134,7 +130,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             return returKunde;
         }
 
-        [HttpPost]
         public async Task<int> LagreBillett(Billett innBillett)
         {
             try
@@ -181,7 +176,6 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
             }
         }
 
-        [HttpGet]
         public async Task<Billetter> HentBillett(int id)
         {
             Billetter billett = await _db.Billetter.FindAsync(id);
