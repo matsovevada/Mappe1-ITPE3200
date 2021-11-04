@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -619,7 +620,6 @@ namespace Mappe1_ITPE3200.Controllers
                 {
                     return NotFound("PUT: Kunde kunne ikke endres");
                 }
-                _log.LogInformation("PUT: Endret kunde med ID: " + kunde.Id);
                 return Ok(kundeEndret);
             }
             _log.LogInformation("Feil i inputvalidering endreKunde");
