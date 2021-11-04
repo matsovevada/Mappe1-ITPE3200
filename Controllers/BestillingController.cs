@@ -304,7 +304,6 @@ namespace Mappe1_ITPE3200.Controllers
 
             if(!strekningEndret)
             {
-                _log.LogInformation("PUT: Endringen av strekning kunne ikke utføres");
                 return NotFound("PUT: Endringen av strekning kunne ikke utføres");
             }
 
@@ -618,7 +617,6 @@ namespace Mappe1_ITPE3200.Controllers
                 bool kundeEndret = await _db.endreKunde(kunde);
                 if(!kundeEndret)
                 {
-                    _log.LogInformation("PUT: Kunde kunne ikke endres");
                     return NotFound("PUT: Kunde kunne ikke endres");
                 }
                 _log.LogInformation("PUT: Endret kunde med ID: " + kunde.Id);
