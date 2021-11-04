@@ -687,26 +687,20 @@ namespace Mappe1_ITPE3200.Controllers
             var regexBaat = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var regexStrekningFra = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var regexStrekningTil = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
-            var regexDatoTidDag = @"[1-31]{1,2}";
-            var regexDatoTidMnd = @"[1-12]{1,2}";
-            var regexDatoTidAar = @"[2021-2030]{4}";
-            var regexDatoTidTime = @"[0-23]{1,2}";
-            var regexDatoTidMin = @"[0-59]{1,2}";
-            var regexAntallLedigeBilplasser = @"[0-1000]{1,4}";
+            bool gyldigDag = true ? (Int32.Parse(datoTidDag) > 0 && Int32.Parse(datoTidDag) < 32) : false;
+            bool gyldigMnd = true ? (Int32.Parse(datoTidMnd) > 0 && Int32.Parse(datoTidMnd) < 13) : false;
+            bool gyldigAar = true ? (Int32.Parse(datoTidAar) > 2020 && Int32.Parse(datoTidAar) < 2031) : false;
+            bool gyldigTime = true ? (Int32.Parse(datoTidTime) >= 0 && Int32.Parse(datoTidTime) < 24) : false;
+            bool gyldigMin = true ? (Int32.Parse(datoTidMin) >= 0 && Int32.Parse(datoTidMin) < 60) : false;
+            bool gyldigAntallBilplasser = true ? (Int32.Parse(antallLedigeBilplasser) >= 0 && Int32.Parse(antallLedigeBilplasser) < 1001) : false;
+
 
             var baatMatch = Regex.Match(baat, regexBaat);
             var strekningFraMatch = Regex.Match(strekningFra, regexStrekningFra);
             var strekningTilMatch = Regex.Match(strekningTil, regexStrekningTil);
-            var datoTidDagMatch = Regex.Match(datoTidDag, regexDatoTidDag);
-            var datoTidMndMatch = Regex.Match(datoTidMnd, regexDatoTidMnd);
-            var datoTidAarMatch = Regex.Match(datoTidAar, regexDatoTidAar);
-            var datoTidTimeMatch = Regex.Match(datoTidTime, regexDatoTidTime);
-            var datoTidMinMatch = Regex.Match(datoTidMin, regexDatoTidMin);
-            var antallLedigeBilplasserMatch = Regex.Match(antallLedigeBilplasser, regexAntallLedigeBilplasser);
-            
 
-            if (!baatMatch.Success || !strekningFraMatch.Success || !strekningTilMatch.Success || !datoTidDagMatch.Success || !datoTidMndMatch.Success
-               || !datoTidAarMatch.Success || !datoTidTimeMatch.Success || !datoTidMinMatch.Success || !antallLedigeBilplasserMatch.Success)
+            if (!baatMatch.Success || !strekningFraMatch.Success || !strekningTilMatch.Success || !gyldigDag || !gyldigMnd
+               || !gyldigAar || !gyldigTime || !gyldigMin || !gyldigAntallBilplasser)
             {
                 _log.LogInformation("FEIL: Feil i validering lagreAvgang");
                 return BadRequest("FEIL: Feil i validering i LagreAvgang()");
@@ -738,26 +732,21 @@ namespace Mappe1_ITPE3200.Controllers
             var regexBaat = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var regexStrekningFra = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var regexStrekningTil = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
-            var regexDatoTidDag = @"[1-31]{1,2}";
-            var regexDatoTidMnd = @"[1-12]{1,2}";
-            var regexDatoTidAar = @"[2021-2030]{4}";
-            var regexDatoTidTime = @"[0-23]{1,2}";
-            var regexDatoTidMin = @"[0-59]{1,2}";
-            var regexAntallLedigeBilplasser = @"[0-1000]{1,4}";
+            bool gyldigDag = true ? (Int32.Parse(datoTidDag) > 0 && Int32.Parse(datoTidDag) < 32) : false;
+            bool gyldigMnd = true ? (Int32.Parse(datoTidMnd) > 0 && Int32.Parse(datoTidMnd) < 13) : false;
+            bool gyldigAar = true ? (Int32.Parse(datoTidAar) > 2020 && Int32.Parse(datoTidAar) < 2031) : false;
+            bool gyldigTime = true ? (Int32.Parse(datoTidTime) >= 0 && Int32.Parse(datoTidTime) < 24) : false;
+            bool gyldigMin = true ? (Int32.Parse(datoTidMin) >= 0 && Int32.Parse(datoTidMin) < 60) : false;
+            bool gyldigAntallBilplasser = true ? (Int32.Parse(antallLedigeBilplasser) >= 0 && Int32.Parse(antallLedigeBilplasser) < 1001) : false;
+
 
             var baatMatch = Regex.Match(baat, regexBaat);
             var strekningFraMatch = Regex.Match(strekningFra, regexStrekningFra);
             var strekningTilMatch = Regex.Match(strekningTil, regexStrekningTil);
-            var datoTidDagMatch = Regex.Match(datoTidDag, regexDatoTidDag);
-            var datoTidMndMatch = Regex.Match(datoTidMnd, regexDatoTidMnd);
-            var datoTidAarMatch = Regex.Match(datoTidAar, regexDatoTidAar);
-            var datoTidTimeMatch = Regex.Match(datoTidTime, regexDatoTidTime);
-            var datoTidMinMatch = Regex.Match(datoTidMin, regexDatoTidMin);
-            var antallLedigeBilplasserMatch = Regex.Match(antallLedigeBilplasser, regexAntallLedigeBilplasser);
+          
 
-
-            if (!baatMatch.Success || !strekningFraMatch.Success || !strekningTilMatch.Success || !datoTidDagMatch.Success || !datoTidMndMatch.Success
-               || !datoTidAarMatch.Success || !datoTidTimeMatch.Success || !datoTidMinMatch.Success || !antallLedigeBilplasserMatch.Success)
+            if (!baatMatch.Success || !strekningFraMatch.Success || !strekningTilMatch.Success || !gyldigDag || !gyldigMnd
+               || !gyldigAar || !gyldigTime || !gyldigMin || !gyldigAntallBilplasser)
             {
                 _log.LogInformation("FEIL: Feil i validering endreAvgang");
                 return BadRequest("FEIL: Feil i validering i EndreAvgang()");
