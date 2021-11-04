@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Mappe1_ITPE3200.ClientApp.DAL
 {
+    [ExcludeFromCodeCoverage]
     public class BestillingRepository : IBestillingRepository
     {
         private readonly DatabaseContext _db;
