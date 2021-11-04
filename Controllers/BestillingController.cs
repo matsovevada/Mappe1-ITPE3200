@@ -381,7 +381,7 @@ namespace Mappe1_ITPE3200.Controllers
                 _log.LogInformation("DELETE: Poststeder kunne ikke slettes");
                 return NotFound("DELETE: Poststeder kunne ikke slettes");
             }
-            _log.LogInformation("DELETE: Slettet med ID: " + postnummer);
+            _log.LogInformation("DELETE: Slettet postnummer: " + postnummer);
             return Ok(poststedSlettet);
         }
 
