@@ -78,7 +78,7 @@ export class EndreLugarForm {
     this.http.put<boolean>("api/Bestilling/endreLugar/" + id + "/" + navn + "/" + antallSengeplasser + "/" + antLugarer + "/" + pris + "/" + beskrivelse, null)
       .subscribe(ok => {
         if (ok) {
-          this.feilMelding = ""
+          this.feilMelding = "";
           this.router.navigate(['/endreLugar']);
         }
       },
