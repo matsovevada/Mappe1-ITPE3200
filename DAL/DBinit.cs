@@ -462,7 +462,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
                 Aktiv = true
             };
 
-            DateTime date15 = new DateTime(2021, 06, 5, 11, 30, 0);
+            DateTime date15 = new DateTime(2021, 06, 8, 11, 30, 0);
             String date15String = date15.ToString();
             long date15Ticks = date15.Ticks;
             var avgang15 = new Avganger
