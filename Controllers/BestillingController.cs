@@ -333,8 +333,8 @@ namespace Mappe1_ITPE3200.Controllers
             bool poststedSlettet = await _db.SlettPoststed(postnummer);
             if (!poststedSlettet)
             {
-                _log.LogInformation("GET: Poststeder kunne ikke hentes");
-                return NotFound("GET: Poststeder kunne ikke hentes");
+                _log.LogInformation("DELETE: Poststeder kunne ikke slettes");
+                return NotFound("DELETE: Poststeder kunne ikke slettes");
             }
             _log.LogInformation("DELETE: Slettet med ID: " + postnummer);
             return Ok(poststedSlettet);
@@ -342,7 +342,7 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpPut("{postnummer}/{poststed}")]
         [ActionName("endrePoststed")]
-        public async Task<bool> EndrePoststed(string postnummer, string poststed)
+        public async Task<ActionResult> EndrePoststed(string postnummer, string poststed)
         {
             var regPostnummer = @"[0-9]{4}";
             var regPoststed = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
@@ -352,17 +352,25 @@ namespace Mappe1_ITPE3200.Controllers
 
             if (!pnrMatch.Success || !pstdMatch.Success)
             {
-                _log.LogInformation("ERROR: Feil i RegEx i EndrePoststed()");
-                return false;
+                _log.LogInformation("FEIL: Feil i RegEx i EndrePoststed()");
+                return BadRequest("FEIL: Feil i RegEx i EndrePoststed()");
+            }
+
+            bool poststedEndret = await _db.EndrePoststed(postnummer, poststed);
+
+            if(!poststedEndret)
+            {
+                _log.LogInformation("PUT: Poststeder kunne ikke endres");
+                return NotFound("PUT: Poststeder kunne ikke endres");
             }
 
             _log.LogInformation("PUT: Endret poststed med postnummer: " + postnummer);
-            return await _db.EndrePoststed(postnummer, poststed);
+            return Ok(poststedEndret);
         }
 
         [HttpPost("{postnummer}/{poststed}")]
         [ActionName("lagrePoststed")]
-        public async Task<bool> LagrePoststed(string postnummer, string poststed)
+        public async Task<ActionResult> LagrePoststed(string postnummer, string poststed)
         {
             var regPostnummer = @"[0-9]{4}";
             var regPoststed = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
@@ -372,18 +380,33 @@ namespace Mappe1_ITPE3200.Controllers
 
             if (!pnrMatch.Success || !pstdMatch.Success)
             {
-                _log.LogInformation("ERROR: Feil i RegEx i LagrePoststed()");
-                return false;
+                _log.LogInformation("FEIL: Feil i RegEx i LagrePoststed()");
+                return BadRequest("FEIL: Feil i RegEx i LagrePoststed()"); ;
+            }
+
+            bool poststedLagret = await _db.LagrePoststed(postnummer, poststed);
+
+            if(!poststedLagret)
+            {
+                _log.LogInformation("POST: Poststed kunne ikke lagres");
+                return NotFound("POST: Poststed kunne ikke lagres");
+
             }
 
             _log.LogInformation("POST: Lagret poststed med postnummer: " + postnummer);
-            return await _db.LagrePoststed(postnummer, poststed);
+            return Ok(poststedLagret);
         }
 
         [ActionName("hentBaater")]
         public async Task<ActionResult> HentBaater()
         {
             List<Baater> baater = await _db.HentAlleBaater();
+            if(baater == null)
+            {
+                _log.LogInformation("GET: Båter kunne ikke hentes");
+                return NotFound("GET: Båter kunne ikke hentes");
+            }
+
             _log.LogInformation("GET: Hentet alle båter");
             return Ok(baater);
         }
@@ -391,10 +414,18 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpDelete("{id}")]
         [ActionName("slettBaat")]
-        public async Task<bool> slettBaat(int id)
+        public async Task<ActionResult> slettBaat(int id)
         {
+            bool baat = await _db.slettBaat(id);
+
+            if (!baat)
+            {
+                _log.LogInformation("DELETE: Båt kunne ikke slettes");
+                return BadRequest("DELETE: Båter kunne ikke slettes");
+            }
+
             _log.LogInformation("DELETE: Slettet båt med ID: " + id);
-            return await _db.slettBaat(id);
+            return Ok(baat);
         }
 
         [HttpPut("{id}/{navn}")]
