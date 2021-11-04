@@ -490,7 +490,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!baat)
             {
                 _log.LogInformation("DELETE: Båt kunne ikke slettes");
-                return BadRequest("DELETE: Båter kunne ikke slettes");
+                return BadRequest("DELETE: Sletting av baat ble ikke utført");
             }
 
             _log.LogInformation("DELETE: Slettet båt med ID: " + id);
@@ -513,7 +513,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!navnMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i inputvalidering endreBaat");
-                return BadRequest("FEIL: Feil i inputvalidering endreBaat");
+                return BadRequest("FEIL: Feil i inputvalidering i EndreBaat()");
             }
 
             bool baatEndret = await _db.endreBaat(id, navn);
@@ -521,7 +521,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!baatEndret)
             {
                 _log.LogInformation("GET: Båt kunne ikke endres");
-                return NotFound("GET: Båt kunne ikke endres");
+                return NotFound("PUT: Endring av baat ble ikke utført");
             }
 
 
@@ -546,7 +546,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!navnMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i inputvalidering lagreBaat");
-                return BadRequest("FEIL: Feil i inputvalidering lagreBaat");
+                return BadRequest("FEIL: Feil i inputvalidering i LagreBaat");
             }
 
             bool baatLagret = await _db.lagreBaat(navn);
@@ -554,7 +554,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!baatLagret)
             {
                 _log.LogInformation("POST: Båt kunne ikke lagres");
-                return NotFound("POST: Båt kunne ikke lagres");
+                return NotFound("POST: Lagring av baat ble ikke utført");
             }
 
             _log.LogInformation("POST: Lagret båt med navn: " + navn);
@@ -596,7 +596,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!kundeSlettet)
             {
                 _log.LogInformation("DELETE: Kunde kunne ikke slettes");
-                return NotFound("DELETE: Kunde kunne ikke slettes");
+                return NotFound("DELETE: Sletting av kunde kunne ikke utføres");
             }
 
             _log.LogInformation("DELETE: Slettet kunde med ID: " + id);
