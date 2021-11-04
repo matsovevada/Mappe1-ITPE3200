@@ -546,7 +546,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!navnMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i inputvalidering lagreBaat");
-                return BadRequest("FEIL: Feil i inputvalidering i LagreBaat");
+                return BadRequest("FEIL: Feil i inputvalidering i LagreBaat()");
             }
 
             bool baatLagret = await _db.lagreBaat(navn);
@@ -625,7 +625,7 @@ namespace Mappe1_ITPE3200.Controllers
                 return Ok(kundeEndret);
             }
             _log.LogInformation("Feil i inputvalidering endreKunde");
-            return BadRequest("Feil i inputvalidering endreKunde");
+            return BadRequest("Feil i inputvalidering EndreKunde()");
         }
 
         //ADMIN
@@ -648,7 +648,7 @@ namespace Mappe1_ITPE3200.Controllers
                 return Ok(true); 
             }
             _log.LogInformation("Feil i inputvalidering loggInn");
-            return BadRequest("Feil i inputvalidering på server loggInn");
+            return BadRequest("Feil i inputvalidering i LoggInn()");
         }
 
         //ADMIN
@@ -709,7 +709,7 @@ namespace Mappe1_ITPE3200.Controllers
                || !datoTidAarMatch.Success || !datoTidTimeMatch.Success || !datoTidMinMatch.Success || !antallLedigeBilplasserMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i validering lagreAvgang");
-                return BadRequest("FEIL: Feil i validering lagreAvgang");
+                return BadRequest("FEIL: Feil i validering i LagreAvgang()");
             }
 
             bool avgangLagret = await _db.lagreAvgang(baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
@@ -760,7 +760,7 @@ namespace Mappe1_ITPE3200.Controllers
                || !datoTidAarMatch.Success || !datoTidTimeMatch.Success || !datoTidMinMatch.Success || !antallLedigeBilplasserMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i validering endreAvgang");
-                return BadRequest("FEIL: Feil i validering endreAvgang");
+                return BadRequest("FEIL: Feil i validering i EndreAvgang()");
             }
 
             bool avgangEndret = await _db.endreAvgang(id, baat, strekningFra, strekningTil, datoTidDag, datoTidMnd, datoTidAar, datoTidTime, datoTidMin, antallLedigeBilplasser, lugarer, aktiv);
