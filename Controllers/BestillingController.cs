@@ -221,7 +221,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!navnMatch.Success || !antallSengeplasserMatch.Success || !antallMatch.Success || !prisMatch.Success || !beskrivelseMatch.Success)
             {
                 _log.LogInformation("DELETE: Lugar kunne ikke lagres, feil i validering");
-                return BadRequest("DELETE: Lugar kunne ikke lagres, feil i validering");
+                return BadRequest("FEIL: Feil i inputvalidering i LagreLugar()");
             }
             
             bool lugarLagret = await _db.LagreLugar(navn, beskrivelse, antallSengeplasser, antall, antallLedige, pris);
@@ -273,7 +273,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!lugarSlettet)
             {
                 _log.LogInformation("DELETE: Sletting av lugar ble ikke utført");
-                return NotFound("Sletting av lugar ble ikke utført");
+                return NotFound("DELETE: Sletting av lugar ble ikke utført");
             }
 
             _log.LogInformation("DELETE: Slettet lugar med ID: " + id);
@@ -329,7 +329,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!strekningFraMatch.Success || !strekningTilMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i regex i LagreStrekning()");
-                return BadRequest("FEIL: Feil i regex i LagreStrekning()");
+                return BadRequest("FEIL: Feil i inputvalidering i LagreStrekning()");
             }
 
             bool strekningLagret = await _db.LagreStrekning(strekningFra, strekningTil);
@@ -404,7 +404,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!pnrMatch.Success || !pstdMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i RegEx i EndrePoststed()");
-                return BadRequest("FEIL: Feil i RegEx i EndrePoststed()");
+                return BadRequest("FEIL: Feil i inputvalidering i EndrePoststed()");
             }
 
             bool poststedEndret = await _db.EndrePoststed(postnummer, poststed);
@@ -439,7 +439,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!pnrMatch.Success || !pstdMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i RegEx i LagrePoststed()");
-                return BadRequest("FEIL: Feil i RegEx i LagrePoststed()"); ;
+                return BadRequest("FEIL: Feil i inputvalidering i LagrePoststed()"); ;
             }
 
             bool poststedLagret = await _db.LagrePoststed(postnummer, poststed);
