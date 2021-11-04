@@ -27,7 +27,6 @@ export class SlettBillett {
   hentAlleBilletter() {
     this.http.get<Billett[]>("api/Bestilling/hentAlleBilletter")
       .subscribe(billetter => {
-        console.log(billetter);
         this.alleBilletter = billetter;
         this.laster = false;
       },
