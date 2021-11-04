@@ -59,8 +59,6 @@ export class AddAvgang {
   hentAlleLugarer() {
     this.http.get<Lugar[]>("api/Bestilling/hentAlleLugarer")
       .subscribe(lugarene => {
-        console.log("LUG:")
-        console.log(lugarene)
         this.alleLugarer = lugarene;
         this.laster = false;
       },
