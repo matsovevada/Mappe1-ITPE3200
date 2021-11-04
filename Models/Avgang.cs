@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Mappe1_ITPE3200.Models
 {
+    [ExcludeFromCodeCoverage]
     public class Avgang
     {
         public int Id { get; set; }
