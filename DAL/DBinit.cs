@@ -86,7 +86,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal1
       string Navn = "Suite";
-      string Beskrivelse = "Veldig stort rom med totalt 8 sengeplasser. Passer for en stor familie. Utstyrt med piano, boblebad og gratis minibar.";
+      string Beskrivelse = "Veldig stort rom med totalt atte sengeplasser. Passer for en stor familie. Utstyrt med piano, boblebad og gratis minibar.";
       int AntallSengeplasser = 8;
       int Antall = 5;
       int AntallLedige = 5;
@@ -94,7 +94,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal2
       string Navn1 = "Balkong lugar";
-      string Beskrivelse1 = "Lugar med flott sjøutsikt. Denne lugartypen har totalt 4 sengeplasser og er ideel for en vennegruppe eller liten familie.";
+      string Beskrivelse1 = "Lugar med flott sjoutsikt. Denne lugartypen har totalt fire sengeplasser og er ideel for en vennegruppe eller liten familie.";
       int AntallSengeplasser1 = 4;
       int Antall1 = 75;
       int AntallLedige1 = 75;
@@ -102,7 +102,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal3
       string Navn2 = "Innvendig lugar";
-        string Beskrivelse2 = "Vårt billigste alternativ. Liten lugar med 2 sengeplasser.";
+        string Beskrivelse2 = "Vart billigste alternativ. Liten lugar med to sengeplasser.";
         int AntallSengeplasser2 = 2;
         int Antall2 = 150;
         int AntallLedige2 = 150;
@@ -110,7 +110,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal4
       string Navn3 = "Familielugar";
-      string Beskrivelse3 = "Den perfekte lugaren for familier! Har totalt 6 sengeplasser og utsikt til sjøen.";
+      string Beskrivelse3 = "Den perfekte lugaren for familier. Har totalt seks sengeplasser og utsikt til sjoen.";
       int AntallSengeplasser3 = 6;
       int Antall3 = 40;
       int AntallLedige3 = 40;
