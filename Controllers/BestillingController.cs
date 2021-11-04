@@ -490,7 +490,7 @@ namespace Mappe1_ITPE3200.Controllers
             if (!baat)
             {
                 _log.LogInformation("DELETE: Båt kunne ikke slettes");
-                return BadRequest("DELETE: Sletting av baat ble ikke utført");
+                return NotFound("DELETE: Sletting av baat ble ikke utført");
             }
 
             _log.LogInformation("DELETE: Slettet båt med ID: " + id);
