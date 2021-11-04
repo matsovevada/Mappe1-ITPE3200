@@ -287,7 +287,7 @@ namespace Mappe1_ITPE3200.Controllers
 
         [HttpPost("{strekningFra}/{strekningTil}")]
         [ActionName("lagreStrekning")]
-        public async Task<bool> LagreStrekning(string strekningFra, string strekningTil)
+        public async Task<ActionResult> LagreStrekning(string strekningFra, string strekningTil)
         {
             var regexStrekning = @"[a-zA-ZøæåØÆÅ. \-]{2,30}";
             var strekningFraMatch = Regex.Match(strekningFra, regexStrekning);
@@ -296,11 +296,19 @@ namespace Mappe1_ITPE3200.Controllers
             if (!strekningFraMatch.Success || !strekningTilMatch.Success)
             {
                 _log.LogInformation("FEIL: Feil i regex i LagreStrekning()");
-                return false;
+                return BadRequest("FEIL: Feil i regex i LagreStrekning()");
+            }
+
+            bool strekningLagret = await _db.LagreStrekning(strekningFra, strekningTil);
+
+            if(!strekningLagret)
+            {
+                _log.LogInformation("POST: Lagring av strekning kunne ikke utføres");
+                return NotFound("POST: Lagring av strekning kunne ikke utføres");
             }
 
             _log.LogInformation("POST: Lagret strekning" + strekningFra + " - " +strekningTil);
-            return await _db.LagreStrekning(strekningFra, strekningTil);    
+            return Ok(strekningLagret);       
         }
 
         [HttpGet]
@@ -308,16 +316,28 @@ namespace Mappe1_ITPE3200.Controllers
         public async Task<ActionResult> HentPoststed()
         {
             List<Poststeder> allePoststeder = await _db.HentAllePoststeder();
+
+            if(allePoststeder == null)
+            {
+                _log.LogInformation("GET: Poststeder kunne ikke hentes");
+                return NotFound("GET: Poststeder kunne ikke hentes");
+            }
             _log.LogInformation("GET: Hentet alle poststeder");
             return Ok(allePoststeder);
         }
 
         [HttpDelete("{postnummer}")]
         [ActionName("slettPoststed")]
-        public async Task<bool> SlettPoststed(string postnummer)
+        public async Task<ActionResult> SlettPoststed(string postnummer)
         {
+            bool poststedSlettet = await _db.SlettPoststed(postnummer);
+            if (!poststedSlettet)
+            {
+                _log.LogInformation("GET: Poststeder kunne ikke hentes");
+                return NotFound("GET: Poststeder kunne ikke hentes");
+            }
             _log.LogInformation("DELETE: Slettet med ID: " + postnummer);
-            return await _db.SlettPoststed(postnummer);
+            return Ok(poststedSlettet);
         }
 
         [HttpPut("{postnummer}/{poststed}")]
