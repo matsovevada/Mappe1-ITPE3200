@@ -16,7 +16,6 @@ export class Navbar {
   loggUt() {
     this.http.get("api/Bestilling/loggUt").
       subscribe(ok => {
-        console.log(ok)
         this.router.navigate(['/']);
       },
         error => {
