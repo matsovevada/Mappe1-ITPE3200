@@ -86,7 +86,7 @@ namespace Mappe1_ITPE3200.ClientApp.DAL
 
       // mal1
       string Navn = "Suite";
-      string Beskrivelse = "Veldig stort rom med totalt atte sengeplasser. Passer for en stor familie. Utstyrt med piano, boblebad og gratis minibar.";
+      string Beskrivelse = "Veldig stort rom med totalt atte sengeplasser. Passer for en stor familie. Utstyrt med piano, boblebad, bilijarbord og gratis minibar.";
       int AntallSengeplasser = 8;
       int Antall = 5;
       int AntallLedige = 5;
