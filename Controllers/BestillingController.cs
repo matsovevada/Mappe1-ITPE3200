@@ -648,7 +648,7 @@ namespace Mappe1_ITPE3200.Controllers
                 return Ok(true); 
             }
             _log.LogInformation("Feil i inputvalidering loggInn");
-            return BadRequest("Feil i inputvalidering i LoggInn()");
+            return Ok(false);
         }
 
         //ADMIN

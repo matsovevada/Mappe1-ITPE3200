@@ -6,7 +6,7 @@ namespace Mappe1_ITPE3200.Models
     {
         [RegularExpression(@"^[a-zA-ZæøåÆØÅ. \-]{2,20}$")]
         public string Brukernavn { get; set; }
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$")]
+        [RegularExpression(@"^[a-zA-Z0-9\-. ]+$")]
         public string Passord { get; set; }
     }
 }
