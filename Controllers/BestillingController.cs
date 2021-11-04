@@ -222,7 +222,7 @@ namespace Mappe1_ITPE3200.Controllers
             bool returOK = await _db.SlettStrekning(id);
             if (!returOK)
             {
-                //_log.LogInformation("Sletting av Strekningen ble ikke utført");
+                _log.LogInformation("Sletting av Strekningen ble ikke utført");
                 return NotFound("Sletting av Strekningen ble ikke utført");
             }
             return Ok("Strekning slettet");
